@@ -182,8 +182,8 @@
     |                            62 | x             | o             | Chorus Delay Time            | CHORUS DELAY TIME      
     |                               |               |               |                              |
     |                            87 | x             | o             | Voice Mode (Lgt/Mono/Para)   | VOICE (PARA/MONO/LGT)  
-    |                            31 | x             | o             | EG > Amp Mod (Off/On)        | AMP EG (OFF/ON)        
     |                            85 | x             | o             | Pitch Bend Range             | PITCH BEND RANGE       
+    |                            31 | x             | o             | EG > Amp Mod (Off/On)        | AMP EG (OFF/ON)        
     |                            89 | x             | o             | Filter < EG Vel Sens         | VELOCITY > CUTOFF      
     |                               |               |               |                              |
     |                           110 | x             | o             | Amp Level                    |
