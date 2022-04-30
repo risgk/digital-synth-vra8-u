@@ -134,7 +134,7 @@
     | Control                     1 | x             | o             | Modulation                   | MODULATION             
     | Change                     11 | x             | o             | Expression                   | EXPRESSION             
     |                            64 | x             | o             | Sustain Pedal (Off/On)       | SUSTAIN PEDAL (OFF/ON) 
-    |                            46 | x             | o             | Pitch Bend By CC (-/+)       |
+    |                            46 | x             | o             | Pitch Bend by CC (-/+)       |
     |                               |               |               |                              |
     |                            24 | x             | o             | Osc 1 Wave (Sa/-/Si/-/P)     | OSC WAVE (SAW/PLS)     
     |                            54 | x             | o             | Osc 1 Shape (-/+) *          |
