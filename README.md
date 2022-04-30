@@ -137,7 +137,7 @@
     |                               |               |               |                              |
     |                            24 | x             | o             | Osc 1 Wave (Sa/-/Si/-/P)     | OSC WAVE (SAW/PLS)     
     |                            ?? | x             | o             | Osc 1 Shape (-/+) *          |
-    |                            ?? | x             | o             | Osc 1 Sub Level *            |
+    |                            26 | x             | o             | Osc 1 Sub Level *            |
     |                            22 | x             | o             | Portamento                   | PORTAMENTO             
     |                               |               |               |                              |
     |                            ?? | x             | o             | Osc 2 Wave (Sa/-/Si/N/P) *   |
@@ -148,17 +148,17 @@
     |                            16 | x             | o             | Filter Cutoff                | CUTOFF                 
     |                            17 | x             | o             | Filter Resonance             | RESONANCE              
     |                            18 | x             | o             | Filter < EG Amt (-/+)        | EG > CUTOFF (-/+)      
-    |                            ?? | x             | o             | Filter Key Track (-/Hf/Fl) * |
+    |                            86 | x             | o             | Filter Key Track (-/Hf/Fl) * |
     |                               |               |               |                              |
     |                            23 | x             | o             | EG Attack                    | ATTACK                 
     |                            19 | x             | o             | EG Decay                     | DECAY                  
     |                            27 | x             | o             | EG Sustain                   | SUSTAIN                
-    |                            ?? | x             | o             | EG Release *                 |
+    |                            28 | x             | o             | EG Release *                 |
     |                               |               |               |                              |
     |                           104 | x             | o             | EG > Pitch Amt (-/+)         | EG > PITCH (-/+)       
-    |                            ?? | x             | o             | EG > Pitch 2 Amt (-/+) *     |
+    |                           105 | x             | o             | EG > Pitch 2 Amt (-/+) *     |
     |                            ?? | x             | o             | EG > Shape 1 Amt (-/+) *     |
-    |                            ?? | x             | o             | EG > LFO Rate Amt (-/+)      |
+    |                             3 | x             | o             | EG > LFO Rate Amt (-/+)      |
     |                               |               |               |                              |
     |                            14 | x             | o             | LFO Wave (T1/T2/Sa/S&H/Sq)   | LFO WAVE (T/T2/S/RND/P)
     |                            80 | x             | o             | LFO Rate                     | LFO RATE               
@@ -166,7 +166,7 @@
     |                            15 | x             | o             | LFO Fade Time                | LFO FADE TIME          
     |                               |               |               |                              |
     |                            82 | x             | o             | LFO > Pitch Amt (-/+)        | LFO > PITCH (-/+)      
-    |                            ?? | x             | o             | LFO > Pitch 2 Amt *          |
+    |                             9 | x             | o             | LFO > Pitch 2 Amt *          |
     |                            ?? | x             | o             | LFO > Shape 1 Amt (-/+) *    |
     |                            83 | x             | o             | LFO > Filter Amt (-/+)       | LFO > CUTOFF (-/+)     
     |                               |               |               |                              |
@@ -183,9 +183,9 @@
     |                            87 | x             | o             | Voice Mode (Lgt/Mono/Para)   | VOICE (PARA/MONO/LGT)  
     |                            31 | x             | o             | EG > Amp Mod (Off/On)        | AMP EG (OFF/ON)        
     |                            85 | x             | o             | Pitch Bend Range             | PITCH BEND RANGE       
-    |                            ?? | x             | o             | Amp Level                    |
-    |                               |               |               |                              |
     |                            89 | x             | o             | Filter < EG Vel Sens         | VELOCITY > CUTOFF      
+    |                               |               |               |                              |
+    |                           110 | x             | o             | Amp Level                    |
     |                               |               |               |                              |
     |                   90, 112-119 | x             | x             | (Reserved)                   |
     +-------------------------------+---------------+---------------+------------------------------+
