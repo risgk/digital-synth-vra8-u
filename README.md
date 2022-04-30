@@ -176,8 +176,6 @@
     |                            58 | x             | o             | Amp Sustain                  |
     |                            59 | x             | o             | Amp Release *                |
     |                               |               |               |                              |
-    |                           110 | x             | o             | Amp Level                    |
-    |                               |               |               |                              |
     |                            63 | x             | o             | Chorus Mode (-/M/PS/S/S2)    | CHORUS (-/M/PS/S/S2)   
     |                            61 | x             | o             | Chorus Rate                  | CHORUS RATE            
     |                            60 | x             | o             | Chorus Depth                 | CHORUS DEPTH           
@@ -187,6 +185,8 @@
     |                            31 | x             | o             | EG > Amp Mod (Off/On)        | AMP EG (OFF/ON)        
     |                            85 | x             | o             | Pitch Bend Range             | PITCH BEND RANGE       
     |                            89 | x             | o             | Filter < EG Vel Sens         | VELOCITY > CUTOFF      
+    |                               |               |               |                              |
+    |                           110 | x             | o             | Amp Level                    |
     |                               |               |               |                              |
     |                   90, 112-119 | x             | x             | (Reserved)                   |
     +-------------------------------+---------------+---------------+------------------------------+
