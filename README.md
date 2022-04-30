@@ -167,7 +167,7 @@
     |                            15 | x             | o             | LFO Fade Time                | LFO FADE TIME          
     |                               |               |               |                              |
     |                            82 | x             | o             | LFO > Pitch Amt (-/+)        | LFO > PITCH (-/+)      
-    |                             9 | x             | o             | LFO > Pitch 2 Amt *          |
+    |                             9 | x             | o             | LFO > Pitch 2 Amt (-/+) *    |
     |                            52 | x             | o             | LFO > Shape 1 Amt (-/+) *    |
     |                            83 | x             | o             | LFO > Filter Amt (-/+)       | LFO > CUTOFF (-/+)     
     |                               |               |               |                              |
