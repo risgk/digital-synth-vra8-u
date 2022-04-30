@@ -136,11 +136,11 @@
     |                            64 | x             | o             | Sustain Pedal (Off/On)       | SUSTAIN PEDAL (OFF/ON) 
     |                               |               |               |                              |
     |                            24 | x             | o             | Osc 1 Wave (Sa/-/Si/-/P)     | OSC WAVE (SAW/PLS)     
-    |                            ?? | x             | o             | Osc 1 Shape (-/+) *          |
+    |                            54 | x             | o             | Osc 1 Shape (-/+) *          |
     |                            26 | x             | o             | Osc 1 Sub Level *            |
     |                            22 | x             | o             | Portamento                   | PORTAMENTO             
     |                               |               |               |                              |
-    |                            ?? | x             | o             | Osc 2 Wave (Sa/-/Si/N/P) *   |
+    |                            53 | x             | o             | Osc 2 Wave (Sa/-/Si/N/P) *   |
     |                            20 | x             | o             | Osc 2 Coarse (-/+) *         | MONO OSC2 PITCH        
     |                            21 | x             | o             | Osc 2 Fine (-/+) *           | MONO OSC2 DETUNE       
     |                            25 | x             | o             | Osc Mix (1/2) *              | MONO OSC2 MIX (-/HF/FL)
@@ -157,7 +157,7 @@
     |                               |               |               |                              |
     |                           104 | x             | o             | EG > Pitch Amt (-/+)         | EG > PITCH (-/+)       
     |                           105 | x             | o             | EG > Pitch 2 Amt (-/+) *     |
-    |                            ?? | x             | o             | EG > Shape 1 Amt (-/+) *     |
+    |                            55 | x             | o             | EG > Shape 1 Amt (-/+) *     |
     |                             3 | x             | o             | EG > LFO Rate Amt (-/+)      |
     |                               |               |               |                              |
     |                            14 | x             | o             | LFO Wave (T1/T2/Sa/S&H/Sq)   | LFO WAVE (T/T2/S/RND/P)
@@ -167,13 +167,15 @@
     |                               |               |               |                              |
     |                            82 | x             | o             | LFO > Pitch Amt (-/+)        | LFO > PITCH (-/+)      
     |                             9 | x             | o             | LFO > Pitch 2 Amt *          |
-    |                            ?? | x             | o             | LFO > Shape 1 Amt (-/+) *    |
+    |                            52 | x             | o             | LFO > Shape 1 Amt (-/+) *    |
     |                            83 | x             | o             | LFO > Filter Amt (-/+)       | LFO > CUTOFF (-/+)     
     |                               |               |               |                              |
-    |                            ?? | x             | o             | Amp Attack                   |
-    |                            ?? | x             | o             | Amp Decay                    |
-    |                            ?? | x             | o             | Amp Sustain                  |
-    |                            ?? | x             | o             | Amp Release *                |
+    |                            56 | x             | o             | Amp Attack                   |
+    |                            57 | x             | o             | Amp Decay                    |
+    |                            58 | x             | o             | Amp Sustain                  |
+    |                            59 | x             | o             | Amp Release *                |
+    |                               |               |               |                              |
+    |                           110 | x             | o             | Amp Level                    |
     |                               |               |               |                              |
     |                            63 | x             | o             | Chorus Mode (-/M/PS/S/S2)    | CHORUS (-/M/PS/S/S2)   
     |                            61 | x             | o             | Chorus Rate                  | CHORUS RATE            
@@ -184,8 +186,6 @@
     |                            31 | x             | o             | EG > Amp Mod (Off/On)        | AMP EG (OFF/ON)        
     |                            85 | x             | o             | Pitch Bend Range             | PITCH BEND RANGE       
     |                            89 | x             | o             | Filter < EG Vel Sens         | VELOCITY > CUTOFF      
-    |                               |               |               |                              |
-    |                           110 | x             | o             | Amp Level                    |
     |                               |               |               |                              |
     |                   90, 112-119 | x             | x             | (Reserved)                   |
     +-------------------------------+---------------+---------------+------------------------------+
