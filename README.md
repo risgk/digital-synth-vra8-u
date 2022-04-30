@@ -183,8 +183,8 @@
     |                               |               |               |                              |
     |                            87 | x             | o             | Voice Mode (Lgt/Mono/Para)   | VOICE (PARA/MONO/LGT)  
     |                            85 | x             | o             | Pitch Bend Range             | PITCH BEND RANGE       
-    |                            31 | x             | o             | EG > Amp Mod (Off/On)        | AMP EG (OFF/ON)        
     |                            89 | x             | o             | Filter < EG Vel Sens         | VELOCITY > CUTOFF      
+    |                            31 | x             | o             | EG > Amp Mod (Off/On)        | AMP EG (OFF/ON)        
     |                               |               |               |                              |
     |                           110 | x             | o             | Amp Level                    |
     |                               |               |               |                              |
