@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 <meta charset="utf-8">
-<title>VRA8-Q CTRL</title>
+<title>VRA8-U CTRL</title>
 <style>
 * {
   font-size: 12px;
@@ -12,22 +12,22 @@ table td {
   text-align: left;
 }
 td.key {
-  color: #cccc00;
+  color: orange;
   text-align: center;
   width: 42px;
   height: 63px;
-  border: 1px solid #cccc00;
+  border: 1px solid orange;
 }
 td.keyb {
   color: white;
-  background-color: #cccc00;
+  background-color: orange;
   text-align: center;
   width: 42px;
   height: 63px;
-  border: 1px solid #cccc00;
+  border: 1px solid orange;
 }
 td.keyp {
-  color: #cccc00;
+  color: orange;
   text-align: center;
   width: 42px;
   height: 63px;
@@ -41,7 +41,7 @@ td.keyh {
 }
 </style>
 <script>
-const APP_NAME_VERSION = "VRA8-Q CTRL v5.1.0";
+const APP_NAME_VERSION = "VRA8-U CTRL v0.0.0";
 
 const MIDI_CH        = 0;       // Basic Channel 1
 const NOTE_OFF       = 0x80;
@@ -92,10 +92,10 @@ const ALL_SOUND_OFF   = 120;
 const RESET_ALL_CTRLS = 121;
 const ALL_NOTES_OFF   = 123;
 
-// Special Random Control (for VRA8-Q CTRL)
+// Special Random Control (for VRA8-U CTRL)
 const SP_RAND_CTRL    = 90;
 
-// Special Program Change (for VRA8-Q CTRL)
+// Special Program Change (for VRA8-U CTRL)
 const SP_PROG_CHG_0   = 112;
 const SP_PROG_CHG_1   = 113;
 const SP_PROG_CHG_2   = 114;
@@ -342,7 +342,7 @@ function onMIDIMessage(event) {
       document.getElementById("spanCC11").innerHTML = "127";
       document.getElementById("spanCC64").innerHTML = "0";
     } else if (number >= SP_PROG_CHG_0 && number <= SP_PROG_CHG_7) {
-      // Special Program Change (only for VRA8-Q CTRL)
+      // Special Program Change (only for VRA8-U CTRL)
       var programIndex = number - SP_PROG_CHG_0;
       var oldValue = specialProgramChangeCCValues[programIndex];
       specialProgramChangeCCValues[programIndex] = value;
@@ -351,7 +351,7 @@ function onMIDIMessage(event) {
         return;
       }
     } else if (number == SP_RAND_CTRL   ) {
-      // Special Random Control (only for VRA8-Q CTRL)
+      // Special Random Control (only for VRA8-U CTRL)
       var oldValue = specialRandomControlCCValue;
       specialRandomControlCCValue = value;
       if (oldValue <= 63 && value >= 64) {
@@ -691,7 +691,7 @@ function fileExport() {
 
   var blob = new Blob([str]);
   const a = document.createElement('a');
-  a.download = 'vra8-q-prog.json';
+  a.download = 'vra8-u-prog.json';
   document.body.appendChild(a);
   a.href = URL.createObjectURL(blob);
   a.click();
@@ -730,7 +730,7 @@ function getStoredCCValueString(index, number) {
 <body>
 
 <table>
-<tr><td><span id="spanAppNameVersion"></span></td><td>&nbsp;&nbsp;Digital Synth VRA8-Q Controller Application (<a href="https://github.com/risgk/digital-synth-vra8-q">View on GitHub</a>)</td></tr>
+<tr><td><span id="spanAppNameVersion"></span></td><td>&nbsp;&nbsp;Digital Synth VRA8-U Controller Application (<a href="https://github.com/risgk/digital-synth-vra8-u">View on GitHub</a>)</td></tr>
 <tr><td>&nbsp;</td></tr>
 </table>
 
