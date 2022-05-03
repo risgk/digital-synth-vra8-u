@@ -25,9 +25,10 @@
         - Even using only the power supply adapter *significantly* reduces USB noise
 - PWM Audio Out (Unipolar, Line Level) **L/Mono**: **Pin D5** (or D6), **R**: **Pin D11**
     - Sampling Rate: 31.25 kHz, PWM Rate: 62.5 kHz, Bit Depth: 8 bit
-    - We recommend adding a RC filter (post LPF) circuit to reduce PWM ripples
+    - We recommend adding RC filter (post LPF) circuits to reduce PWM ripples
         - A 1st-order LPF with a cutoff frequency 7.2 kHz (R = 220 ohm, C = 100 nF) works well
-        - A 2nd-order LPF with a cutoff frequency 33.9 kHz (R1 = R2 = 47 ohm, C1 = C2 = 100 nF) works well, too
+    - We recommend adding AC coupling capacitors to reduce DC components
+        - A 10 uF electrolytic capacitor works well
 - Files
     - `"DigitalSynthVRA8Q.ino"` is a sketch for Arduino Uno Rev3 (ATmega328P)
     - `"make-sample-wav-file.cc"` is for Debugging on PC
