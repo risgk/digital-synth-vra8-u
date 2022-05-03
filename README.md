@@ -176,14 +176,14 @@
     |                            58 | x             | o             | Amp Sustain                  |
     |                            59 | x             | o             | Amp Release *                |
     |                               |               |               |                              |
-    |                            63 | x             | o             | Chorus Mode (-/M/PS/S/S2)    | CHORUS (-/M/PS/S/S2)   
+    |                            63 | x             | o             | Chorus Mode (-/M/PS/S/S2P)   | CHORUS (-/M/PS/S/S2)   
     |                            61 | x             | o             | Chorus Rate                  | CHORUS RATE            
     |                            60 | x             | o             | Chorus Depth                 | CHORUS DEPTH           
     |                            62 | x             | o             | Chorus Delay Time            | CHORUS DELAY TIME      
     |                               |               |               |                              |
     |                            87 | x             | o             | Voice Mode (Lgt/Mono/Para)   | VOICE (PARA/MONO/LGT)  
     |                            85 | x             | o             | Pitch Bend Range             | PITCH BEND RANGE       
-    |                            89 | x             | o             | Filter < EG Vel Sens         | VELOCITY > CUTOFF      
+    |                            89 | x             | o             | Filter < EG Vel Sens (-/+)   | VELOCITY > CUTOFF      
     |                            31 | x             | o             | EG > Amp Mod (Off/On)        | AMP EG (OFF/ON)        
     |                               |               |               |                              |
     |                           110 | x             | o             | Amp Level                    |
