@@ -156,8 +156,8 @@
     |                            28 | x             | o             | EG Release *                 |
     |                               |               |               |                              |
     |                           104 | x             | o             | EG > Pitch Amt (-/+)         | EG > PITCH (-/+)       
-    |                           105 | x             | o             | EG > Pitch 2 Amt (-/+) *     |
-    |                            55 | x             | o             | EG > Shape 1 Amt (-/+) *     |
+    |                           105 | x             | o             | EG > Pitch Dst (1+2/2) *     |
+    |                            55 | x             | o             | EG > Shape Amt (-/+) *       |
     |                             3 | x             | o             | EG > LFO Rate Amt (-/+)      |
     |                               |               |               |                              |
     |                            14 | x             | o             | LFO Wave (T1/T2/Sa/S&H/Sq)   | LFO WAVE (T/T2/S/RND/P)
@@ -166,8 +166,8 @@
     |                            15 | x             | o             | LFO Fade Time                | LFO FADE TIME          
     |                               |               |               |                              |
     |                            82 | x             | o             | LFO > Pitch Amt (-/+)        | LFO > PITCH (-/+)      
-    |                             9 | x             | o             | LFO > Pitch 2 Amt (-/+) *    |
-    |                            52 | x             | o             | LFO > Shape 1 Amt (-/+) *    |
+    |                             9 | x             | o             | LFO > Pitch Dst (1+2/2) *    |
+    |                            52 | x             | o             | LFO > Shape Amt (-/+) *      |
     |                            83 | x             | o             | LFO > Filter Amt (-/+)       | LFO > CUTOFF (-/+)     
     |                               |               |               |                              |
     |                            56 | x             | o             | Amp Attack                   |
