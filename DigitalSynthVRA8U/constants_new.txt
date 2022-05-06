@@ -75,8 +75,8 @@ const uint8_t   EG_SUSTAIN      = 27;
 const uint8_t   EG_RELEASE      = 28;
 
 const uint8_t   EG_PITCH_AMT    = 104;
-const uint8_t   EG_PITCH_2_AMT  = 105;
-const uint8_t   EG_SHAPE_1_AMT  = 55;
+const uint8_t   EG_PITCH_DST    = 105;
+const uint8_t   EG_SHAPE_AMT    = 55;
 const uint8_t   EG_LFO_RATE_AMT = 3;
 
 const uint8_t   LFO_WAVE        = 14;
@@ -85,8 +85,8 @@ const uint8_t   LFO_DEPTH       = 81;
 const uint8_t   LFO_FADE_TIME   = 15;
 
 const uint8_t   LFO_PITCH_AMT   = 82;
-const uint8_t   LFO_PITCH_2_AMT = 9;
-const uint8_t   LFO_SHAPE_1_AMT = 52;
+const uint8_t   LFO_PITCH_DST   = 9;
+const uint8_t   LFO_SHAPE_AMT   = 52;
 const uint8_t   LFO_FILTER_AMT  = 83;
 
 const uint8_t   AMP_ATTACK      = 56;
