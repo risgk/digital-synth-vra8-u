@@ -92,9 +92,11 @@ $osc_harmonics_restriction_table = []
   $osc_harmonics_restriction_table << freq
 end
 
+OSC_DETUNE_CORRECRION = 1015  # Approx. 25 cents
+
 def last_harmonic(freq, organ = false, organ_last)
   last = (freq != 0) ? ((FREQUENCY_MAX * (1 << OSC_PHASE_RESOLUTION_BITS)) /
-                        ((freq + OSC_DETUNE_FREQ_MAX) * SAMPLING_RATE)) : 0
+                        (((freq * OSC_DETUNE_CORRECRION / 1000) + OSC_DETUNE_FREQ_MAX) * SAMPLING_RATE)) : 0
   last = organ_last if organ && last > organ_last
   last = 11 if last == 12
   last = 9 if last == 10
