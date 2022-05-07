@@ -18,14 +18,12 @@ def generate_filter_lpf_table(res_idx, name, q)
     w_0 = 2.0 * Math::PI * f_0_over_f_s
     alpha = Math.sin(w_0) / (2.0 * q)
 
-    printf("i: %d, f_idx: %d, f_0_over_f_s: %f, f_0: %f, q: %f\n", i, f_idx, f_0_over_f_s, f_0, q)
-
     b_2 = (1.0 - Math.cos(w_0)) / 2.0
     a_0 = 1.0 + alpha
     a_1 = (-2.0) * Math.cos(w_0)
 
     b_2_over_a_0 = ((b_2 / a_0) * (1 << FILTER_TABLE_FRACTION_BITS)).floor.to_i
-    input_gain = 1.0 / (2.0 ** (res_idx / 12.0))
+    input_gain = 1.0 / (2.0 ** (res_idx / 6.0))
     b_2_over_a_0_gain = (input_gain * (b_2 / a_0) * (1 << FILTER_TABLE_FRACTION_BITS)).floor.to_i
     b_2_over_a_0 += 0x10000 if b_2_over_a_0 < 0
     a_1_over_a_0_orig = ((a_1 / a_0) * (1 << FILTER_TABLE_FRACTION_BITS)).floor.to_i
@@ -34,6 +32,8 @@ def generate_filter_lpf_table(res_idx, name, q)
     a_1_over_a_0 += 0x10000 if a_1_over_a_0 < 0
     a_2_over_a_0 = (b_2_over_a_0 << 2) - ((a_1_over_a_0_orig >> 8) << 8) - (1 << FILTER_TABLE_FRACTION_BITS);
     a_2_over_a_0 += 0x10000 if a_2_over_a_0 < 0
+
+    printf("i: %d, f_idx: %d, f_0_over_f_s: %f, f_0: %f, res_idx: %d, q: %f, g: %f, q_mul_g: %f\n", i, f_idx, f_0_over_f_s, f_0, res_idx, q, input_gain, q * input_gain)
 
     $file.printf("0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, ", b_2_over_a_0_gain & 0xFF, b_2_over_a_0_gain >> 8, a_1_over_a_0 >> 8, a_2_over_a_0 & 0xFF, a_2_over_a_0 >> 8)
     if i == DATA_BYTE_MAX
