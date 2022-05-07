@@ -67,7 +67,7 @@ def generate_osc_wave_table(name, last, amp, organ = false)
       level += yield(nn, k)
     end
     level *= amp
-    level = (level * OSC_WAVE_TABLE_AMPLITUDE).floor.to_i
+    level = (level * OSC_WAVE_TABLE_AMPLITUDE).round.to_i
     level += 0x100 if level < 0
     $file.printf("0x%02X,", level)
     if n == (1 << OSC_WAVE_TABLE_SAMPLES_BITS)
