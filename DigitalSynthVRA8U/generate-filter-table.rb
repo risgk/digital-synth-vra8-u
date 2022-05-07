@@ -47,13 +47,15 @@ def generate_filter_lpf_table(res_idx, name, q)
   $file.printf("};\n\n")
 end
 
-(0..7).each do |res_idx|
+MAX_RES_IDX = 5
+
+(0..MAX_RES_IDX).each do |res_idx|
   generate_filter_lpf_table(res_idx, res_idx.to_s, Math.sqrt(2.0) ** (res_idx - 1.0))
 end
 
 $file.printf("const uint8_t* g_filter_lpf_tables[] = {\n  ")
 (0..8).each do |res_idx|
-  i = [[res_idx - 1, 0].max, 7].min
+  i = [[res_idx - 1, 0].max, MAX_RES_IDX].min
   $file.printf("g_filter_lpf_table_%-2d,", i)
   if res_idx == DATA_BYTE_MAX
     $file.printf("\n")
