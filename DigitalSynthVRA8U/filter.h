@@ -157,12 +157,12 @@ private:
   }
 
   INLINE static void update_coefs_3rd() {
-    const uint8_t* p = m_lpf_table + static_cast<uint8_t>(m_cutoff_current << 1) + static_cast<uint8_t>(m_cutoff_current << 1) + m_cutoff_current;
+    const uint8_t* p = m_lpf_table + static_cast<uint8_t>(m_cutoff_current << 1) + m_cutoff_current;
     m_b_2_over_a_0 = pgm_read_word(p);
     p += 2;
     m_a_1_over_a_0_high = pgm_read_byte(p);
-    p += 1;
-    m_a_2_over_a_0 = pgm_read_word(p);
+    m_a_2_over_a_0 = (m_b_2_over_a_0 << 2) - static_cast<int16_t>(m_a_1_over_a_0_high << 8) -
+                     (1 << FILTER_TABLE_FRACTION_BITS);
   }
 };
 
