@@ -45,7 +45,7 @@ def generate_filter_lpf_table(res_idx, name, q)
   $file.printf("};\n\n")
 end
 
-MAX_RES_IDX = 5
+MAX_RES_IDX = 6
 
 (0..MAX_RES_IDX).each do |res_idx|
   generate_filter_lpf_table(res_idx, res_idx.to_s, Math.sqrt(2.0) ** (res_idx - 1.0))
