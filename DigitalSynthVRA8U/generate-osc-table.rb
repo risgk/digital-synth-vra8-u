@@ -96,11 +96,12 @@ def last_harmonic(freq, organ = false, organ_last)
   last = (freq != 0) ? ((FREQUENCY_MAX * (1 << OSC_PHASE_RESOLUTION_BITS)) /
                         ((freq + OSC_DETUNE_FREQ_MAX) * SAMPLING_RATE)) : 0
   last = organ_last if organ && last > organ_last
-  last = 10 if last == 12
-  last = 10 if last == 11
-  last = 8 if last == 9
-  last = 6 if last == 7
-  last = 4 if last == 5
+  last = 11 if last == 12
+  last = 9 if last == 10
+  last = 7 if last == 8
+  last = 5 if last == 6
+  last = 3 if last == 5
+  last = 3 if last == 4
   last = [last, 127].min
   last
 end
