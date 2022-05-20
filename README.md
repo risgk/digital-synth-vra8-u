@@ -27,6 +27,8 @@
     - Sampling Rate: 31.25 kHz, PWM Rate: 62.5 kHz, Bit Depth: 8 bit
     - We recommend adding RC filter (post LPF) circuits to reduce PWM ripples
         - A 1st-order LPF with a cutoff frequency 7.2 kHz (R = 220 ohm, C = 100 nF) works well
+    - We recommend adding AC coupling capacitors to reduce DC components
+        - A 10 uF electrolytic capacitor works well
 - Files
     - `"DigitalSynthVRA8Q.ino"` is a sketch for Arduino Uno Rev3 (ATmega328P)
     - `"make-sample-wav-file.cc"` is for Debugging on PC
