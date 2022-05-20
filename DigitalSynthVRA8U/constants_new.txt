@@ -73,8 +73,8 @@ const uint8_t   EG_DECAY        = 19;
 const uint8_t   EG_SUSTAIN      = 27;
 const uint8_t   EG_RELEASE      = 28;
 
-const uint8_t   EG_OSC_AMT    = 104;
-const uint8_t   EG_OSC_DST    = 105;
+const uint8_t   EG_OSC_AMT      = 104;
+const uint8_t   EG_OSC_DST      = 105;
 const uint8_t   VOICE_MODE      = 87;
 const uint8_t   PORTAMENTO      = 22;
 
