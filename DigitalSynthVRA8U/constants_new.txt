@@ -98,8 +98,8 @@ const uint8_t   CHORUS_RATE     = 61;
 const uint8_t   CHORUS_DEPTH    = 60;
 const uint8_t   CHORUS_DELAY_T  = 62;
 
-const uint8_t   P_BEND_RANGE    = 85;
 const uint8_t   OUTPUT_LEVEL    = 110;
+const uint8_t   P_BEND_RANGE    = 85;
 
 
 
