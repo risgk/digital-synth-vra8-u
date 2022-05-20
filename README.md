@@ -157,7 +157,7 @@
     |                            28 | x             | o             | EG Release                   |
     |                               |               |               |                              |
     |                           104 | x             | o             | EG > Osc Amt (-/+)           | EG > PITCH (-/+)       
-    |                           105 | x             | o             | EG > Osc Dst (P/P2/S1) *     |
+    |                           105 | x             | o             | EG > Osc Dst (P/P2/S1)       |
     |                            87 | x             | o             | Voice Mode (Para/Mono/Lgt)   | VOICE (PARA/MONO/LGT)  
     |                            22 | x             | o             | Portamento                   | PORTAMENTO             
     |                               |               |               |                              |
@@ -167,7 +167,7 @@
     |                            15 | x             | o             | LFO Fade Time                | LFO FADE TIME          
     |                               |               |               |                              |
     |                            82 | x             | o             | LFO > Osc Amt (-/+)          | LFO > PITCH (-/+)      
-    |                             9 | x             | o             | LFO > Osc Dst (P/P2/S1) *    |
+    |                             9 | x             | o             | LFO > Osc Dst (P/P2/S1)      |
     |                            83 | x             | o             | LFO > Filter Amt (-/+)       | LFO > CUTOFF (-/+)     
     |                               |               |               |                              |
     |                               |               |               |                              |
@@ -181,8 +181,8 @@
     |                            60 | x             | o             | CHORUS Depth                 | CHORUS DEPTH           
     |                            62 | x             | o             | CHORUS Delay Time            | CHORUS DELAY TIME      
     |                               |               |               |                              |
-    |                            85 | x             | o             | Pitch Bend Range             | PITCH BEND RANGE       
     |                           110 | x             | o             | Output Level                 |
+    |                            85 | x             | o             | Pitch Bend Range             | PITCH BEND RANGE       
     |                               |               |               |                              |
     |                   90, 112-119 | x             | x             | (Reserved)                   |
     +-------------------------------+---------------+---------------+------------------------------+
