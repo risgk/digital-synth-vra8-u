@@ -133,61 +133,56 @@
     | Pitch Bend                    | x             | o             |                              |
     +-------------------------------+---------------+---------------+------------------------------+
     | Control                     1 | x             | o             | Modulation                   | MODULATION             
-    | Change                     11 | x             | o             | Expression                   | EXPRESSION             
-    |                            64 | x             | o             | Sustain Pedal (Off/On)       | SUSTAIN PEDAL (OFF/ON) 
+    | Change                     64 | x             | o             | Sustain Pedal (-/On)         | SUSTAIN PEDAL (OFF/ON) 
     |                            46 | x             | o             | Pitch Bend by CC (-/+)       |
     |                               |               |               |                              |
-    |                            24 | x             | o             | Osc 1 Wave (Sa/-/Si/-/P)     | OSC WAVE (SAW/PLS)     
-    |                            54 | x             | o             | Osc 1 Shape (-/+) *          |
-    |                            26 | x             | o             | Osc 1 Sub Level *            |
-    |                            22 | x             | o             | Portamento                   | PORTAMENTO             
-    |                               |               |               |                              |
-    |                            53 | x             | o             | Osc 2 Wave (Sa/-/Si/N/P) *   |
-    |                            20 | x             | o             | Osc 2 Coarse (-/+) *         | MONO OSC2 PITCH        
-    |                            21 | x             | o             | Osc 2 Fine (-/+) *           | MONO OSC2 DETUNE       
+    |                            24 | x             | o             | OSC 1 Wave (Sa/-/Si/-/Sq)    | OSC WAVE (SAW/PLS)     
+    |                            54 | x             | o             | OSC 1 Shape (-/+) *          |
+    |                            26 | x             | o             | OSC 1 Sub Level *            |
     |                            25 | x             | o             | Osc Mix (1/2) *              | MONO OSC2 MIX (-/HF/FL)
     |                               |               |               |                              |
-    |                            16 | x             | o             | Filter Cutoff                | CUTOFF                 
-    |                            17 | x             | o             | Filter Resonance             | RESONANCE              
-    |                            18 | x             | o             | Filter < EG Amt (-/+)        | EG > CUTOFF (-/+)      
-    |                            86 | x             | o             | Filter Key Track (-/Hf/Fl) * |
+    |                            53 | x             | o             | OSC 2 Wave (Sa/-/Si/N/Sq) *  |
+    |                               |               |               |                              |
+    |                            20 | x             | o             | OSC 2 Coarse (-/+) *         | MONO OSC2 PITCH        
+    |                            21 | x             | o             | OSC 2 Fine (-/+) *           | MONO OSC2 DETUNE       
+    |                               |               |               |                              |
+    |                            16 | x             | o             | FILTER Cutoff                | CUTOFF                 
+    |                            17 | x             | o             | FILTER Resonance             | RESONANCE              
+    |                            18 | x             | o             | FILTER < EG Amt (-/+)        | EG > CUTOFF (-/+)      
+    |                            86 | x             | o             | FILTER < Key Amt (-/Hf/Fl) * |
     |                               |               |               |                              |
     |                            23 | x             | o             | EG Attack                    | ATTACK                 
     |                            19 | x             | o             | EG Decay                     | DECAY                  
     |                            27 | x             | o             | EG Sustain                   | SUSTAIN                
-    |                            28 | x             | o             | EG Release *                 |
+    |                            28 | x             | o             | EG Release                   |
     |                               |               |               |                              |
-    |                           104 | x             | o             | EG > Pitch Amt (-/+)         | EG > PITCH (-/+)       
-    |                           105 | x             | o             | EG > Pitch Dst (1+2/2) *     |
-    |                            55 | x             | o             | EG > Shape Amt (-/+) *       |
-    |                             3 | x             | o             | EG > LFO Rate Amt (-/+)      |
+    |                           104 | x             | o             | EG > Osc Amt (-/+)           | EG > PITCH (-/+)       
+    |                           105 | x             | o             | EG > Osc Dst (P/P2/S1) *     |
+    |                            87 | x             | o             | Voice Mode (Para/Mono/Lgt)   | VOICE (PARA/MONO/LGT)  
+    |                            22 | x             | o             | Portamento                   | PORTAMENTO             
     |                               |               |               |                              |
     |                            14 | x             | o             | LFO Wave (T1/T2/Sa/S&H/Sq)   | LFO WAVE (T/T2/S/RND/P)
     |                            80 | x             | o             | LFO Rate                     | LFO RATE               
     |                            81 | x             | o             | LFO Depth                    | LFO DEPTH              
     |                            15 | x             | o             | LFO Fade Time                | LFO FADE TIME          
     |                               |               |               |                              |
-    |                            82 | x             | o             | LFO > Pitch Amt (-/+)        | LFO > PITCH (-/+)      
-    |                             9 | x             | o             | LFO > Pitch Dst (1+2/2) *    |
-    |                            52 | x             | o             | LFO > Shape Amt (-/+) *      |
+    |                            82 | x             | o             | LFO > Osc Amt (-/+)          | LFO > PITCH (-/+)      
+    |                             9 | x             | o             | LFO > Osc Dst (P/P2/S1) *    |
     |                            83 | x             | o             | LFO > Filter Amt (-/+)       | LFO > CUTOFF (-/+)     
     |                               |               |               |                              |
-    |                            56 | x             | o             | Amp Attack                   |
-    |                            57 | x             | o             | Amp Decay                    |
-    |                            58 | x             | o             | Amp Sustain                  |
-    |                            59 | x             | o             | Amp Release *                |
     |                               |               |               |                              |
-    |                            63 | x             | o             | Chorus Mode (-/M/PS/S/S2P)   | CHORUS (-/M/PS/S/S2)   
-    |                            61 | x             | o             | Chorus Rate                  | CHORUS RATE            
-    |                            60 | x             | o             | Chorus Depth                 | CHORUS DEPTH           
-    |                            62 | x             | o             | Chorus Delay Time            | CHORUS DELAY TIME      
+    |                            56 | x             | o             | AMP Attack                   |
+    |                            57 | x             | o             | AMP Decay                    |
+    |                            58 | x             | o             | AMP Sustain                  |
+    |                            59 | x             | o             | AMP Release                  |
     |                               |               |               |                              |
-    |                            87 | x             | o             | Voice Mode (Lgt/Mono/Para)   | VOICE (PARA/MONO/LGT)  
+    |                            63 | x             | o             | CHORUS Mode (-/M/PS/S/S2)    | CHORUS (-/M/PS/S/S2)   
+    |                            61 | x             | o             | CHORUS Rate                  | CHORUS RATE            
+    |                            60 | x             | o             | CHORUS Depth                 | CHORUS DEPTH           
+    |                            62 | x             | o             | CHORUS Delay Time            | CHORUS DELAY TIME      
+    |                               |               |               |                              |
     |                            85 | x             | o             | Pitch Bend Range             | PITCH BEND RANGE       
-    |                            89 | x             | o             | Filter < EG Vel Sens (-/+)   | VELOCITY > CUTOFF      
-    |                            31 | x             | o             | EG > Amp Mod (Off/On)        | AMP EG (OFF/ON)        
-    |                               |               |               |                              |
-    |                           110 | x             | o             | Amp Level                    |
+    |                           110 | x             | o             | Output Level                 |
     |                               |               |               |                              |
     |                   90, 112-119 | x             | x             | (Reserved)                   |
     +-------------------------------+---------------+---------------+------------------------------+
