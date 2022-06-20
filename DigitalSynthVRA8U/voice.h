@@ -347,10 +347,10 @@ public:
       IOsc<0>::set_lfo_depth<1>(controller_value);
       break;
 
-    case CUTOFF         :
+    case FIL_CUTOFF     :
       IFilter<0>::set_cutoff(controller_value);
       break;
-    case RESONANCE      :
+    case FIL_RESONANCE  :
       IFilter<0>::set_resonance(controller_value);
       break;
     case EG_TO_CUTOFF   :
@@ -582,8 +582,8 @@ public:
     control_change(OSC_LEVEL      , g_preset_table_OSC_LEVEL      [program_number]);
     control_change(EG_TO_PITCH    , g_preset_table_EG_TO_PITCH    [program_number]);
 
-    control_change(CUTOFF         , g_preset_table_CUTOFF         [program_number]);
-    control_change(RESONANCE      , g_preset_table_RESONANCE      [program_number]);
+    control_change(FIL_CUTOFF     , g_preset_table_FIL_CUTOFF     [program_number]);
+    control_change(FIL_RESONANCE  , g_preset_table_FIL_RESONANCE  [program_number]);
     control_change(EG_TO_CUTOFF   , g_preset_table_EG_TO_CUTOFF   [program_number]);
     control_change(AMP_EG         , g_preset_table_AMP_EG         [program_number]);
 

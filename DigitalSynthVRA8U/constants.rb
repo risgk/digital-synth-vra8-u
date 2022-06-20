@@ -57,8 +57,8 @@ OSC_WAVE        = 24
 OSC_LEVEL       = 108
 EG_TO_PITCH     = 104
 
-CUTOFF          = 16
-RESONANCE       = 17
+FIL_CUTOFF      = 16
+FIL_RESONANCE   = 17
 EG_TO_CUTOFF    = 18
 AMP_EG          = 31
 

@@ -57,8 +57,8 @@ const uint8_t   OSC_WAVE        = 24;
 const uint8_t   OSC_LEVEL       = 108;
 const uint8_t   EG_TO_PITCH     = 104;
 
-const uint8_t   CUTOFF          = 16;
-const uint8_t   RESONANCE       = 17;
+const uint8_t   FIL_CUTOFF      = 16;
+const uint8_t   FIL_RESONANCE   = 17;
 const uint8_t   EG_TO_CUTOFF    = 18;
 const uint8_t   AMP_EG          = 31;
 

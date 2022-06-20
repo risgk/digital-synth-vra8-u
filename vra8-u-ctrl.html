@@ -57,8 +57,8 @@ const OSC_WAVE        = 24;
 const OSC_LEVEL       = 108;
 const EG_TO_PITCH     = 104;
 
-const CUTOFF          = 16;
-const RESONANCE       = 17;
+const FIL_CUTOFF      = 16;
+const FIL_RESONANCE   = 17;
 const EG_TO_CUTOFF    = 18;
 const AMP_EG          = 31;
 
@@ -111,8 +111,8 @@ var controlNumberToStringMap = new Map([
   [ OSC_LEVEL      , "OSC_LEVEL      " ],
   [ EG_TO_PITCH    , "EG_TO_PITCH    " ],
 
-  [ CUTOFF         , "CUTOFF         " ],
-  [ RESONANCE      , "RESONANCE      " ],
+  [ FIL_CUTOFF     , "FIL_CUTOFF     " ],
+  [ FIL_RESONANCE  , "FIL_RESONANCE  " ],
   [ EG_TO_CUTOFF   , "EG_TO_CUTOFF   " ],
   [ AMP_EG         , "AMP_EG         " ],
 
@@ -148,8 +148,8 @@ var controllersInLocalStorage = [
   OSC_LEVEL      ,
   EG_TO_PITCH    ,
 
-  CUTOFF         ,
-  RESONANCE      ,
+  FIL_CUTOFF     ,
+  FIL_RESONANCE  ,
   EG_TO_CUTOFF   ,
   AMP_EG         ,
 
@@ -187,8 +187,8 @@ presetControllers[OSC_WAVE       ] = [0  , 0  , 0  , 127, 0  , 0  , 0  , 0  ];
 presetControllers[OSC_LEVEL      ] = [96 , 96 , 96 , 96 , 96 , 96 , 96 , 96 ];
 presetControllers[EG_TO_PITCH    ] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
 
-presetControllers[CUTOFF         ] = [112, 4  , 124, 76 , 112, 112, 127, 127];
-presetControllers[RESONANCE      ] = [64 , 64 , 32 , 64 , 64 , 64 , 0  , 0  ];
+presetControllers[FIL_CUTOFF     ] = [112, 4  , 124, 76 , 112, 112, 127, 127];
+presetControllers[FIL_RESONANCE  ] = [64 , 64 , 32 , 64 , 64 , 64 , 0  , 0  ];
 presetControllers[EG_TO_CUTOFF   ] = [64 , 124, 4 ,  88 , 64 , 64 , 64 , 64 ];
 presetControllers[AMP_EG         ] = [127, 0  , 0  , 127, 127, 127, 127, 127];
 
@@ -655,8 +655,8 @@ function fileExport() {
   str += fileExportOneLine(OSC_LEVEL      );
   str += fileExportOneLine(EG_TO_PITCH    );
   str += "\n";
-  str += fileExportOneLine(CUTOFF         );
-  str += fileExportOneLine(RESONANCE      );
+  str += fileExportOneLine(FIL_CUTOFF     );
+  str += fileExportOneLine(FIL_RESONANCE  );
   str += fileExportOneLine(EG_TO_CUTOFF   );
   str += fileExportOneLine(AMP_EG         );
   str += "\n";
@@ -881,13 +881,13 @@ function getStoredCCValueString(index, number) {
     <td></td>
     <td></td></tr>
 <tr><td>&nbsp;</td></tr>
-<tr><td colspan="2">CUTOFF               </td>
-    <td colspan="2">RESONANCE            </td>
+<tr><td colspan="2">FIL_CUTOFF           </td>
+    <td colspan="2">FIL_RESONANCE        </td>
     <td colspan="2">EG > CUTOFF (-/+)    </td>
     <td colspan="2">AMP EG (OFF/ON)      </td></tr>
-<tr><td><input  id="inputCC16" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(CUTOFF         , value)"></td>
+<tr><td><input  id="inputCC16" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(FIL_CUTOFF     , value)"></td>
     <td><span    id="spanCC16">-</span></td>
-    <td><input  id="inputCC17" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(RESONANCE      , value)"></td>
+    <td><input  id="inputCC17" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(FIL_RESONANCE  , value)"></td>
     <td><span    id="spanCC17">-</span></td>
     <td><input  id="inputCC18" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(EG_TO_CUTOFF   , value)"></td>
     <td><span    id="spanCC18">-</span></td>
