@@ -3,7 +3,7 @@
 const uint8_t PROGRAM_NUMBER_DEFAULT = 0;
 
 // PRESET                                         #0   #1   #2   #3   #4   #5   #6   #7   
-const uint8_t g_preset_table_OSC_WAVE       [] = {0  , 0  , 0  , 127, 0  , 0  , 0  , 0  };
+const uint8_t g_preset_table_OSC_1_WAVE     [] = {0  , 0  , 0  , 127, 0  , 0  , 0  , 0  };
 const uint8_t g_preset_table_OSC_LEVEL      [] = {96 , 96 , 96 , 96 , 96 , 96 , 96 , 96 };
 const uint8_t g_preset_table_EG_TO_PITCH    [] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 };
 
@@ -34,6 +34,6 @@ const uint8_t g_preset_table_V_TO_CUTOFF    [] = {0  , 0  , 0  , 0  , 0  , 0  , 
 const uint8_t g_preset_table_VOICE_MODE     [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
 const uint8_t g_preset_table_PORTAMENTO     [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
 
-const uint8_t g_preset_table_MONO_O2_MIX    [] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 0  };
-const uint8_t g_preset_table_MONO_O2_PITCH  [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
-const uint8_t g_preset_table_MONO_O2_DETUNE [] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 };
+const uint8_t g_preset_table_MIXER_OSC_MIX  [] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 0  };
+const uint8_t g_preset_table_OSC_2_COARSE   [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
+const uint8_t g_preset_table_OSC_2_FINE     [] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 };

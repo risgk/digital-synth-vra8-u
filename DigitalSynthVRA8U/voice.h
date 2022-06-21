@@ -371,7 +371,7 @@ public:
       }
       break;
 
-    case OSC_WAVE       :
+    case OSC_1_WAVE     :
       IOsc<0>::set_osc_waveforms(controller_value);
       break;
 
@@ -471,7 +471,7 @@ public:
       m_portamento = controller_value;
       break;
 
-    case MONO_O2_MIX    :
+    case MIXER_OSC_MIX  :
       IOsc<0>::set_mono_osc2_mix(controller_value);
       break;
 
@@ -479,7 +479,7 @@ public:
       IOsc<0>::set_mono_osc2_pitch(controller_value);
       break;
 
-    case MONO_O2_DETUNE :
+    case OSC_2_FINE     :
       IOsc<0>::set_mono_osc2_detune(controller_value);
       break;
 
@@ -578,7 +578,7 @@ public:
     }
 #endif
 
-    control_change(OSC_WAVE       , g_preset_table_OSC_WAVE       [program_number]);
+    control_change(OSC_1_WAVE     , g_preset_table_OSC_1_WAVE     [program_number]);
     control_change(OSC_LEVEL      , g_preset_table_OSC_LEVEL      [program_number]);
     control_change(EG_TO_PITCH    , g_preset_table_EG_TO_PITCH    [program_number]);
 
@@ -609,9 +609,9 @@ public:
     control_change(VOICE_MODE     , g_preset_table_VOICE_MODE     [program_number]);
     control_change(PORTAMENTO     , g_preset_table_PORTAMENTO     [program_number]);
 
-    control_change(MONO_O2_MIX    , g_preset_table_MONO_O2_MIX    [program_number]);
-    control_change(MONO_O2_PITCH  , g_preset_table_MONO_O2_PITCH  [program_number]);
-    control_change(MONO_O2_DETUNE , g_preset_table_MONO_O2_DETUNE [program_number]);
+    control_change(MIXER_OSC_MIX  , g_preset_table_MIXER_OSC_MIX  [program_number]);
+    control_change(OSC_2_COARSE   , g_preset_table_OSC_2_COARSE   [program_number]);
+    control_change(OSC_2_FINE     , g_preset_table_OSC_2_FINE     [program_number]);
   }
 
   INLINE static int8_t clock(int8_t& right_level) {

@@ -53,7 +53,7 @@ const uint8_t   MODULATION      = 1;
 const uint8_t   EXPRESSION      = 11;
 const uint8_t   SUSTAIN_PEDAL   = 64;
 
-const uint8_t   OSC_WAVE        = 24;
+const uint8_t   OSC_1_WAVE      = 24;
 const uint8_t   OSC_LEVEL       = 108;
 const uint8_t   EG_TO_PITCH     = 104;
 
@@ -84,9 +84,9 @@ const uint8_t   V_TO_CUTOFF     = 89;
 const uint8_t   VOICE_MODE      = 87;
 const uint8_t   PORTAMENTO      = 22;
 
-const uint8_t   MONO_O2_MIX     = 25;
-const uint8_t   MONO_O2_PITCH   = 20;
-const uint8_t   MONO_O2_DETUNE  = 21;
+const uint8_t   MIXER_OSC_MIX   = 25;
+const uint8_t   OSC_2_COARSE    = 20;
+const uint8_t   OSC_2_FINE      = 21;
 
 const uint8_t   ALL_SOUND_OFF   = 120;
 const uint8_t   RESET_ALL_CTRLS = 121;
