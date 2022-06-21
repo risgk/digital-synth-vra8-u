@@ -151,9 +151,9 @@
     |                            18 | x             | o             | Filter EG Amt [-|+]              | EG > CUTOFF (-/+)      
     |                            86 | x             | o             | Filter Key Track [0.0|0.5|1.0] * |
     |                               |               |               |                                  |
-    |                            23 | x             | o             | EG Attack                        | ATTACK                 
-    |                            19 | x             | o             | EG Decay                         | DECAY                  
-    |                            27 | x             | o             | EG Sustain                       | SUSTAIN                
+    |                            23 | x             | o             | EG Attack                        | EG_ATTACK              
+    |                            19 | x             | o             | EG Decay                         | EG_DECAY               
+    |                            27 | x             | o             | EG Sustain                       | EG_SUSTAIN             
     |                            28 | x             | o             | EG Release                       |
     |                               |               |               |                                  |
     |                           104 | x             | o             | EG Osc Amt [-|+]                 | EG > PITCH (-/+)       

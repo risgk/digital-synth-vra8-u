@@ -353,15 +353,15 @@ public:
     case FIL_RESONANCE  :
       IFilter<0>::set_resonance(controller_value);
       break;
-    case EG_TO_CUTOFF   :
+    case FIL_EG_AMT     :
       IFilter<0>::set_cutoff_env_amt(controller_value);
       break;
-    case DECAY          :
+    case EG_DECAY       :
       m_decay = controller_value;
       update_decay_release();
       break;
 
-    case ATTACK         :
+    case EG_ATTACK      :
       m_attack = controller_value;
       if (m_amp_env_gen >= 64) {
         IEnvGen<0>::set_attack(m_attack);
@@ -375,7 +375,7 @@ public:
       IOsc<0>::set_osc_waveforms(controller_value);
       break;
 
-    case SUSTAIN        :
+    case EG_SUSTAIN     :
       {
         m_sustain = controller_value;
 
@@ -483,7 +483,7 @@ public:
       IOsc<0>::set_mono_osc2_detune(controller_value);
       break;
 
-    case EG_TO_PITCH    :
+    case OSC_EG_AMT     :
       IOsc<0>::set_pitch_env_amt(controller_value);
       break;
 
@@ -580,16 +580,16 @@ public:
 
     control_change(OSC_1_WAVE     , g_preset_table_OSC_1_WAVE     [program_number]);
     control_change(OSC_LEVEL      , g_preset_table_OSC_LEVEL      [program_number]);
-    control_change(EG_TO_PITCH    , g_preset_table_EG_TO_PITCH    [program_number]);
+    control_change(OSC_EG_AMT     , g_preset_table_OSC_EG_AMT     [program_number]);
 
     control_change(FIL_CUTOFF     , g_preset_table_FIL_CUTOFF     [program_number]);
     control_change(FIL_RESONANCE  , g_preset_table_FIL_RESONANCE  [program_number]);
-    control_change(EG_TO_CUTOFF   , g_preset_table_EG_TO_CUTOFF   [program_number]);
+    control_change(FIL_EG_AMT     , g_preset_table_FIL_EG_AMT     [program_number]);
     control_change(AMP_EG         , g_preset_table_AMP_EG         [program_number]);
 
-    control_change(ATTACK         , g_preset_table_ATTACK         [program_number]);
-    control_change(DECAY          , g_preset_table_DECAY          [program_number]);
-    control_change(SUSTAIN        , g_preset_table_SUSTAIN        [program_number]);
+    control_change(EG_ATTACK      , g_preset_table_EG_ATTACK      [program_number]);
+    control_change(EG_DECAY       , g_preset_table_EG_DECAY       [program_number]);
+    control_change(EG_SUSTAIN     , g_preset_table_EG_SUSTAIN     [program_number]);
 
     control_change(LFO_DEPTH      , g_preset_table_LFO_DEPTH      [program_number]);
     control_change(LFO_RATE       , g_preset_table_LFO_RATE       [program_number]);

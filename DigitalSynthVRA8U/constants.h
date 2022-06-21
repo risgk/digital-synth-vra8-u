@@ -55,16 +55,16 @@ const uint8_t   SUSTAIN_PEDAL   = 64;
 
 const uint8_t   OSC_1_WAVE      = 24;
 const uint8_t   OSC_LEVEL       = 108;
-const uint8_t   EG_TO_PITCH     = 104;
+const uint8_t   OSC_EG_AMT      = 104;
 
 const uint8_t   FIL_CUTOFF      = 16;
 const uint8_t   FIL_RESONANCE   = 17;
-const uint8_t   EG_TO_CUTOFF    = 18;
+const uint8_t   FIL_EG_AMT      = 18;
 const uint8_t   AMP_EG          = 31;
 
-const uint8_t   ATTACK          = 23;
-const uint8_t   DECAY           = 19;
-const uint8_t   SUSTAIN         = 27;
+const uint8_t   EG_ATTACK       = 23;
+const uint8_t   EG_DECAY        = 19;
+const uint8_t   EG_SUSTAIN      = 27;
 
 const uint8_t   LFO_DEPTH       = 81;
 const uint8_t   LFO_RATE        = 80;

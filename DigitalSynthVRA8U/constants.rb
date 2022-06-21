@@ -55,16 +55,16 @@ SUSTAIN_PEDAL   = 64
 
 OSC_1_WAVE      = 24
 OSC_LEVEL       = 108
-EG_TO_PITCH     = 104
+OSC_EG_AMT      = 104
 
 FIL_CUTOFF      = 16
 FIL_RESONANCE   = 17
-EG_TO_CUTOFF    = 18
+FIL_EG_AMT      = 18
 AMP_EG          = 31
 
-ATTACK          = 23
-DECAY           = 19
-SUSTAIN         = 27
+EG_ATTACK       = 23
+EG_DECAY        = 19
+EG_SUSTAIN      = 27
 
 LFO_DEPTH       = 81
 LFO_RATE        = 80
