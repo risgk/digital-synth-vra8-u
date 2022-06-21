@@ -146,8 +146,8 @@
     |                            25 | x             | o             | Mixer Osc Mix [1|2] *            | MONO OSC2 MIX (-/HF/FL)
     |                            26 | x             | o             | Mixer Sub Osc *                  | TODO
     |                               |               |               |                                  |
-    |                            16 | x             | o             | Filter Cutoff                    | FIL_CUTOFF             
-    |                            17 | x             | o             | Filter Resonance                 | FIL_RESONANCE          
+    |                            16 | x             | o             | Filter Cutoff                    | FILTER_CUTOFF          
+    |                            17 | x             | o             | Filter Resonance                 | FILTER_RESO            
     |                            18 | x             | o             | Filter EG Amt [-|+]              | EG > CUTOFF (-/+)      
     |                            86 | x             | o             | Filter Key Track [0.0|0.5|1.0] * | TODO
     |                               |               |               |                                  |

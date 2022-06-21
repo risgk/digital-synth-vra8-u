@@ -340,20 +340,22 @@ public:
 
   INLINE static void control_change(uint8_t controller_number, uint8_t controller_value) {
     switch (controller_number) {
+#if 0
     case EXPRESSION     :
       IEnvGen<1>::set_expression(controller_value);
       break;
+#endif
     case MODULATION     :
       IOsc<0>::set_lfo_depth<1>(controller_value);
       break;
 
-    case FIL_CUTOFF     :
+    case FILTER_CUTOFF  :
       IFilter<0>::set_cutoff(controller_value);
       break;
-    case FIL_RESONANCE  :
+    case FILTER_RESO    :
       IFilter<0>::set_resonance(controller_value);
       break;
-    case FIL_EG_AMT     :
+    case FILTER_EG_AMT  :
       IFilter<0>::set_cutoff_env_amt(controller_value);
       break;
     case EG_DECAY       :
@@ -388,10 +390,12 @@ public:
       }
       break;
 
+#if 0
     case AMP_EG         :
       m_amp_env_gen = controller_value;
       update_env_gen();
       break;
+#endif
 
     case LFO_RATE       :
       IOsc<0>::set_lfo_rate(controller_value);
@@ -402,7 +406,7 @@ public:
     case LFO_OSC_AMT    :
       IOsc<0>::set_pitch_lfo_amt<0>(controller_value);
       break;
-    case LFO_FIL_AMT    :
+    case LFO_FILTER_AMT :
       IFilter<0>::set_cutoff_lfo_amt(controller_value);
       break;
 
@@ -463,9 +467,11 @@ public:
       }
       break;
 
+#if 0
     case OSC_LEVEL      :
       IOsc<0>::set_osc_level(controller_value);
       break;
+#endif
 
     case PORTAMENTO     :
       m_portamento = controller_value;
@@ -483,7 +489,7 @@ public:
       IOsc<0>::set_mono_osc2_detune(controller_value);
       break;
 
-    case OSC_EG_AMT     :
+    case EG_OSC_AMT     :
       IOsc<0>::set_pitch_env_amt(controller_value);
       break;
 
@@ -499,9 +505,11 @@ public:
       IOsc<0>::set_pitch_bend_range(controller_value);
       break;
 
+#if 0
     case V_TO_CUTOFF    :
       m_velocity_to_cutoff = ((controller_value + 1) >> 1) << 1;
       break;
+#endif
 
     case VOICE_MODE     :
       {
@@ -579,13 +587,17 @@ public:
 #endif
 
     control_change(OSC_1_WAVE     , g_preset_table_OSC_1_WAVE     [program_number]);
+#if 0
     control_change(OSC_LEVEL      , g_preset_table_OSC_LEVEL      [program_number]);
-    control_change(OSC_EG_AMT     , g_preset_table_OSC_EG_AMT     [program_number]);
+#endif
+    control_change(EG_OSC_AMT     , g_preset_table_EG_OSC_AMT     [program_number]);
 
-    control_change(FIL_CUTOFF     , g_preset_table_FIL_CUTOFF     [program_number]);
-    control_change(FIL_RESONANCE  , g_preset_table_FIL_RESONANCE  [program_number]);
-    control_change(FIL_EG_AMT     , g_preset_table_FIL_EG_AMT     [program_number]);
+    control_change(FILTER_CUTOFF  , g_preset_table_FILTER_CUTOFF  [program_number]);
+    control_change(FILTER_RESO    , g_preset_table_FILTER_RESO    [program_number]);
+    control_change(FILTER_EG_AMT  , g_preset_table_FILTER_EG_AMT  [program_number]);
+#if 0
     control_change(AMP_EG         , g_preset_table_AMP_EG         [program_number]);
+#endif
 
     control_change(EG_ATTACK      , g_preset_table_EG_ATTACK      [program_number]);
     control_change(EG_DECAY       , g_preset_table_EG_DECAY       [program_number]);
@@ -594,7 +606,7 @@ public:
     control_change(LFO_DEPTH      , g_preset_table_LFO_DEPTH      [program_number]);
     control_change(LFO_RATE       , g_preset_table_LFO_RATE       [program_number]);
     control_change(LFO_OSC_AMT    , g_preset_table_LFO_OSC_AMT    [program_number]);
-    control_change(LFO_FIL_AMT    , g_preset_table_LFO_FIL_AMT    [program_number]);
+    control_change(LFO_FILTER_AMT , g_preset_table_LFO_FILTER_AMT [program_number]);
 
     control_change(LFO_WAVE       , g_preset_table_LFO_WAVE       [program_number]);
     control_change(LFO_FADE_TIME  , g_preset_table_LFO_FADE_TIME  [program_number]);
@@ -605,7 +617,10 @@ public:
     control_change(CHORUS_MODE    , g_preset_table_CHORUS_MODE    [program_number]);
 
     control_change(P_BEND_RANGE   , g_preset_table_P_BEND_RANGE   [program_number]);
+
+#if 0
     control_change(V_TO_CUTOFF    , g_preset_table_V_TO_CUTOFF    [program_number]);
+#endif
     control_change(VOICE_MODE     , g_preset_table_VOICE_MODE     [program_number]);
     control_change(PORTAMENTO     , g_preset_table_PORTAMENTO     [program_number]);
 
