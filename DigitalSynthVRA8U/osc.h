@@ -169,7 +169,7 @@ public:
     m_osc_gain[1] = 0;
     m_osc_gain[2] = 0;
     m_osc_gain[3] = 0;
-    m_osc_level = 32;
+    m_osc_level = 48;
 
     m_rnd = 1;
 

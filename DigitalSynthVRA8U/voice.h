@@ -62,7 +62,7 @@ public:
     m_attack = 0;
     m_decay = 0;
     m_sustain = 127;
-    m_amp_env_gen = 127;
+    m_amp_env_gen = 127; // TODO
     update_env_gen();
 
     m_chorus_mode = CHORUS_MODE_OFF;
