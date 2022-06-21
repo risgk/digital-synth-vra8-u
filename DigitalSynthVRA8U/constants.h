@@ -68,8 +68,8 @@ const uint8_t   EG_SUSTAIN      = 27;
 
 const uint8_t   LFO_DEPTH       = 81;
 const uint8_t   LFO_RATE        = 80;
-const uint8_t   LFO_TO_PITCH    = 82;
-const uint8_t   LFO_TO_CUTOFF   = 83;
+const uint8_t   LFO_OSC_AMT     = 82;
+const uint8_t   LFO_FIL_AMT     = 83;
 
 const uint8_t   LFO_WAVE        = 14;
 const uint8_t   LFO_FADE_TIME   = 15;

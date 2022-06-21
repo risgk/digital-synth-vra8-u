@@ -68,8 +68,8 @@ EG_SUSTAIN      = 27
 
 LFO_DEPTH       = 81
 LFO_RATE        = 80
-LFO_TO_PITCH    = 82
-LFO_TO_CUTOFF   = 83
+LFO_OSC_AMT     = 82
+LFO_FIL_AMT     = 83
 
 LFO_WAVE        = 14
 LFO_FADE_TIME   = 15

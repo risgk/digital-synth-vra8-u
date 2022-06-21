@@ -399,10 +399,10 @@ public:
     case LFO_DEPTH      :
       IOsc<0>::set_lfo_depth<0>(controller_value);
       break;
-    case LFO_TO_PITCH   :
+    case LFO_OSC_AMT    :
       IOsc<0>::set_pitch_lfo_amt<0>(controller_value);
       break;
-    case LFO_TO_CUTOFF  :
+    case LFO_FIL_AMT    :
       IFilter<0>::set_cutoff_lfo_amt(controller_value);
       break;
 
@@ -593,8 +593,8 @@ public:
 
     control_change(LFO_DEPTH      , g_preset_table_LFO_DEPTH      [program_number]);
     control_change(LFO_RATE       , g_preset_table_LFO_RATE       [program_number]);
-    control_change(LFO_TO_PITCH   , g_preset_table_LFO_TO_PITCH   [program_number]);
-    control_change(LFO_TO_CUTOFF  , g_preset_table_LFO_TO_CUTOFF  [program_number]);
+    control_change(LFO_OSC_AMT    , g_preset_table_LFO_OSC_AMT    [program_number]);
+    control_change(LFO_FIL_AMT    , g_preset_table_LFO_FIL_AMT    [program_number]);
 
     control_change(LFO_WAVE       , g_preset_table_LFO_WAVE       [program_number]);
     control_change(LFO_FADE_TIME  , g_preset_table_LFO_FADE_TIME  [program_number]);

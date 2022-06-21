@@ -68,8 +68,8 @@ const EG_SUSTAIN      = 27;
 
 const LFO_DEPTH       = 81;
 const LFO_RATE        = 80;
-const LFO_TO_PITCH    = 82;
-const LFO_TO_CUTOFF   = 83;
+const LFO_OSC_AMT     = 82;
+const LFO_FIL_AMT     = 83;
 
 const LFO_WAVE        = 14;
 const LFO_FADE_TIME   = 15;
@@ -122,8 +122,8 @@ var controlNumberToStringMap = new Map([
 
   [ LFO_DEPTH      , "LFO_DEPTH      " ],
   [ LFO_RATE       , "LFO_RATE       " ],
-  [ LFO_TO_PITCH   , "LFO_TO_PITCH   " ],
-  [ LFO_TO_CUTOFF  , "LFO_TO_CUTOFF  " ],
+  [ LFO_OSC_AMT    , "LFO_OSC_AMT    " ],
+  [ LFO_FIL_AMT    , "LFO_FIL_AMT    " ],
 
   [ LFO_WAVE       , "LFO_WAVE       " ],
   [ LFO_FADE_TIME  , "LFO_FADE_TIME  " ],
@@ -159,8 +159,8 @@ var controllersInLocalStorage = [
 
   LFO_DEPTH      ,
   LFO_RATE       ,
-  LFO_TO_PITCH   ,
-  LFO_TO_CUTOFF  ,
+  LFO_OSC_AMT    ,
+  LFO_FIL_AMT    ,
 
   LFO_WAVE       ,
   LFO_FADE_TIME  ,
@@ -198,8 +198,8 @@ presetControllers[EG_SUSTAIN     ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
 
 presetControllers[LFO_DEPTH      ] = [8  , 8  , 8  , 8  , 8  , 8  , 8  , 0  ];
 presetControllers[LFO_RATE       ] = [96 , 96 , 96 , 96 , 96 , 96 , 96 , 96 ];
-presetControllers[LFO_TO_PITCH   ] = [65 , 65 , 65 , 65 , 65 , 65 , 65 , 64 ];
-presetControllers[LFO_TO_CUTOFF  ] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
+presetControllers[LFO_OSC_AMT    ] = [65 , 65 , 65 , 65 , 65 , 65 , 65 , 64 ];
+presetControllers[LFO_FIL_AMT    ] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
 
 presetControllers[LFO_WAVE       ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
 presetControllers[LFO_FADE_TIME  ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
@@ -466,8 +466,8 @@ function updateDisplayOfControl(number, value) {
   switch (number) {
   case OSC_EG_AMT     :
   case FIL_EG_AMT     :
-  case LFO_TO_PITCH   :
-  case LFO_TO_CUTOFF  :
+  case LFO_OSC_AMT    :
+  case LFO_FIL_AMT    :
     if (value >= 64) {
       document.getElementById("spanCC" + String(number)).innerHTML = "+" + String(value - 64);
     } else {
@@ -666,8 +666,8 @@ function fileExport() {
   str += "\n";
   str += fileExportOneLine(LFO_DEPTH      );
   str += fileExportOneLine(LFO_RATE       );
-  str += fileExportOneLine(LFO_TO_PITCH   );
-  str += fileExportOneLine(LFO_TO_CUTOFF  );
+  str += fileExportOneLine(LFO_OSC_AMT    );
+  str += fileExportOneLine(LFO_FIL_AMT    );
   str += "\n";
   str += fileExportOneLine(LFO_WAVE       );
   str += fileExportOneLine(LFO_FADE_TIME  );
@@ -914,9 +914,9 @@ function getStoredCCValueString(index, number) {
     <td><span    id="spanCC81">-</span></td>
     <td><input  id="inputCC80" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(LFO_RATE       , value)"></td>
     <td><span    id="spanCC80">-</span></td>
-    <td><input  id="inputCC82" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(LFO_TO_PITCH   , value)"></td>
+    <td><input  id="inputCC82" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(LFO_OSC_AMT    , value)"></td>
     <td><span    id="spanCC82">-</span></td>
-    <td><input  id="inputCC83" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(LFO_TO_CUTOFF  , value)"></td>
+    <td><input  id="inputCC83" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(LFO_FIL_AMT    , value)"></td>
     <td><span    id="spanCC83">-</span></td></tr>
 <tr><td colspan="2">LFO WAVE (T/T2/S/RND/P)</td>
     <td colspan="2">LFO FADE TIME        </td>

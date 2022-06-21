@@ -18,8 +18,8 @@ const uint8_t g_preset_table_EG_SUSTAIN     [] = {0  , 0  , 0  , 0  , 0  , 0  , 
 
 const uint8_t g_preset_table_LFO_DEPTH      [] = {8  , 8  , 8  , 8  , 8  , 8  , 8  , 0  };
 const uint8_t g_preset_table_LFO_RATE       [] = {96 , 96 , 96 , 96 , 96 , 96 , 96 , 96 };
-const uint8_t g_preset_table_LFO_TO_PITCH   [] = {65 , 65 , 65 , 65 , 65 , 65 , 65 , 64 };
-const uint8_t g_preset_table_LFO_TO_CUTOFF  [] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 };
+const uint8_t g_preset_table_LFO_OSC_AMT    [] = {65 , 65 , 65 , 65 , 65 , 65 , 65 , 64 };
+const uint8_t g_preset_table_LFO_FIL_AMT    [] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 };
 
 const uint8_t g_preset_table_LFO_WAVE       [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
 const uint8_t g_preset_table_LFO_FADE_TIME  [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
