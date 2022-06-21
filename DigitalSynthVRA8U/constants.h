@@ -137,6 +137,6 @@ const uint8_t   CHORUS_P_STEREO    = 64;
 const uint8_t   CHORUS_STEREO      = 96;
 const uint8_t   CHORUS_STEREO_2    = 127;
 
-const uint8_t   VOICE_LEGATO       = 0;
+const uint8_t   VOICE_PARAPHONIC   = 0;
 const uint8_t   VOICE_MONOPHONIC   = 64;
-const uint8_t   VOICE_PARAPHONIC   = 127;
+const uint8_t   VOICE_LEGATO       = 127;
