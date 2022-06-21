@@ -866,9 +866,9 @@ function getStoredCCValueString(index, number) {
 </table>
 
 <table>
-<tr><td colspan="2">Osc 1 Wave [Saw|-|Sin|-|Pls]    </td>
+<tr><td colspan="2"><b>Osc 1</b> Wave [Saw|-|Sin|-|Pls]    </td>
     <td colspan="2">OSC LEVEL                       </td>
-    <td colspan="2">EG Osc Amt [-|+]                </td>
+    <td colspan="2"><b>EG</b> Osc Amt [-|+]                </td>
     <td colspan="2">                                </td></tr>
 <tr><td><input  id="inputCC24" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(OSC_1_WAVE     , value)"></td>
     <td><span    id="spanCC24">-</span></td>
@@ -881,9 +881,9 @@ function getStoredCCValueString(index, number) {
     <td></td>
     <td></td></tr>
 <tr><td>&nbsp;</td></tr>
-<tr><td colspan="2">Filter Cutoff                   </td>
-    <td colspan="2">Filter Resonance                </td>
-    <td colspan="2">Filter EG Amt [-|+]             </td>
+<tr><td colspan="2"><b>Filter</b> Cutoff                   </td>
+    <td colspan="2"><b>Filter</b> Resonance                </td>
+    <td colspan="2"><b>Filter</b> EG Amt [-|+]             </td>
     <td colspan="2">AMP EG (OFF/ON)                 </td></tr>
 <tr><td><input  id="inputCC16" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(FIL_CUTOFF     , value)"></td>
     <td><span    id="spanCC16">-</span></td>
@@ -893,9 +893,9 @@ function getStoredCCValueString(index, number) {
     <td><span    id="spanCC18">-</span></td>
     <td><input  id="inputCC31" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(AMP_EG         , value)"></td>
     <td><span    id="spanCC31">-</span></td></tr>
-<tr><td colspan="2">EG Attack                       </td>
-    <td colspan="2">EG Decay                        </td>
-    <td colspan="2">EG Sustain                      </td>
+<tr><td colspan="2"><b>EG</b> Attack                       </td>
+    <td colspan="2"><b>EG</b> Decay                        </td>
+    <td colspan="2"><b>EG</b> Sustain                      </td>
     <td colspan="2">                                </td></tr>
 <tr><td><input  id="inputCC23" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(EG_ATTACK      , value)"></td>
     <td><span    id="spanCC23">-</span></td>
@@ -906,10 +906,10 @@ function getStoredCCValueString(index, number) {
     <td></td>
     <td></td></tr>
 <tr><td>&nbsp;</td></tr>
-<tr><td colspan="2">LFO Depth                       </td>
-    <td colspan="2">LFO Rate                        </td>
-    <td colspan="2">LFO > PITCH (-/+)               </td>
-    <td colspan="2">LFO > CUTOFF (-/+)              </td></tr>
+<tr><td colspan="2"><b>LFO</b> Depth                       </td>
+    <td colspan="2"><b>LFO</b> Rate                        </td>
+    <td colspan="2"><b>LFO</b> Osc Amt [-|+]               </td>
+    <td colspan="2"><b>LFO</b> Filter Amt [-|+]            </td></tr>
 <tr><td><input  id="inputCC81" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(LFO_DEPTH      , value)"></td>
     <td><span    id="spanCC81">-</span></td>
     <td><input  id="inputCC80" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(LFO_RATE       , value)"></td>
@@ -918,8 +918,8 @@ function getStoredCCValueString(index, number) {
     <td><span    id="spanCC82">-</span></td>
     <td><input  id="inputCC83" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(LFO_FIL_AMT    , value)"></td>
     <td><span    id="spanCC83">-</span></td></tr>
-<tr><td colspan="2">LFO Wave [T1|T2|Saw|SH|Sqr]     </td>
-    <td colspan="2">LFO Fade Time                   </td>
+<tr><td colspan="2"><b>LFO</b> Wave [T1|T2|Saw|SH|Sqr]     </td>
+    <td colspan="2"><b>LFO</b> Fade Time                   </td>
     <td colspan="2">                                </td>
     <td colspan="2">                                </td></tr>
 <tr><td><input  id="inputCC14" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(LFO_WAVE       , value)"></td>
@@ -931,10 +931,10 @@ function getStoredCCValueString(index, number) {
     <td></td>
     <td></td></tr>
 <tr><td>&nbsp;</td></tr>
-<tr><td colspan="2">Chorus Rate                     </td>
-    <td colspan="2">Chorus Depth                    </td>
-    <td colspan="2">Chorus Delay Time               </td>
-    <td colspan="2">Chorus Mode [Off|M|PS|S|S2]     </td></tr>
+<tr><td colspan="2"><b>Chorus</b> Rate                     </td>
+    <td colspan="2"><b>Chorus</b> Depth                    </td>
+    <td colspan="2"><b>Chorus</b> Delay Time               </td>
+    <td colspan="2"><b>Chorus</b> Mode [Off|M|PS|S|S2]     </td></tr>
 <tr><td><input  id="inputCC60" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(CHORUS_DEPTH   , value)"></td>
     <td><span    id="spanCC60">-</span></td>
     <td><input  id="inputCC61" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(CHORUS_RATE    , value)"></td>
@@ -956,9 +956,9 @@ function getStoredCCValueString(index, number) {
     <td><input  id="inputCC22" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(PORTAMENTO     , value)"></td>
     <td><span    id="spanCC22">-</span></td></tr>
 <tr><td>&nbsp;</td></tr>
-<tr><td colspan="2">Mixer Osc Mix [1|2] *           </td>
-    <td colspan="2">Osc 2 Coarse [-|+] *            </td>
-    <td colspan="2">Osc 2 Fine [-|+] *              </td>
+<tr><td colspan="2"><b>Mixer</b> Osc Mix [1|2] *           </td>
+    <td colspan="2"><b>Osc 2</b> Coarse [-|+] *            </td>
+    <td colspan="2"><b>Osc 2</b> Fine [-|+] *              </td>
     <td colspan="2">APP KBD TRANSPOSE               </td></tr>
 <tr><td><input  id="inputCC25" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(MIXER_OSC_MIX  , value)"></td>
     <td><span    id="spanCC25">-</span></td>
@@ -968,10 +968,10 @@ function getStoredCCValueString(index, number) {
     <td><span    id="spanCC21">-</span></td>
     <td><input id="inputTranspose" type="range" min="-24" max="24" step="12" oninput="onChangeTranspose(value)" ></td>
     <td><span id="spanTranspose" >-</span></td></tr>
-<tr><td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
 </table>
 
 <table>
