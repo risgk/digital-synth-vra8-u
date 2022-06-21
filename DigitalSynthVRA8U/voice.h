@@ -475,7 +475,7 @@ public:
       IOsc<0>::set_mono_osc2_mix(controller_value);
       break;
 
-    case MONO_O2_PITCH :
+    case OSC_2_COARSE   :
       IOsc<0>::set_mono_osc2_pitch(controller_value);
       break;
 
