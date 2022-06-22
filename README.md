@@ -171,10 +171,10 @@
     |                            83 | x             | o             | LFO Filter Amt [-|+]             | LFO > CUTOFF (-/+)     
     |                           110 | x             | o             | Amp Level                        | TODO
     |                               |               |               |                                  |
-    |                            56 | x             | o             | AMP Attack                       | TODO
-    |                            57 | x             | o             | AMP Decay                        | TODO
-    |                            58 | x             | o             | AMP Sustain                      | TODO
-    |                            59 | x             | o             | AMP Release                      | TODO
+    |                            56 | x             | o             | Amp Attack                       | TODO
+    |                            57 | x             | o             | Amp Decay                        | TODO
+    |                            58 | x             | o             | Amp Sustain                      | TODO
+    |                            59 | x             | o             | Amp Release                      | TODO
     |                               |               |               |                                  |
     |                            63 | x             | o             | Chorus Mode [Off|M|PS|S|S2]      | CHORUS (-/M/PS/S/S2)   
     |                            61 | x             | o             | Chorus Rate                      | CHORUS RATE            
