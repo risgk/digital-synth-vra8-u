@@ -587,46 +587,54 @@ public:
 #endif
 
     control_change(OSC_1_WAVE     , g_preset_table_OSC_1_WAVE     [program_number]);
-#if 0
-    control_change(OSC_LEVEL      , g_preset_table_OSC_LEVEL      [program_number]);
-#endif
-    control_change(EG_OSC_AMT     , g_preset_table_EG_OSC_AMT     [program_number]);
+    control_change(OSC_1_SHAPE    , g_preset_table_OSC_1_SHAPE    [program_number]);
+    control_change(OSC_2_WAVE     , g_preset_table_OSC_2_WAVE     [program_number]);
+
+
+    control_change(OSC_2_COARSE   , g_preset_table_OSC_2_COARSE   [program_number]);
+    control_change(OSC_2_FINE     , g_preset_table_OSC_2_FINE     [program_number]);
+    control_change(MIXER_OSC_MIX  , g_preset_table_MIXER_OSC_MIX  [program_number]);
+    control_change(MIXER_SUB_OSC  , g_preset_table_MIXER_SUB_OSC  [program_number]);
 
     control_change(FILTER_CUTOFF  , g_preset_table_FILTER_CUTOFF  [program_number]);
     control_change(FILTER_RESO    , g_preset_table_FILTER_RESO    [program_number]);
     control_change(FILTER_EG_AMT  , g_preset_table_FILTER_EG_AMT  [program_number]);
-#if 0
-    control_change(AMP_EG         , g_preset_table_AMP_EG         [program_number]);
-#endif
+    control_change(FILTER_K_TRACK , g_preset_table_FILTER_K_TRACK [program_number]);
 
     control_change(EG_ATTACK      , g_preset_table_EG_ATTACK      [program_number]);
     control_change(EG_DECAY       , g_preset_table_EG_DECAY       [program_number]);
     control_change(EG_SUSTAIN     , g_preset_table_EG_SUSTAIN     [program_number]);
+    control_change(EG_RELEASE     , g_preset_table_EG_RELEASE     [program_number]);
 
-    control_change(LFO_DEPTH      , g_preset_table_LFO_DEPTH      [program_number]);
-    control_change(LFO_RATE       , g_preset_table_LFO_RATE       [program_number]);
-    control_change(LFO_OSC_AMT    , g_preset_table_LFO_OSC_AMT    [program_number]);
-    control_change(LFO_FILTER_AMT , g_preset_table_LFO_FILTER_AMT [program_number]);
-
-    control_change(LFO_WAVE       , g_preset_table_LFO_WAVE       [program_number]);
-    control_change(LFO_FADE_TIME  , g_preset_table_LFO_FADE_TIME  [program_number]);
-
-    control_change(CHORUS_DEPTH   , g_preset_table_CHORUS_DEPTH   [program_number]);
-    control_change(CHORUS_RATE    , g_preset_table_CHORUS_RATE    [program_number]);
-    control_change(CHORUS_DELAY_T , g_preset_table_CHORUS_DELAY_T [program_number]);
-    control_change(CHORUS_MODE    , g_preset_table_CHORUS_MODE    [program_number]);
-
-    control_change(P_BEND_RANGE   , g_preset_table_P_BEND_RANGE   [program_number]);
-
-#if 0
-    control_change(V_TO_CUTOFF    , g_preset_table_V_TO_CUTOFF    [program_number]);
-#endif
+    control_change(EG_OSC_AMT     , g_preset_table_EG_OSC_AMT     [program_number]);
+    control_change(EG_OSC_DST     , g_preset_table_EG_OSC_DST     [program_number]);
     control_change(VOICE_MODE     , g_preset_table_VOICE_MODE     [program_number]);
     control_change(PORTAMENTO     , g_preset_table_PORTAMENTO     [program_number]);
 
-    control_change(MIXER_OSC_MIX  , g_preset_table_MIXER_OSC_MIX  [program_number]);
-    control_change(OSC_2_COARSE   , g_preset_table_OSC_2_COARSE   [program_number]);
-    control_change(OSC_2_FINE     , g_preset_table_OSC_2_FINE     [program_number]);
+    control_change(LFO_WAVE       , g_preset_table_LFO_WAVE       [program_number]);
+    control_change(LFO_RATE       , g_preset_table_LFO_RATE       [program_number]);
+    control_change(LFO_DEPTH      , g_preset_table_LFO_DEPTH      [program_number]);
+    control_change(LFO_FADE_TIME  , g_preset_table_LFO_FADE_TIME  [program_number]);
+
+    control_change(LFO_OSC_AMT    , g_preset_table_LFO_OSC_AMT    [program_number]);
+    control_change(LFO_OSC_DST    , g_preset_table_LFO_OSC_DST    [program_number]);
+    control_change(LFO_FILTER_AMT , g_preset_table_LFO_FILTER_AMT [program_number]);
+    control_change(AMP_LEVEL      , g_preset_table_AMP_LEVEL      [program_number]);
+
+    control_change(AMP_ATTACK     , g_preset_table_AMP_ATTACK     [program_number]);
+    control_change(AMP_DECAY      , g_preset_table_AMP_DECAY      [program_number]);
+    control_change(AMP_SUSTAIN    , g_preset_table_AMP_SUSTAIN    [program_number]);
+    control_change(AMP_RELEASE    , g_preset_table_AMP_RELEASE    [program_number]);
+
+    control_change(CHORUS_MODE    , g_preset_table_CHORUS_MODE    [program_number]);
+    control_change(CHORUS_RATE    , g_preset_table_CHORUS_RATE    [program_number]);
+    control_change(CHORUS_DEPTH   , g_preset_table_CHORUS_DEPTH   [program_number]);
+    control_change(CHORUS_DELAY_T , g_preset_table_CHORUS_DELAY_T [program_number]);
+
+    control_change(P_BEND_RANGE   , g_preset_table_P_BEND_RANGE   [program_number]);
+
+
+
   }
 
   INLINE static int8_t clock(int8_t& right_level) {
