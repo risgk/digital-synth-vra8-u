@@ -394,8 +394,6 @@ function onMIDIMessage(event) {
       updateDisplayOfControl(number, value);
     } else if (number == MODULATION     ) {
       document.getElementById("spanCC1").innerHTML = value;
-    } else if (number == EXPRESSION     ) {
-      document.getElementById("spanCC11").innerHTML = value;
     } else if (number == SUSTAIN_PEDAL   ) {
       document.getElementById("spanCC64").innerHTML = value;
     } else if (number == RESET_ALL_CTRLS) {
@@ -526,10 +524,14 @@ function updateDisplayOfControl(number, value) {
   document.getElementById("inputCC" + String(number)).value = parseInt(value);
 
   switch (number) {
-  case EG_OSC_AMT     :
-  case FILTER_EG_AMT  :
-  case LFO_OSC_AMT    :
-  case LFO_FILTER_AMT :
+  case OSC_1_SHAPE     :
+  case OSC_2_COARSE    :
+  case OSC_2_FINE      :
+  case MIXER_OSC_MIX   :
+  case FILTER_EG_AMT   :
+  case EG_OSC_AMT      :
+  case LFO_OSC_AMT     :
+  case LFO_FILTER_AMT  :
     if (value >= 64) {
       document.getElementById("spanCC" + String(number)).innerHTML = "+" + String(value - 64);
     } else {
@@ -821,9 +823,6 @@ function getStoredCCValueString(index, number) {
     <td></td>
     <td><select id="selectOutputPort" size="1" onchange="onChangeOutputPort()"></select></td>
     <td></td>
-    <td>EXPRESSION</td>
-    <td></td>
-    <td><span id="spanCC11">-</span></td>
     </tr>
 <tr><td></td>
     <td></td>
