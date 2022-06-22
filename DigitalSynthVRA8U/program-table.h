@@ -38,6 +38,11 @@ const uint8_t g_preset_table_LFO_OSC_DST    [] = {0  , 0  , 0  , 0  , 0  , 0  , 
 const uint8_t g_preset_table_LFO_FILTER_AMT [] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 };
 const uint8_t g_preset_table_AMP_LEVEL      [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
 
+const uint8_t g_preset_table_AMP_ATTACK     [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
+const uint8_t g_preset_table_AMP_DECAY      [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
+const uint8_t g_preset_table_AMP_SUSTAIN    [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
+const uint8_t g_preset_table_AMP_RELEASE    [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
+
 const uint8_t g_preset_table_CHORUS_MODE    [] = {127, 127, 127, 127, 127, 127, 127, 0  };
 const uint8_t g_preset_table_CHORUS_RATE    [] = {32 , 32 , 32 , 32 , 16 , 48 , 32 , 32 };
 const uint8_t g_preset_table_CHORUS_DEPTH   [] = {32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 };
