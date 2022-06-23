@@ -533,10 +533,10 @@ private:
     uint8_t mono_offset = 0;
     if ((m_mono_mode) && (N == 2)) {
       if (m_freq[0] == m_freq_temp[2]) {
-        mono_offset = 1; // TODO
+        mono_offset = 1;
       }
     }
-    int8_t freq_offset = high_sbyte(freq_div_2 * g_osc_tune_table[fine >> (8 - OSC_TUNE_TABLE_STEPS_BITS)]) + bit - mono_offset;
+    int8_t freq_offset = high_sbyte(freq_div_2 * g_osc_tune_table[fine >> (8 - OSC_TUNE_TABLE_STEPS_BITS)]) + bit + mono_offset;
     m_freq[N] = m_freq_temp[N] + freq_offset;
     m_wave_table[N] = m_wave_table_temp[N];
   }
