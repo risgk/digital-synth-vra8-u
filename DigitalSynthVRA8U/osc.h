@@ -532,7 +532,7 @@ private:
     uint8_t bit = (m_rnd >= 0xF0);
     uint8_t mono_offset = 0;
     if ((m_mono_mode) && (N == 2)) {
-      if (m_freq[0] == m_freq_temp[2]) {
+      if (m_freq_temp[0] == m_freq_temp[2]) {
         mono_offset = 1;
       }
     }
