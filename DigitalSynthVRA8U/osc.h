@@ -531,9 +531,9 @@ private:
     uint16_t freq_div_2 = (m_freq_temp[N] >> 1);
     uint8_t bit = (m_rnd >= 0xF0);
     uint8_t mono_offset = 0;
-    if (N == 2) {
+    if ((m_mono_mode) && (N == 2)) {
       if (m_freq_temp[0] == m_freq_temp[2]) {
-        mono_offset = m_mono_mode;
+        mono_offset = 1;
       }
     }
     int8_t freq_offset = high_sbyte(freq_div_2 * g_osc_tune_table[fine >> (8 - OSC_TUNE_TABLE_STEPS_BITS)]) + bit + mono_offset;
