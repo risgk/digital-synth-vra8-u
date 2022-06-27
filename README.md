@@ -132,43 +132,43 @@
     +-------------------------------+---------------+---------------+----------------------------------+
     | Pitch Bend                    | x             | o             |                                  |
     +-------------------------------+---------------+---------------+----------------------------------+
-    | Control                     1 | x             | o             | Modulation                       | MODULATION             
-    | Change                     64 | x             | o             | Sustain Pedal [Off|On]           | SUSTAIN PEDAL (OFF/ON) 
+    | Control                     1 | x             | o             | Modulation                       |
+    | Change                     64 | x             | o             | Sustain Pedal [Off|On]           |
     |                            35 | x             | o             | Pitch Bend by CC [-|+]           | TODO
     |                               |               |               |                                  |
-    |                            24 | x             | o             | Osc 1 Wave [Saw|-|Sin|-|Pls]     | OSC WAVE (SAW/PLS)     
+    |                            24 | x             | o             | Osc 1 Wave [Saw|-|Sin|-|Pls]     | TODO
     |                           102 | x             | o             | Osc 1 Shape [-|+] *              | TODO
     |                            55 | x             | o             | Osc 2 Wave [Saw|-|Sin|Nos|Pls] * | TODO
     |                               |               |               |                                  |
     |                               |               |               |                                  |
-    |                            20 | x             | o             | Osc 2 Coarse [-|+] *             | MONO OSC2 PITCH        
-    |                            21 | x             | o             | Osc 2 Fine [-|+] *               | MONO OSC2 DETUNE       
-    |                            25 | x             | o             | Mixer Osc Mix [1|2] *            | MONO OSC2 MIX (-/HF/FL)
+    |                            20 | x             | o             | Osc 2 Coarse [-|+] *             | TODO
+    |                            21 | x             | o             | Osc 2 Fine [-|+] *               | TODO
+    |                            25 | x             | o             | Mixer Osc Mix [1|2] *            | TODO
     |                            26 | x             | o             | Mixer Sub Osc *                  | TODO
     |                               |               |               |                                  |
-    |                            16 | x             | o             | Filter Cutoff                    | FILTER_CUTOFF          
-    |                            17 | x             | o             | Filter Resonance                 | FILTER_RESO            
-    |                            18 | x             | o             | Filter EG Amt [-|+]              | EG > CUTOFF (-/+)      
+    |                            16 | x             | o             | Filter Cutoff                    |
+    |                            17 | x             | o             | Filter Resonance                 |
+    |                            18 | x             | o             | Filter EG Amt [-|+]              |
     |                            86 | x             | o             | Filter Key Track [0.0|0.5|1.0] * | TODO
     |                               |               |               |                                  |
-    |                            23 | x             | o             | EG Attack                        | EG_ATTACK              
-    |                            19 | x             | o             | EG Decay                         | EG_DECAY               
-    |                            27 | x             | o             | EG Sustain                       | EG_SUSTAIN             
+    |                            23 | x             | o             | EG Attack                        | TODO
+    |                            19 | x             | o             | EG Decay                         | TODO
+    |                            27 | x             | o             | EG Sustain                       | TODO
     |                            28 | x             | o             | EG Release                       | TODO
     |                               |               |               |                                  |
-    |                           104 | x             | o             | EG Osc Amt [-|+]                 | EG > PITCH (-/+)       
+    |                           104 | x             | o             | EG Osc Amt [-|+]                 | TODO
     |                           105 | x             | o             | EG Osc Dst [P|P2|S1]             | TODO
-    |                            87 | x             | o             | Voice Mode [Par|Mon|Lgt]         | VOICE (PARA/MONO/LGT)  
-    |                            22 | x             | o             | Portamento                       | PORTAMENTO             
+    |                            87 | x             | o             | Voice Mode [Par|Mon|Lgt]         |
+    |                            22 | x             | o             | Portamento                       |
     |                               |               |               |                                  |
-    |                            14 | x             | o             | LFO Wave [T1|T2|Saw|SH|Sqr]      | LFO WAVE (T/T2/S/RND/P)
-    |                            80 | x             | o             | LFO Rate                         | LFO RATE               
-    |                            81 | x             | o             | LFO Depth                        | LFO DEPTH              
-    |                            15 | x             | o             | LFO Fade Time                    | LFO FADE TIME          
+    |                            14 | x             | o             | LFO Wave [T1|T2|Saw|SH|Sqr]      |
+    |                            80 | x             | o             | LFO Rate                         |
+    |                            81 | x             | o             | LFO Depth                        |
+    |                            15 | x             | o             | LFO Fade Time                    |
     |                               |               |               |                                  |
-    |                            82 | x             | o             | LFO Osc Amt [-|+]                | LFO > PITCH (-/+)      
+    |                            82 | x             | o             | LFO Osc Amt [-|+]                | TODO
     |                             9 | x             | o             | LFO Osc Dst [P|P2|S1]            | TODO
-    |                            83 | x             | o             | LFO Filter Amt [-|+]             | LFO > CUTOFF (-/+)     
+    |                            83 | x             | o             | LFO Filter Amt [-|+]             | TODO
     |                           110 | x             | o             | Amp Level                        | TODO
     |                               |               |               |                                  |
     |                            56 | x             | o             | Amp Attack                       | TODO
@@ -176,12 +176,12 @@
     |                            58 | x             | o             | Amp Sustain                      | TODO
     |                            59 | x             | o             | Amp Release                      | TODO
     |                               |               |               |                                  |
-    |                            63 | x             | o             | Chorus Mode [Off|M|PS|S|S2]      | CHORUS (-/M/PS/S/S2)   
-    |                            61 | x             | o             | Chorus Rate                      | CHORUS RATE            
-    |                            60 | x             | o             | Chorus Depth                     | CHORUS DEPTH           
-    |                            62 | x             | o             | Chorus Delay Time                | CHORUS DELAY TIME      
+    |                            63 | x             | o             | Chorus Mode [Off|M|PS|S|S2]      |
+    |                            61 | x             | o             | Chorus Rate                      |
+    |                            60 | x             | o             | Chorus Depth                     |
+    |                            62 | x             | o             | Chorus Delay Time                |
     |                               |               |               |                                  |
-    |                            85 | x             | o             | Pitch Bend Range                 | PITCH BEND RANGE       
+    |                            85 | x             | o             | Pitch Bend Range                 | TODO
     |                               |               |               |                                  |
     |                   90, 112-119 | x             | x             | [Reserved]                       |
     +-------------------------------+---------------+---------------+----------------------------------+
