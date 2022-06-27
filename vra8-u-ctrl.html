@@ -794,31 +794,31 @@ function getStoredCCValueString(index, number) {
 </table>
 
 <table>
-<tr><td>MIDI IN 1</td>
+<tr><td>MIDI In 1</td>
     <td></td>
     <td><select id="selectInputPort1" size="1" onchange="onChangeInputPort1()"></select></td>
     <td></td>
-    <td>PITCH BEND</td>
+    <td>Pitch Bend</td>
     <td></td>
     <td><span id="spanPB">-</span></td>
     <td></td>
-    <td>SUSTAIN PEDAL</td>
+    <td>Sustain Pedal</td>
     <td></td>
     <td><span id="spanCC64">-</span></td>
     </tr>
-<tr><td>MIDI IN 2</td>
+<tr><td>MIDI In 2</td>
     <td></td>
     <td><select id="selectInputPort2" size="1" onchange="onChangeInputPort2()"></select></td>
     <td></td>
-    <td>MODULATION</td>
+    <td>Modulation</td>
     <td></td>
     <td><span id="spanCC1">-</span></td>
     <td></td>
-    <td>VELOCITY</td>
+    <td>Velocity</td>
     <td></td>
     <td><span id="spanVelocity">-</span></td>
     </tr>
-<tr><td>MIDI OUT</td>
+<tr><td>MIDI Out</td>
     <td></td>
     <td><select id="selectOutputPort" size="1" onchange="onChangeOutputPort()"></select></td>
     <td></td>
@@ -836,39 +836,39 @@ function getStoredCCValueString(index, number) {
 </table>
 
 <table>
-<tr><td>PRESET</td>
+<tr><td>Preset</td>
     <td></td>
-    <td><input type="button" value="#4 PARA D1"     onclick="preset(4)"></td>
+    <td><input type="button" value="#4 Para D1"     onclick="preset(4)"></td>
     <td></td>
-    <td><input type="button" value="#5 PARA U2"     onclick="preset(5)"></td>
+    <td><input type="button" value="#5 Para U2"     onclick="preset(5)"></td>
     <td></td>
-    <td><input type="button" value="#6 SAW"         onclick="preset(6)"></td>
+    <td><input type="button" value="#6 Saw"         onclick="preset(6)"></td>
     <td></td>
-    <td><input type="button" value="#7 INITIAL"     onclick="preset(7)"></td>
+    <td><input type="button" value="#7 Initial"     onclick="preset(7)"></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td>MISC</td>
+    <td>Misc</td>
     <td></td>
-    <td><input type="button" value="RANDOM CTRL"    onclick="setRandom()"></td>
+    <td><input type="button" value="Random Ctrl"    onclick="setRandom()"></td>
     <td></td>
-    <td><input type="button" value="RANDOM FX"      onclick="setRandomChorus()"></td></tr>
+    <td><input type="button" value="Random FX"      onclick="setRandomChorus()"></td></tr>
 <tr><td></td>
     <td></td>
-    <td><input type="button" value="#0 PARA"        onclick="preset(0)"></td>
+    <td><input type="button" value="#0 Para"        onclick="preset(0)"></td>
     <td></td>
-    <td><input type="button" value="#1 PLUS"        onclick="preset(1)"></td>
+    <td><input type="button" value="#1 Plus"        onclick="preset(1)"></td>
     <td></td>
-    <td><input type="button" value="#2 MINUS"       onclick="preset(2)"></td>
+    <td><input type="button" value="#2 Minus"       onclick="preset(2)"></td>
     <td></td>
-    <td><input type="button" value="#3 DECAY"       onclick="preset(3)"></td>
+    <td><input type="button" value="#3 Decay"       onclick="preset(3)"></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td></td>
     <td></td>
-    <td><input type="button" value="RESET"          onclick="panic()"></td></tr>
+    <td><input type="button" value="Reset"          onclick="panic()"></td></tr>
 <tr><td>&nbsp;</td></tr>
 </table>
 
 <table>
-<tr><td>RECALL</td>
+<tr><td>Recall</td>
     <td></td>
     <td><input type="button" value="#12"            onclick="loadControllers(12)"></td>
     <td></td>
@@ -878,7 +878,7 @@ function getStoredCCValueString(index, number) {
     <td></td>
     <td><input type="button" value="#15"            onclick="loadControllers(15)"></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td>STORE</td>
+    <td>Store</td>
     <td></td>
     <td><input type="button" value="#12"            onclick="saveControllers(12)"></td>
     <td></td>
@@ -888,13 +888,13 @@ function getStoredCCValueString(index, number) {
     <td></td>
     <td><input type="button" value="#15"            onclick="saveControllers(15)"></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td>IMPORT</td>
+    <td>Import</td>
     <td></td>
     <td><input type="file" id="fileImportAll" style="display:none" accept=".json"/>
-        <input type="button" value="ALL"            onclick="fileImportAll()"></td>
+        <input type="button" value="All"            onclick="fileImportAll()"></td>
     <td></td>
     <td><input type="file" id="fileImportCurrent" style="display:none" accept=".json"/>
-        <input type="button" value="CURRENT"        onclick="fileImportCurrent()"></td></tr>
+        <input type="button" value="Current"        onclick="fileImportCurrent()"></td></tr>
 <tr><td></td>
     <td></td>
     <td><input type="button" value="#8 "            onclick="loadControllers(8)" ></td>
@@ -915,13 +915,16 @@ function getStoredCCValueString(index, number) {
     <td></td>
     <td><input type="button" value="#11"            onclick="saveControllers(11)"></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td>EXPORT</td>
+    <td>Export</td>
     <td></td>
-    <td><input type="button" value="ALL"            onclick="fileExport()"></td></tr>
+    <td><input type="button" value="All"            onclick="fileExport()"></td></tr>
 <tr><td>&nbsp;</td></tr>
 </table>
 
 <table>
+<tr>
+<td colspan="8"><hr></td>
+</tr>
 <tr>
 <td colspan="2"><b>Osc 1</b> Wave [Saw|-|Sin|-|Pls]    </td>
 <td colspan="2"><b>Osc 1</b> Shape [-|+] *             </td>
@@ -986,7 +989,7 @@ function getStoredCCValueString(index, number) {
 <td><span    id="spanCC28" >-</span></td>
 </tr>
 <tr>
-<td>&nbsp;</td>
+<td colspan="8"><hr></td>
 </tr>
 <tr>
 <td colspan="2"><b>EG</b> Osc Amt [-|+]                  </td>
@@ -1053,7 +1056,7 @@ function getStoredCCValueString(index, number) {
 <td><span    id="spanCC59" >-</span></td>
 </tr>
 <tr>
-<td>&nbsp;</td>
+<td colspan="8"><hr></td>
 </tr>
 <tr>
 <td colspan="2"><b>Chorus</b> Mode [Off|M|PS|S|S2]     </td>
@@ -1086,6 +1089,9 @@ function getStoredCCValueString(index, number) {
 <td></td>
 <td></td>
 <td></td>
+</tr>
+<tr>
+<td colspan="8"><hr></td>
 </tr>
 <tr>
 <td>&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
