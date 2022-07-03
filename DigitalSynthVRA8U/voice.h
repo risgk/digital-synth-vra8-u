@@ -16,10 +16,6 @@ class Voice {
 
   static uint8_t  m_output_error;
   static uint8_t  m_portamento;
-  static uint8_t  m_attack;
-  static uint8_t  m_decay;
-  static uint8_t  m_sustain;
-  static uint8_t  m_amp_env_gen;
 
   static uint8_t  m_chorus_mode;
   static uint8_t  m_velocity_to_cutoff;
@@ -58,12 +54,6 @@ public:
     IEnvGen<1>::set_gain(90);
 
     IDelayFx<0>::initialize();
-
-    m_attack = 0;
-    m_decay = 0;
-    m_sustain = 127;
-    m_amp_env_gen = 127; // TODO
-    update_env_gen();
 
     m_chorus_mode = CHORUS_MODE_OFF;
     m_velocity_to_cutoff = 0;
@@ -358,44 +348,10 @@ public:
     case FILTER_EG_AMT  :
       IFilter<0>::set_cutoff_env_amt(controller_value);
       break;
-    case EG_DECAY       :
-      m_decay = controller_value;
-      update_decay_release();
-      break;
-
-    case EG_ATTACK      :
-      m_attack = controller_value;
-      if (m_amp_env_gen >= 64) {
-        IEnvGen<0>::set_attack(m_attack);
-        IEnvGen<1>::set_attack(m_attack);
-      } else {
-        IEnvGen<0>::set_attack(m_attack);
-      }
-      break;
 
     case OSC_1_WAVE     :
       IOsc<0>::set_osc_waveforms(controller_value);
       break;
-
-    case EG_SUSTAIN     :
-      {
-        m_sustain = controller_value;
-
-        if (m_amp_env_gen >= 64) {
-          IEnvGen<0>::set_sustain(m_sustain);
-          IEnvGen<1>::set_sustain(m_sustain);
-        } else {
-          IEnvGen<0>::set_sustain(m_sustain);
-        }
-      }
-      break;
-
-#if 0
-    case AMP_EG         :
-      m_amp_env_gen = controller_value;
-      update_env_gen();
-      break;
-#endif
 
     case LFO_RATE       :
       IOsc<0>::set_lfo_rate(controller_value);
@@ -412,6 +368,32 @@ public:
 
     case SUSTAIN_PEDAL   :
       set_sustain_pedal(controller_value);
+      break;
+
+    case EG_ATTACK      :
+      IEnvGen<0>::set_attack(controller_value);
+      break;
+    case EG_DECAY       :
+      IEnvGen<0>::set_decay(controller_value);
+      break;
+    case EG_SUSTAIN     :
+      IEnvGen<0>::set_sustain(controller_value);
+      break;
+    case EG_RELEASE     :
+      IEnvGen<0>::set_release(controller_value);
+      break;
+
+    case AMP_ATTACK     :
+      IEnvGen<1>::set_attack(controller_value);
+      break;
+    case AMP_DECAY      :
+      IEnvGen<1>::set_decay(controller_value);
+      break;
+    case AMP_SUSTAIN    :
+      IEnvGen<1>::set_sustain(controller_value);
+      break;
+    case AMP_RELEASE    :
+      IEnvGen<1>::set_release(controller_value);
       break;
 
     case CHORUS_DEPTH   :
@@ -707,33 +689,6 @@ private:
     }
   }
 
-  INLINE static void update_decay_release() {
-    if (m_amp_env_gen >= 64) {
-      IEnvGen<0>::set_decay(m_decay);
-      IEnvGen<1>::set_decay(m_decay);
-    } else {
-      IEnvGen<0>::set_decay(m_decay);
-    }
-  }
-
-  INLINE static void update_env_gen() {
-    if (m_amp_env_gen >= 64) {
-      IEnvGen<0>::set_attack(m_attack);
-      IEnvGen<1>::set_attack(m_attack);
-      IEnvGen<0>::set_decay(m_decay);
-      IEnvGen<1>::set_decay(m_decay);
-      IEnvGen<0>::set_sustain(m_sustain);
-      IEnvGen<1>::set_sustain(m_sustain);
-    } else {
-      IEnvGen<0>::set_attack(m_attack);
-      IEnvGen<1>::set_attack(0);
-      IEnvGen<0>::set_decay(m_decay);
-      IEnvGen<1>::set_decay(0);
-      IEnvGen<0>::set_sustain(m_sustain);
-      IEnvGen<1>::set_sustain(127);
-    }
-  }
-
   static uint8_t get_rnd_7() {
     m_rnd = m_rnd ^ (m_rnd << 5);
     m_rnd = m_rnd ^ (m_rnd >> 9);
@@ -806,10 +761,6 @@ template <uint8_t T> uint8_t  Voice<T>::m_voice_mode;
 
 template <uint8_t T> uint8_t  Voice<T>::m_output_error;
 template <uint8_t T> uint8_t  Voice<T>::m_portamento;
-template <uint8_t T> uint8_t  Voice<T>::m_attack;
-template <uint8_t T> uint8_t  Voice<T>::m_decay;
-template <uint8_t T> uint8_t  Voice<T>::m_sustain;
-template <uint8_t T> uint8_t  Voice<T>::m_amp_env_gen;
 
 template <uint8_t T> uint8_t  Voice<T>::m_chorus_mode;
 template <uint8_t T> uint8_t  Voice<T>::m_velocity_to_cutoff;

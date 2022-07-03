@@ -151,10 +151,10 @@
     |                            18 | x             | o             | Filter EG Amt [-|+]              |
     |                            86 | x             | o             | Filter Key Track [0.0|0.5|1.0] * | TODO
     |                               |               |               |                                  |
-    |                            23 | x             | o             | EG Attack                        | TODO
-    |                            19 | x             | o             | EG Decay                         | TODO
-    |                            27 | x             | o             | EG Sustain                       | TODO
-    |                            28 | x             | o             | EG Release                       | TODO
+    |                            23 | x             | o             | EG Attack                        |
+    |                            19 | x             | o             | EG Decay                         |
+    |                            27 | x             | o             | EG Sustain                       |
+    |                            28 | x             | o             | EG Release                       |
     |                               |               |               |                                  |
     |                           104 | x             | o             | EG Osc Amt [-|+]                 | TODO
     |                           105 | x             | o             | EG Osc Dst [P|P2|S1]             | TODO
@@ -171,10 +171,10 @@
     |                            83 | x             | o             | LFO Filter Amt [-|+]             | TODO
     |                           110 | x             | o             | Amp Level                        | TODO
     |                               |               |               |                                  |
-    |                            56 | x             | o             | Amp Attack                       | TODO
-    |                            57 | x             | o             | Amp Decay                        | TODO
-    |                            58 | x             | o             | Amp Sustain                      | TODO
-    |                            59 | x             | o             | Amp Release                      | TODO
+    |                            56 | x             | o             | Amp Attack                       |
+    |                            57 | x             | o             | Amp Decay                        |
+    |                            58 | x             | o             | Amp Sustain                      |
+    |                            59 | x             | o             | Amp Release                      |
     |                               |               |               |                                  |
     |                            63 | x             | o             | Chorus Mode [Off|M|PS|S|S2]      |
     |                            61 | x             | o             | Chorus Rate                      |

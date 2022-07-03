@@ -14,7 +14,6 @@ class EnvGen {
   static const uint8_t STATE_IDLE    = 2;
 
   static const uint8_t NO_DECAY_UPDATE_COEF = 255;
-  static const uint8_t RELEASE_UPDATE_COEF  = 1;
 
   static uint8_t  m_state;
   static uint16_t m_level;
@@ -22,6 +21,7 @@ class EnvGen {
   static uint8_t  m_attack_update_coef;
   static uint8_t  m_decay_update_coef;
   static uint16_t m_sustain;
+  static uint8_t  m_release_update_coef;
   static uint8_t  m_rest;
   static uint8_t  m_gain;
   static uint8_t  m_expression;
@@ -36,6 +36,7 @@ public:
     set_attack(0);
     set_decay(0);
     set_sustain(127);
+    set_release(0);
     set_gain(127);
     set_expression(127);
     set_amp_exp_amt(127);
@@ -61,6 +62,14 @@ public:
     m_sustain = (((controller_value + 1) >> 1) << 1) << 8;
   }
 
+  INLINE static void set_release(uint8_t controller_value) {
+    if (controller_value == 127) {
+      m_release_update_coef = 64;
+    } else {
+      m_release_update_coef = (controller_value + 3) >> 1;
+    }
+  }
+
   INLINE static void set_gain(uint8_t controller_value) {
     m_gain = (controller_value << 1) + 1;
     update_gain_coef();
@@ -84,7 +93,7 @@ public:
 
   INLINE static void note_off() {
     m_state = STATE_IDLE;
-    m_rest = RELEASE_UPDATE_COEF;
+    m_rest = m_release_update_coef;
   }
 
   INLINE static uint8_t clock(uint8_t count) {
@@ -129,11 +138,11 @@ public:
       case STATE_IDLE:
         --m_rest;
         if (m_rest == 0) {
-          m_rest = RELEASE_UPDATE_COEF;
+          m_rest = m_release_update_coef;
 
           if (m_level > 0) {
             uint8_t coef;
-            coef = 188 + RELEASE_UPDATE_COEF;
+            coef = 188 + m_release_update_coef;
 
             m_level = mul_uq16_uq8(m_level, coef);
             if (m_level < 0x0100) {
@@ -171,6 +180,7 @@ template <uint8_t T> uint8_t  EnvGen<T>::m_level_out;
 template <uint8_t T> uint8_t  EnvGen<T>::m_attack_update_coef;
 template <uint8_t T> uint8_t  EnvGen<T>::m_decay_update_coef;
 template <uint8_t T> uint16_t EnvGen<T>::m_sustain;
+template <uint8_t T> uint8_t  EnvGen<T>::m_release_update_coef;
 template <uint8_t T> uint8_t  EnvGen<T>::m_rest;
 template <uint8_t T> uint8_t  EnvGen<T>::m_gain;
 template <uint8_t T> uint8_t  EnvGen<T>::m_expression;
