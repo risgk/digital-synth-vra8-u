@@ -352,7 +352,10 @@ public:
       break;
 
     case OSC_1_WAVE     :
-      IOsc<0>::set_osc_waveforms(controller_value);
+      IOsc<0>::set_osc_waveform<0>(controller_value);
+      break;
+    case OSC_2_WAVE     :
+      IOsc<0>::set_osc_waveform<1>(controller_value);
       break;
 
     case LFO_RATE       :

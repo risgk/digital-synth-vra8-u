@@ -56,7 +56,7 @@ class Osc {
   static int16_t        m_chorus_lfo_level;
   static uint16_t       m_chorus_delay_time[2];
 
-  static uint8_t        m_waveform;
+  static uint8_t        m_waveform[2];
   static int16_t        m_pitch_bend;
   static uint8_t        m_pitch_bend_range;
   static int16_t        m_pitch_bend_normalized;
@@ -119,7 +119,8 @@ public:
     m_chorus_delay_time[0] = 0;
     m_chorus_delay_time[1] = 0;
 
-    m_waveform = WAVEFORM_SAW;
+    m_waveform[0] = WAVEFORM_SAW;
+    m_waveform[1] = WAVEFORM_SAW;
     m_pitch_bend_normalized = 0;
     m_pitch_target[0] = 60 << 8;
     m_pitch_target[1] = 60 << 8;
@@ -176,11 +177,12 @@ public:
     set_pitch_bend_range(2);
   }
 
-  INLINE static void set_osc_waveforms(uint8_t controller_value) {
+  template <uint8_t N>
+  INLINE static void set_osc_waveform(uint8_t controller_value) {
     if (controller_value < 64) {
-      m_waveform = WAVEFORM_SAW;
+      m_waveform[N] = WAVEFORM_SAW;
     } else {
-      m_waveform = WAVEFORM_PUL;
+      m_waveform[N] = WAVEFORM_PUL;
     }
   }
 
@@ -521,7 +523,7 @@ private:
   INLINE static void update_freq_2nd() {
     uint8_t coarse = high_byte(m_pitch_real[N]);
     m_freq_temp[N] = g_osc_freq_table[coarse - NOTE_NUMBER_MIN];
-    m_wave_table_temp[N] = get_wave_table(m_waveform, coarse);
+    m_wave_table_temp[N] = get_wave_table(m_waveform[0], coarse);
   }
 
   template <uint8_t N>
@@ -721,7 +723,7 @@ template <uint8_t T> int16_t         Osc<T>::m_chorus_lfo_wave_level;
 template <uint8_t T> int16_t         Osc<T>::m_chorus_lfo_level;
 template <uint8_t T> uint16_t        Osc<T>::m_chorus_delay_time[2];
 
-template <uint8_t T> uint8_t         Osc<T>::m_waveform;
+template <uint8_t T> uint8_t         Osc<T>::m_waveform[2];
 template <uint8_t T> int16_t         Osc<T>::m_pitch_bend;
 template <uint8_t T> uint8_t         Osc<T>::m_pitch_bend_range;
 template <uint8_t T> int16_t         Osc<T>::m_pitch_bend_normalized;
