@@ -51,7 +51,8 @@ public:
 
     IEnvGen<0>::initialize();
     IEnvGen<1>::initialize();
-    IEnvGen<1>::set_gain(90);
+    IEnvGen<1>::set_gain<0>(90);
+    IEnvGen<1>::set_gain<1>(127);
 
     IDelayFx<0>::initialize();
 
@@ -326,7 +327,9 @@ public:
   INLINE static void reset_all_controllers() {
     pitch_bend(0, 64);
     set_modulation(0);
+#if 0
     set_expression(127);
+#endif
     set_sustain_pedal(0);
   }
 
@@ -431,23 +434,23 @@ public:
           switch (m_chorus_mode) {
           case CHORUS_MODE_OFF      :
             IOsc<0>::set_chorus_mode(CHORUS_MODE_OFF);
-            IEnvGen<1>::set_gain(90);
+            IEnvGen<1>::set_gain<0>(90);
             break;
           case CHORUS_MODE_STEREO   :
             IOsc<0>::set_chorus_mode(CHORUS_MODE_STEREO);
-            IEnvGen<1>::set_gain(90);
+            IEnvGen<1>::set_gain<0>(90);
             break;
           case CHORUS_MODE_P_STEREO   :
             IOsc<0>::set_chorus_mode(CHORUS_MODE_P_STEREO);
-            IEnvGen<1>::set_gain(64);
+            IEnvGen<1>::set_gain<0>(64);
             break;
           case CHORUS_MODE_MONO     :
             IOsc<0>::set_chorus_mode(CHORUS_MODE_MONO);
-            IEnvGen<1>::set_gain(64);
+            IEnvGen<1>::set_gain<0>(64);
             break;
           case CHORUS_MODE_STEREO_2 :
             IOsc<0>::set_chorus_mode(CHORUS_MODE_STEREO_2);
-            IEnvGen<1>::set_gain(64);
+            IEnvGen<1>::set_gain<0>(64);
             break;
           }
         }
@@ -459,6 +462,9 @@ public:
       IOsc<0>::set_osc_level(controller_value);
       break;
 #endif
+    case AMP_LEVEL      :
+      IEnvGen<1>::set_gain<1>(controller_value);
+      break;
 
     case PORTAMENTO     :
       m_portamento = controller_value;
@@ -705,9 +711,11 @@ private:
     IOsc<0>::set_lfo_depth<1>(controller_value);
   }
 
+#if 0
   INLINE static void set_expression(uint8_t controller_value) {
     IEnvGen<1>::set_expression(controller_value);
   }
+#endif
 
   INLINE static void set_sustain_pedal(uint8_t controller_value) {
     if ((m_sustain_pedal == false) && (controller_value >= 64)) {
