@@ -174,7 +174,6 @@ public:
     m_rnd = 1;
 
     set_pitch_bend_range(2);
-    set_pitch_bend_range(2);
   }
 
   INLINE static void set_osc_waveforms(uint8_t controller_value) {
@@ -313,8 +312,8 @@ public:
 
   INLINE static void set_pitch_bend_range(uint8_t controller_value) {
     uint8_t range = controller_value;
-    if (range > 24) {
-      range = 24;
+    if (range > 60) {
+      range = 60;
     }
     m_pitch_bend_range = range;
     update_pitch_bend();

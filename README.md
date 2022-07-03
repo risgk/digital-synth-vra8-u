@@ -181,7 +181,7 @@
     |                            60 | x             | o             | Chorus Depth                     |
     |                            62 | x             | o             | Chorus Delay Time                |
     |                               |               |               |                                  |
-    |                            85 | x             | o             | Pitch Bend Range                 | TODO
+    |                            85 | x             | o             | Pitch Bend Range                 |
     |                               |               |               |                                  |
     |                   90, 112-119 | x             | x             | [Reserved]                       |
     +-------------------------------+---------------+---------------+----------------------------------+
