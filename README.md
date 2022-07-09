@@ -137,19 +137,19 @@
     |                            35 | x             | o             | Pitch Bend by CC [-|+]           | TODO
     |                               |               |               |                                  |
     |                            24 | x             | o             | Osc 1 Wave [Saw|-|Sin|-|Pls]     | TODO
-    |                           102 | x             | o             | Osc 1 Shape [-|+] *              | TODO
-    |                            55 | x             | o             | Osc 2 Wave [Saw|-|Sin|Nos|Pls] * | TODO
+    |                           102 | x             | o             | Osc 1 Shape * [-|+]              | TODO
+    |                            55 | x             | o             | Osc 2 Wave * [Saw|-|Sin|Nos|Pls] | TODO
     |                               |               |               |                                  |
     |                               |               |               |                                  |
-    |                            20 | x             | o             | Osc 2 Coarse [-|+] *             | TODO
-    |                            21 | x             | o             | Osc 2 Fine [-|+] *               | TODO
-    |                            25 | x             | o             | Mixer Osc Mix [1|2] *            | TODO
+    |                            20 | x             | o             | Osc 2 Coarse * [-|+]             | TODO
+    |                            21 | x             | o             | Osc 2 Fine * [-|+]               | TODO
+    |                            25 | x             | o             | Mixer Osc Mix * [1|2]            | TODO
     |                            26 | x             | o             | Mixer Sub Osc *                  | TODO
     |                               |               |               |                                  |
     |                            16 | x             | o             | Filter Cutoff                    |
     |                            17 | x             | o             | Filter Resonance                 |
     |                            18 | x             | o             | Filter EG Amt [-|+]              |
-    |                            86 | x             | o             | Filter Key Track [0.0|0.5|1.0] * | TODO
+    |                            86 | x             | o             | Filter Key Track * [0.0|0.5|1.0] | TODO
     |                               |               |               |                                  |
     |                            23 | x             | o             | EG Attack                        |
     |                            19 | x             | o             | EG Decay                         |
