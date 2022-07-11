@@ -168,7 +168,7 @@
     |                               |               |               |                                  |
     |                            82 | x             | o             | LFO Osc Amt [-|+]                | TODO
     |                             9 | x             | o             | LFO Osc Dst [P|P2|S1]            | TODO
-    |                            83 | x             | o             | LFO Filter Amt [-|+]             | TODO
+    |                            83 | x             | o             | LFO Filter Amt [-|+]             |
     |                           110 | x             | o             | Amp Level                        |
     |                               |               |               |                                  |
     |                            56 | x             | o             | Amp Attack                       |
