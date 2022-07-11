@@ -592,7 +592,7 @@ public:
     control_change(FILTER_CUTOFF  , g_preset_table_FILTER_CUTOFF  [program_number]);
     control_change(FILTER_RESO    , g_preset_table_FILTER_RESO    [program_number]);
     control_change(FILTER_EG_AMT  , g_preset_table_FILTER_EG_AMT  [program_number]);
-    control_change(FILTER_K_TRACK , g_preset_table_FILTER_K_TRACK [program_number]);
+    control_change(FILTER_KEY_TRK , g_preset_table_FILTER_KEY_TRK [program_number]);
 
     control_change(EG_ATTACK      , g_preset_table_EG_ATTACK      [program_number]);
     control_change(EG_DECAY       , g_preset_table_EG_DECAY       [program_number]);

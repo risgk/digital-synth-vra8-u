@@ -16,7 +16,7 @@ const uint8_t g_preset_table_MIXER_SUB_OSC  [] = {0  , 0  , 0  , 0  , 0  , 0  , 
 const uint8_t g_preset_table_FILTER_CUTOFF  [] = {112, 4  , 124, 76 , 112, 112, 127, 127};
 const uint8_t g_preset_table_FILTER_RESO    [] = {64 , 64 , 32 , 64 , 64 , 64 , 0  , 0  };
 const uint8_t g_preset_table_FILTER_EG_AMT  [] = {64 , 124, 4 ,  88 , 64 , 64 , 64 , 64 };
-const uint8_t g_preset_table_FILTER_K_TRACK [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
+const uint8_t g_preset_table_FILTER_KEY_TRK [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
 
 const uint8_t g_preset_table_EG_ATTACK      [] = {0  , 64 , 96 , 0  , 0  , 0  , 0  , 0  };
 const uint8_t g_preset_table_EG_DECAY       [] = {127, 96 , 96 , 96 , 127, 127, 127, 127};

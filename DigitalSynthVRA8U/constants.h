@@ -66,7 +66,7 @@ const uint8_t   MIXER_SUB_OSC   = 26;
 const uint8_t   FILTER_CUTOFF   = 16;
 const uint8_t   FILTER_RESO     = 17;
 const uint8_t   FILTER_EG_AMT   = 18;
-const uint8_t   FILTER_K_TRACK  = 86;
+const uint8_t   FILTER_KEY_TRK  = 86;
 
 const uint8_t   EG_ATTACK       = 23;
 const uint8_t   EG_DECAY        = 19;
