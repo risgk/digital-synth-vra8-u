@@ -96,7 +96,7 @@ const uint8_t   AMP_RELEASE     = 59;
 const uint8_t   CHORUS_MODE     = 63;
 const uint8_t   CHORUS_RATE     = 61;
 const uint8_t   CHORUS_DEPTH    = 60;
-const uint8_t   CHORUS_DELAY_T  = 62;
+const uint8_t   CHORUS_DLY_TIME = 62;
 
 const uint8_t   P_BEND_RANGE    = 85;
 

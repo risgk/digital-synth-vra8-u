@@ -410,7 +410,7 @@ public:
     case CHORUS_RATE    :
       IOsc<0>::set_chorus_rate(controller_value);
       break;
-    case CHORUS_DELAY_T :
+    case CHORUS_DLY_TIME:
       IOsc<0>::set_chorus_delay_time(controller_value);
       break;
     case CHORUS_MODE    :
@@ -622,7 +622,7 @@ public:
     control_change(CHORUS_MODE    , g_preset_table_CHORUS_MODE    [program_number]);
     control_change(CHORUS_RATE    , g_preset_table_CHORUS_RATE    [program_number]);
     control_change(CHORUS_DEPTH   , g_preset_table_CHORUS_DEPTH   [program_number]);
-    control_change(CHORUS_DELAY_T , g_preset_table_CHORUS_DELAY_T [program_number]);
+    control_change(CHORUS_DLY_TIME, g_preset_table_CHORUS_DLY_TIME[program_number]);
 
     control_change(P_BEND_RANGE   , g_preset_table_P_BEND_RANGE   [program_number]);
 
