@@ -4,11 +4,11 @@ const uint8_t PROGRAM_NUMBER_DEFAULT = 0;
 
 // PRESET                                         #0   #1   #2   #3   #4   #5   #6   #7   
 const uint8_t g_preset_table_OSC_1_WAVE     [] = {0  , 0  , 0  , 127, 0  , 0  , 0  , 0  };
-const uint8_t g_preset_table_OSC_1_SHAPE    [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
+const uint8_t g_preset_table_OSC_1_SHAPE    [] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 };
 const uint8_t g_preset_table_OSC_2_WAVE     [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
 
 
-const uint8_t g_preset_table_OSC_2_COARSE   [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
+const uint8_t g_preset_table_OSC_2_COARSE   [] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 };
 const uint8_t g_preset_table_OSC_2_FINE     [] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 };
 const uint8_t g_preset_table_MIXER_OSC_MIX  [] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 0  };
 const uint8_t g_preset_table_MIXER_SUB_OSC  [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
@@ -38,8 +38,8 @@ const uint8_t g_preset_table_LFO_OSC_DST    [] = {0  , 0  , 0  , 0  , 0  , 0  , 
 const uint8_t g_preset_table_LFO_FILTER_AMT [] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 };
 const uint8_t g_preset_table_AMP_LEVEL      [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
 
-const uint8_t g_preset_table_AMP_ATTACK     [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
-const uint8_t g_preset_table_AMP_DECAY      [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
+const uint8_t g_preset_table_AMP_ATTACK     [] = {0  , 64 , 96 , 0  , 0  , 0  , 0  , 0  };
+const uint8_t g_preset_table_AMP_DECAY      [] = {127, 96 , 96 , 96 , 127, 127, 127, 127};
 const uint8_t g_preset_table_AMP_SUSTAIN    [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
 const uint8_t g_preset_table_AMP_RELEASE    [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
 
