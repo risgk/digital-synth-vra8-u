@@ -141,8 +141,8 @@
     |                            55 | x             | o             | Osc 2 Wave * [Saw|-|Sin|Nos|Pls] | TODO
     |                               |               |               |                                  |
     |                               |               |               |                                  |
-    |                            20 | x             | o             | Osc 2 Coarse * [-|+]             | TODO
-    |                            21 | x             | o             | Osc 2 Fine * [-|+]               | TODO
+    |                            20 | x             | o             | Osc 2 Coarse * [-|+]             |
+    |                            21 | x             | o             | Osc 2 Fine * [-|+]               |
     |                            25 | x             | o             | Mixer Osc Mix * [1|2]            | TODO
     |                            26 | x             | o             | Mixer Sub Osc *                  | TODO
     |                               |               |               |                                  |

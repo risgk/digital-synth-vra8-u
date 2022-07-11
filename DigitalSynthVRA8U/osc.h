@@ -76,8 +76,8 @@ class Osc {
 
   static boolean        m_mono_mode;
   static uint8_t        m_mono_osc2_mix;
-  static uint8_t        m_mono_osc2_pitch;
-  static uint8_t        m_mono_osc2_detune;
+  static int8_t         m_mono_osc2_pitch;
+  static int8_t         m_mono_osc2_detune;
 
   static uint8_t        m_rnd;
 
@@ -275,15 +275,17 @@ public:
   }
 
   INLINE static void set_mono_osc2_pitch(uint8_t controller_value) {
-    if (controller_value > 24) {
-      m_mono_osc2_pitch = 24;
+    if (controller_value < 4) {
+      m_mono_osc2_pitch = -60;
+    } else if (controller_value <= 124) {
+      m_mono_osc2_pitch = controller_value - 64;
     } else {
-      m_mono_osc2_pitch = controller_value;
+      m_mono_osc2_pitch = 60;
     }
   }
 
   INLINE static void set_mono_osc2_detune(uint8_t controller_value) {
-    m_mono_osc2_detune = ((controller_value + 1) >> 1);
+    m_mono_osc2_detune = (controller_value - 64) << 1;
   }
 
   template <uint8_t N>
@@ -502,8 +504,7 @@ private:
 
     if (N == 2) {
       if (m_mono_mode) {
-        m_pitch_real[N] += (m_mono_osc2_pitch << 8);
-        m_pitch_real[N] += m_mono_osc2_detune;
+        m_pitch_real[N] += (m_mono_osc2_pitch << 8) + m_mono_osc2_detune + m_mono_osc2_detune;
       }
     }
 
@@ -743,7 +744,7 @@ template <uint8_t T> uint8_t         Osc<T>::m_osc_level;
 
 template <uint8_t T> boolean         Osc<T>::m_mono_mode;
 template <uint8_t T> uint8_t         Osc<T>::m_mono_osc2_mix;
-template <uint8_t T> uint8_t         Osc<T>::m_mono_osc2_pitch;
-template <uint8_t T> uint8_t         Osc<T>::m_mono_osc2_detune;
+template <uint8_t T> int8_t          Osc<T>::m_mono_osc2_pitch;
+template <uint8_t T> int8_t          Osc<T>::m_mono_osc2_detune;
 
 template <uint8_t T> uint8_t         Osc<T>::m_rnd;
