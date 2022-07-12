@@ -478,6 +478,12 @@ private:
 
   template <uint8_t N>
   INLINE static void update_freq_0th() {
+    if ((N == 1) || (N == 3)) {
+      if (m_mono_mode) {
+        return;
+      }
+    }
+
     m_osc_on_temp[N] = m_osc_on[N];
 
     if (m_osc_on_temp[N]) {
@@ -491,6 +497,12 @@ private:
 
   template <uint8_t N>
   INLINE static void update_freq_1st(uint8_t eg_level) {
+    if ((N == 1) || (N == 3)) {
+      if (m_mono_mode) {
+        return;
+      }
+    }
+
     m_pitch_real[N] =  (64 << 8) + m_pitch_current[N] + m_pitch_bend_normalized + (m_pitch_eg_amt * eg_level);
 
     uint8_t coarse = high_byte(m_pitch_real[N]);
@@ -522,6 +534,12 @@ private:
 
   template <uint8_t N>
   INLINE static void update_freq_2nd() {
+    if ((N == 1) || (N == 3)) {
+      if (m_mono_mode) {
+        return;
+      }
+    }
+
     uint8_t coarse = high_byte(m_pitch_real[N]);
     m_freq_temp[N] = g_osc_freq_table[coarse - NOTE_NUMBER_MIN];
     m_wave_table_temp[N] = get_wave_table(m_waveform[0], coarse);
@@ -529,6 +547,12 @@ private:
 
   template <uint8_t N>
   INLINE static void update_freq_3rd() {
+    if ((N == 1) || (N == 3)) {
+      if (m_mono_mode) {
+        return;
+      }
+    }
+
     uint8_t fine = low_byte(m_pitch_real[N]);
     uint16_t freq_div_2 = (m_freq_temp[N] >> 1);
     uint8_t bit = (m_rnd >= 0xF0);
