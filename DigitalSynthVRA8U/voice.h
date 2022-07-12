@@ -20,6 +20,11 @@ class Voice {
   static uint8_t  m_chorus_mode;
   static uint8_t  m_velocity_to_cutoff;
 
+  static uint8_t  m_eg_osc_amt;
+  static uint8_t  m_eg_osc_dst;
+  static uint8_t  m_lfo_osc_amt;
+  static uint8_t  m_lfo_osc_dst;
+
   static uint16_t m_rnd;
   static uint8_t  m_sp_prog_chg_cc_values[8];
 
@@ -58,6 +63,11 @@ public:
 
     m_chorus_mode = CHORUS_MODE_OFF;
     m_velocity_to_cutoff = 0;
+
+    m_eg_osc_amt = 64;
+    m_eg_osc_dst = 0;
+    m_lfo_osc_amt = 64;
+    m_lfo_osc_dst = 0;
 
     m_rnd = 1;
   }
@@ -368,7 +378,8 @@ public:
       IOsc<0>::set_lfo_depth<0>(controller_value);
       break;
     case LFO_OSC_AMT    :
-      IOsc<0>::set_pitch_lfo_amt<0>(controller_value);
+      m_lfo_osc_amt = controller_value;
+      update_lfo_osc_mod();
       break;
     case LFO_FILTER_AMT :
       IFilter<0>::set_cutoff_lfo_amt(controller_value);
@@ -483,7 +494,16 @@ public:
       break;
 
     case EG_OSC_AMT     :
-      IOsc<0>::set_pitch_env_amt(controller_value);
+      m_eg_osc_amt = controller_value;
+      update_eg_osc_mod();
+      break;
+    case EG_OSC_DST     :
+      m_eg_osc_dst = controller_value;
+      update_eg_osc_mod();
+      break;
+    case LFO_OSC_DST    :
+      m_lfo_osc_dst = controller_value;
+      update_lfo_osc_mod();
       break;
 
     case LFO_WAVE       :
@@ -761,6 +781,32 @@ private:
       }
     }
   }
+
+  INLINE static void update_eg_osc_mod() {
+    if        (m_eg_osc_dst < 32) {  /* OSC_DST_PITCH */
+      IOsc<0>::set_pitch_env_amt(m_eg_osc_amt);
+      // TODO
+    } else if (m_eg_osc_dst < 96) {  /* OSC_DST_PITCH_2 */
+      IOsc<0>::set_pitch_env_amt(m_eg_osc_amt);
+      // TODO
+    } else {                         /* OSC_DST_SHAPE_1 */
+      IOsc<0>::set_pitch_env_amt(64);
+      // TODO
+    }
+  }
+
+  INLINE static void update_lfo_osc_mod() {
+    if        (m_lfo_osc_dst < 32) {  /* OSC_DST_PITCH */
+      IOsc<0>::set_pitch_lfo_amt<0>(m_lfo_osc_amt);
+      // TODO
+    } else if (m_lfo_osc_dst < 96) {  /* OSC_DST_PITCH_2 */
+      IOsc<0>::set_pitch_lfo_amt<0>(m_lfo_osc_amt);
+      // TODO
+    } else {                          /* OSC_DST_SHAPE_1 */
+      IOsc<0>::set_pitch_lfo_amt<0>(64);
+      // TODO
+    }
+  }
 };
 
 template <uint8_t T> uint8_t  Voice<T>::m_count;
@@ -777,6 +823,11 @@ template <uint8_t T> uint8_t  Voice<T>::m_portamento;
 
 template <uint8_t T> uint8_t  Voice<T>::m_chorus_mode;
 template <uint8_t T> uint8_t  Voice<T>::m_velocity_to_cutoff;
+
+template <uint8_t T> uint8_t  Voice<T>::m_eg_osc_amt;
+template <uint8_t T> uint8_t  Voice<T>::m_eg_osc_dst;
+template <uint8_t T> uint8_t  Voice<T>::m_lfo_osc_amt;
+template <uint8_t T> uint8_t  Voice<T>::m_lfo_osc_dst;
 
 template <uint8_t T> uint16_t Voice<T>::m_rnd;
 template <uint8_t T> uint8_t  Voice<T>::m_sp_prog_chg_cc_values[8];
