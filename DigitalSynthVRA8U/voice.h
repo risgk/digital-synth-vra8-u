@@ -84,6 +84,8 @@ public:
     } else {
       cutoff_offset = high_sbyte(static_cast<int8_t>(velocity - 100) * (m_velocity_to_cutoff << 1));
     }
+#else
+    (void) velocity;
 #endif
 
     if (m_voice_mode != VOICE_PARAPHONIC) {
