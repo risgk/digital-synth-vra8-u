@@ -24,11 +24,9 @@ const uint16_t  OSC_DETUNE_FREQ_MAX          = 43;
 const uint8_t   FILTER_CONTROL_INTERVAL_BITS = 3;
 const uint8_t   FILTER_CONTROL_INTERVAL      = 0x01 << FILTER_CONTROL_INTERVAL_BITS;
 const uint8_t   FILTER_TABLE_FRACTION_BITS   = 14;
-const uint8_t   ENV_GEN_CONTROL_INTERVAL     = 0x10;
-const uint16_t  ENV_GEN_LEVEL_MAX            = 0x8000;
-const uint16_t  ENV_GEN_LEVEL_MAX_X_1_5      = ENV_GEN_LEVEL_MAX + (ENV_GEN_LEVEL_MAX >> 1);
-const uint8_t   AMP_ENV_AMT_MAX              = 240;
-const uint8_t   AMP_ENV_AMT_STEP             = 16;
+const uint8_t   EG_CONTROL_INTERVAL          = 0x10;
+const uint16_t  EG_LEVEL_MAX                 = 0x8000;
+const uint16_t  EG_LEVEL_MAX_X_1_5           = EG_LEVEL_MAX + (EG_LEVEL_MAX >> 1);
 
 const uint8_t   DATA_BYTE_MAX         = 0x7F;
 const uint8_t   STATUS_BYTE_INVALID   = 0x7F;

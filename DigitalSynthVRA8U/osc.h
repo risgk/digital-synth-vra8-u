@@ -32,7 +32,7 @@ class Osc {
   static const uint8_t LFO_FADE_LEVEL_MAX     = 128;
 
   static uint8_t        m_portamento_coef[4];
-  static int8_t         m_pitch_env_amt;
+  static int8_t         m_pitch_eg_amt;
   static int16_t        m_lfo_mod_level;
   static uint16_t       m_lfo_phase;
   static int8_t         m_lfo_wave_level;
@@ -88,7 +88,7 @@ public:
     m_portamento_coef[2] = PORTAMENTO_COEF_OFF;
     m_portamento_coef[3] = PORTAMENTO_COEF_OFF;
 
-    m_pitch_env_amt = 0;
+    m_pitch_eg_amt = 0;
     m_lfo_mod_level = 0;
     m_lfo_phase = 0;
     m_lfo_wave_level = 0;
@@ -194,13 +194,13 @@ public:
     }
   }
 
-  INLINE static void set_pitch_env_amt(uint8_t controller_value) {
+  INLINE static void set_pitch_eg_amt(uint8_t controller_value) {
     if (controller_value < 16) {
-      m_pitch_env_amt = -96;
+      m_pitch_eg_amt = -96;
     } else if (controller_value < 112) {
-      m_pitch_env_amt = ((controller_value - 64) << 1);
+      m_pitch_eg_amt = ((controller_value - 64) << 1);
     } else {
-      m_pitch_env_amt = 96;
+      m_pitch_eg_amt = 96;
     }
   }
 
@@ -337,43 +337,43 @@ public:
     return m_chorus_delay_time[N];
   }
 
-  INLINE static int16_t clock(uint8_t count, uint8_t env_gen_level) {
+  INLINE static int16_t clock(uint8_t count, uint8_t eg_level) {
 #if 1
     if ((count & (OSC_CONTROL_INTERVAL - 1)) == 0) {
       //printf("%d Osc\n", count);
       switch (count & (0x1F << OSC_CONTROL_INTERVAL_BITS)) {
-      case (0x00 << OSC_CONTROL_INTERVAL_BITS): update_freq_0th<0>();              break;
-      case (0x01 << OSC_CONTROL_INTERVAL_BITS): update_freq_1st<0>(env_gen_level); break;
-      case (0x02 << OSC_CONTROL_INTERVAL_BITS): update_freq_2nd<0>();              break;
-      case (0x03 << OSC_CONTROL_INTERVAL_BITS): update_freq_3rd<0>();              break;
-      case (0x04 << OSC_CONTROL_INTERVAL_BITS): update_gate<0>();                  break;
-      case (0x05 << OSC_CONTROL_INTERVAL_BITS): update_rnd();                      break;
-      case (0x06 << OSC_CONTROL_INTERVAL_BITS): update_lfo_1st();                  break;
-      case (0x07 << OSC_CONTROL_INTERVAL_BITS): update_lfo_2nd();                  break;
-      case (0x08 << OSC_CONTROL_INTERVAL_BITS): update_freq_0th<1>();              break;
-      case (0x09 << OSC_CONTROL_INTERVAL_BITS): update_freq_1st<1>(env_gen_level); break;
-      case (0x0A << OSC_CONTROL_INTERVAL_BITS): update_freq_2nd<1>();              break;
-      case (0x0B << OSC_CONTROL_INTERVAL_BITS): update_freq_3rd<1>();              break;
-      case (0x0C << OSC_CONTROL_INTERVAL_BITS): update_gate<1>();                  break;
-      case (0x0D << OSC_CONTROL_INTERVAL_BITS): update_rnd();                      break;
-      case (0x0E << OSC_CONTROL_INTERVAL_BITS): update_lfo_3rd();                  break;
-      case (0x0F << OSC_CONTROL_INTERVAL_BITS): update_lfo_4th();                  break;
-      case (0x10 << OSC_CONTROL_INTERVAL_BITS): update_freq_0th<2>();              break;
-      case (0x11 << OSC_CONTROL_INTERVAL_BITS): update_freq_1st<2>(env_gen_level); break;
-      case (0x12 << OSC_CONTROL_INTERVAL_BITS): update_freq_2nd<2>();              break;
-      case (0x13 << OSC_CONTROL_INTERVAL_BITS): update_freq_3rd<2>();              break;
-      case (0x14 << OSC_CONTROL_INTERVAL_BITS): update_gate<2>();                  break;
-      case (0x15 << OSC_CONTROL_INTERVAL_BITS): update_rnd();                      break;
-      case (0x16 << OSC_CONTROL_INTERVAL_BITS): update_chorus_lfo_0th();           break;
-      case (0x17 << OSC_CONTROL_INTERVAL_BITS): update_chorus_lfo_1st();           break;
-      case (0x18 << OSC_CONTROL_INTERVAL_BITS): update_freq_0th<3>();              break;
-      case (0x19 << OSC_CONTROL_INTERVAL_BITS): update_freq_1st<3>(env_gen_level); break;
-      case (0x1A << OSC_CONTROL_INTERVAL_BITS): update_freq_2nd<3>();              break;
-      case (0x1B << OSC_CONTROL_INTERVAL_BITS): update_freq_3rd<3>();              break;
-      case (0x1C << OSC_CONTROL_INTERVAL_BITS): update_gate<3>();                  break;
-      case (0x1D << OSC_CONTROL_INTERVAL_BITS): update_rnd();                      break;
-      case (0x1E << OSC_CONTROL_INTERVAL_BITS): update_chorus_lfo_2nd();           break;
-      case (0x1F << OSC_CONTROL_INTERVAL_BITS): update_chorus_lfo_3rd();           break;
+      case (0x00 << OSC_CONTROL_INTERVAL_BITS): update_freq_0th<0>();         break;
+      case (0x01 << OSC_CONTROL_INTERVAL_BITS): update_freq_1st<0>(eg_level); break;
+      case (0x02 << OSC_CONTROL_INTERVAL_BITS): update_freq_2nd<0>();         break;
+      case (0x03 << OSC_CONTROL_INTERVAL_BITS): update_freq_3rd<0>();         break;
+      case (0x04 << OSC_CONTROL_INTERVAL_BITS): update_gate<0>();             break;
+      case (0x05 << OSC_CONTROL_INTERVAL_BITS): update_rnd();                 break;
+      case (0x06 << OSC_CONTROL_INTERVAL_BITS): update_lfo_1st();             break;
+      case (0x07 << OSC_CONTROL_INTERVAL_BITS): update_lfo_2nd();             break;
+      case (0x08 << OSC_CONTROL_INTERVAL_BITS): update_freq_0th<1>();         break;
+      case (0x09 << OSC_CONTROL_INTERVAL_BITS): update_freq_1st<1>(eg_level); break;
+      case (0x0A << OSC_CONTROL_INTERVAL_BITS): update_freq_2nd<1>();         break;
+      case (0x0B << OSC_CONTROL_INTERVAL_BITS): update_freq_3rd<1>();         break;
+      case (0x0C << OSC_CONTROL_INTERVAL_BITS): update_gate<1>();             break;
+      case (0x0D << OSC_CONTROL_INTERVAL_BITS): update_rnd();                 break;
+      case (0x0E << OSC_CONTROL_INTERVAL_BITS): update_lfo_3rd();             break;
+      case (0x0F << OSC_CONTROL_INTERVAL_BITS): update_lfo_4th();             break;
+      case (0x10 << OSC_CONTROL_INTERVAL_BITS): update_freq_0th<2>();         break;
+      case (0x11 << OSC_CONTROL_INTERVAL_BITS): update_freq_1st<2>(eg_level); break;
+      case (0x12 << OSC_CONTROL_INTERVAL_BITS): update_freq_2nd<2>();         break;
+      case (0x13 << OSC_CONTROL_INTERVAL_BITS): update_freq_3rd<2>();         break;
+      case (0x14 << OSC_CONTROL_INTERVAL_BITS): update_gate<2>();             break;
+      case (0x15 << OSC_CONTROL_INTERVAL_BITS): update_rnd();                 break;
+      case (0x16 << OSC_CONTROL_INTERVAL_BITS): update_chorus_lfo_0th();      break;
+      case (0x17 << OSC_CONTROL_INTERVAL_BITS): update_chorus_lfo_1st();      break;
+      case (0x18 << OSC_CONTROL_INTERVAL_BITS): update_freq_0th<3>();         break;
+      case (0x19 << OSC_CONTROL_INTERVAL_BITS): update_freq_1st<3>(eg_level); break;
+      case (0x1A << OSC_CONTROL_INTERVAL_BITS): update_freq_2nd<3>();         break;
+      case (0x1B << OSC_CONTROL_INTERVAL_BITS): update_freq_3rd<3>();         break;
+      case (0x1C << OSC_CONTROL_INTERVAL_BITS): update_gate<3>();             break;
+      case (0x1D << OSC_CONTROL_INTERVAL_BITS): update_rnd();                 break;
+      case (0x1E << OSC_CONTROL_INTERVAL_BITS): update_chorus_lfo_2nd();      break;
+      case (0x1F << OSC_CONTROL_INTERVAL_BITS): update_chorus_lfo_3rd();      break;
       }
     }
 #endif
@@ -490,8 +490,8 @@ private:
   }
 
   template <uint8_t N>
-  INLINE static void update_freq_1st(uint8_t env_gen_level) {
-    m_pitch_real[N] =  (64 << 8) + m_pitch_current[N] + m_pitch_bend_normalized + (m_pitch_env_amt * env_gen_level);
+  INLINE static void update_freq_1st(uint8_t eg_level) {
+    m_pitch_real[N] =  (64 << 8) + m_pitch_current[N] + m_pitch_bend_normalized + (m_pitch_eg_amt * eg_level);
 
     uint8_t coarse = high_byte(m_pitch_real[N]);
     if (coarse < (NOTE_NUMBER_MIN + 64)) {
@@ -700,7 +700,7 @@ private:
 };
 
 template <uint8_t T> uint8_t         Osc<T>::m_portamento_coef[4];
-template <uint8_t T> int8_t          Osc<T>::m_pitch_env_amt;
+template <uint8_t T> int8_t          Osc<T>::m_pitch_eg_amt;
 template <uint8_t T> int16_t         Osc<T>::m_lfo_mod_level;
 template <uint8_t T> uint16_t        Osc<T>::m_lfo_phase;
 template <uint8_t T> int8_t          Osc<T>::m_lfo_wave_level;

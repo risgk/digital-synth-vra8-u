@@ -19,7 +19,7 @@ class Filter {
   static uint8_t         m_cutoff_current;
   static int16_t         m_cutoff_candidate;
   static uint8_t         m_cutoff;
-  static int8_t          m_cutoff_env_gen_amt;
+  static int8_t          m_cutoff_eg_amt;
   static int8_t          m_cutoff_lfo_amt;
   static int8_t          m_cutoff_offset;
 
@@ -39,7 +39,7 @@ public:
 
     set_cutoff(127);
     set_resonance(0);
-    set_cutoff_env_amt(64);
+    set_cutoff_eg_amt(64);
     set_cutoff_lfo_amt(64);
     set_cutoff_offset(0);
 
@@ -65,7 +65,7 @@ public:
     m_lpf_table = g_filter_lpf_tables[index];
   }
 
-  INLINE static void set_cutoff_env_amt(uint8_t controller_value) {
+  INLINE static void set_cutoff_eg_amt(uint8_t controller_value) {
     uint8_t value = controller_value;
     if (value < 4) {
       value = 4;
@@ -73,7 +73,7 @@ public:
       value = 124;
     }
 
-    m_cutoff_env_gen_amt = (value - 64) << 1;
+    m_cutoff_eg_amt = (value - 64) << 1;
   }
 
   INLINE static void set_cutoff_lfo_amt(uint8_t controller_value) {
@@ -91,7 +91,7 @@ public:
     m_cutoff_offset = cutoff_offset;
   }
 
-  INLINE static int16_t clock(uint8_t count, int16_t audio_input, uint8_t env_gen_input, int16_t lfo_input) {
+  INLINE static int16_t clock(uint8_t count, int16_t audio_input, uint8_t eg_input, int16_t lfo_input) {
 #if 1
     if ((count & (FILTER_CONTROL_INTERVAL - 1)) == 7) {
       //printf("%d Filter\n", count);
@@ -105,7 +105,7 @@ public:
         if (count & 0x08) {
           update_coefs_1st(lfo_input);
         } else {
-          update_coefs_0th(env_gen_input);
+          update_coefs_0th(eg_input);
         }
       }
     }
@@ -136,9 +136,9 @@ public:
   }
 
 private:
-  INLINE static void update_coefs_0th(uint8_t env_gen_input) {
+  INLINE static void update_coefs_0th(uint8_t eg_input) {
     m_cutoff_candidate = m_cutoff;
-    m_cutoff_candidate += high_sbyte((m_cutoff_env_gen_amt * env_gen_input) << 1);
+    m_cutoff_candidate += high_sbyte((m_cutoff_eg_amt * eg_input) << 1);
     m_cutoff_candidate += m_cutoff_offset;
   }
 
@@ -177,6 +177,6 @@ template <uint8_t T> int16_t         Filter<T>::m_y_2;
 template <uint8_t T> uint8_t         Filter<T>::m_cutoff_current;
 template <uint8_t T> int16_t         Filter<T>::m_cutoff_candidate;
 template <uint8_t T> uint8_t         Filter<T>::m_cutoff;
-template <uint8_t T> int8_t          Filter<T>::m_cutoff_env_gen_amt;
+template <uint8_t T> int8_t          Filter<T>::m_cutoff_eg_amt;
 template <uint8_t T> int8_t          Filter<T>::m_cutoff_lfo_amt;
 template <uint8_t T> int8_t          Filter<T>::m_cutoff_offset;

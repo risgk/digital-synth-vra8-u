@@ -8,7 +8,7 @@
 #define IOsc        Osc
 #define IFilter     Filter
 #define IAmp        Amp
-#define IEnvGen     EnvGen
+#define IEG         EG
 #define IDelayFx    DelayFx
 #define IVoice      Voice
 #define ISynthCore  SynthCore
@@ -16,7 +16,7 @@
 #include "osc.h"
 #include "filter.h"
 #include "amp.h"
-#include "env-gen.h"
+#include "eg.h"
 #include "delay-fx.h"
 #include "voice.h"
 #include "synth-core.h"

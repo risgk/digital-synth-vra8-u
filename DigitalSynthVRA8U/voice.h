@@ -54,10 +54,10 @@ public:
     IFilter<0>::initialize();
     IAmp<0>::initialize();
 
-    IEnvGen<0>::initialize();
-    IEnvGen<1>::initialize();
-    IEnvGen<1>::set_gain<0>(90);
-    IEnvGen<1>::set_gain<1>(127);
+    IEG<0>::initialize();
+    IEG<1>::initialize();
+    IEG<1>::set_gain<0>(90);
+    IEG<1>::set_gain<1>(127);
 
     IDelayFx<0>::initialize();
 
@@ -100,8 +100,8 @@ public:
           IOsc<0>::note_on<0>(note_number);
           IOsc<0>::note_on<2>(note_number);
           IOsc<0>::trigger_lfo();
-          IEnvGen<0>::note_on();
-          IEnvGen<1>::note_on();
+          IEG<0>::note_on();
+          IEG<1>::note_on();
           IFilter<0>::set_cutoff_offset(cutoff_offset);
         } else {
           m_note_on_number[3] = m_note_on_number[2];
@@ -128,8 +128,8 @@ public:
         IOsc<0>::note_on<0>(note_number);
         IOsc<0>::note_on<2>(note_number);
         IOsc<0>::trigger_lfo();
-        IEnvGen<0>::note_on();
-        IEnvGen<1>::note_on();
+        IEG<0>::note_on();
+        IEG<1>::note_on();
         IFilter<0>::set_cutoff_offset(cutoff_offset);
       }
 
@@ -140,8 +140,8 @@ public:
       IOsc<0>::set_portamento<0>(m_portamento);
       IOsc<0>::note_on<0>(note_number);
       IOsc<0>::trigger_lfo();
-      IEnvGen<0>::note_on();
-      IEnvGen<1>::note_on();
+      IEG<0>::note_on();
+      IEG<1>::note_on();
       IFilter<0>::set_cutoff_offset(cutoff_offset);
     } else if (m_note_on_number[1] == note_number) {
       ++m_note_on_total_count;
@@ -150,8 +150,8 @@ public:
       IOsc<0>::set_portamento<1>(m_portamento);
       IOsc<0>::note_on<1>(note_number);
       IOsc<0>::trigger_lfo();
-      IEnvGen<0>::note_on();
-      IEnvGen<1>::note_on();
+      IEG<0>::note_on();
+      IEG<1>::note_on();
       IFilter<0>::set_cutoff_offset(cutoff_offset);
     } else if (m_note_on_number[2] == note_number) {
       ++m_note_on_total_count;
@@ -160,8 +160,8 @@ public:
       IOsc<0>::set_portamento<2>(m_portamento);
       IOsc<0>::note_on<2>(note_number);
       IOsc<0>::trigger_lfo();
-      IEnvGen<0>::note_on();
-      IEnvGen<1>::note_on();
+      IEG<0>::note_on();
+      IEG<1>::note_on();
       IFilter<0>::set_cutoff_offset(cutoff_offset);
     } else if (m_note_on_number[3] == note_number) {
       ++m_note_on_total_count;
@@ -170,8 +170,8 @@ public:
       IOsc<0>::set_portamento<3>(m_portamento);
       IOsc<0>::note_on<3>(note_number);
       IOsc<0>::trigger_lfo();
-      IEnvGen<0>::note_on();
-      IEnvGen<1>::note_on();
+      IEG<0>::note_on();
+      IEG<1>::note_on();
       IFilter<0>::set_cutoff_offset(cutoff_offset);
     } else {
       uint8_t note_on_osc_index;
@@ -214,8 +214,8 @@ public:
       }
 
       IOsc<0>::trigger_lfo();
-      IEnvGen<0>::note_on();
-      IEnvGen<1>::note_on();
+      IEG<0>::note_on();
+      IEG<1>::note_on();
       IFilter<0>::set_cutoff_offset(cutoff_offset);
     }
   }
@@ -265,8 +265,8 @@ public:
 
           if (m_voice_mode == VOICE_MONOPHONIC) {
             IOsc<0>::trigger_lfo();
-            IEnvGen<0>::note_on();
-            IEnvGen<1>::note_on();
+            IEG<0>::note_on();
+            IEG<1>::note_on();
           }
         }
       } else if (m_note_on_number[1] == note_number) {
@@ -307,8 +307,8 @@ public:
     }
 
     if (m_note_on_total_count == 0) {
-      IEnvGen<0>::note_off();
-      IEnvGen<1>::note_off();
+      IEG<0>::note_off();
+      IEG<1>::note_off();
     }
   }
 
@@ -330,8 +330,8 @@ public:
     IOsc<0>::note_off<1>();
     IOsc<0>::note_off<2>();
     IOsc<0>::note_off<3>();
-    IEnvGen<0>::note_off();
-    IEnvGen<1>::note_off();
+    IEG<0>::note_off();
+    IEG<1>::note_off();
   }
 
   INLINE static void reset_all_controllers() {
@@ -347,7 +347,7 @@ public:
     switch (controller_number) {
 #if 0
     case EXPRESSION     :
-      IEnvGen<1>::set_expression(controller_value);
+      IEG<1>::set_expression(controller_value);
       break;
 #endif
     case MODULATION     :
@@ -361,7 +361,7 @@ public:
       IFilter<0>::set_resonance(controller_value);
       break;
     case FILTER_EG_AMT  :
-      IFilter<0>::set_cutoff_env_amt(controller_value);
+      IFilter<0>::set_cutoff_eg_amt(controller_value);
       break;
 
     case OSC_1_WAVE     :
@@ -390,29 +390,29 @@ public:
       break;
 
     case EG_ATTACK      :
-      IEnvGen<0>::set_attack(controller_value);
+      IEG<0>::set_attack(controller_value);
       break;
     case EG_DECAY       :
-      IEnvGen<0>::set_decay(controller_value);
+      IEG<0>::set_decay(controller_value);
       break;
     case EG_SUSTAIN     :
-      IEnvGen<0>::set_sustain(controller_value);
+      IEG<0>::set_sustain(controller_value);
       break;
     case EG_RELEASE     :
-      IEnvGen<0>::set_release(controller_value);
+      IEG<0>::set_release(controller_value);
       break;
 
     case AMP_ATTACK     :
-      IEnvGen<1>::set_attack(controller_value);
+      IEG<1>::set_attack(controller_value);
       break;
     case AMP_DECAY      :
-      IEnvGen<1>::set_decay(controller_value);
+      IEG<1>::set_decay(controller_value);
       break;
     case AMP_SUSTAIN    :
-      IEnvGen<1>::set_sustain(controller_value);
+      IEG<1>::set_sustain(controller_value);
       break;
     case AMP_RELEASE    :
-      IEnvGen<1>::set_release(controller_value);
+      IEG<1>::set_release(controller_value);
       break;
 
     case CHORUS_DEPTH   :
@@ -445,23 +445,23 @@ public:
           switch (m_chorus_mode) {
           case CHORUS_MODE_OFF      :
             IOsc<0>::set_chorus_mode(CHORUS_MODE_OFF);
-            IEnvGen<1>::set_gain<0>(90);
+            IEG<1>::set_gain<0>(90);
             break;
           case CHORUS_MODE_STEREO   :
             IOsc<0>::set_chorus_mode(CHORUS_MODE_STEREO);
-            IEnvGen<1>::set_gain<0>(90);
+            IEG<1>::set_gain<0>(90);
             break;
           case CHORUS_MODE_P_STEREO   :
             IOsc<0>::set_chorus_mode(CHORUS_MODE_P_STEREO);
-            IEnvGen<1>::set_gain<0>(64);
+            IEG<1>::set_gain<0>(64);
             break;
           case CHORUS_MODE_MONO     :
             IOsc<0>::set_chorus_mode(CHORUS_MODE_MONO);
-            IEnvGen<1>::set_gain<0>(64);
+            IEG<1>::set_gain<0>(64);
             break;
           case CHORUS_MODE_STEREO_2 :
             IOsc<0>::set_chorus_mode(CHORUS_MODE_STEREO_2);
-            IEnvGen<1>::set_gain<0>(64);
+            IEG<1>::set_gain<0>(64);
             break;
           }
         }
@@ -474,7 +474,7 @@ public:
       break;
 #endif
     case AMP_LEVEL      :
-      IEnvGen<1>::set_gain<1>(controller_value);
+      IEG<1>::set_gain<1>(controller_value);
       break;
 
     case PORTAMENTO     :
@@ -653,12 +653,12 @@ public:
   INLINE static int8_t clock(int8_t& right_level) {
     ++m_count;
 
-    uint8_t env_gen_output_0 = IEnvGen<0>::clock(m_count);
-    int16_t osc_output = IOsc<0>::clock(m_count, env_gen_output_0);
+    uint8_t eg_output_0 = IEG<0>::clock(m_count);
+    int16_t osc_output = IOsc<0>::clock(m_count, eg_output_0);
     int16_t lfo_output = IOsc<0>::get_lfo_level();
-    int16_t filter_output = IFilter<0>::clock(m_count, osc_output, env_gen_output_0, lfo_output);
-    uint8_t env_gen_output_1 = IEnvGen<1>::clock(m_count);
-    int16_t amp_output = IAmp<0>::clock(filter_output, env_gen_output_1);
+    int16_t filter_output = IFilter<0>::clock(m_count, osc_output, eg_output_0, lfo_output);
+    uint8_t eg_output_1 = IEG<1>::clock(m_count);
+    int16_t amp_output = IAmp<0>::clock(filter_output, eg_output_1);
 
     // error diffusion
     int16_t output = amp_output + m_output_error;
@@ -733,7 +733,7 @@ private:
 
 #if 0
   INLINE static void set_expression(uint8_t controller_value) {
-    IEnvGen<1>::set_expression(controller_value);
+    IEG<1>::set_expression(controller_value);
   }
 #endif
 
@@ -776,21 +776,21 @@ private:
       }
 
       if (m_note_on_total_count == 0) {
-        IEnvGen<0>::note_off();
-        IEnvGen<1>::note_off();
+        IEG<0>::note_off();
+        IEG<1>::note_off();
       }
     }
   }
 
   INLINE static void update_eg_osc_mod() {
     if        (m_eg_osc_dst < 32) {  /* OSC_DST_PITCH */
-      IOsc<0>::set_pitch_env_amt(m_eg_osc_amt);
+      IOsc<0>::set_pitch_eg_amt(m_eg_osc_amt);
       // TODO
     } else if (m_eg_osc_dst < 96) {  /* OSC_DST_PITCH_2 */
-      IOsc<0>::set_pitch_env_amt(m_eg_osc_amt);
+      IOsc<0>::set_pitch_eg_amt(m_eg_osc_amt);
       // TODO
     } else {                         /* OSC_DST_SHAPE_1 */
-      IOsc<0>::set_pitch_env_amt(64);
+      IOsc<0>::set_pitch_eg_amt(64);
       // TODO
     }
   }

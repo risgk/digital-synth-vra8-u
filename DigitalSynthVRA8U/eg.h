@@ -8,7 +8,7 @@
 #include "mul-q.h"
 
 template <uint8_t T>
-class EnvGen {
+class EG {
   static const uint8_t STATE_ATTACK  = 0;
   static const uint8_t STATE_SUSTAIN = 1;
   static const uint8_t STATE_IDLE    = 2;
@@ -106,8 +106,8 @@ public:
 
   INLINE static uint8_t clock(uint8_t count) {
 #if 1
-    if ((count & (ENV_GEN_CONTROL_INTERVAL - 1)) == ((T == 0) ? 3 : 11)) {
-      //printf("%d EnvGen\n", count);
+    if ((count & (EG_CONTROL_INTERVAL - 1)) == ((T == 0) ? 3 : 11)) {
+      //printf("%d EG\n", count);
       switch (m_state) {
       case STATE_ATTACK:
         --m_rest;
@@ -117,9 +117,9 @@ public:
           uint8_t coef;
           coef = 188 + m_attack_update_coef;
 
-          m_level = ENV_GEN_LEVEL_MAX_X_1_5 - mul_uq16_uq8(ENV_GEN_LEVEL_MAX_X_1_5 - m_level, coef);
-          if (m_level >= ENV_GEN_LEVEL_MAX) {
-            m_level = ENV_GEN_LEVEL_MAX;
+          m_level = EG_LEVEL_MAX_X_1_5 - mul_uq16_uq8(EG_LEVEL_MAX_X_1_5 - m_level, coef);
+          if (m_level >= EG_LEVEL_MAX) {
+            m_level = EG_LEVEL_MAX;
             m_state = STATE_SUSTAIN;
             m_rest = m_decay_update_coef;
           }
@@ -185,17 +185,17 @@ private:
   }
 };
 
-template <uint8_t T> uint8_t  EnvGen<T>::m_state;
-template <uint8_t T> uint16_t EnvGen<T>::m_level;
-template <uint8_t T> uint8_t  EnvGen<T>::m_level_out;
-template <uint8_t T> uint8_t  EnvGen<T>::m_attack_update_coef;
-template <uint8_t T> uint8_t  EnvGen<T>::m_decay_update_coef;
-template <uint8_t T> uint16_t EnvGen<T>::m_sustain;
-template <uint8_t T> uint8_t  EnvGen<T>::m_release_update_coef;
-template <uint8_t T> uint8_t  EnvGen<T>::m_rest;
-template <uint8_t T> uint8_t  EnvGen<T>::m_gain[2];
+template <uint8_t T> uint8_t  EG<T>::m_state;
+template <uint8_t T> uint16_t EG<T>::m_level;
+template <uint8_t T> uint8_t  EG<T>::m_level_out;
+template <uint8_t T> uint8_t  EG<T>::m_attack_update_coef;
+template <uint8_t T> uint8_t  EG<T>::m_decay_update_coef;
+template <uint8_t T> uint16_t EG<T>::m_sustain;
+template <uint8_t T> uint8_t  EG<T>::m_release_update_coef;
+template <uint8_t T> uint8_t  EG<T>::m_rest;
+template <uint8_t T> uint8_t  EG<T>::m_gain[2];
 #if 0
-template <uint8_t T> uint8_t  EnvGen<T>::m_expression;
+template <uint8_t T> uint8_t  EG<T>::m_expression;
 #endif
-template <uint8_t T> uint8_t  EnvGen<T>::m_amp_exp_amt;
-template <uint8_t T> uint8_t  EnvGen<T>::m_gain_coef;
+template <uint8_t T> uint8_t  EG<T>::m_amp_exp_amt;
+template <uint8_t T> uint8_t  EG<T>::m_gain_coef;
