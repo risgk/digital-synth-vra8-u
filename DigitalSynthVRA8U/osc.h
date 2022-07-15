@@ -70,9 +70,9 @@ class Osc {
   static uint16_t       m_phase[4];
   static boolean        m_osc_on[4];
   static boolean        m_osc_on_temp[4];
-  static uint8_t        m_osc_gain_effective[4];
-  static uint8_t        m_osc_gain[4];
-  static uint8_t        m_osc_level;
+  static int8_t         m_osc_gain_effective[4];
+  static int8_t         m_osc_gain[4];
+  static int8_t         m_osc_level;
 
   static boolean        m_mono_mode;
   static uint8_t        m_mono_osc2_mix;
@@ -187,10 +187,10 @@ public:
   }
 
   INLINE static void set_osc_level(uint8_t controller_value) {
-    if (controller_value < 8) {
+    if (controller_value < 10) {
       m_osc_level = 4;
     } else {
-      m_osc_level = ((controller_value + 1) >> 1);
+      m_osc_level = ((controller_value - 1) >> 1);
     }
   }
 
@@ -572,7 +572,7 @@ private:
   template <uint8_t N>
   INLINE static void update_gate() {
     if (m_osc_on_temp[N] && ((N == 0) || (m_mono_mode == false))) {
-      const uint8_t half_level = (m_osc_level >> 1) + 1;
+      const int8_t half_level = (m_osc_level >> 1) + 1;
 
       if (m_osc_gain[N] >= (m_osc_level - half_level)) {
         m_osc_gain[N] = m_osc_level;
@@ -581,7 +581,7 @@ private:
       }
     }
     else {
-      const uint8_t one_fourth_level = (m_osc_level >> 2) + 1;
+      const int8_t one_fourth_level = (m_osc_level >> 2) + 1;
 
       if (m_osc_gain[N] <= one_fourth_level) {
         m_osc_gain[N] = 0;
@@ -762,9 +762,9 @@ template <uint8_t T> uint16_t        Osc<T>::m_freq_temp[4];
 template <uint8_t T> uint16_t        Osc<T>::m_phase[4];
 template <uint8_t T> boolean         Osc<T>::m_osc_on[4];
 template <uint8_t T> boolean         Osc<T>::m_osc_on_temp[4];
-template <uint8_t T> uint8_t         Osc<T>::m_osc_gain_effective[4];
-template <uint8_t T> uint8_t         Osc<T>::m_osc_gain[4];
-template <uint8_t T> uint8_t         Osc<T>::m_osc_level;
+template <uint8_t T> int8_t          Osc<T>::m_osc_gain_effective[4];
+template <uint8_t T> int8_t          Osc<T>::m_osc_gain[4];
+template <uint8_t T> int8_t          Osc<T>::m_osc_level;
 
 template <uint8_t T> boolean         Osc<T>::m_mono_mode;
 template <uint8_t T> uint8_t         Osc<T>::m_mono_osc2_mix;
