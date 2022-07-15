@@ -181,7 +181,7 @@ private:
     uint8_t expression = 255 - high_byte(static_cast<uint8_t>(255 - m_expression) * m_amp_exp_amt);
     m_gain_coef = high_byte((high_byte(expression * expression) + 1) * m_gain[0]);
 #endif
-    m_gain_coef = high_byte(m_gain[0] * (m_gain[1] << 1));
+    m_gain_coef = high_byte(m_gain[0] * m_gain[1]);
   }
 };
 
