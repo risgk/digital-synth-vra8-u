@@ -377,6 +377,7 @@ var midi        = null;
 var midiInputs  = null;
 var midiInput1  = null;
 var midiInput2  = null;
+var midiInput3  = null;
 var midiOutputs = null;
 var midiOutput  = null;
 
@@ -480,6 +481,11 @@ function onMIDISuccess(midiAccess) {
     selectInputPort2.appendChild(new Option(midiInputs[i].name))
   }
   onChangeInputPort2();
+  var selectInputPort3 = document.getElementById("selectInputPort3");
+  for (var i = 0; i < midiInputs.length; i++) {
+    selectInputPort3.appendChild(new Option(midiInputs[i].name))
+  }
+  onChangeInputPort3();
   var selectOutputPort = document.getElementById("selectOutputPort");
   for (var i = 0; i < midiOutputs.length; i++) {
     selectOutputPort.appendChild(new Option(midiOutputs[i].name))
@@ -504,6 +510,14 @@ function onChangeInputPort2(){
   midiInput2 = midiInputs[selectInputPort.selectedIndex];
   if (midiInput2) {
     midiInput2.onmidimessage = onMIDIMessage;
+  }
+}
+
+function onChangeInputPort3(){
+  var selectInputPort = document.getElementById("selectInputPort3");
+  midiInput3 = midiInputs[selectInputPort.selectedIndex];
+  if (midiInput3) {
+    midiInput3.onmidimessage = onMIDIMessage;
   }
 }
 
@@ -817,6 +831,10 @@ function getStoredCCValueString(index, number) {
     <td>Velocity</td>
     <td></td>
     <td><span id="spanVelocity">-</span></td>
+    </tr>
+<tr><td>MIDI In 3</td>
+    <td></td>
+    <td><select id="selectInputPort3" size="1" onchange="onChangeInputPort3()"></select></td>
     </tr>
 <tr><td>MIDI Out</td>
     <td></td>
