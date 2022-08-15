@@ -373,8 +373,10 @@ public:
       IOsc<0>::set_osc_waveform<1>(controller_value);
       break;
     case OSC_1_SHAPE    :
+      IOsc<0>::set_osc1_shape_control(controller_value);
       break;
     case MIXER_NOISE    :
+      IOsc<0>::set_mixer_noise_control(controller_value);
       break;
 
     case LFO_RATE       :

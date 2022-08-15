@@ -80,7 +80,11 @@ class Osc {
   static int8_t         m_mono_osc2_detune;
 
   static uint8_t        m_rnd;
+
   static __uint24       m_lfsr;
+  static int16_t        m_osc1_shape;
+  static int8_t         m_osc1_shape_control;
+  static int8_t         m_mixer_noise_control;
 
 public:
   INLINE static void initialize() {
@@ -174,7 +178,11 @@ public:
     m_osc_level = 48;
 
     m_rnd = 1;
+
     m_lfsr = 0x000001u;
+    m_osc1_shape = 0;
+    m_osc1_shape_control = 0;
+    m_mixer_noise_control = 0;
 
     set_pitch_bend_range(2);
   }
@@ -185,6 +193,22 @@ public:
       m_waveform[N] = WAVEFORM_SAW;
     } else {
       m_waveform[N] = WAVEFORM_PUL;
+    }
+  }
+
+  INLINE static void set_osc1_shape_control(uint8_t controller_value) {
+    if (controller_value == 0) {
+      m_osc1_shape_control = -126;
+    } else {
+      m_osc1_shape_control = (controller_value - 64) << 1;
+    }
+  }
+
+  INLINE static void set_mixer_noise_control(uint8_t controller_value) {
+    if (controller_value <= 64) {
+      m_mixer_noise_control = 0;
+    } else {
+      m_mixer_noise_control = ((controller_value - 63) >> 1) << 1;
     }
   }
 
@@ -385,33 +409,27 @@ public:
     int8_t wave_0 = get_wave_level(m_wave_table[0], m_phase[0]);
     int16_t result = wave_0 * m_osc_gain_effective[0];
 
+    m_phase[2] += m_freq[2];
+    int8_t wave_2 = get_wave_level(m_wave_table[2], m_phase[2]);
+    result += wave_2 * m_osc_gain_effective[2];
+
     if (m_mono_mode == false) {
       m_phase[1] += m_freq[1];
       int8_t wave_1 = get_wave_level(m_wave_table[1], m_phase[1]);
       result += wave_1 * m_osc_gain_effective[1];
 
-      m_phase[2] += m_freq[2];
-      int8_t wave_2 = get_wave_level(m_wave_table[2], m_phase[2]);
-      result += wave_2 * m_osc_gain_effective[2];
-
       m_phase[3] += m_freq[3];
       int8_t wave_3 = get_wave_level(m_wave_table[3], m_phase[3]);
       result += wave_3 * m_osc_gain_effective[3];
     } else {
-      if (m_waveform[1] != WAVEFORM_PUL) {
-        m_phase[2] += m_freq[2];
-        int8_t wave_2 = get_wave_level(m_wave_table[2], m_phase[2]);
-        result += wave_2 * m_osc_gain_effective[2];
-      } else {
-        int8_t wave_2 = -(OSC_WAVE_TABLE_AMPLITUDE >> 1);
-        uint8_t lsb = m_lfsr & 0x000001u;
-        m_lfsr >>= 1;
-        m_lfsr ^= (-lsb) & 0xE10000u;
-        if (lsb) {
-          wave_2 = +(OSC_WAVE_TABLE_AMPLITUDE >> 1);
-        }
-        result += wave_2 * m_osc_gain_effective[2];
+      int8_t wave_3 = -(OSC_WAVE_TABLE_AMPLITUDE >> 1);
+      uint8_t lsb = m_lfsr & 0x000001u;
+      m_lfsr >>= 1;
+      m_lfsr ^= (-lsb) & 0xE10000u;
+      if (lsb) {
+        wave_3 = +(OSC_WAVE_TABLE_AMPLITUDE >> 1);
       }
+      result += wave_3 * m_osc_gain_effective[3];
     }
 #else
     int16_t result  = 0;
@@ -589,6 +607,7 @@ private:
     } else if (N == 0) {
       if ((m_osc_gain[1] == 0) && (m_osc_gain[3] == 0)) {
         uint8_t base_gain = m_osc_gain[0];
+
         if (m_mono_osc2_mix < 32) {
           m_osc_gain_effective[0] = (base_gain << 1);
           m_osc_gain_effective[2] = 0;
@@ -601,7 +620,7 @@ private:
         }
 
         m_osc_gain_effective[1] = 0;
-        m_osc_gain_effective[3] = 0;
+        m_osc_gain_effective[3] = (base_gain * m_mixer_noise_control) >> 6;
       }
     }
   }
@@ -767,4 +786,8 @@ template <uint8_t T> int8_t          Osc<T>::m_mono_osc2_pitch;
 template <uint8_t T> int8_t          Osc<T>::m_mono_osc2_detune;
 
 template <uint8_t T> uint8_t         Osc<T>::m_rnd;
+
 template <uint8_t T> __uint24        Osc<T>::m_lfsr;
+template <uint8_t T> int16_t         Osc<T>::m_osc1_shape;
+template <uint8_t T> int8_t          Osc<T>::m_osc1_shape_control;
+template <uint8_t T> int8_t          Osc<T>::m_mixer_noise_control;
