@@ -53,13 +53,13 @@ const uint8_t   P_BEND_BY_CC    = 35;
 
 const uint8_t   OSC_1_WAVE      = 24;
 const uint8_t   OSC_1_SHAPE     = 102;
-const uint8_t   OSC_2_WAVE      = 55;
+const uint8_t   MIXER_SUB_OSC   = 26;
 const uint8_t   MIXER_NOISE     = 54;
 
+const uint8_t   OSC_2_WAVE      = 55;
 const uint8_t   OSC_2_COARSE    = 20;
 const uint8_t   OSC_2_FINE      = 21;
 const uint8_t   MIXER_OSC_MIX   = 25;
-const uint8_t   MIXER_SUB_OSC   = 26;
 
 const uint8_t   FILTER_CUTOFF   = 16;
 const uint8_t   FILTER_RESO     = 17;

@@ -138,13 +138,13 @@
     |                               |               |               |                                  |
     |                            24 | x             | o             | Osc 1 Wave [Saw|Sin|Pls]         | TODO
     |                           102 | x             | o             | Osc 1 Shape ** [-|+]             | TODO
-    |                            55 | x             | o             | Osc 2 Wave * [Saw|Sin|Pls]       | TODO
+    |                            26 | x             | o             | Mixer Sub Osc *                  | TODO
     |                            54 | x             | o             | Mixer Noise * [Off|0.0|1.0]      | TODO
     |                               |               |               |                                  |
+    |                            55 | x             | o             | Osc 2 Wave * [Saw|Sin|Pls]       | TODO
     |                            20 | x             | o             | Osc 2 Coarse * [-|+]             |
     |                            21 | x             | o             | Osc 2 Fine * [-|+]               |
     |                            25 | x             | o             | Mixer Osc Mix * [1|2]            | TODO
-    |                            26 | x             | o             | Mixer Sub Osc *                  | TODO
     |                               |               |               |                                  |
     |                            16 | x             | o             | Filter Cutoff                    |
     |                            17 | x             | o             | Filter Resonance                 |

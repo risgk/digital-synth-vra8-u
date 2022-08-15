@@ -609,13 +609,13 @@ public:
 
     control_change(OSC_1_WAVE     , g_preset_table_OSC_1_WAVE     [program_number]);
     control_change(OSC_1_SHAPE    , g_preset_table_OSC_1_SHAPE    [program_number]);
-    control_change(OSC_2_WAVE     , g_preset_table_OSC_2_WAVE     [program_number]);
+    control_change(MIXER_SUB_OSC  , g_preset_table_MIXER_SUB_OSC  [program_number]);
     control_change(MIXER_NOISE    , g_preset_table_MIXER_NOISE    [program_number]);
 
+    control_change(OSC_2_WAVE     , g_preset_table_OSC_2_WAVE     [program_number]);
     control_change(OSC_2_COARSE   , g_preset_table_OSC_2_COARSE   [program_number]);
     control_change(OSC_2_FINE     , g_preset_table_OSC_2_FINE     [program_number]);
     control_change(MIXER_OSC_MIX  , g_preset_table_MIXER_OSC_MIX  [program_number]);
-    control_change(MIXER_SUB_OSC  , g_preset_table_MIXER_SUB_OSC  [program_number]);
 
     control_change(FILTER_CUTOFF  , g_preset_table_FILTER_CUTOFF  [program_number]);
     control_change(FILTER_RESO    , g_preset_table_FILTER_RESO    [program_number]);
