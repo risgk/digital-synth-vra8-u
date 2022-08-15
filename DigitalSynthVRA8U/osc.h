@@ -84,6 +84,7 @@ class Osc {
   static __uint24       m_lfsr;
   static int16_t        m_osc1_shape;
   static int8_t         m_osc1_shape_control;
+  static int8_t         m_mixer_sub_osc_control;
   static int8_t         m_mixer_noise_control;
 
 public:
@@ -182,6 +183,7 @@ public:
     m_lfsr = 0x000001u;
     m_osc1_shape = 0;
     m_osc1_shape_control = 0;
+    m_mixer_sub_osc_control = 0;
     m_mixer_noise_control = 0;
 
     set_pitch_bend_range(2);
@@ -202,6 +204,10 @@ public:
     } else {
       m_osc1_shape_control = (controller_value - 64) << 1;
     }
+  }
+
+  INLINE static void set_mixer_sub_osc_control(uint8_t controller_value) {
+    m_mixer_sub_osc_control = (controller_value + 1) >> 1;
   }
 
   INLINE static void set_mixer_noise_control(uint8_t controller_value) {
@@ -422,6 +428,20 @@ public:
       int8_t wave_3 = get_wave_level(m_wave_table[3], m_phase[3]);
       result += wave_3 * m_osc_gain_effective[3];
     } else {
+      // Sub Osc
+      m_phase[1] = m_phase[0];
+      wave_2 = high_sbyte(m_phase[1]);
+      if (wave_2 < -64) {
+        wave_2 = -64 - (wave_2 + 64);
+      } else if (wave_2 < 64) {
+        // do nothing
+      } else {
+        wave_2 = 64 - (wave_2 - 64);
+      }
+      wave_2 = -wave_2;
+      result += wave_2 * m_osc_gain_effective[1];
+
+      // Noise
       int8_t wave_3 = -(OSC_WAVE_TABLE_AMPLITUDE >> 1);
       uint8_t lsb = m_lfsr & 0x000001u;
       m_lfsr >>= 1;
@@ -619,7 +639,7 @@ private:
           m_osc_gain_effective[2] = m_osc_gain_effective[0];
         }
 
-        m_osc_gain_effective[1] = 0;
+        m_osc_gain_effective[1] = (base_gain * m_mixer_sub_osc_control) >> 6;
         m_osc_gain_effective[3] = (base_gain * m_mixer_noise_control) >> 6;
       }
     }
@@ -790,4 +810,5 @@ template <uint8_t T> uint8_t         Osc<T>::m_rnd;
 template <uint8_t T> __uint24        Osc<T>::m_lfsr;
 template <uint8_t T> int16_t         Osc<T>::m_osc1_shape;
 template <uint8_t T> int8_t          Osc<T>::m_osc1_shape_control;
+template <uint8_t T> int8_t          Osc<T>::m_mixer_sub_osc_control;
 template <uint8_t T> int8_t          Osc<T>::m_mixer_noise_control;

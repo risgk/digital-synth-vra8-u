@@ -120,7 +120,6 @@ POLY_MODE_ON    = 127
 
 OSC_WAVE_SAW       = 0
 OSC_WAVE_SIN       = 64
-OSC_WAVE_NOISE     = 96
 OSC_WAVE_PULSE     = 127
 
 OSC_DST_PITCH      = 0
