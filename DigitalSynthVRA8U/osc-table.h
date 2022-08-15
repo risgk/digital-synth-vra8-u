@@ -1,8 +1,8 @@
 #pragma once
 
 const uint16_t g_osc_freq_table[] = {
-  0x003A, 0x003D, 0x0041,
-  0x0045, 0x0049, 0x004D, 0x0051, 0x0056, 0x005B, 0x0061, 0x0067, 0x006D, 0x0073, 0x007B, 0x0081,
+  0x0022, 0x0024, 0x0026, 0x0029, 0x002B, 0x002E, 0x0030, 0x0033, 0x0036, 0x003A, 0x003D, 0x0041,
+  0x0045, 0x0049, 0x004D, 0x0051, 0x0057, 0x005B, 0x0061, 0x0067, 0x006D, 0x0073, 0x007B, 0x0081,
   0x0089, 0x0091, 0x0099, 0x00A3, 0x00AD, 0x00B7, 0x00C1, 0x00CD, 0x00D9, 0x00E7, 0x00F5, 0x0103,
   0x0113, 0x0123, 0x0133, 0x0147, 0x0159, 0x016F, 0x0183, 0x019B, 0x01B3, 0x01CD, 0x01E9, 0x0205,
   0x0225, 0x0245, 0x0267, 0x028D, 0x02B3, 0x02DD, 0x0307, 0x0337, 0x0367, 0x039B, 0x03D1, 0x040B,
@@ -854,6 +854,9 @@ const uint8_t* const g_osc_saw_wave_tables[] PROGMEM = {
   g_osc_saw_wave_table_h127, g_osc_saw_wave_table_h127, g_osc_saw_wave_table_h127,
   g_osc_saw_wave_table_h127, g_osc_saw_wave_table_h127, g_osc_saw_wave_table_h127,
   g_osc_saw_wave_table_h127, g_osc_saw_wave_table_h127, g_osc_saw_wave_table_h127,
+  g_osc_saw_wave_table_h127, g_osc_saw_wave_table_h127, g_osc_saw_wave_table_h127,
+  g_osc_saw_wave_table_h127, g_osc_saw_wave_table_h127, g_osc_saw_wave_table_h127,
+  g_osc_saw_wave_table_h127, g_osc_saw_wave_table_h127, g_osc_saw_wave_table_h127,
   g_osc_saw_wave_table_h127, g_osc_saw_wave_table_h110, g_osc_saw_wave_table_h110,
   g_osc_saw_wave_table_h110, g_osc_saw_wave_table_h95 , g_osc_saw_wave_table_h95 ,
   g_osc_saw_wave_table_h95 , g_osc_saw_wave_table_h81 , g_osc_saw_wave_table_h81 ,
@@ -879,6 +882,9 @@ const uint8_t* const g_osc_saw_wave_tables[] PROGMEM = {
   g_osc_saw_wave_table_h3  , };
 
 const uint8_t* const g_osc_pulse_wave_tables[] PROGMEM = {
+  g_osc_pulse_wave_table_h127, g_osc_pulse_wave_table_h127, g_osc_pulse_wave_table_h127,
+  g_osc_pulse_wave_table_h127, g_osc_pulse_wave_table_h127, g_osc_pulse_wave_table_h127,
+  g_osc_pulse_wave_table_h127, g_osc_pulse_wave_table_h127, g_osc_pulse_wave_table_h127,
   g_osc_pulse_wave_table_h127, g_osc_pulse_wave_table_h127, g_osc_pulse_wave_table_h127,
   g_osc_pulse_wave_table_h127, g_osc_pulse_wave_table_h127, g_osc_pulse_wave_table_h127,
   g_osc_pulse_wave_table_h127, g_osc_pulse_wave_table_h127, g_osc_pulse_wave_table_h127,
