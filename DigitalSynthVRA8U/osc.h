@@ -565,8 +565,11 @@ private:
       }
     }
 
-    m_osc_gain_effective[N] = m_osc_gain[N];
-    if ((N == 0) && m_mono_mode) {
+    m_osc_gain_effective[0] = m_osc_gain[0];
+    m_osc_gain_effective[1] = m_osc_gain[1];
+    m_osc_gain_effective[2] = m_osc_gain[2];
+    m_osc_gain_effective[3] = m_osc_gain[3];
+    if (m_mono_mode) {
       if ((m_osc_gain_effective[1] == 0) && (m_osc_gain_effective[2] == 0) && (m_osc_gain_effective[3] == 0)) {
         uint8_t base_gain = m_osc_gain_effective[0];
         if (m_mono_osc2_mix < 32) {
