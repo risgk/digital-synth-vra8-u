@@ -81,6 +81,8 @@ class Osc {
 
   static uint8_t        m_rnd;
 
+  static int8_t         m_shape;
+
 public:
   INLINE static void initialize() {
     m_portamento_coef[0] = PORTAMENTO_COEF_OFF;
@@ -174,6 +176,8 @@ public:
 
     m_rnd = 1;
 
+    m_shape = 0;
+
     set_pitch_bend_range(2);
   }
 
@@ -183,6 +187,14 @@ public:
       m_waveform[N] = WAVEFORM_SAW;
     } else {
       m_waveform[N] = WAVEFORM_PUL;
+    }
+  }
+
+  INLINE static void set_osc_shape(uint8_t controller_value) {
+    if (controller_value == 0) {
+      m_shape = 2;
+    } else {
+      m_shape = controller_value << 1;
     }
   }
 
@@ -384,10 +396,19 @@ public:
     m_phase[2] += m_freq[2];
     m_phase[3] += m_freq[3];
 
+    if (m_mono_mode) {
+      m_phase[1] = m_phase[0] + (m_shape << 8);
+    }
+
+    int8_t wave_3 = 0;
+
     int8_t wave_0 = get_wave_level(m_wave_table[0], m_phase[0]);
     int8_t wave_1 = get_wave_level(m_wave_table[1], m_phase[1]);
     int8_t wave_2 = get_wave_level(m_wave_table[2], m_phase[2]);
-    int8_t wave_3 = get_wave_level(m_wave_table[3], m_phase[3]);
+
+    if (m_mono_mode == false) {
+      wave_3 = get_wave_level(m_wave_table[3], m_phase[3]);
+    }
 
     // amp and mix
     int16_t level_0 = wave_0 * m_osc_gain_effective[0];
@@ -590,11 +611,8 @@ private:
       }
     }
 
-    m_osc_gain_effective[0] = m_osc_gain[0];
-    m_osc_gain_effective[1] = m_osc_gain[1];
-    m_osc_gain_effective[2] = m_osc_gain[2];
-    m_osc_gain_effective[3] = m_osc_gain[3];
-    if (m_mono_mode) {
+    m_osc_gain_effective[N] = m_osc_gain[N];
+    if ((N == 0) && m_mono_mode) {
       if ((m_osc_gain_effective[1] == 0) && (m_osc_gain_effective[2] == 0) && (m_osc_gain_effective[3] == 0)) {
         uint8_t base_gain = m_osc_gain_effective[0];
         if (m_mono_osc2_mix < 32) {
@@ -607,6 +625,10 @@ private:
           m_osc_gain_effective[0] = base_gain + (base_gain >> 1);
           m_osc_gain_effective[2] = m_osc_gain_effective[0];
         }
+//
+//        if (m_waveform[0] == WAVEFORM_PUL) {
+//          m_osc_gain_effective[1] = -m_osc_gain_effective[0];
+//        }
       }
     }
   }
@@ -772,3 +794,5 @@ template <uint8_t T> int8_t          Osc<T>::m_mono_osc2_pitch;
 template <uint8_t T> int8_t          Osc<T>::m_mono_osc2_detune;
 
 template <uint8_t T> uint8_t         Osc<T>::m_rnd;
+
+template <uint8_t T> int8_t          Osc<T>::m_shape;
