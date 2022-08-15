@@ -565,13 +565,11 @@ private:
       }
     }
 
-    m_osc_gain_effective[0] = m_osc_gain[0];
-    m_osc_gain_effective[1] = m_osc_gain[1];
-    m_osc_gain_effective[2] = m_osc_gain[2];
-    m_osc_gain_effective[3] = m_osc_gain[3];
-    if (m_mono_mode) {
-      if ((m_osc_gain_effective[1] == 0) && (m_osc_gain_effective[2] == 0) && (m_osc_gain_effective[3] == 0)) {
-        uint8_t base_gain = m_osc_gain_effective[0];
+    if (m_mono_mode == false) {
+      m_osc_gain_effective[N] = m_osc_gain[N];
+    } else if (N == 0) {
+      if ((m_osc_gain[1] == 0) && (m_osc_gain[3] == 0)) {
+        uint8_t base_gain = m_osc_gain[0];
         if (m_mono_osc2_mix < 32) {
           m_osc_gain_effective[0] = (base_gain << 1);
         } else if (m_mono_osc2_mix < 96) {
@@ -582,6 +580,9 @@ private:
           m_osc_gain_effective[0] = base_gain + (base_gain >> 1);
           m_osc_gain_effective[2] = m_osc_gain_effective[0];
         }
+
+        m_osc_gain_effective[1] = 0;
+        m_osc_gain_effective[3] = 0;
       }
     }
   }
