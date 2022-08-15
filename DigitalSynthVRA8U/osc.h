@@ -19,7 +19,7 @@ template <uint8_t T>
 class Osc {
   static const uint8_t WAVEFORM_SAW           = 0;
   static const uint8_t WAVEFORM_PUL           = 1;
-  static const uint8_t WAVEFORM_SIN           = 2;
+  static const uint8_t WAVEFORM_TRI           = 2;
   static const uint8_t WAVEFORM_NOI           = 3;
 
   static const uint8_t LFO_WAVEFORM_TRI_ASYNC = 0;
@@ -197,7 +197,7 @@ public:
       if (controller_value < 32) {
         m_waveform[0] = WAVEFORM_SAW;
       } else if (controller_value < 96) {
-        m_waveform[0] = WAVEFORM_SIN;
+        m_waveform[0] = WAVEFORM_TRI;
       } else {
         m_waveform[0] = WAVEFORM_PUL;
       }
@@ -205,7 +205,7 @@ public:
       if (controller_value < 48) {
         m_waveform[1] = WAVEFORM_SAW;
       } else if (controller_value < 80) {
-        m_waveform[1] = WAVEFORM_SIN;
+        m_waveform[1] = WAVEFORM_TRI;
       } else if (controller_value < 112) {
         m_waveform[1] = WAVEFORM_NOI;
       } else {
@@ -448,16 +448,13 @@ public:
 
       int8_t wave_1 = high_sbyte(m_phase[1]);
       if (wave_1 < -64) {
-        wave_1 = 128 + wave_1;
-      } else if (wave_1 < 0) {
-        wave_1 = -wave_1 - 1;
+        wave_1 = -64 - (wave_1 + 64);
       } else if (wave_1 < 64) {
-        wave_1 = -wave_1 + 1;
+        // do nothing
       } else {
-        wave_1 = -128 + wave_1;
+        wave_1 = 64 - (wave_1 - 64);
       }
-      wave_1 <<= 1;
-      result += wave_1 * m_osc_gain_effective[1];
+      result += wave_1 * (static_cast<uint8_t>(m_osc_gain_effective[1]) << 1);
 
       if (m_waveform[1] != WAVEFORM_NOI) {
         m_phase[2] += m_freq[2];
@@ -488,12 +485,16 @@ private:
 #if defined(MAKE_SAMPLE_WAV_FILE)
     if (waveform == WAVEFORM_SAW) {
       result = g_osc_saw_wave_tables[note_number - NOTE_NUMBER_MIN];
+    } else if (waveform == WAVEFORM_TRI) {
+      result = g_osc_triangle_wave_table;
     } else {     // WAVEFORM_PUL
       result = g_osc_pulse_wave_tables[note_number - NOTE_NUMBER_MIN];
     }
 #else
     if (waveform == WAVEFORM_SAW) {
       result = pgm_read_word(g_osc_saw_wave_tables + (note_number - NOTE_NUMBER_MIN));
+    } else if (waveform == WAVEFORM_TRI) {
+      result = pgm_read_word(g_osc_triangle_wave_table);
     } else {     // WAVEFORM_PUL
       result = pgm_read_word(g_osc_pulse_wave_tables + (note_number - NOTE_NUMBER_MIN));
     }

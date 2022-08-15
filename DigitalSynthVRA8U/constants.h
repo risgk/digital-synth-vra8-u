@@ -119,7 +119,7 @@ const uint8_t   MONO_MODE_ON    = 126;
 const uint8_t   POLY_MODE_ON    = 127;
 
 const uint8_t   OSC_WAVE_SAW       = 0;
-const uint8_t   OSC_WAVE_SIN       = 64;
+const uint8_t   OSC_WAVE_TRIANGLE  = 64;
 const uint8_t   OSC_WAVE_NOISE     = 96;
 const uint8_t   OSC_WAVE_PULSE     = 127;
 
