@@ -80,6 +80,7 @@ class Osc {
   static int8_t         m_mono_osc2_detune;
 
   static uint8_t        m_rnd;
+  static __uint24       m_lfsr;
 
 public:
   INLINE static void initialize() {
@@ -173,6 +174,7 @@ public:
     m_osc_level = 48;
 
     m_rnd = 1;
+    m_lfsr = 0x000001u;
 
     set_pitch_bend_range(2);
   }
@@ -401,7 +403,6 @@ public:
         int8_t wave_2 = get_wave_level(m_wave_table[2], m_phase[2]);
         result += wave_2 * m_osc_gain_effective[2];
       } else {
-        static __uint24 m_lfsr = 0x000001u;
         int8_t wave_2 = -(OSC_WAVE_TABLE_AMPLITUDE >> 1);
         uint8_t lsb = m_lfsr & 0x000001u;
         m_lfsr >>= 1;
@@ -766,3 +767,4 @@ template <uint8_t T> int8_t          Osc<T>::m_mono_osc2_pitch;
 template <uint8_t T> int8_t          Osc<T>::m_mono_osc2_detune;
 
 template <uint8_t T> uint8_t         Osc<T>::m_rnd;
+template <uint8_t T> __uint24        Osc<T>::m_lfsr;
