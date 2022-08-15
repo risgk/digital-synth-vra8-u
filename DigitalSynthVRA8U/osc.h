@@ -210,7 +210,7 @@ public:
 
   INLINE static void set_mixer_sub_osc_control(uint8_t controller_value) {
     m_mixer_sub_osc_control =
-      (((controller_value + 1) >> 1) * OSC_WAVE_TABLE_AMPLITUDE) >> 5;
+      (((controller_value + 1) >> 1) * OSC_WAVE_TABLE_AMPLITUDE) >> 6;
   }
 
   INLINE static void set_mixer_noise_control(uint8_t controller_value) {
@@ -450,6 +450,7 @@ public:
       } else {
         wave_1 = -128 + wave_1;
       }
+      wave_1 <<= 1;
       result += wave_1 * m_osc_gain_effective[1];
 
       // Noise
