@@ -437,7 +437,7 @@ public:
       int8_t wave_3 = get_wave_level(m_wave_table[3], m_phase[3]);
       result += wave_3 * m_osc_gain_effective[3];
     } else {
-      // Sub Osc
+      // Sub Osc (wave_1)
       if (m_phase[0] < m_freq[0]) {
         m_phase_high ^= 1;
       }
@@ -457,14 +457,14 @@ public:
         wave_1 = -128 + wave_1;
       }
       wave_1 <<= 1;
-      result += wave_1 * (static_cast<uint8_t>(m_osc_gain_effective[1]) << 1);
+      result += wave_1 * m_osc_gain_effective[1];
 
-      // Noise
       if (m_waveform[1] != WAVEFORM_NOI) {
         m_phase[2] += m_freq[2];
         int8_t wave_2 = get_wave_level(m_wave_table[2], m_phase[2]);
         result += wave_2 * m_osc_gain_effective[2];
       } else {
+        // Noise (wave_2)
         int8_t wave_2 = -OSC_WAVE_TABLE_AMPLITUDE;
         uint8_t lsb = m_lfsr & 0x000001u;
         m_lfsr >>= 1;
