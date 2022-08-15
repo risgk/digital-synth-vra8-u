@@ -625,10 +625,10 @@ private:
           m_osc_gain_effective[0] = base_gain + (base_gain >> 1);
           m_osc_gain_effective[2] = m_osc_gain_effective[0];
         }
-//
-//        if (m_waveform[0] == WAVEFORM_PUL) {
-//          m_osc_gain_effective[1] = -m_osc_gain_effective[0];
-//        }
+
+        if (m_waveform[0] == WAVEFORM_PUL) {
+          m_osc_gain_effective[1] = -m_osc_gain_effective[0];
+        }
       }
     }
   }
