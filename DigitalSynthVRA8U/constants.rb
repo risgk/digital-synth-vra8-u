@@ -54,7 +54,7 @@ P_BEND_BY_CC    = 35
 OSC_1_WAVE      = 24
 OSC_1_SHAPE     = 102
 MIXER_SUB_OSC   = 26
-MIXER_NOISE     = 54
+
 
 OSC_2_WAVE      = 55
 OSC_2_COARSE    = 20
@@ -120,6 +120,7 @@ POLY_MODE_ON    = 127
 
 OSC_WAVE_SAW       = 0
 OSC_WAVE_SIN       = 64
+OSC_WAVE_NOISE     = 96
 OSC_WAVE_PULSE     = 127
 
 OSC_DST_PITCH      = 0

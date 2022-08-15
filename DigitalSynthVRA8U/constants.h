@@ -54,7 +54,7 @@ const uint8_t   P_BEND_BY_CC    = 35;
 const uint8_t   OSC_1_WAVE      = 24;
 const uint8_t   OSC_1_SHAPE     = 102;
 const uint8_t   MIXER_SUB_OSC   = 26;
-const uint8_t   MIXER_NOISE     = 54;
+
 
 const uint8_t   OSC_2_WAVE      = 55;
 const uint8_t   OSC_2_COARSE    = 20;
@@ -120,6 +120,7 @@ const uint8_t   POLY_MODE_ON    = 127;
 
 const uint8_t   OSC_WAVE_SAW       = 0;
 const uint8_t   OSC_WAVE_SIN       = 64;
+const uint8_t   OSC_WAVE_NOISE     = 96;
 const uint8_t   OSC_WAVE_PULSE     = 127;
 
 const uint8_t   OSC_DST_PITCH      = 0;

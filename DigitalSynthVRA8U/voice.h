@@ -378,9 +378,6 @@ public:
     case MIXER_SUB_OSC  :
       IOsc<0>::set_mixer_sub_osc_control(controller_value);
       break;
-    case MIXER_NOISE    :
-      IOsc<0>::set_mixer_noise_control(controller_value);
-      break;
 
     case LFO_RATE       :
       IOsc<0>::set_lfo_rate(controller_value);
@@ -613,7 +610,7 @@ public:
     control_change(OSC_1_WAVE     , g_preset_table_OSC_1_WAVE     [program_number]);
     control_change(OSC_1_SHAPE    , g_preset_table_OSC_1_SHAPE    [program_number]);
     control_change(MIXER_SUB_OSC  , g_preset_table_MIXER_SUB_OSC  [program_number]);
-    control_change(MIXER_NOISE    , g_preset_table_MIXER_NOISE    [program_number]);
+
 
     control_change(OSC_2_WAVE     , g_preset_table_OSC_2_WAVE     [program_number]);
     control_change(OSC_2_COARSE   , g_preset_table_OSC_2_COARSE   [program_number]);
