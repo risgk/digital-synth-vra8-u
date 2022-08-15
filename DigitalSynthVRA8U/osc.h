@@ -80,7 +80,6 @@ class Osc {
   static int8_t         m_mono_osc2_detune;
 
   static uint8_t        m_rnd;
-  static boolean        m_phase_0_odd;
 
 public:
   INLINE static void initialize() {
@@ -174,7 +173,6 @@ public:
     m_osc_level = 48;
 
     m_rnd = 1;
-    m_phase_0_odd = false;
 
     set_pitch_bend_range(2);
   }
@@ -381,10 +379,21 @@ public:
 #endif
 
 #if 1
-    int16_t result = increase_phase_and_get_wave_level<0>() * m_osc_gain_effective[0];
-    result        += increase_phase_and_get_wave_level<1>() * m_osc_gain_effective[1];
-    result        += increase_phase_and_get_wave_level<2>() * m_osc_gain_effective[2];
-    result        += increase_phase_and_get_wave_level<3>() * m_osc_gain_effective[3];
+    m_phase[0] += m_freq[0];
+    int8_t wave_0 = get_wave_level(m_wave_table[0], m_phase[0]);
+    int16_t result = wave_0 * m_osc_gain_effective[0];
+
+    m_phase[1] += m_freq[1];
+    int8_t wave_1 = get_wave_level(m_wave_table[1], m_phase[1]);
+    result += wave_1 * m_osc_gain_effective[1];
+
+    m_phase[2] += m_freq[2];
+    int8_t wave_2 = get_wave_level(m_wave_table[2], m_phase[2]);
+    result += wave_2 * m_osc_gain_effective[2];
+
+    m_phase[3] += m_freq[3];
+    int8_t wave_3 = get_wave_level(m_wave_table[3], m_phase[3]);
+    result += wave_3 * m_osc_gain_effective[3];
 #else
     int16_t result  = 0;
 #endif
@@ -411,38 +420,10 @@ private:
     return result;
   }
 
-  template <uint8_t N>
-  INLINE static int8_t increase_phase_and_get_wave_level() {
-    if (N == 3) {
-      if (m_mono_mode) {
-        return 0;
-      }
-    }
-
-    if (N == 0) {
-      uint8_t prev_phase_0 = high_byte(m_phase[0]);
-      m_phase[0] += m_freq[0];
-      if (m_mono_mode) {
-        m_phase_0_odd ^= (high_byte(m_phase[0]) < prev_phase_0);
-      }
-    }
-    else {
-      m_phase[N] += m_freq[N];
-    }
-
-    uint16_t phase = m_phase[N];
-    if (N == 1) {
-      if (m_mono_mode) {
-        m_phase[1] = m_phase[0] >> 1;
-        if (m_phase_0_odd) {
-          m_phase[1] += 0x8000;
-        }
-      }
-    }
-
-    uint8_t curr_index = high_byte(m_phase[N]);
-    uint8_t next_weight = low_byte(m_phase[N]);
-    uint16_t two_data = pgm_read_word(m_wave_table[N] + curr_index);
+  INLINE static int8_t get_wave_level(const uint8_t* wave_table, uint16_t phase) {
+    uint8_t curr_index = high_byte(phase);
+    uint8_t next_weight = low_byte(phase);
+    uint16_t two_data = pgm_read_word(wave_table + curr_index);
     uint8_t curr_data = low_byte(two_data);
     uint8_t next_data = high_byte(two_data);
 
@@ -601,8 +582,6 @@ private:
           m_osc_gain_effective[0] = base_gain + (base_gain >> 1);
           m_osc_gain_effective[2] = m_osc_gain_effective[0];
         }
-
-        m_osc_gain_effective[1] = 48;
       }
     }
   }
@@ -768,4 +747,3 @@ template <uint8_t T> int8_t          Osc<T>::m_mono_osc2_pitch;
 template <uint8_t T> int8_t          Osc<T>::m_mono_osc2_detune;
 
 template <uint8_t T> uint8_t         Osc<T>::m_rnd;
-template <uint8_t T> boolean         Osc<T>::m_phase_0_odd;
