@@ -137,9 +137,9 @@
     |                            35 | x             | o             | Pitch Bend by CC [-|+]           | TODO
     |                               |               |               |                                  |
     |                            24 | x             | o             | Osc 1 Wave [Saw|-|Sin|-|Pls]     | TODO
-    |                           102 | x             | o             | Osc 1 Shape * [-|+]              | TODO
+    |                           102 | x             | o             | Osc 1 Shape ** [-|+]             | TODO
     |                            55 | x             | o             | Osc 2 Wave * [Saw|-|Sin|Nos|Pls] | TODO
-    |                               |               |               |                                  |
+    |                            54 | x             | o             | Mixer Noise * [Off|0.0|1.0]      | TODO
     |                               |               |               |                                  |
     |                            20 | x             | o             | Osc 2 Coarse * [-|+]             |
     |                            21 | x             | o             | Osc 2 Fine * [-|+]               |
