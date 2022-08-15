@@ -387,8 +387,21 @@ public:
     int8_t wave_1 = get_wave_level(m_wave_table[1], m_phase[1]);
     result += wave_1 * m_osc_gain_effective[1];
 
-    m_phase[2] += m_freq[2];
-    int8_t wave_2 = get_wave_level(m_wave_table[2], m_phase[2]);
+    int8_t wave_2;
+    if (m_mono_mode==false) {
+      m_phase[2] += m_freq[2];
+      wave_2 = get_wave_level(m_wave_table[2], m_phase[2]);
+    } else {
+      static __uint24 m_lfsr = 0x000001u;
+      wave_2 = -(OSC_WAVE_TABLE_AMPLITUDE >> 1);
+      uint8_t lsb = m_lfsr & 0x000001u;
+      m_lfsr >>= 1;
+      m_lfsr ^= (-lsb) & 0xE10000u;
+      if (lsb) {
+        wave_2 = +(OSC_WAVE_TABLE_AMPLITUDE >> 1);
+      }
+    }
+
     result += wave_2 * m_osc_gain_effective[2];
 
     m_phase[3] += m_freq[3];
