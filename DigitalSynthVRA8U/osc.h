@@ -82,6 +82,7 @@ class Osc {
   static uint8_t        m_rnd;
 
   static __uint24       m_lfsr;
+  static uint8_t        m_phase_high;
   static int16_t        m_osc1_shape;
   static int8_t         m_osc1_shape_control;
   static int8_t         m_mixer_sub_osc_control;
@@ -181,6 +182,7 @@ public:
     m_rnd = 1;
 
     m_lfsr = 0x000001u;
+    m_phase_high = 0;
     m_osc1_shape = 0;
     m_osc1_shape_control = 0;
     m_mixer_sub_osc_control = 0;
@@ -429,25 +431,32 @@ public:
       result += wave_3 * m_osc_gain_effective[3];
     } else {
       // Sub Osc
-      m_phase[1] = m_phase[0];
-      wave_2 = high_sbyte(m_phase[1]);
-      if (wave_2 < -64) {
-        wave_2 = -64 - (wave_2 + 64);
-      } else if (wave_2 < 64) {
+      if (m_phase[0] < m_freq[0]) {
+        m_phase_high ^= 1;
+      }
+      m_phase[1] = m_phase[0] >> 1;
+      if (m_phase_high) {
+        m_phase[1] += 0x8000;
+      }
+
+      int8_t wave_1 = high_sbyte(m_phase[1]);
+      if (wave_1 < -64) {
+        wave_1 = -64 - (wave_1 + 64);
+      } else if (wave_1 < 64) {
         // do nothing
       } else {
-        wave_2 = 64 - (wave_2 - 64);
+        wave_1 = 64 - (wave_1 - 64);
       }
-      wave_2 = -wave_2;
-      result += wave_2 * m_osc_gain_effective[1];
+      wave_1 = -wave_1;
+      result += wave_1 * m_osc_gain_effective[1];
 
       // Noise
-      int8_t wave_3 = -(OSC_WAVE_TABLE_AMPLITUDE >> 1);
+      int8_t wave_3 = -127;
       uint8_t lsb = m_lfsr & 0x000001u;
       m_lfsr >>= 1;
       m_lfsr ^= (-lsb) & 0xE10000u;
       if (lsb) {
-        wave_3 = +(OSC_WAVE_TABLE_AMPLITUDE >> 1);
+        wave_3 = +127;
       }
       result += wave_3 * m_osc_gain_effective[3];
     }
@@ -639,7 +648,7 @@ private:
           m_osc_gain_effective[2] = m_osc_gain_effective[0];
         }
 
-        m_osc_gain_effective[1] = (base_gain * m_mixer_sub_osc_control) >> 6;
+        m_osc_gain_effective[1] = (base_gain * m_mixer_sub_osc_control) >> 5;
         m_osc_gain_effective[3] = (base_gain * m_mixer_noise_control) >> 6;
       }
     }
@@ -808,6 +817,7 @@ template <uint8_t T> int8_t          Osc<T>::m_mono_osc2_detune;
 template <uint8_t T> uint8_t         Osc<T>::m_rnd;
 
 template <uint8_t T> __uint24        Osc<T>::m_lfsr;
+template <uint8_t T> uint8_t         Osc<T>::m_phase_high;
 template <uint8_t T> int16_t         Osc<T>::m_osc1_shape;
 template <uint8_t T> int8_t          Osc<T>::m_osc1_shape_control;
 template <uint8_t T> int8_t          Osc<T>::m_mixer_sub_osc_control;
