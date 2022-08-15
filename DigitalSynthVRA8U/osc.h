@@ -380,21 +380,20 @@ public:
 
 #if 1
     m_phase[0] += m_freq[0];
-    m_phase[1] += m_freq[1];
-    m_phase[2] += m_freq[2];
-    m_phase[3] += m_freq[3];
-
     int8_t wave_0 = get_wave_level(m_wave_table[0], m_phase[0]);
-    int8_t wave_1 = get_wave_level(m_wave_table[1], m_phase[1]);
-    int8_t wave_2 = get_wave_level(m_wave_table[2], m_phase[2]);
-    int8_t wave_3 = get_wave_level(m_wave_table[3], m_phase[3]);
+    int16_t result = wave_0 * m_osc_gain_effective[0];
 
-    // amp and mix
-    int16_t level_0 = wave_0 * m_osc_gain_effective[0];
-    int16_t level_1 = wave_1 * m_osc_gain_effective[1];
-    int16_t level_2 = wave_2 * m_osc_gain_effective[2];
-    int16_t level_3 = wave_3 * m_osc_gain_effective[3];
-    int16_t result  = level_0 + level_1 + level_2 + level_3;
+    m_phase[1] += m_freq[1];
+    int8_t wave_1 = get_wave_level(m_wave_table[1], m_phase[1]);
+    result += wave_1 * m_osc_gain_effective[1];
+
+    m_phase[2] += m_freq[2];
+    int8_t wave_2 = get_wave_level(m_wave_table[2], m_phase[2]);
+    result += wave_2 * m_osc_gain_effective[2];
+
+    m_phase[3] += m_freq[3];
+    int8_t wave_3 = get_wave_level(m_wave_table[3], m_phase[3]);
+    result += wave_3 * m_osc_gain_effective[3];
 #else
     int16_t result  = 0;
 #endif
