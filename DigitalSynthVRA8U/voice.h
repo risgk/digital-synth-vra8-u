@@ -608,8 +608,8 @@ public:
 
     control_change(OSC_1_WAVE     , g_preset_table_OSC_1_WAVE     [program_number]);
     control_change(OSC_1_SHAPE    , g_preset_table_OSC_1_SHAPE    [program_number]);
-    control_change(MIXER_SUB_OSC  , g_preset_table_MIXER_SUB_OSC  [program_number]);
 
+    control_change(MIXER_SUB_OSC  , g_preset_table_MIXER_SUB_OSC  [program_number]);
 
     control_change(OSC_2_WAVE     , g_preset_table_OSC_2_WAVE     [program_number]);
     control_change(OSC_2_COARSE   , g_preset_table_OSC_2_COARSE   [program_number]);

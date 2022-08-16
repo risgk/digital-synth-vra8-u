@@ -53,8 +53,8 @@ P_BEND_BY_CC    = 35
 
 OSC_1_WAVE      = 24
 OSC_1_SHAPE     = 102
-MIXER_SUB_OSC   = 26
 
+MIXER_SUB_OSC   = 26
 
 OSC_2_WAVE      = 55
 OSC_2_COARSE    = 20

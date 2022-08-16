@@ -140,8 +140,8 @@
     |                               |               |               |                                  |
     |                            24 | x             | o             | Osc 1 Wave [Saw|-|Tri|Pls|Sqr]   | TODO
     |                           102 | x             | o             | Osc 1 Shape @ [-|+]              | TODO
-    |                            26 | x             | o             | Mixer Sub Osc @                  | TODO
     |                               |               |               |                                  |
+    |                            26 | x             | o             | Mixer Sub Osc @                  | TODO
     |                               |               |               |                                  |
     |                            55 | x             | o             | Osc 2 Wave @ [Saw|-|Tri|Nos|Sqr] | TODO
     |                            20 | x             | o             | Osc 2 Coarse @ [-|+]             |
