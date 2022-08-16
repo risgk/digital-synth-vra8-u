@@ -209,10 +209,14 @@ public:
 
   template <uint8_t N>
   INLINE static void set_pitch_eg_amt(uint8_t controller_value) {
-    if (controller_value < 16) {
+    if (controller_value < 14) {
       m_pitch_eg_amt[N] = -96;
-    } else if (controller_value < 112) {
-      m_pitch_eg_amt[N] = ((controller_value - 64) << 1);
+    } else if (controller_value < 60) {
+      m_pitch_eg_amt[N] = (controller_value - 62) << 1;
+    } else if (controller_value < 68) {
+      m_pitch_eg_amt[N] = controller_value - 64;
+    } else if (controller_value < 114) {
+      m_pitch_eg_amt[N] = (controller_value - 66) << 1;
     } else {
       m_pitch_eg_amt[N] = 96;
     }
@@ -588,7 +592,7 @@ private:
     } else {
       pitch_eg_amt = m_pitch_eg_amt[0];
     }
-    m_pitch_real[N] =  (64 << 8) + m_pitch_current[N] + m_pitch_bend_normalized + (pitch_eg_amt * eg_level);
+    m_pitch_real[N] =  (64 << 8) + m_pitch_current[N] + m_pitch_bend_normalized + ((pitch_eg_amt * eg_level) >> 1);
 
     uint8_t coarse = high_byte(m_pitch_real[N]);
     if (coarse < (NOTE_NUMBER_MIN + 64)) {
