@@ -1,4 +1,4 @@
-require_relative 'DigitalSynthVRA8Q/constants'
+require_relative 'DigitalSynthVRA8U/constants'
 
 $file = File.open("sample-midi-stream.bin", "wb")
 
@@ -24,6 +24,13 @@ def wait(length)
   length.times { $file.write([ACTIVE_SENSING].pack("C")) }
 end
 
+def play_mono_a(oct)
+  play_mono(12, oct, 100)
+  play_mono(16, oct, 100)
+  play_mono(14, oct, 100)
+  play_mono(17, oct, 100)
+end
+
 def play_a(oct)
   play_chord_a(12, 16, 19, 23, oct, 100)
   play_chord_a(16, 19, 23, 26, oct, 100)
@@ -36,6 +43,13 @@ def play_b(oct)
   play_chord_b(16, 19, 23, 26, oct, 100)
   play_chord_b(14, 17, 21, 24, oct, 100)
   play_chord_b(17, 21, 24, 28, oct, 100)
+end
+
+def play_mono(x, oct, velocity)
+  note_on(x + (oct * 12), velocity)
+  wait(3200)
+  note_off(x + (oct * 12))
+  wait(800)
 end
 
 def play_chord_a(x, y, z, w, oct, velocity)
@@ -78,11 +92,11 @@ end
 sound_off
 
 program_change(0)
-play_a(3)
+play_mono_a(3)
 sound_off
 
 program_change(1)
-play_a(3)
+play_b(3)
 sound_off
 
 program_change(2)
@@ -90,15 +104,15 @@ play_a(3)
 sound_off
 
 program_change(3)
-play_a(4)
+play_mono_a(5)
 sound_off
 
-program_change(5)
+program_change(4)
 play_b(4)
 sound_off
 
-control_change(VOICE_MODE     , 127)
-play_b(2)
+program_change(5)
+play_mono_a(3)
 sound_off
 
 $file.close
