@@ -236,7 +236,7 @@ presetControllers[OSC_1_SHAPE    ] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
 presetControllers[MIXER_SUB_OSC  ] = [127, 127, 127, 127, 127, 0  , 0  , 0  ];
 
 presetControllers[OSC_2_WAVE     ] = [0  , 0  , 0  , 127, 0  , 64 , 0  , 0  ];
-presetControllers[OSC_2_COARSE   ] = [71 , 64 , 64 , 64 , 71 , 52 , 64 , 64 ];
+presetControllers[OSC_2_COARSE   ] = [71 , 64 , 76 , 64 , 71 , 52 , 64 , 64 ];
 presetControllers[OSC_2_FINE     ] = [68 , 72 , 72 , 72 , 68 , 64 , 72 , 64 ];
 presetControllers[MIXER_OSC_MIX  ] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 0  ];
 
@@ -902,32 +902,32 @@ function getStoredCCValueString(index, number) {
 <table>
 <tr><td>Preset</td>
     <td></td>
-    <td><input type="button" value="#4 [Par] Quad"    onclick="preset(4)"></td>
+    <td><input type="button" value="#4 [Para] Quad"      onclick="preset(4)"></td>
     <td></td>
-    <td><input type="button" value="#5 [Lgt] Pulse"   onclick="preset(5)"></td>
+    <td><input type="button" value="#5 [Legato] PWM"     onclick="preset(5)"></td>
     <td></td>
-    <td><input type="button" value="#6 [Par] Saw"     onclick="preset(6)"></td>
+    <td><input type="button" value="#6 [Para] Saw"       onclick="preset(6)"></td>
     <td></td>
-    <td><input type="button" value="#7 [Lgt] Initial" onclick="preset(7)"></td>
+    <td><input type="button" value="#7 [Legato] Initial" onclick="preset(7)"></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>Misc</td>
     <td></td>
-    <td><input type="button" value="Random Ctrl"      onclick="setRandom()"></td>
+    <td><input type="button" value="Random Ctrl"         onclick="setRandom()"></td>
     <td></td>
-    <td><input type="button" value="Random FX"        onclick="setRandomChorus()"></td></tr>
+    <td><input type="button" value="Random FX"           onclick="setRandomChorus()"></td></tr>
 <tr><td></td>
     <td></td>
-    <td><input type="button" value="#0 [Lgt] Fifth"   onclick="preset(0)"></td>
+    <td><input type="button" value="#0 [Legato] Fifth"   onclick="preset(0)"></td>
     <td></td>
-    <td><input type="button" value="#1 [Par] Plus"    onclick="preset(1)"></td>
+    <td><input type="button" value="#1 [Para] Plus"      onclick="preset(1)"></td>
     <td></td>
-    <td><input type="button" value="#2 [Par] Minus"   onclick="preset(2)"></td>
+    <td><input type="button" value="#2 [Para] Minus"     onclick="preset(2)"></td>
     <td></td>
-    <td><input type="button" value="#3 [Mon] Decay"   onclick="preset(3)"></td>
+    <td><input type="button" value="#3 [Mono] Decay"     onclick="preset(3)"></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td></td>
     <td></td>
-    <td><input type="button" value="Reset"            onclick="panic()"></td></tr>
+    <td><input type="button" value="Reset"               onclick="panic()"></td></tr>
 <tr><td>&nbsp;</td></tr>
 </table>
 
