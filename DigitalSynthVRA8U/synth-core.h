@@ -15,8 +15,6 @@ class SynthCore {
 public:
   INLINE static void initialize() {
     IVoice<0>::initialize();
-    m_system_exclusive = false;
-    m_system_data_remaining = 0;
     m_running_status = STATUS_BYTE_INVALID;
     m_first_data = DATA_BYTE_INVALID;
   }

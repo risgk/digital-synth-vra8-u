@@ -100,20 +100,6 @@ public:
     m_portamento_coef[2] = PORTAMENTO_COEF_OFF;
     m_portamento_coef[3] = PORTAMENTO_COEF_OFF;
 
-    m_pitch_eg_amt[0] = 0;
-    m_pitch_eg_amt[1] = 0;
-    m_lfo_mod_level[0] = 0;
-    m_lfo_mod_level[1] = 0;
-    m_lfo_mod_level[2] = 0;
-    m_lfo_mod_level[3] = 0;
-    m_lfo_phase = 0;
-    m_lfo_wave_level = 0;
-    m_lfo_level = 0;
-    m_lfo_rate = 0;
-    m_lfo_depth[0] = 0;
-    m_lfo_depth[1] = 0;
-    m_pitch_lfo_amt[0] = 0;
-    m_pitch_lfo_amt[1] = 0;
     m_lfo_waveform = LFO_WAVEFORM_TRI_ASYNC;
     m_lfo_sampled = 64;
     m_lfo_fade_coef = LFO_FADE_COEF_OFF;
@@ -130,15 +116,9 @@ public:
     set_mono_osc2_detune (0);
 
     m_chorus_depth_control_actual = 64;
-    m_chorus_lfo_phase = 0;
-    m_chorus_lfo_wave_level = 0;
-    m_chorus_lfo_level = 0;
-    m_chorus_delay_time[0] = 0;
-    m_chorus_delay_time[1] = 0;
 
     m_waveform[0] = WAVEFORM_SAW;
     m_waveform[1] = WAVEFORM_SAW;
-    m_pitch_bend_normalized = 0;
     m_pitch_target[0] = 60 << 8;
     m_pitch_target[1] = 60 << 8;
     m_pitch_target[2] = 60 << 8;
@@ -167,35 +147,12 @@ public:
     m_freq_temp[1] = g_osc_freq_table[0];
     m_freq_temp[2] = g_osc_freq_table[0];
     m_freq_temp[3] = g_osc_freq_table[0];
-    m_phase[0] = 0;
-    m_phase[1] = 0;
-    m_phase[2] = 0;
-    m_phase[3] = 0;
-    m_osc_on[0] = false;
-    m_osc_on[1] = false;
-    m_osc_on[2] = false;
-    m_osc_on[3] = false;
-    m_osc_on_temp[0] = false;
-    m_osc_on_temp[1] = false;
-    m_osc_on_temp[2] = false;
-    m_osc_on_temp[3] = false;
-    m_osc_gain_effective[0] = 0;
-    m_osc_gain_effective[1] = 0;
-    m_osc_gain_effective[2] = 0;
-    m_osc_gain_effective[3] = 0;
-    m_osc_gain[0] = 0;
-    m_osc_gain[1] = 0;
-    m_osc_gain[2] = 0;
-    m_osc_gain[3] = 0;
     m_osc_level = 48;
 
     m_rnd = 1;
 
     m_lfsr = 0x000001u;
-    m_phase_high = 0;
-    m_osc1_shape_control = 0;
     m_osc1_shape = 0x8000;
-    m_mixer_sub_osc_control = 0;
     for (uint8_t i = 0; i < OSC_MIX_TABLE_LENGTH; ++i) {
       m_mix_table[i] = static_cast<uint8_t>(sqrtf(static_cast<float>(i) /
                                                   (OSC_MIX_TABLE_LENGTH - 1)) * 255);

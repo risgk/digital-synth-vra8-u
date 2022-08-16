@@ -33,8 +33,6 @@ class EG {
 public:
   INLINE static void initialize() {
     m_state = STATE_IDLE;
-    m_level = 0;
-    m_level_out = 0;
     set_attack(0);
     set_decay(0);
     set_sustain(127);

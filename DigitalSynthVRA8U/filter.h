@@ -29,13 +29,6 @@ class Filter {
 
 public:
   INLINE static void initialize() {
-    m_b_2_over_a_0 = 0;
-    m_a_1_over_a_0_high = 0;
-    m_a_2_over_a_0 = 0;
-    m_x_1 = 0;
-    m_x_2 = 0;
-    m_y_1 = 0;
-    m_y_2 = 0;
     m_cutoff_current = 127;
 
     set_cutoff(127);

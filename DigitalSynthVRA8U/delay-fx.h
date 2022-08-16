@@ -11,9 +11,6 @@ class DelayFx {
 
 public:
   INLINE static void initialize() {
-    for (uint16_t i = 0; i < DELAY_BUFF_SIZE; ++i) {
-      m_buff[i] = 0;
-    }
     m_wp = DELAY_BUFF_SIZE - 1;
   }
 

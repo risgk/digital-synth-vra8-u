@@ -40,15 +40,8 @@ public:
     m_note_on_number[1] = NOTE_NUMBER_INVALID;
     m_note_on_number[2] = NOTE_NUMBER_INVALID;
     m_note_on_number[3] = NOTE_NUMBER_INVALID;
-    for (uint8_t i = 0; i < sizeof(m_note_on_count); ++i) {
-      m_note_on_count[i] = 0;
-    }
-    m_note_on_total_count = 0;
-    m_sustain_pedal = false;
     m_voice_mode = VOICE_PARAPHONIC;
 
-    m_output_error = 0;
-    m_portamento = 0;
     IOsc<0>::initialize();
     IOsc<0>::set_mono_mode(m_voice_mode);
     IFilter<0>::initialize();
@@ -62,12 +55,9 @@ public:
     IDelayFx<0>::initialize();
 
     m_chorus_mode = CHORUS_MODE_OFF;
-    m_velocity_to_cutoff = 0;
 
     m_eg_osc_amt = 64;
-    m_eg_osc_dst = 0;
     m_lfo_osc_amt = 64;
-    m_lfo_osc_dst = 0;
 
     m_rnd = 1;
   }
@@ -89,7 +79,6 @@ public:
 #endif
 
     if (m_voice_mode != VOICE_PARAPHONIC) {
-
       if (m_voice_mode == VOICE_LEGATO) {
         ++m_note_on_total_count;
         ++m_note_on_count[note_number];
