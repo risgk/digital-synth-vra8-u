@@ -238,12 +238,12 @@ presetControllers[MIXER_SUB_OSC  ] = [127, 127, 127, 127, 127, 127, 0  , 0  ];
 presetControllers[OSC_2_WAVE     ] = [0  , 0  , 0  , 127, 0  , 0  , 0  , 0  ];
 presetControllers[OSC_2_COARSE   ] = [71 , 64 , 64 , 64 , 71 , 71 , 64 , 64 ];
 presetControllers[OSC_2_FINE     ] = [68 , 72 , 72 , 72 , 68 , 68 , 72 , 64 ];
-presetControllers[MIXER_OSC_MIX  ] = [32 , 64 , 64 , 64 , 32 , 32 , 64 , 0  ];
+presetControllers[MIXER_OSC_MIX  ] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 0  ];
 
 presetControllers[FILTER_CUTOFF  ] = [112, 4  , 124, 76 , 112, 112, 127, 127];
 presetControllers[FILTER_RESO    ] = [64 , 64 , 32 , 64 , 64 , 64 , 0  , 0  ];
 presetControllers[FILTER_EG_AMT  ] = [64 , 124, 4 ,  88 , 64 , 64 , 64 , 64 ];
-presetControllers[FILTER_KEY_TRK ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
+presetControllers[FILTER_KEY_TRK ] = [127, 127, 127, 127, 127, 127, 127, 127];
 
 presetControllers[EG_ATTACK      ] = [0  , 64 , 96 , 0  , 0  , 0  , 0  , 0  ];
 presetControllers[EG_DECAY       ] = [127, 96 , 96 , 96 , 127, 127, 127, 127];
@@ -252,7 +252,7 @@ presetControllers[EG_RELEASE     ] = [0  , 0  , 0  , 96 , 0  , 0  , 0  , 0  ];
 
 presetControllers[EG_OSC_AMT     ] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
 presetControllers[EG_OSC_DST     ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
-presetControllers[VOICE_MODE     ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
+presetControllers[VOICE_MODE     ] = [127, 0  , 0  , 64 , 0  , 0  , 0  , 127];
 presetControllers[PORTAMENTO     ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
 
 presetControllers[LFO_WAVE       ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
@@ -271,7 +271,7 @@ presetControllers[AMP_SUSTAIN    ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
 presetControllers[AMP_RELEASE    ] = [0  , 0  , 0  , 96 , 0  , 0  , 0  , 0  ];
 
 presetControllers[CHORUS_MODE    ] = [127, 127, 127, 127, 127, 127, 127, 0  ];
-presetControllers[CHORUS_RATE    ] = [32 , 48 , 48 , 48 , 16 , 48 , 32 , 32 ];
+presetControllers[CHORUS_RATE    ] = [32 , 32 , 48 , 48 , 16 , 48 , 32 , 32 ];
 presetControllers[CHORUS_DEPTH   ] = [32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 ];
 presetControllers[CHORUS_DLY_TIME] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
 
@@ -902,86 +902,86 @@ function getStoredCCValueString(index, number) {
 <table>
 <tr><td>Preset</td>
     <td></td>
-    <td><input type="button" value="#4 Para C1"     onclick="preset(4)"></td>
+    <td><input type="button" value="#4 [Lgt] Para C1" onclick="preset(4)"></td>
     <td></td>
-    <td><input type="button" value="#5 Para C2"     onclick="preset(5)"></td>
+    <td><input type="button" value="#5 [Lgt] Para C2" onclick="preset(5)"></td>
     <td></td>
-    <td><input type="button" value="#6 Saw"         onclick="preset(6)"></td>
+    <td><input type="button" value="#6 [Par] Saw"     onclick="preset(6)"></td>
     <td></td>
-    <td><input type="button" value="#7 Initial"     onclick="preset(7)"></td>
+    <td><input type="button" value="#7 [Lgt] Initial" onclick="preset(7)"></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>Misc</td>
     <td></td>
-    <td><input type="button" value="Random Ctrl"    onclick="setRandom()"></td>
+    <td><input type="button" value="Random Ctrl"      onclick="setRandom()"></td>
     <td></td>
-    <td><input type="button" value="Random FX"      onclick="setRandomChorus()"></td></tr>
+    <td><input type="button" value="Random FX"        onclick="setRandomChorus()"></td></tr>
 <tr><td></td>
     <td></td>
-    <td><input type="button" value="#0 Para"        onclick="preset(0)"></td>
+    <td><input type="button" value="#0 [Lgt] Fifth"   onclick="preset(0)"></td>
     <td></td>
-    <td><input type="button" value="#1 Plus"        onclick="preset(1)"></td>
+    <td><input type="button" value="#1 [Par] Plus"    onclick="preset(1)"></td>
     <td></td>
-    <td><input type="button" value="#2 Minus"       onclick="preset(2)"></td>
+    <td><input type="button" value="#2 [Par] Minus"   onclick="preset(2)"></td>
     <td></td>
-    <td><input type="button" value="#3 Decay"       onclick="preset(3)"></td>
+    <td><input type="button" value="#3 [Mon] Decay"   onclick="preset(3)"></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td></td>
     <td></td>
-    <td><input type="button" value="Reset"          onclick="panic()"></td></tr>
+    <td><input type="button" value="Reset"            onclick="panic()"></td></tr>
 <tr><td>&nbsp;</td></tr>
 </table>
 
 <table>
 <tr><td>Recall</td>
     <td></td>
-    <td><input type="button" value="#12"            onclick="loadControllers(12)"></td>
+    <td><input type="button" value="#12"     onclick="loadControllers(12)"></td>
     <td></td>
-    <td><input type="button" value="#13"            onclick="loadControllers(13)"></td>
+    <td><input type="button" value="#13"     onclick="loadControllers(13)"></td>
     <td></td>
-    <td><input type="button" value="#14"            onclick="loadControllers(14)"></td>
+    <td><input type="button" value="#14"     onclick="loadControllers(14)"></td>
     <td></td>
-    <td><input type="button" value="#15"            onclick="loadControllers(15)"></td>
+    <td><input type="button" value="#15"     onclick="loadControllers(15)"></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>Store</td>
     <td></td>
-    <td><input type="button" value="#12"            onclick="saveControllers(12)"></td>
+    <td><input type="button" value="#12"     onclick="saveControllers(12)"></td>
     <td></td>
-    <td><input type="button" value="#13"            onclick="saveControllers(13)"></td>
+    <td><input type="button" value="#13"     onclick="saveControllers(13)"></td>
     <td></td>
-    <td><input type="button" value="#14"            onclick="saveControllers(14)"></td>
+    <td><input type="button" value="#14"     onclick="saveControllers(14)"></td>
     <td></td>
-    <td><input type="button" value="#15"            onclick="saveControllers(15)"></td>
+    <td><input type="button" value="#15"     onclick="saveControllers(15)"></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>Import</td>
     <td></td>
     <td><input type="file" id="fileImportAll" style="display:none" accept=".json"/>
-        <input type="button" value="All"            onclick="fileImportAll()"></td>
+        <input type="button" value="All"     onclick="fileImportAll()"></td>
     <td></td>
     <td><input type="file" id="fileImportCurrent" style="display:none" accept=".json"/>
-        <input type="button" value="Current"        onclick="fileImportCurrent()"></td></tr>
+        <input type="button" value="Current" onclick="fileImportCurrent()"></td></tr>
 <tr><td></td>
     <td></td>
-    <td><input type="button" value="#8 "            onclick="loadControllers(8)" ></td>
+    <td><input type="button" value="#8 "     onclick="loadControllers(8)" ></td>
     <td></td>
-    <td><input type="button" value="#9 "            onclick="loadControllers(9)" ></td>
+    <td><input type="button" value="#9 "     onclick="loadControllers(9)" ></td>
     <td></td>
-    <td><input type="button" value="#10"            onclick="loadControllers(10)"></td>
+    <td><input type="button" value="#10"     onclick="loadControllers(10)"></td>
     <td></td>
-    <td><input type="button" value="#11"            onclick="loadControllers(11)"></td>
+    <td><input type="button" value="#11"     onclick="loadControllers(11)"></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td></td>
     <td></td>
-    <td><input type="button" value="#8 "            onclick="saveControllers(8)" ></td>
+    <td><input type="button" value="#8 "     onclick="saveControllers(8)" ></td>
     <td></td>
-    <td><input type="button" value="#9 "            onclick="saveControllers(9)" ></td>
+    <td><input type="button" value="#9 "     onclick="saveControllers(9)" ></td>
     <td></td>
-    <td><input type="button" value="#10"            onclick="saveControllers(10)"></td>
+    <td><input type="button" value="#10"     onclick="saveControllers(10)"></td>
     <td></td>
-    <td><input type="button" value="#11"            onclick="saveControllers(11)"></td>
+    <td><input type="button" value="#11"     onclick="saveControllers(11)"></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>Export</td>
     <td></td>
-    <td><input type="button" value="All"            onclick="fileExport()"></td></tr>
+    <td><input type="button" value="All"     onclick="fileExport()"></td></tr>
 <tr><td>&nbsp;</td></tr>
 </table>
 
