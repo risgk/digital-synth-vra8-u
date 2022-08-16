@@ -582,13 +582,16 @@ private:
 
   template <uint8_t N>
   INLINE static void update_freq_1st(uint8_t eg_level) {
+    (void) eg_level;
+
     int8_t pitch_eg_amt;
     if ((N == 2) && m_mono_mode) {
       pitch_eg_amt = m_pitch_eg_amt[1];
     } else {
       pitch_eg_amt = m_pitch_eg_amt[0];
     }
-    m_pitch_real[N] =  (64 << 8) + m_pitch_current[N] + m_pitch_bend_normalized + (pitch_eg_amt * eg_level);
+    m_pitch_real[N] =  (64 << 8) + m_pitch_current[N] + m_pitch_bend_normalized +
+                                                        mul_uq16_sq8(IEG<0>::m_level, pitch_eg_amt);
 
     uint8_t coarse = high_byte(m_pitch_real[N]);
     if (coarse < (NOTE_NUMBER_MIN + 64)) {
@@ -719,7 +722,7 @@ private:
       int16_t shape_eg_mod = ((eg_level * m_shape_eg_amt) << 1);
       int16_t shape_lfo_mod = (mul_sq16_sq8(m_lfo_level, m_shape_lfo_amt) << 1);
       m_osc1_shape = 0x8000 - (m_osc1_shape_control << 8) +
-        + shape_eg_mod + shape_eg_mod + shape_lfo_mod + shape_lfo_mod;
+                              shape_eg_mod + shape_eg_mod + shape_lfo_mod + shape_lfo_mod;
     } else {
       m_lfo_mod_level[1] = m_lfo_mod_level[0];
       m_lfo_mod_level[2] = m_lfo_mod_level[0];
