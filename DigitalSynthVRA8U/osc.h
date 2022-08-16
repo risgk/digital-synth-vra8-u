@@ -233,7 +233,7 @@ public:
 
   INLINE static void set_mixer_sub_osc_control(uint8_t controller_value) {
     m_mixer_sub_osc_control =
-      (((controller_value + 1) >> 1) * OSC_WAVE_TABLE_AMPLITUDE) >> 6;
+      (((controller_value + 1) >> 1) * ((OSC_WAVE_TABLE_AMPLITUDE * 3) / 4)) >> 6;
   }
 
   INLINE static void set_osc_level(uint8_t controller_value) {
