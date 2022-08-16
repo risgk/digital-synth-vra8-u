@@ -685,11 +685,11 @@ private:
       m_osc_gain_effective[N] = m_osc_gain[N];
     } else {
       if (N == 0) {
-        m_osc_gain_effective[0] = high_byte(m_mix_table[(OSC_MIX_TABLE_LENGTH - 1) - m_mono_osc2_mix] * m_osc_level);
-        m_osc_gain_effective[2] = high_byte(m_mix_table[                             m_mono_osc2_mix] * m_osc_level);
-        m_osc_gain_effective[1] = (m_osc_level * m_mixer_sub_osc_control) >> 6;
+        uint8_t base_gain = m_osc_level << 1;
+        m_osc_gain_effective[0] = high_byte(m_mix_table[(OSC_MIX_TABLE_LENGTH - 1) - m_mono_osc2_mix] * base_gain);
+        m_osc_gain_effective[2] = high_byte(m_mix_table[                             m_mono_osc2_mix] * base_gain);
+        m_osc_gain_effective[1] = (base_gain * m_mixer_sub_osc_control) >> 6;
         m_osc_gain_effective[3] = 0;
-
       }
     }
   }
