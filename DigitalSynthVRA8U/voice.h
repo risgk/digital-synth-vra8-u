@@ -489,12 +489,14 @@ public:
       break;
 
     case P_BEND_BY_CC   :
-      uint8_t lsb = 0;
-      uint8_t msb = controller_value;
-      if (msb == 0x7F) {
-        lsb = 0x7F;
+      {
+        uint8_t lsb = 0;
+        uint8_t msb = controller_value;
+        if (msb == 0x7F) {
+          lsb = 0x7F;
+        }
+        pitch_bend(lsb, msb);
       }
-      pitch_bend(lsb, msb);
       break;
 
     case MIXER_OSC_MIX  :
