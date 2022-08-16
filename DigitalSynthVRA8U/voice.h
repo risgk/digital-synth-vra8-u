@@ -664,12 +664,12 @@ public:
   INLINE static int8_t clock(int8_t& right_level) {
     ++m_count;
 
-    uint8_t eg_output_0 = IEG<0>::clock(m_count);
+    uint16_t eg_output_0 = IEG<0>::clock(m_count);
     int16_t osc_output = IOsc<0>::clock(m_count, eg_output_0);
     int16_t lfo_output = IOsc<0>::get_lfo_level();
-    int16_t filter_output = IFilter<0>::clock(m_count, osc_output, eg_output_0, lfo_output);
-    uint8_t eg_output_1 = IEG<1>::clock(m_count);
-    int16_t amp_output = IAmp<0>::clock(filter_output, eg_output_1);
+    int16_t filter_output = IFilter<0>::clock(m_count, osc_output, high_byte(eg_output_0), lfo_output);
+    uint16_t eg_output_1 = IEG<1>::clock(m_count);
+    int16_t amp_output = IAmp<0>::clock(filter_output, high_byte(eg_output_1));
 
     // error diffusion
     int16_t output = amp_output + m_output_error;
