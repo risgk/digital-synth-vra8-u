@@ -453,24 +453,31 @@ public:
       int8_t wave_3 = get_wave_level(m_wave_table[3], m_phase[3]);
       result += wave_3 * m_osc_gain_effective[3];
     } else {
-      // Sub Osc (wave_1)
-      if (m_phase[0] < m_freq[0]) {
-        m_phase_high ^= 1;
-      }
-      m_phase[1] = m_phase[0] >> 1;
-      if (m_phase_high) {
-        m_phase[1] += 0x8000;
-      }
-
-      int8_t wave_1 = high_sbyte(m_phase[1]);
-      if (wave_1 < -64) {
-        wave_1 = -64 - (wave_1 + 64);
-      } else if (wave_1 < 64) {
-        // do nothing
+      if (m_waveform[0] == WAVEFORM_1_PULSE) {
+        // Pulse Wave (wave_3)
+        m_phase[3] = m_phase[0] + m_osc1_shape;
+        int8_t wave_3 = get_wave_level(m_wave_table[0], m_phase[3]);
+        result -= wave_3 * m_osc_gain_effective[0];
       } else {
-        wave_1 = 64 - (wave_1 - 64);
+        // Sub Osc (wave_1)
+        if (m_phase[0] < m_freq[0]) {
+          m_phase_high ^= 1;
+        }
+        m_phase[1] = m_phase[0] >> 1;
+        if (m_phase_high) {
+          m_phase[1] += 0x8000;
+        }
+
+        int8_t wave_1 = high_sbyte(m_phase[1]);
+        if (wave_1 < -64) {
+          wave_1 = -64 - (wave_1 + 64);
+        } else if (wave_1 < 64) {
+          // do nothing
+        } else {
+          wave_1 = 64 - (wave_1 - 64);
+        }
+        result += wave_1 * (static_cast<uint8_t>(m_osc_gain_effective[1]) << 1);
       }
-      result += wave_1 * (static_cast<uint8_t>(m_osc_gain_effective[1]) << 1);
 
       if (m_waveform[1] != WAVEFORM_2_NOISE) {
         m_phase[2] += m_freq[2];
@@ -487,12 +494,6 @@ public:
         }
         result += wave_2 * m_osc_gain_effective[2];
       }
-
-      if (m_waveform[0] == WAVEFORM_1_PULSE) {
-        m_phase[3] = m_phase[0] + m_osc1_shape;
-        int8_t wave_3 = get_wave_level(m_wave_table[0], m_phase[3]);
-        result -= wave_3 * m_osc_gain_effective[0];
-      }
     }
 #else
     int16_t result  = 0;
@@ -505,7 +506,8 @@ private:
   INLINE static const uint8_t* get_wave_table(uint8_t waveform, uint8_t note_number) {
     const uint8_t* result;
 #if defined(MAKE_SAMPLE_WAV_FILE)
-    if ((waveform == WAVEFORM_SAW) || (waveform == WAVEFORM_1_PULSE)) {
+    if ((waveform == WAVEFORM_SAW) ||
+        (m_mono_mode && (waveform == WAVEFORM_1_PULSE))) {
       result = g_osc_saw_wave_tables[note_number - NOTE_NUMBER_MIN];
     } else if (waveform == WAVEFORM_TRIANGLE) {
       result = g_osc_triangle_wave_table;
@@ -513,7 +515,8 @@ private:
       result = g_osc_pulse_wave_tables[note_number - NOTE_NUMBER_MIN];
     }
 #else
-    if ((waveform == WAVEFORM_SAW) || (waveform == WAVEFORM_1_PULSE)) {
+    if ((waveform == WAVEFORM_SAW) ||
+        (m_mono_mode && (waveform == WAVEFORM_1_PULSE))) {
       result = pgm_read_word(g_osc_saw_wave_tables + (note_number - NOTE_NUMBER_MIN));
     } else if (waveform == WAVEFORM_TRIANGLE) {
       result = g_osc_triangle_wave_table;

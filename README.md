@@ -139,19 +139,19 @@
     |                            35 | x             | o             | Pitch Bend by CC [-|+]           | TODO
     |                               |               |               |                                  |
     |                            24 | x             | o             | Osc 1 Wave [Saw|-|Tri|Pls|Sqr]   | TODO
-    |                           102 | x             | o             | Osc 1 Shape @ [-|+]              | TODO
+    |                           102 | x             | o             | Osc 1 Shape $ [-|+]              | TODO
     |                               |               |               |                                  |
-    |                            26 | x             | o             | Mixer Sub Osc @                  | TODO
+    |                            26 | x             | o             | Mixer Sub Osc $$                 | TODO
     |                               |               |               |                                  |
-    |                            55 | x             | o             | Osc 2 Wave @ [Saw|-|Tri|Nos|Sqr] | TODO
-    |                            20 | x             | o             | Osc 2 Coarse @ [-|+]             |
-    |                            21 | x             | o             | Osc 2 Fine @ [-|+]               |
-    |                            25 | x             | o             | Mixer Osc Mix @ [1|2]            | TODO
+    |                            55 | x             | o             | Osc 2 Wave $ [Saw|-|Tri|Nos|Sqr] | TODO
+    |                            20 | x             | o             | Osc 2 Coarse $ [-|+]             |
+    |                            21 | x             | o             | Osc 2 Fine $ [-|+]               |
+    |                            25 | x             | o             | Mixer Osc Mix $ [1|2]            | TODO
     |                               |               |               |                                  |
     |                            16 | x             | o             | Filter Cutoff                    |
     |                            17 | x             | o             | Filter Resonance                 |
     |                            18 | x             | o             | Filter EG Amt [-|+]              |
-    |                            86 | x             | o             | Filter Key Track @ [0.0|0.5|1.0] | TODO
+    |                            86 | x             | o             | Filter Key Track $ [0.0|0.5|1.0] | TODO
     |                               |               |               |                                  |
     |                            23 | x             | o             | EG Attack                        |
     |                            19 | x             | o             | EG Decay                         |
@@ -207,8 +207,8 @@
     |              : Active Sense   | x             | x             |                                  |
     |              : Reset          | x             | x             |                                  |
     +-------------------------------+---------------+---------------+----------------------------------+
-    | Notes                         | @ Invalid in Paraphonic Mode                                     |
-    |                               |                                                                  |
+    | Notes                         | $ : Disabled in Paraphonic Mode                                  |
+    |                               | $$ : Disabled in Paraphonic Mode or if Osc 1 Wave is Pls         |
     +-------------------------------+------------------------------------------------------------------+
       Mode 1: Omni On,  Poly          Mode 2: Omni On,  Mono          o: Yes                            
       Mode 3: Omni Off, Poly          Mode 4: Omni Off, Mono          x: No                             
