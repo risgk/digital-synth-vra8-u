@@ -44,7 +44,7 @@ const uint8_t g_preset_table_AMP_SUSTAIN    [] = {0  , 0  , 0  , 0  , 0  , 0  , 
 const uint8_t g_preset_table_AMP_RELEASE    [] = {0  , 0  , 0  , 96 , 0  , 0  , 0  , 0  };
 
 const uint8_t g_preset_table_CHORUS_MODE    [] = {127, 127, 127, 127, 127, 127, 127, 0  };
-const uint8_t g_preset_table_CHORUS_RATE    [] = {32 , 32 , 32 , 32 , 16 , 48 , 32 , 32 };
+const uint8_t g_preset_table_CHORUS_RATE    [] = {32 , 48 , 48 , 48 , 16 , 48 , 32 , 32 };
 const uint8_t g_preset_table_CHORUS_DEPTH   [] = {32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 };
 const uint8_t g_preset_table_CHORUS_DLY_TIME[] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 };
 
