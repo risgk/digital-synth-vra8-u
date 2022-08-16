@@ -605,7 +605,11 @@ private:
   INLINE static void update_freq_2nd() {
     uint8_t coarse = high_byte(m_pitch_real[N]);
     m_freq_temp[N] = g_osc_freq_table[coarse - NOTE_NUMBER_MIN];
-    m_wave_table_temp[N] = get_wave_table(m_waveform[0], coarse);
+    if ((N == 2) && m_mono_mode) {
+      m_wave_table_temp[N] = get_wave_table(m_waveform[1], coarse);
+    } else {
+      m_wave_table_temp[N] = get_wave_table(m_waveform[0], coarse);
+    }
   }
 
   template <uint8_t N>
