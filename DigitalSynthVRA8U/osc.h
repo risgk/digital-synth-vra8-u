@@ -88,6 +88,7 @@ class Osc {
   static int16_t        m_osc1_shape;
   static int8_t         m_osc1_shape_control;
   static uint8_t        m_mixer_sub_osc_control;
+  static uint8_t        m_mix_table[OSC_MIX_TABLE_LENGTH];
 
 public:
   INLINE static void initialize() {
@@ -187,6 +188,10 @@ public:
     m_osc1_shape = 0;
     m_osc1_shape_control = 0;
     m_mixer_sub_osc_control = 0;
+    for (uint8_t i = 0; i < OSC_MIX_TABLE_LENGTH; ++i) {
+      m_mix_table[i] = static_cast<uint8_t>(sqrtf(static_cast<float>(i) /
+                                                  (OSC_MIX_TABLE_LENGTH - 1)) * 255);
+    }
 
     set_pitch_bend_range(2);
   }
@@ -312,7 +317,14 @@ public:
   }
 
   INLINE static void set_mono_osc2_mix(uint8_t controller_value) {
-    m_mono_osc2_mix = controller_value;
+    if (controller_value >= 2) {
+      controller_value -= 2;
+    }
+
+    if (controller_value > 123) {
+      controller_value = 123;
+    }
+    m_mono_osc2_mix = controller_value >> 2;
   }
 
   INLINE static void set_mono_osc2_pitch(uint8_t controller_value) {
@@ -653,19 +665,9 @@ private:
       m_osc_gain_effective[N] = m_osc_gain[N];
     } else {
       if (N == 0) {
-        uint8_t base_gain = m_osc_level;
-        if (m_mono_osc2_mix < 32) {
-          m_osc_gain_effective[0] = (base_gain << 1);
-          m_osc_gain_effective[2] = 0;
-        } else if (m_mono_osc2_mix < 96) {
-          m_osc_gain_effective[0] = base_gain + (base_gain >> 1);
-          m_osc_gain_effective[2] = m_osc_gain_effective[0];
-        } else {
-          // todo
-          m_osc_gain_effective[0] = 0;
-          m_osc_gain_effective[2] = (base_gain << 1);
-        }
-        m_osc_gain_effective[1] = (base_gain * m_mixer_sub_osc_control) >> 6;
+        m_osc_gain_effective[0] = high_byte(m_mix_table[(OSC_MIX_TABLE_LENGTH - 1) - m_mono_osc2_mix] * m_osc_level);
+        m_osc_gain_effective[2] = high_byte(m_mix_table[                             m_mono_osc2_mix] * m_osc_level);
+        m_osc_gain_effective[1] = (m_osc_level * m_mixer_sub_osc_control) >> 6;
         m_osc_gain_effective[3] = 0;
       }
     }
@@ -838,3 +840,4 @@ template <uint8_t T> uint8_t         Osc<T>::m_phase_high;
 template <uint8_t T> int16_t         Osc<T>::m_osc1_shape;
 template <uint8_t T> int8_t          Osc<T>::m_osc1_shape_control;
 template <uint8_t T> uint8_t         Osc<T>::m_mixer_sub_osc_control;
+template <uint8_t T> uint8_t         Osc<T>::m_mix_table[OSC_MIX_TABLE_LENGTH];
