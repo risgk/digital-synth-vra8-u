@@ -389,6 +389,13 @@ public:
     return m_lfo_level;
   }
 
+  INLINE static uint16_t get_osc_pitch() {
+    if (m_mono_mode) {
+      return m_pitch_real[0] - 128;
+    }
+    return (60 << 8);
+  }
+
   template <uint8_t N>
   INLINE static int16_t get_chorus_delay_time() {
     return m_chorus_delay_time[N];

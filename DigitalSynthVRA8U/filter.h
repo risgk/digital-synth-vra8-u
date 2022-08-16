@@ -21,6 +21,7 @@ class Filter {
   static uint8_t         m_cutoff;
   static int8_t          m_cutoff_eg_amt;
   static int8_t          m_cutoff_lfo_amt;
+  static int8_t          m_cutoff_pitch_amt;
   static int8_t          m_cutoff_offset;
 
   static const uint8_t AUDIO_FRACTION_BITS = 14;
@@ -41,6 +42,7 @@ public:
     set_resonance(0);
     set_cutoff_eg_amt(64);
     set_cutoff_lfo_amt(64);
+    set_cutoff_pitch_amt(0);
     set_cutoff_offset(0);
 
     update_coefs_0th(0);
@@ -85,6 +87,16 @@ public:
     }
 
     m_cutoff_lfo_amt = (value - 64) << 1;
+  }
+
+  INLINE static void set_cutoff_pitch_amt(uint8_t controller_value) {
+    if (controller_value < 32) {
+      m_cutoff_pitch_amt = 0;
+    } else if (controller_value < 96) {
+      m_cutoff_pitch_amt = 1;
+    } else {
+      m_cutoff_pitch_amt = 2;
+    }
   }
 
   INLINE static void set_cutoff_offset(int8_t cutoff_offset) {
@@ -144,6 +156,14 @@ private:
 
   INLINE static void update_coefs_1st(int16_t lfo_input) {
     m_cutoff_candidate -= high_sbyte(mul_sq16_sq8(lfo_input, m_cutoff_lfo_amt) << 1);
+
+    // OSC Pitch is processed here (not in Voice) for performance reasons
+    uint16_t osc_pitch = IOsc<0>::get_osc_pitch();
+    if (m_cutoff_pitch_amt == 1) {
+      m_cutoff_candidate += static_cast<int8_t>(high_byte(osc_pitch + 128) - 60);
+    } else if (m_cutoff_pitch_amt == 2) {
+      m_cutoff_candidate += static_cast<int8_t>(high_byte((osc_pitch << 1) + 128) - 120);
+    }
   }
 
   INLINE static void update_coefs_2nd() {
@@ -179,4 +199,5 @@ template <uint8_t T> int16_t         Filter<T>::m_cutoff_candidate;
 template <uint8_t T> uint8_t         Filter<T>::m_cutoff;
 template <uint8_t T> int8_t          Filter<T>::m_cutoff_eg_amt;
 template <uint8_t T> int8_t          Filter<T>::m_cutoff_lfo_amt;
+template <uint8_t T> int8_t          Filter<T>::m_cutoff_pitch_amt;
 template <uint8_t T> int8_t          Filter<T>::m_cutoff_offset;
