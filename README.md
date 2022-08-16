@@ -65,27 +65,6 @@
     - 64 (48-79): Saw Wave (Key Sync)
     - 96 (80-111): Random Wave (Key Sync)
     - 127 (112-127): Pulse Wave (Square Wave, Key Sync)
-- CHORUS DEPTH
-    - 0: Delay Time +/- 0.0 ms (min)
-    - 32: Delay Time +/- 2.0 ms
-    - 64: Delay Time +/- 4.1 ms
-    - 126: Delay Time +/- 8.1 ms (max)
-- CHORUS RATE
-    - 4: LFO Frequency 0.06 Hz (min)
-    - 32: LFO Frequency 0.48 Hz
-    - 64: LFO Frequency 0.95 Hz
-    - 127: LFO Frequency 1.9 Hz (max)
-- CHORUS DELAY TIME
-    - 0: 0.03 ms (min)
-    - 64: 8.2 ms
-    - 80: 10.3 ms
-    - 127: 16.3 ms (max)
-- CHORUS (-/M/PS/S/S2) = Chorus Mode
-    - 0 (0-15): Chorus Off
-    - 32 (16-47): Mono Chorus
-    - 64 (48-79): Pseudo-Stereo Chorus
-    - 96 (80-111): Stereo Chorus
-    - 127 (112-127): Stereo 2-phase Chorus
 - VOICE (PARA/MONO/LGT) = Voice Mode
     - 0 (0-31): Paraphonic
     - 64 (32-95): Monophonic (Multi Trigger)
@@ -97,15 +76,38 @@
     - 127 (96-127): Full, 150% (Oscillator 1: 150%)
 - MONO OSC2 PITCH = Oscillator 2 Pitch in Monophonic and Legato Modes
 - MONO OSC2 DETUNE = Oscillator 2 Detune amount in Monophonic and Legato Modes
+- Chorus Mode [Off|M|PS|S|S2]
+    - 0 (0-15): Chorus Off
+    - 32 (16-47): Mono Chorus
+    - 64 (48-79): Pseudo-Stereo Chorus
+    - 96 (80-111): Stereo Chorus
+    - 127 (112-127): Stereo 2-phase Chorus
+- Chorus Rate
+    - 4: LFO Frequency 0.06 Hz (min)
+    - 32: LFO Frequency 0.48 Hz
+    - 64: LFO Frequency 0.95 Hz
+    - 127: LFO Frequency 1.9 Hz (max)
+- Chorus Depth
+    - 0: Delay Time +/- 0.0 ms (min)
+    - 32: Delay Time +/- 2.0 ms
+    - 64: Delay Time +/- 4.1 ms
+    - 126: Delay Time +/- 8.1 ms (max)
+- Chorus Delay Time
+    - 0: 0.03 ms (min)
+    - 64: 8.2 ms
+    - 80: 10.3 ms
+    - 127: 16.3 ms (max)
 
 ## Sample Chorus Settings
 
-- Setting Q1 -- CHORUS DEPTH: 32, CHORUS RATE: 32, CHORUS DELAY TIME: 80, CHORUS: 127
-- Setting D1 -- CHORUS DEPTH: 32, CHORUS RATE: 16, CHORUS DELAY TIME: 80, CHORUS: 127
-- Setting D2 -- CHORUS DEPTH: 40, CHORUS RATE: 16, CHORUS DELAY TIME: 60, CHORUS: 127
-- Setting D3 -- CHORUS DEPTH: 24, CHORUS RATE: 32, CHORUS DELAY TIME: 60, CHORUS: 127
-- Setting U1 -- CHORUS DEPTH: 32, CHORUS RATE: 32, CHORUS DELAY TIME: 20, CHORUS: 127
-- Setting U2 -- CHORUS DEPTH: 32, CHORUS RATE: 48, CHORUS DELAY TIME: 20, CHORUS: 127
+- Setting C0 -- Chorus Mode: 127, Chorus Rate: 32, Chorus Depth: 32, Chorus Delay Time: 64
+- Setting C1 -- Chorus Mode: 127, Chorus Rate: 16, Chorus Depth: 32, Chorus Delay Time: 64
+- Setting C2 -- Chorus Mode: 127, Chorus Rate: 48, Chorus Depth: 32, Chorus Delay Time: 64
+- Setting D1 -- Chorus Mode: 127, Chorus Rate: 16, Chorus Depth: 32, Chorus Delay Time: 80
+- Setting D2 -- Chorus Mode: 127, Chorus Rate: 16, Chorus Depth: 40, Chorus Delay Time: 60
+- Setting D3 -- Chorus Mode: 127, Chorus Rate: 32, Chorus Depth: 24, Chorus Delay Time: 60
+- Setting J1 -- Chorus Mode: 127, Chorus Rate: 32, Chorus Depth: 32, Chorus Delay Time: 20
+- Setting J2 -- Chorus Mode: 127, Chorus Rate: 48, Chorus Depth: 32, Chorus Delay Time: 20
 
 ## MIDI Implementation Chart
 
@@ -137,19 +139,19 @@
     |                            35 | x             | o             | Pitch Bend by CC [-|+]           | TODO
     |                               |               |               |                                  |
     |                            24 | x             | o             | Osc 1 Wave [Saw|Tri|Pls]         | TODO
-    |                           102 | x             | o             | Osc 1 Shape * [-|+]              | TODO
-    |                            26 | x             | o             | Mixer Sub Osc *                  | TODO
+    |                           102 | x             | o             | Osc 1 Shape @ [-|+]              | TODO
+    |                            26 | x             | o             | Mixer Sub Osc @                  | TODO
     |                               |               |               |                                  |
     |                               |               |               |                                  |
-    |                            55 | x             | o             | Osc 2 Wave * [Saw|-|Tri|Nos|Pls] | TODO
-    |                            20 | x             | o             | Osc 2 Coarse * [-|+]             |
-    |                            21 | x             | o             | Osc 2 Fine * [-|+]               |
-    |                            25 | x             | o             | Mixer Osc Mix * [1|2]            | TODO
+    |                            55 | x             | o             | Osc 2 Wave @ [Saw|-|Tri|Nos|Pls] | TODO
+    |                            20 | x             | o             | Osc 2 Coarse @ [-|+]             |
+    |                            21 | x             | o             | Osc 2 Fine @ [-|+]               |
+    |                            25 | x             | o             | Mixer Osc Mix @ [1|2]            | TODO
     |                               |               |               |                                  |
     |                            16 | x             | o             | Filter Cutoff                    |
     |                            17 | x             | o             | Filter Resonance                 |
     |                            18 | x             | o             | Filter EG Amt [-|+]              |
-    |                            86 | x             | o             | Filter Key Track * [0.0|0.5|1.0] | TODO
+    |                            86 | x             | o             | Filter Key Track @ [0.0|0.5|1.0] | TODO
     |                               |               |               |                                  |
     |                            23 | x             | o             | EG Attack                        |
     |                            19 | x             | o             | EG Decay                         |
@@ -205,7 +207,7 @@
     |              : Active Sense   | x             | x             |                                  |
     |              : Reset          | x             | x             |                                  |
     +-------------------------------+---------------+---------------+----------------------------------+
-    | Notes                         | * Invalid in Paraphonic Mode                                     |
+    | Notes                         | @ Invalid in Paraphonic Mode                                     |
     |                               |                                                                  |
     +-------------------------------+------------------------------------------------------------------+
       Mode 1: Omni On,  Poly          Mode 2: Omni On,  Mono          o: Yes                            

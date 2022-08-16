@@ -232,12 +232,12 @@ var presetControllers = {};
 // PRESET                             #0   #1   #2   #3   #4   #5   #6   #7   
 presetControllers[OSC_1_WAVE     ] = [0  , 0  , 0  , 127, 0  , 0  , 0  , 0  ];
 presetControllers[OSC_1_SHAPE    ] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
-presetControllers[MIXER_SUB_OSC  ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
+presetControllers[MIXER_SUB_OSC  ] = [127, 127, 127, 127, 127, 127, 0  , 0  ];
 
 
 presetControllers[OSC_2_WAVE     ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
-presetControllers[OSC_2_COARSE   ] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
-presetControllers[OSC_2_FINE     ] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
+presetControllers[OSC_2_COARSE   ] = [71 , 64 , 64 , 64 , 71 , 71 , 64 , 64 ];
+presetControllers[OSC_2_FINE     ] = [68 , 72 , 72 , 72 , 68 , 68 , 72 , 64 ];
 presetControllers[MIXER_OSC_MIX  ] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 0  ];
 
 presetControllers[FILTER_CUTOFF  ] = [112, 4  , 124, 76 , 112, 112, 127, 127];
@@ -273,7 +273,7 @@ presetControllers[AMP_RELEASE    ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
 presetControllers[CHORUS_MODE    ] = [127, 127, 127, 127, 127, 127, 127, 0  ];
 presetControllers[CHORUS_RATE    ] = [32 , 32 , 32 , 32 , 16 , 48 , 32 , 32 ];
 presetControllers[CHORUS_DEPTH   ] = [32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 ];
-presetControllers[CHORUS_DLY_TIME] = [64 , 64 , 64 , 64 , 80 , 20 , 64 , 64 ];
+presetControllers[CHORUS_DLY_TIME] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
 
 presetControllers[P_BEND_RANGE   ] = [2  , 2  , 2  , 2  , 2  , 2  , 2  , 2  ];
 
@@ -891,9 +891,9 @@ function getStoredCCValueString(index, number) {
 <table>
 <tr><td>Preset</td>
     <td></td>
-    <td><input type="button" value="#4 Para D1"     onclick="preset(4)"></td>
+    <td><input type="button" value="#4 Para C1"     onclick="preset(4)"></td>
     <td></td>
-    <td><input type="button" value="#5 Para U2"     onclick="preset(5)"></td>
+    <td><input type="button" value="#5 Para C2"     onclick="preset(5)"></td>
     <td></td>
     <td><input type="button" value="#6 Saw"         onclick="preset(6)"></td>
     <td></td>
@@ -980,8 +980,8 @@ function getStoredCCValueString(index, number) {
 </tr>
 <tr>
 <td colspan="2"><b>Osc 1</b> Wave [Saw|Tri|Pls]        </td>
-<td colspan="2"><b>Osc 1</b> Shape * [-|+]             </td>
-<td colspan="2"><b>Mixer</b> Sub Osc *                 </td>
+<td colspan="2"><b>Osc 1</b> Shape @ [-|+]             </td>
+<td colspan="2"><b>Mixer</b> Sub Osc @                 </td>
 <td colspan="2"></td>
 </tr>
 <tr>
@@ -994,10 +994,10 @@ function getStoredCCValueString(index, number) {
 <td></td>
 <td></td>
 <tr>
-<td colspan="2"><b>Osc 2</b> Wave * [Saw|-|Tri|Nos|Pls]</td>
-<td colspan="2"><b>Osc 2</b> Coarse * [-|+]            </td>
-<td colspan="2"><b>Osc 2</b> Fine * [-|+]              </td>
-<td colspan="2"><b>Mixer</b> Osc Mix * [1|2]           </td>
+<td colspan="2"><b>Osc 2</b> Wave @ [Saw|-|Tri|Nos|Pls]</td>
+<td colspan="2"><b>Osc 2</b> Coarse @ [-|+]            </td>
+<td colspan="2"><b>Osc 2</b> Fine @ [-|+]              </td>
+<td colspan="2"><b>Mixer</b> Osc Mix @ [1|2]           </td>
 </tr>
 <tr>
 <td><input  id="inputCC55"  type="range" min="0" max="127" step="1" oninput="onChangeControlChange(OSC_2_WAVE     , value)"></td>
@@ -1013,7 +1013,7 @@ function getStoredCCValueString(index, number) {
 <td colspan="2"><b>Filter</b> Cutoff                   </td>
 <td colspan="2"><b>Filter</b> Resonance                </td>
 <td colspan="2"><b>Filter</b> EG Amt [-|+]             </td>
-<td colspan="2"><b>Filter</b> Key Track * [0.0|0.5|1.0]</td>
+<td colspan="2"><b>Filter</b> Key Track @ [0.0|0.5|1.0]</td>
 </tr>
 <tr>
 <td><input  id="inputCC16"  type="range" min="0" max="127" step="1" oninput="onChangeControlChange(FILTER_CUTOFF  , value)"></td>
