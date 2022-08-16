@@ -403,6 +403,17 @@ function onMIDIMessage(event) {
       document.getElementById("spanCC1").innerHTML = "0";
       document.getElementById("spanCC11").innerHTML = "127";
       document.getElementById("spanCC64").innerHTML = "0";
+    } else if (number == P_BEND_BY_CC) {
+      var pb = (value - 64) * 128;
+      if (pb == 8064) {
+        pb = 8191;
+      }
+      document.getElementById("spanPB").innerHTML = value;
+      if (pb >= 0) {
+        document.getElementById("spanPB").innerHTML = "+" + String(pb);
+      } else {
+        document.getElementById("spanPB").innerHTML = pb;
+      }
     } else if (number >= SP_PROG_CHG_0 && number <= SP_PROG_CHG_7) {
       // Special Program Change (only for VRA8-U CTRL)
       var programIndex = number - SP_PROG_CHG_0;

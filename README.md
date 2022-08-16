@@ -136,22 +136,22 @@
     +-------------------------------+---------------+---------------+----------------------------------+
     | Control                     1 | x             | o             | Modulation                       |
     | Change                     64 | x             | o             | Sustain Pedal [Off|On]           |
-    |                            35 | x             | o             | Pitch Bend by CC [-|+]           | TODO
+    |                            35 | x             | o             | Pitch Bend by CC [-|+]           |
     |                               |               |               |                                  |
-    |                            24 | x             | o             | Osc 1 Wave [Saw|-|Tri|Pls|Sqr]   | TODO
-    |                           102 | x             | o             | Osc 1 Shape $ [-|+]              | TODO
+    |                            24 | x             | o             | Osc 1 Wave [Saw|-|Tri|Pls|Sqr]   |
+    |                           102 | x             | o             | Osc 1 Shape $ [-|+]              |
     |                               |               |               |                                  |
-    |                            26 | x             | o             | Mixer Sub Osc $$                 | TODO
+    |                            26 | x             | o             | Mixer Sub Osc $$                 |
     |                               |               |               |                                  |
-    |                            55 | x             | o             | Osc 2 Wave $ [Saw|-|Tri|Nos|Sqr] | TODO
+    |                            55 | x             | o             | Osc 2 Wave $ [Saw|-|Tri|Nos|Sqr] |
     |                            20 | x             | o             | Osc 2 Coarse $ [-|+]             |
     |                            21 | x             | o             | Osc 2 Fine $ [-|+]               |
-    |                            25 | x             | o             | Mixer Osc Mix $ [1|2]            | TODO
+    |                            25 | x             | o             | Mixer Osc Mix $ [1|2]            |
     |                               |               |               |                                  |
     |                            16 | x             | o             | Filter Cutoff                    |
     |                            17 | x             | o             | Filter Resonance                 |
     |                            18 | x             | o             | Filter EG Amt [-|+]              |
-    |                            86 | x             | o             | Filter Key Track $ [0.0|0.5|1.0] | TODO
+    |                            86 | x             | o             | Filter Key Track $ [0.0|0.5|1.0] |
     |                               |               |               |                                  |
     |                            23 | x             | o             | EG Attack                        |
     |                            19 | x             | o             | EG Decay                         |

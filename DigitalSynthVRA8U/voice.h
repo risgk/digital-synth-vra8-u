@@ -488,6 +488,15 @@ public:
       m_portamento = controller_value;
       break;
 
+    case P_BEND_BY_CC   :
+      uint8_t lsb = 0;
+      uint8_t msb = controller_value;
+      if (msb == 0x7F) {
+        lsb = 0x7F;
+      }
+      pitch_bend(lsb, msb);
+      break;
+
     case MIXER_OSC_MIX  :
       IOsc<0>::set_mono_osc2_mix(controller_value);
       break;
