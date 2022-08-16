@@ -11,7 +11,7 @@ const uint8_t g_preset_table_MIXER_SUB_OSC  [] = {127, 127, 127, 127, 127, 127, 
 const uint8_t g_preset_table_OSC_2_WAVE     [] = {0  , 0  , 0  , 127, 0  , 0  , 0  , 0  };
 const uint8_t g_preset_table_OSC_2_COARSE   [] = {71 , 64 , 64 , 64 , 71 , 71 , 64 , 64 };
 const uint8_t g_preset_table_OSC_2_FINE     [] = {68 , 72 , 72 , 72 , 68 , 68 , 72 , 64 };
-const uint8_t g_preset_table_MIXER_OSC_MIX  [] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 0  };
+const uint8_t g_preset_table_MIXER_OSC_MIX  [] = {32 , 64 , 64 , 64 , 32 , 32 , 64 , 0  };
 
 const uint8_t g_preset_table_FILTER_CUTOFF  [] = {112, 4  , 124, 76 , 112, 112, 127, 127};
 const uint8_t g_preset_table_FILTER_RESO    [] = {64 , 64 , 32 , 64 , 64 , 64 , 0  , 0  };
