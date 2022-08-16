@@ -18,15 +18,16 @@ static const uint8_t PORTAMENTO_COEF_OFF    = 190;
 template <uint8_t T>
 class Osc {
   static const uint8_t WAVEFORM_SAW           = 0;
-  static const uint8_t WAVEFORM_PUL           = 1;
-  static const uint8_t WAVEFORM_TRI           = 2;
-  static const uint8_t WAVEFORM_NOI           = 3;
+  static const uint8_t WAVEFORM_SQUARE        = 1;
+  static const uint8_t WAVEFORM_TRIANGLE      = 2;
+  static const uint8_t WAVEFORM_1_PULSE       = 3;
+  static const uint8_t WAVEFORM_2_NOISE       = 4;
 
   static const uint8_t LFO_WAVEFORM_TRI_ASYNC = 0;
   static const uint8_t LFO_WAVEFORM_TRI_SYNC  = 1;
   static const uint8_t LFO_WAVEFORM_SAW_DOWN  = 2;
   static const uint8_t LFO_WAVEFORM_RANDOM    = 3;
-  static const uint8_t LFO_WAVEFORM_PULSE     = 4;
+  static const uint8_t LFO_WAVEFORM_SQUARE    = 4;
 
   static const uint8_t LFO_FADE_COEF_OFF      = 1;
   static const uint8_t LFO_FADE_COEF_ON_MIN   = 2;
@@ -85,8 +86,8 @@ class Osc {
 
   static __uint24       m_lfsr;
   static uint8_t        m_phase_high;
-  static int16_t        m_osc1_shape;
   static int8_t         m_osc1_shape_control;
+  static uint16_t       m_osc1_shape;
   static uint8_t        m_mixer_sub_osc_control;
   static uint8_t        m_mix_table[OSC_MIX_TABLE_LENGTH];
 
@@ -185,8 +186,8 @@ public:
 
     m_lfsr = 0x000001u;
     m_phase_high = 0;
-    m_osc1_shape = 0;
     m_osc1_shape_control = 0;
+    m_osc1_shape = 0x8000;
     m_mixer_sub_osc_control = 0;
     for (uint8_t i = 0; i < OSC_MIX_TABLE_LENGTH; ++i) {
       m_mix_table[i] = static_cast<uint8_t>(sqrtf(static_cast<float>(i) /
@@ -199,22 +200,24 @@ public:
   template <uint8_t N>
   INLINE static void set_osc_waveform(uint8_t controller_value) {
     if (N == 0) {
-      if (controller_value < 32) {
+      if (controller_value < 48) {
         m_waveform[0] = WAVEFORM_SAW;
-      } else if (controller_value < 96) {
-        m_waveform[0] = WAVEFORM_TRI;
+      } else if (controller_value < 80) {
+        m_waveform[0] = WAVEFORM_TRIANGLE;
+      } else if (controller_value < 112) {
+        m_waveform[0] = WAVEFORM_1_PULSE;
       } else {
-        m_waveform[0] = WAVEFORM_PUL;
+        m_waveform[0] = WAVEFORM_SQUARE;
       }
     } else {
       if (controller_value < 48) {
         m_waveform[1] = WAVEFORM_SAW;
       } else if (controller_value < 80) {
-        m_waveform[1] = WAVEFORM_TRI;
+        m_waveform[1] = WAVEFORM_TRIANGLE;
       } else if (controller_value < 112) {
-        m_waveform[1] = WAVEFORM_NOI;
+        m_waveform[1] = WAVEFORM_2_NOISE;
       } else {
-        m_waveform[1] = WAVEFORM_PUL;
+        m_waveform[1] = WAVEFORM_SQUARE;
       }
     }
   }
@@ -225,6 +228,7 @@ public:
     } else {
       m_osc1_shape_control = (controller_value - 64) << 1;
     }
+    m_osc1_shape = 0x8000 - (m_osc1_shape_control << 8);
   }
 
   INLINE static void set_mixer_sub_osc_control(uint8_t controller_value) {
@@ -260,7 +264,7 @@ public:
     } else if (controller_value < 112) {
       m_lfo_waveform = LFO_WAVEFORM_RANDOM;
     } else {
-      m_lfo_waveform = LFO_WAVEFORM_PULSE;
+      m_lfo_waveform = LFO_WAVEFORM_SQUARE;
     }
   }
 
@@ -468,7 +472,7 @@ public:
       }
       result += wave_1 * (static_cast<uint8_t>(m_osc_gain_effective[1]) << 1);
 
-      if (m_waveform[1] != WAVEFORM_NOI) {
+      if (m_waveform[1] != WAVEFORM_2_NOISE) {
         m_phase[2] += m_freq[2];
         int8_t wave_2 = get_wave_level(m_wave_table[2], m_phase[2]);
         result += wave_2 * m_osc_gain_effective[2];
@@ -483,6 +487,12 @@ public:
         }
         result += wave_2 * m_osc_gain_effective[2];
       }
+
+      if (m_waveform[0] == WAVEFORM_1_PULSE) {
+        m_phase[3] = m_phase[0] + m_osc1_shape;
+        int8_t wave_3 = get_wave_level(m_wave_table[0], m_phase[3]);
+        result -= wave_3 * m_osc_gain_effective[0];
+      }
     }
 #else
     int16_t result  = 0;
@@ -495,19 +505,19 @@ private:
   INLINE static const uint8_t* get_wave_table(uint8_t waveform, uint8_t note_number) {
     const uint8_t* result;
 #if defined(MAKE_SAMPLE_WAV_FILE)
-    if (waveform == WAVEFORM_SAW) {
+    if ((waveform == WAVEFORM_SAW) || (waveform == WAVEFORM_1_PULSE)) {
       result = g_osc_saw_wave_tables[note_number - NOTE_NUMBER_MIN];
-    } else if (waveform == WAVEFORM_TRI) {
+    } else if (waveform == WAVEFORM_TRIANGLE) {
       result = g_osc_triangle_wave_table;
-    } else {     // WAVEFORM_PUL
+    } else {     // WAVEFORM_SQUARE
       result = g_osc_pulse_wave_tables[note_number - NOTE_NUMBER_MIN];
     }
 #else
-    if (waveform == WAVEFORM_SAW) {
+    if ((waveform == WAVEFORM_SAW) || (waveform == WAVEFORM_1_PULSE)) {
       result = pgm_read_word(g_osc_saw_wave_tables + (note_number - NOTE_NUMBER_MIN));
-    } else if (waveform == WAVEFORM_TRI) {
+    } else if (waveform == WAVEFORM_TRIANGLE) {
       result = g_osc_triangle_wave_table;
-    } else {     // WAVEFORM_PUL
+    } else {     // WAVEFORM_SQUARE
       result = pgm_read_word(g_osc_pulse_wave_tables + (note_number - NOTE_NUMBER_MIN));
     }
 #endif
@@ -556,7 +566,7 @@ private:
       }
       level = m_lfo_sampled - 64;
       break;
-    case LFO_WAVEFORM_PULSE:
+    case LFO_WAVEFORM_SQUARE:
       level = high_sbyte(phase);
       if (level >= 0) {
         level = -128;
@@ -669,6 +679,7 @@ private:
         m_osc_gain_effective[2] = high_byte(m_mix_table[                             m_mono_osc2_mix] * m_osc_level);
         m_osc_gain_effective[1] = (m_osc_level * m_mixer_sub_osc_control) >> 6;
         m_osc_gain_effective[3] = 0;
+
       }
     }
   }
@@ -837,7 +848,7 @@ template <uint8_t T> uint8_t         Osc<T>::m_rnd;
 
 template <uint8_t T> __uint24        Osc<T>::m_lfsr;
 template <uint8_t T> uint8_t         Osc<T>::m_phase_high;
-template <uint8_t T> int16_t         Osc<T>::m_osc1_shape;
 template <uint8_t T> int8_t          Osc<T>::m_osc1_shape_control;
+template <uint8_t T> uint16_t        Osc<T>::m_osc1_shape;
 template <uint8_t T> uint8_t         Osc<T>::m_mixer_sub_osc_control;
 template <uint8_t T> uint8_t         Osc<T>::m_mix_table[OSC_MIX_TABLE_LENGTH];
