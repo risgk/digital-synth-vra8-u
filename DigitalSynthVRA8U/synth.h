@@ -13,10 +13,10 @@
 #define IVoice      Voice
 #define ISynthCore  SynthCore
 
-#include "eg.h"
 #include "osc.h"
 #include "filter.h"
 #include "amp.h"
+#include "eg.h"
 #include "delay-fx.h"
 #include "voice.h"
 #include "synth-core.h"

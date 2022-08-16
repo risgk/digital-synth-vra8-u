@@ -16,9 +16,7 @@ class EG {
   static const uint8_t NO_DECAY_UPDATE_COEF = 255;
 
   static uint8_t  m_state;
-public:
   static uint16_t m_level;
-private:
   static uint8_t  m_level_out;
   static uint8_t  m_attack_update_coef;
   static uint8_t  m_decay_update_coef;
