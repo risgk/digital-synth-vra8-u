@@ -141,7 +141,6 @@ public:
 
       IOsc<0>::set_portamento<0>(m_portamento);
       IOsc<0>::note_on<0>(note_number);
-      IOsc<0>::trigger_lfo();
       IEG<0>::note_on();
       IEG<1>::note_on();
       IFilter<0>::set_cutoff_offset(cutoff_offset);
@@ -151,7 +150,6 @@ public:
 
       IOsc<0>::set_portamento<1>(m_portamento);
       IOsc<0>::note_on<1>(note_number);
-      IOsc<0>::trigger_lfo();
       IEG<0>::note_on();
       IEG<1>::note_on();
       IFilter<0>::set_cutoff_offset(cutoff_offset);
@@ -161,7 +159,6 @@ public:
 
       IOsc<0>::set_portamento<2>(m_portamento);
       IOsc<0>::note_on<2>(note_number);
-      IOsc<0>::trigger_lfo();
       IEG<0>::note_on();
       IEG<1>::note_on();
       IFilter<0>::set_cutoff_offset(cutoff_offset);
@@ -171,7 +168,6 @@ public:
 
       IOsc<0>::set_portamento<3>(m_portamento);
       IOsc<0>::note_on<3>(note_number);
-      IOsc<0>::trigger_lfo();
       IEG<0>::note_on();
       IEG<1>::note_on();
       IFilter<0>::set_cutoff_offset(cutoff_offset);
@@ -191,6 +187,7 @@ public:
 
       note_queue_on(note_on_osc_index);
 
+      uint8_t prev_note_on_total_count = m_note_on_total_count;
       ++m_note_on_total_count;
       ++m_note_on_count[note_number];
 
@@ -215,7 +212,9 @@ public:
         break;
       }
 
-      IOsc<0>::trigger_lfo();
+      if (prev_note_on_total_count == 0) {
+        IOsc<0>::trigger_lfo();
+      }
       IEG<0>::note_on();
       IEG<1>::note_on();
       IFilter<0>::set_cutoff_offset(cutoff_offset);
