@@ -235,7 +235,6 @@ public:
     } else {
       m_osc1_shape_control = (controller_value - 64) << 1;
     }
-    m_osc1_shape = 0x8000 - (m_osc1_shape_control << 8);
   }
 
   INLINE static void set_mixer_sub_osc_control(uint8_t controller_value) {
@@ -443,7 +442,7 @@ public:
       case 0x0C: update_gate<1>();             break;
       case 0x0D: update_rnd();                 break;
       case 0x0E: update_lfo_3rd();             break;
-      case 0x0F: update_lfo_4th();             break;
+      case 0x0F: update_lfo_4th(eg_level);     break;
       case 0x10: update_freq_0th<2>();         break;
       case 0x11: update_freq_1st<2>(eg_level); break;
       case 0x12: update_freq_2nd<2>();         break;
@@ -755,11 +754,14 @@ private:
     m_lfo_level = (lfo_depth * m_lfo_wave_level) << 1;
   }
 
-  INLINE static void update_lfo_4th() {
+  INLINE static void update_lfo_4th(uint8_t eg_level) {
     m_lfo_mod_level[0] = -mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[0]);
 
     if (m_mono_mode) {
       m_lfo_mod_level[2] = -mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[1]);
+      m_osc1_shape = 0x8000 - (m_osc1_shape_control << 8) +
+        (mul_sq16_sq8(m_lfo_level, m_shape_lfo_amt) << 1) +
+        ((eg_level * m_shape_eg_amt) << 1);
     } else {
       m_lfo_mod_level[1] = m_lfo_mod_level[0];
       m_lfo_mod_level[2] = m_lfo_mod_level[0];
