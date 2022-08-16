@@ -494,7 +494,7 @@ private:
     if (waveform == WAVEFORM_SAW) {
       result = pgm_read_word(g_osc_saw_wave_tables + (note_number - NOTE_NUMBER_MIN));
     } else if (waveform == WAVEFORM_TRI) {
-      result = pgm_read_word(g_osc_triangle_wave_table);
+      result = g_osc_triangle_wave_table;
     } else {     // WAVEFORM_PUL
       result = pgm_read_word(g_osc_pulse_wave_tables + (note_number - NOTE_NUMBER_MIN));
     }
