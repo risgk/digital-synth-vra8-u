@@ -230,18 +230,18 @@ var controllersInLocalStorage = [
 var presetControllers = {};
 
 // PRESET                             #0   #1   #2   #3   #4   #5   #6   #7   
-presetControllers[OSC_1_WAVE     ] = [0  , 0  , 0  , 127, 0  , 0  , 0  , 0  ];
+presetControllers[OSC_1_WAVE     ] = [0  , 0  , 0  , 127, 0  , 96 , 0  , 0  ];
 presetControllers[OSC_1_SHAPE    ] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
 
 presetControllers[MIXER_SUB_OSC  ] = [127, 127, 127, 127, 127, 0  , 0  , 0  ];
 
-presetControllers[OSC_2_WAVE     ] = [0  , 0  , 0  , 127, 0  , 0  , 0  , 0  ];
-presetControllers[OSC_2_COARSE   ] = [71 , 64 , 64 , 64 , 71 , 64 , 64 , 64 ];
+presetControllers[OSC_2_WAVE     ] = [0  , 0  , 0  , 127, 0  , 64 , 0  , 0  ];
+presetControllers[OSC_2_COARSE   ] = [71 , 64 , 64 , 64 , 71 , 52 , 64 , 64 ];
 presetControllers[OSC_2_FINE     ] = [68 , 72 , 72 , 72 , 68 , 64 , 72 , 64 ];
-presetControllers[MIXER_OSC_MIX  ] = [64 , 64 , 64 , 64 , 64 , 0  , 64 , 0  ];
+presetControllers[MIXER_OSC_MIX  ] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 0  ];
 
-presetControllers[FILTER_CUTOFF  ] = [112, 4  , 124, 76 , 112, 127, 127, 127];
-presetControllers[FILTER_RESO    ] = [64 , 64 , 32 , 64 , 64 , 0  , 0  , 0  ];
+presetControllers[FILTER_CUTOFF  ] = [112, 4  , 124, 76 , 112, 112, 127, 127];
+presetControllers[FILTER_RESO    ] = [64 , 64 , 32 , 64 , 64 , 32 , 0  , 0  ];
 presetControllers[FILTER_EG_AMT  ] = [64 , 124, 4 ,  88 , 64 , 64 , 64 , 64 ];
 presetControllers[FILTER_KEY_TRK ] = [127, 127, 127, 127, 127, 127, 127, 127];
 
@@ -256,22 +256,22 @@ presetControllers[VOICE_MODE     ] = [127, 0  , 0  , 64 , 0  , 127, 0  , 127];
 presetControllers[PORTAMENTO     ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
 
 presetControllers[LFO_WAVE       ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
-presetControllers[LFO_RATE       ] = [96 , 96 , 96 , 96 , 96 , 96 , 96 , 96 ];
-presetControllers[LFO_DEPTH      ] = [8  , 8  , 8  , 8  , 8  , 0  , 8  , 0  ];
+presetControllers[LFO_RATE       ] = [96 , 96 , 96 , 96 , 96 , 64 , 96 , 96 ];
+presetControllers[LFO_DEPTH      ] = [8  , 8  , 8  , 8  , 8  , 64 , 8  , 0  ];
 presetControllers[LFO_FADE_TIME  ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
 
-presetControllers[LFO_OSC_AMT    ] = [65 , 65 , 65 , 65 , 65 , 64 , 65 , 64 ];
-presetControllers[LFO_OSC_DST    ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
+presetControllers[LFO_OSC_AMT    ] = [65 , 65 , 65 , 65 , 65 , 127, 65 , 64 ];
+presetControllers[LFO_OSC_DST    ] = [0  , 0  , 0  , 0  , 0  , 127, 0  , 0  ];
 presetControllers[LFO_FILTER_AMT ] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
-presetControllers[AMP_LEVEL      ] = [127, 127, 127, 127, 127, 127, 127, 127];
+presetControllers[AMP_LEVEL      ] = [96 , 96 , 96 , 96 , 96 , 96 , 96 , 96 ];
 
 presetControllers[AMP_ATTACK     ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
 presetControllers[AMP_DECAY      ] = [127, 127, 127, 96 , 127, 127, 127, 127];
 presetControllers[AMP_SUSTAIN    ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
 presetControllers[AMP_RELEASE    ] = [0  , 0  , 0  , 96 , 0  , 0  , 0  , 0  ];
 
-presetControllers[CHORUS_MODE    ] = [127, 127, 127, 127, 127, 0  , 127, 0  ];
-presetControllers[CHORUS_RATE    ] = [32 , 32 , 48 , 48 , 32 , 32 , 32 , 32 ];
+presetControllers[CHORUS_MODE    ] = [127, 127, 127, 127, 127, 127, 127, 0  ];
+presetControllers[CHORUS_RATE    ] = [32 , 32 , 48 , 48 , 32 , 48 , 32 , 32 ];
 presetControllers[CHORUS_DEPTH   ] = [32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 ];
 presetControllers[CHORUS_DLY_TIME] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
 
