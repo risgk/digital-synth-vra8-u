@@ -391,7 +391,7 @@ public:
 
   INLINE static uint16_t get_osc_pitch() {
     if (m_mono_mode) {
-      return m_pitch_real[0] - 128;
+      return m_pitch_current[0] + m_pitch_bend_normalized;
     }
     return (60 << 8);
   }
@@ -797,7 +797,6 @@ private:
 
     return triangle_wave_level;
   }
-
 
   INLINE static void update_pitch_bend() {
     int16_t b = m_pitch_bend + 1;
