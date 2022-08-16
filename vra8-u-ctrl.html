@@ -385,6 +385,26 @@ var midiOutput  = null;
 var specialProgramChangeCCValues = [0, 0, 0, 0, 0, 0, 0, 0];
 var specialRandomControlCCValue = 0;
 
+function afterChangeOsc1WaveOrVoiceMode() {
+  var targetCCNumbers = [102, 26, 55, 20, 21, 25, 86];
+
+  var valueVoiceMode = localStorage.getItem("keyCC87");
+  if (valueVoiceMode < 32) {
+    targetCCNumbers.forEach(function(i) {
+      document.getElementById("inputCC" + String(i)).disabled = true;
+    });
+  } else {
+    targetCCNumbers.forEach(function(i) {
+      document.getElementById("inputCC" + String(i)).disabled = false;
+    });
+
+    var valueOsc1Wave = localStorage.getItem("keyCC24");
+    if ((valueOsc1Wave >= 80) && (valueOsc1Wave < 112)) {
+      document.getElementById("inputCC26").disabled = true;
+    }
+  }
+}
+
 function onMIDIMessage(event) {
   console.log(event.data);
 
@@ -394,6 +414,9 @@ function onMIDIMessage(event) {
     var value = event.data[2];
     if (controllersInLocalStorage.indexOf(number) >= 0) {
       updateDisplayOfControl(number, value);
+      if ((number == OSC_1_WAVE) || (number == VOICE_MODE)) {
+        afterChangeOsc1WaveOrVoiceMode();
+      }
     } else if (number == MODULATION     ) {
       document.getElementById("spanCC1").innerHTML = value;
     } else if (number == SUSTAIN_PEDAL   ) {
@@ -586,6 +609,9 @@ function updateDisplayOfControl(number, value) {
 
 function onChangeControlChange(number, value) {
   updateDisplayOfControl(number, value);
+  if ((number == OSC_1_WAVE) || (number == VOICE_MODE)) {
+    afterChangeOsc1WaveOrVoiceMode();
+  }
   if (midiOutput) {
     midiOutput.send([(CONTROL_CHANGE | MIDI_CH), number, parseInt(value)]);
     sleep(2);
