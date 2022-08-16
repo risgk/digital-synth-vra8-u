@@ -196,7 +196,7 @@ public:
 
   INLINE static void set_mixer_sub_osc_control(uint8_t controller_value) {
     m_mixer_sub_osc_control =
-      (((controller_value + 1) >> 1) * ((OSC_WAVE_TABLE_AMPLITUDE * 3) / 4)) >> 6;
+      (((controller_value + 1) >> 1) * (OSC_WAVE_TABLE_AMPLITUDE >> 1) >> 6;
   }
 
   INLINE static void set_osc_level(uint8_t controller_value) {
@@ -443,7 +443,7 @@ public:
       result += wave_3 * m_osc_gain_effective[3];
     } else {
       if (m_waveform[0] == WAVEFORM_1_PULSE) {
-        // Pulse Wave (wave_3)
+        // A half of Pulse Wave (wave_3)
         m_phase[3] = m_phase[0] + m_osc1_shape;
         int8_t wave_3 = get_wave_level(m_wave_table[0], m_phase[3]);
         result -= wave_3 * m_osc_gain_effective[0];
