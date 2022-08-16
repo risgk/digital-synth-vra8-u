@@ -628,31 +628,28 @@ private:
 
   template <uint8_t N>
   INLINE static void update_gate() {
-    if (m_osc_on_temp[N] && ((N == 0) || (m_mono_mode == false))) {
-      const int8_t half_level = (m_osc_level >> 1) + 1;
-
-      if (m_osc_gain[N] >= (m_osc_level - half_level)) {
-        m_osc_gain[N] = m_osc_level;
-      } else {
-        m_osc_gain[N] += half_level;
-      }
-    }
-    else {
-      const int8_t one_fourth_level = (m_osc_level >> 2) + 1;
-
-      if (m_osc_gain[N] <= one_fourth_level) {
-        m_osc_gain[N] = 0;
-      } else {
-        m_osc_gain[N] -= one_fourth_level;
-      }
-    }
-
     if (m_mono_mode == false) {
-      m_osc_gain_effective[N] = m_osc_gain[N];
-    } else if (N == 0) {
-      if ((m_osc_gain[1] == 0) && (m_osc_gain[3] == 0)) {
-        uint8_t base_gain = m_osc_gain[0];
+      if (m_osc_on_temp[N]) {
+        const int8_t half_level = (m_osc_level >> 1) + 1;
 
+        if (m_osc_gain[N] >= (m_osc_level - half_level)) {
+          m_osc_gain[N] = m_osc_level;
+        } else {
+          m_osc_gain[N] += half_level;
+        }
+      } else {
+        const int8_t one_fourth_level = (m_osc_level >> 2) + 1;
+
+        if (m_osc_gain[N] <= one_fourth_level) {
+          m_osc_gain[N] = 0;
+        } else {
+          m_osc_gain[N] -= one_fourth_level;
+        }
+      }
+      m_osc_gain_effective[N] = m_osc_gain[N];
+    } else {
+      if (N == 0) {
+        uint8_t base_gain = m_osc_level;
         if (m_mono_osc2_mix < 32) {
           m_osc_gain_effective[0] = (base_gain << 1);
           m_osc_gain_effective[2] = 0;
@@ -664,7 +661,6 @@ private:
           m_osc_gain_effective[0] = 0;
           m_osc_gain_effective[2] = (base_gain << 1);
         }
-
         m_osc_gain_effective[1] = (base_gain * m_mixer_sub_osc_control) >> 6;
         m_osc_gain_effective[3] = 0;
       }
