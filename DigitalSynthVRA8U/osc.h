@@ -35,14 +35,14 @@ class Osc {
   static const uint8_t LFO_FADE_LEVEL_MAX     = 128;
 
   static uint8_t        m_portamento_coef[4];
-  static int8_t         m_pitch_eg_amt;
-  static int16_t        m_lfo_mod_level;
+  static int8_t         m_pitch_eg_amt[2];
+  static int16_t        m_lfo_mod_level[4];
   static uint16_t       m_lfo_phase;
   static int8_t         m_lfo_wave_level;
   static int16_t        m_lfo_level;
   static uint16_t       m_lfo_rate;
   static uint8_t        m_lfo_depth[2];
-  static int8_t         m_pitch_lfo_amt;
+  static int8_t         m_pitch_lfo_amt[2];
   static uint8_t        m_lfo_waveform;
   static uint8_t        m_lfo_sampled;
   static uint8_t        m_lfo_fade_coef;
@@ -90,6 +90,8 @@ class Osc {
   static uint16_t       m_osc1_shape;
   static uint8_t        m_mixer_sub_osc_control;
   static uint8_t        m_mix_table[OSC_MIX_TABLE_LENGTH];
+  static int8_t         m_shape_eg_amt;
+  static int8_t         m_shape_lfo_amt;
 
 public:
   INLINE static void initialize() {
@@ -98,15 +100,20 @@ public:
     m_portamento_coef[2] = PORTAMENTO_COEF_OFF;
     m_portamento_coef[3] = PORTAMENTO_COEF_OFF;
 
-    m_pitch_eg_amt = 0;
-    m_lfo_mod_level = 0;
+    m_pitch_eg_amt[0] = 0;
+    m_pitch_eg_amt[1] = 0;
+    m_lfo_mod_level[0] = 0;
+    m_lfo_mod_level[1] = 0;
+    m_lfo_mod_level[2] = 0;
+    m_lfo_mod_level[3] = 0;
     m_lfo_phase = 0;
     m_lfo_wave_level = 0;
     m_lfo_level = 0;
     m_lfo_rate = 0;
     m_lfo_depth[0] = 0;
     m_lfo_depth[1] = 0;
-    m_pitch_lfo_amt = 0;
+    m_pitch_lfo_amt[0] = 0;
+    m_pitch_lfo_amt[1] = 0;
     m_lfo_waveform = LFO_WAVEFORM_TRI_ASYNC;
     m_lfo_sampled = 64;
     m_lfo_fade_coef = LFO_FADE_COEF_OFF;
@@ -244,14 +251,22 @@ public:
     }
   }
 
+  template <uint8_t N>
   INLINE static void set_pitch_eg_amt(uint8_t controller_value) {
     if (controller_value < 16) {
-      m_pitch_eg_amt = -96;
+      m_pitch_eg_amt[N] = -96;
     } else if (controller_value < 112) {
-      m_pitch_eg_amt = ((controller_value - 64) << 1);
+      m_pitch_eg_amt[N] = ((controller_value - 64) << 1);
     } else {
-      m_pitch_eg_amt = 96;
+      m_pitch_eg_amt[N] = 96;
     }
+  }
+
+  INLINE static void set_shape_eg_amt(uint8_t controller_value) {
+    if (controller_value == 0) {
+      controller_value = 1;
+    }
+    m_shape_eg_amt = ((controller_value - 64) << 1);
   }
 
   INLINE static void set_lfo_waveform(uint8_t controller_value) {
@@ -280,12 +295,19 @@ public:
   template <uint8_t N>
   INLINE static void set_pitch_lfo_amt(uint8_t controller_value) {
     if (controller_value < 16) {
-      m_pitch_lfo_amt = -96;
+      m_pitch_lfo_amt[N] = -96;
     } else if (controller_value < 112) {
-      m_pitch_lfo_amt = ((controller_value - 64) << 1);
+      m_pitch_lfo_amt[N] = ((controller_value - 64) << 1);
     } else {
-      m_pitch_lfo_amt = 96;
+      m_pitch_lfo_amt[N] = 96;
     }
+  }
+
+  INLINE static void set_shape_lfo_amt(uint8_t controller_value) {
+    if (controller_value == 0) {
+      controller_value = 1;
+    }
+    m_shape_lfo_amt = ((controller_value - 64) << 1);
   }
 
   INLINE static void set_lfo_fade_time(uint8_t controller_value) {
@@ -604,7 +626,13 @@ private:
 
   template <uint8_t N>
   INLINE static void update_freq_1st(uint8_t eg_level) {
-    m_pitch_real[N] =  (64 << 8) + m_pitch_current[N] + m_pitch_bend_normalized + (m_pitch_eg_amt * eg_level);
+    int8_t pitch_eg_amt;
+    if ((N == 2) && m_mono_mode) {
+      pitch_eg_amt = m_pitch_eg_amt[1];
+    } else {
+      pitch_eg_amt = m_pitch_eg_amt[0];
+    }
+    m_pitch_real[N] =  (64 << 8) + m_pitch_current[N] + m_pitch_bend_normalized + (pitch_eg_amt * eg_level);
 
     uint8_t coarse = high_byte(m_pitch_real[N]);
     if (coarse < (NOTE_NUMBER_MIN + 64)) {
@@ -613,7 +641,7 @@ private:
       m_pitch_real[N] = ((NOTE_NUMBER_MAX + 64) << 8);
     }
 
-    m_pitch_real[N] += m_lfo_mod_level;
+    m_pitch_real[N] += m_lfo_mod_level[N];
 
     if (N == 2) {
       if (m_mono_mode) {
@@ -728,7 +756,15 @@ private:
   }
 
   INLINE static void update_lfo_4th() {
-    m_lfo_mod_level = -mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt);
+    m_lfo_mod_level[0] = -mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[0]);
+
+    if (m_mono_mode) {
+      m_lfo_mod_level[2] = -mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[1]);
+    } else {
+      m_lfo_mod_level[1] = m_lfo_mod_level[0];
+      m_lfo_mod_level[2] = m_lfo_mod_level[0];
+      m_lfo_mod_level[3] = m_lfo_mod_level[0];
+    }
   }
 
   INLINE static void update_chorus_lfo_0th() {
@@ -806,14 +842,14 @@ private:
 };
 
 template <uint8_t T> uint8_t         Osc<T>::m_portamento_coef[4];
-template <uint8_t T> int8_t          Osc<T>::m_pitch_eg_amt;
-template <uint8_t T> int16_t         Osc<T>::m_lfo_mod_level;
+template <uint8_t T> int8_t          Osc<T>::m_pitch_eg_amt[2];
+template <uint8_t T> int16_t         Osc<T>::m_lfo_mod_level[4];
 template <uint8_t T> uint16_t        Osc<T>::m_lfo_phase;
 template <uint8_t T> int8_t          Osc<T>::m_lfo_wave_level;
 template <uint8_t T> int16_t         Osc<T>::m_lfo_level;
 template <uint8_t T> uint16_t        Osc<T>::m_lfo_rate;
 template <uint8_t T> uint8_t         Osc<T>::m_lfo_depth[2];
-template <uint8_t T> int8_t          Osc<T>::m_pitch_lfo_amt;
+template <uint8_t T> int8_t          Osc<T>::m_pitch_lfo_amt[2];
 template <uint8_t T> uint8_t         Osc<T>::m_lfo_waveform;
 template <uint8_t T> uint8_t         Osc<T>::m_lfo_sampled;
 template <uint8_t T> uint8_t         Osc<T>::m_lfo_fade_coef;
@@ -861,3 +897,5 @@ template <uint8_t T> int8_t          Osc<T>::m_osc1_shape_control;
 template <uint8_t T> uint16_t        Osc<T>::m_osc1_shape;
 template <uint8_t T> uint8_t         Osc<T>::m_mixer_sub_osc_control;
 template <uint8_t T> uint8_t         Osc<T>::m_mix_table[OSC_MIX_TABLE_LENGTH];
+template <uint8_t T> int8_t          Osc<T>::m_shape_eg_amt;
+template <uint8_t T> int8_t          Osc<T>::m_shape_lfo_amt;

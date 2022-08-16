@@ -806,27 +806,33 @@ private:
 
   INLINE static void update_eg_osc_mod() {
     if        (m_eg_osc_dst < 32) {  /* OSC_DST_PITCH */
-      IOsc<0>::set_pitch_eg_amt(m_eg_osc_amt);
-      // TODO
+      IOsc<0>::set_pitch_eg_amt<0>(m_eg_osc_amt);
+      IOsc<0>::set_pitch_eg_amt<1>(m_eg_osc_amt);
+      IOsc<0>::set_shape_eg_amt(64);
     } else if (m_eg_osc_dst < 96) {  /* OSC_DST_PITCH_2 */
-      IOsc<0>::set_pitch_eg_amt(m_eg_osc_amt);
-      // TODO
+      IOsc<0>::set_pitch_eg_amt<0>(64);
+      IOsc<0>::set_pitch_eg_amt<1>(m_eg_osc_amt);
+      IOsc<0>::set_shape_eg_amt(64);
     } else {                         /* OSC_DST_SHAPE_1 */
-      IOsc<0>::set_pitch_eg_amt(64);
-      // TODO
+      IOsc<0>::set_pitch_eg_amt<0>(64);
+      IOsc<0>::set_pitch_eg_amt<1>(64);
+      IOsc<0>::set_shape_eg_amt(m_eg_osc_amt);
     }
   }
 
   INLINE static void update_lfo_osc_mod() {
     if        (m_lfo_osc_dst < 32) {  /* OSC_DST_PITCH */
       IOsc<0>::set_pitch_lfo_amt<0>(m_lfo_osc_amt);
-      // TODO
+      IOsc<0>::set_pitch_lfo_amt<1>(m_lfo_osc_amt);
+      IOsc<0>::set_shape_lfo_amt(64);
     } else if (m_lfo_osc_dst < 96) {  /* OSC_DST_PITCH_2 */
-      IOsc<0>::set_pitch_lfo_amt<0>(m_lfo_osc_amt);
-      // TODO
+      IOsc<0>::set_pitch_lfo_amt<0>(64);
+      IOsc<0>::set_pitch_lfo_amt<1>(m_lfo_osc_amt);
+      IOsc<0>::set_shape_lfo_amt(64);
     } else {                          /* OSC_DST_SHAPE_1 */
       IOsc<0>::set_pitch_lfo_amt<0>(64);
-      // TODO
+      IOsc<0>::set_pitch_lfo_amt<1>(64);
+      IOsc<0>::set_shape_lfo_amt(m_lfo_osc_amt);
     }
   }
 };
