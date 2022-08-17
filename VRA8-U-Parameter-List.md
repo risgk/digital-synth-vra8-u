@@ -26,8 +26,8 @@
     - 96 (80-111): White Noise
     - 127 (112-127): Square Wave
 - Osc 2 Coarse $ [-|+]
-    - -24 (0): -24 semitone (min)
-    - +24 (127): +24 semitone (max)
+    - -48 (16): -48 semitone (min)
+    - +48 (112): +48 semitone (max)
 - Osc 2 Fine $ [-|+]
     - -64 (0): -100 cent (min)
     - +63 (127): +98.4375 cent (max)
