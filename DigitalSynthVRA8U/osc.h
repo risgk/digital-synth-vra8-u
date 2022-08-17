@@ -187,11 +187,7 @@ public:
   }
 
   INLINE static void set_osc1_shape_control(uint8_t controller_value) {
-    if (controller_value == 0) {
-      m_osc1_shape_control = -126;
-    } else {
-      m_osc1_shape_control = (controller_value - 64) << 1;
-    }
+    m_osc1_shape_control = (controller_value - 64) << 1;
   }
 
   INLINE static void set_mixer_sub_osc_control(uint8_t controller_value) {
@@ -318,12 +314,12 @@ public:
   }
 
   INLINE static void set_mono_osc2_pitch(uint8_t controller_value) {
-    if (controller_value < 4) {
-      m_mono_osc2_pitch = -60;
-    } else if (controller_value <= 124) {
+    if (controller_value < 16) {
+      m_mono_osc2_pitch = -48;
+    } else if (controller_value < 112) {
       m_mono_osc2_pitch = controller_value - 64;
     } else {
-      m_mono_osc2_pitch = 60;
+      m_mono_osc2_pitch = 48;
     }
   }
 
