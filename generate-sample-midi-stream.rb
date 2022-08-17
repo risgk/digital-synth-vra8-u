@@ -95,24 +95,8 @@ program_change(0)
 play_mono_a(3)
 sound_off
 
-program_change(1)
-play_b(3)
-sound_off
-
 program_change(2)
-play_a(3)
-sound_off
-
-program_change(3)
-play_mono_a(5)
-sound_off
-
-program_change(4)
-play_b(4)
-sound_off
-
-program_change(5)
-play_mono_a(3)
+play_b(3)
 sound_off
 
 $file.close
