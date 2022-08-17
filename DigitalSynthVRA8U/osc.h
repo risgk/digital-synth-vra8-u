@@ -195,8 +195,8 @@ public:
   }
 
   INLINE static void set_mixer_sub_osc_control(uint8_t controller_value) {
-    m_mixer_sub_osc_control =
-      (((controller_value + 1) >> 1) * (OSC_WAVE_TABLE_AMPLITUDE >> 1) >> 6;
+    m_mixer_sub_osc_control = (((controller_value + 1) >> 1) *
+                              static_cast<uint8_t>(OSC_WAVE_TABLE_AMPLITUDE << 1)) >> 8;
   }
 
   INLINE static void set_osc_level(uint8_t controller_value) {
@@ -209,14 +209,14 @@ public:
 
   template <uint8_t N>
   INLINE static void set_pitch_eg_amt(uint8_t controller_value) {
-    if (controller_value < 14) {
+    if (controller_value < 25) {
       m_pitch_eg_amt[N] = -96;
-    } else if (controller_value < 60) {
-      m_pitch_eg_amt[N] = (controller_value - 62) << 1;
-    } else if (controller_value < 68) {
-      m_pitch_eg_amt[N] = controller_value - 64;
-    } else if (controller_value < 114) {
-      m_pitch_eg_amt[N] = (controller_value - 66) << 1;
+    } else if (controller_value < 48) {
+      m_pitch_eg_amt[N] = (controller_value - 49) << 2;
+    } else if (controller_value < 80) {
+      m_pitch_eg_amt[N] = (controller_value - 62) >> 2;
+    } else if (controller_value < 103) {
+      m_pitch_eg_amt[N] = (controller_value - 79) << 2;
     } else {
       m_pitch_eg_amt[N] = 96;
     }
@@ -254,10 +254,14 @@ public:
 
   template <uint8_t N>
   INLINE static void set_pitch_lfo_amt(uint8_t controller_value) {
-    if (controller_value < 16) {
+    if (controller_value < 25) {
       m_pitch_lfo_amt[N] = -96;
-    } else if (controller_value < 112) {
-      m_pitch_lfo_amt[N] = ((controller_value - 64) << 1);
+    } else if (controller_value < 48) {
+      m_pitch_lfo_amt[N] = (controller_value - 49) << 2;
+    } else if (controller_value < 80) {
+      m_pitch_lfo_amt[N] = (controller_value - 62) >> 2;
+    } else if (controller_value < 103) {
+      m_pitch_lfo_amt[N] = (controller_value - 79) << 2;
     } else {
       m_pitch_lfo_amt[N] = 96;
     }
@@ -716,10 +720,10 @@ private:
   }
 
   INLINE static void update_lfo_4th(uint8_t eg_level) {
-    m_lfo_mod_level[0] = -mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[0]);
+    m_lfo_mod_level[0] = -(mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[0]) >> 2);
 
     if (m_mono_mode) {
-      m_lfo_mod_level[2] = -mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[1]);
+      m_lfo_mod_level[2] = -(mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[1]) >> 2);
       int16_t shape_eg_mod = ((eg_level * m_shape_eg_amt) << 1);
       int16_t shape_lfo_mod = (mul_sq16_sq8(m_lfo_level, m_shape_lfo_amt) << 1);
       m_osc1_shape = 0x8000 - (m_osc1_shape_control << 8) +
