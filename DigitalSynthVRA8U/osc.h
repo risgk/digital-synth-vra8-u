@@ -36,7 +36,7 @@ class Osc {
 
   static uint8_t        m_portamento_coef[4];
   static int8_t         m_pitch_eg_amt[2];
-  static int16_t        m_lfo_mod_level[4];
+  static int16_t        m_lfo_mod_level[2];
   static uint16_t       m_lfo_phase;
   static int8_t         m_lfo_wave_level;
   static int16_t        m_lfo_level;
@@ -605,12 +605,11 @@ private:
       m_pitch_real[N] = ((NOTE_NUMBER_MAX + 64) << 8);
     }
 
-    m_pitch_real[N] += m_lfo_mod_level[N];
-
-    if (N == 2) {
-      if (m_mono_mode) {
-        m_pitch_real[N] += (m_mono_osc2_pitch << 8) + m_mono_osc2_detune + m_mono_osc2_detune;
-      }
+    if (m_mono_mode && (N == 2)) {
+      m_pitch_real[N] += m_lfo_mod_level[1];
+      m_pitch_real[N] += (m_mono_osc2_pitch << 8) + m_mono_osc2_detune + m_mono_osc2_detune;
+    } else {
+      m_pitch_real[N] += m_lfo_mod_level[0];
     }
 
     coarse = high_byte(m_pitch_real[N]);
@@ -716,22 +715,20 @@ private:
     }
     lfo_depth <<= 1;
 
-    m_lfo_level = (lfo_depth * m_lfo_wave_level) << 1;
+    m_lfo_level = (lfo_depth * m_lfo_wave_level) >> 1;
   }
 
   INLINE static void update_lfo_4th(uint8_t eg_level) {
-    m_lfo_mod_level[0] = -(mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[0]) >> 2);
+    m_lfo_mod_level[0] = -mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[0]);
 
     if (m_mono_mode) {
-      m_lfo_mod_level[2] = -(mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[1]) >> 2);
+      m_lfo_mod_level[1] = -mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[1]);
       int16_t shape_eg_mod = ((eg_level * m_shape_eg_amt) << 1);
-      int16_t shape_lfo_mod = (mul_sq16_sq8(m_lfo_level, m_shape_lfo_amt) << 1);
+      int16_t shape_lfo_mod = mul_sq16_sq8(m_lfo_level << 2, m_shape_lfo_amt);
       m_osc1_shape = 0x8000 - (m_osc1_shape_control << 8) +
         + shape_eg_mod + shape_eg_mod + shape_lfo_mod + shape_lfo_mod;
     } else {
       m_lfo_mod_level[1] = m_lfo_mod_level[0];
-      m_lfo_mod_level[2] = m_lfo_mod_level[0];
-      m_lfo_mod_level[3] = m_lfo_mod_level[0];
     }
   }
 
@@ -811,7 +808,7 @@ private:
 
 template <uint8_t T> uint8_t         Osc<T>::m_portamento_coef[4];
 template <uint8_t T> int8_t          Osc<T>::m_pitch_eg_amt[2];
-template <uint8_t T> int16_t         Osc<T>::m_lfo_mod_level[4];
+template <uint8_t T> int16_t         Osc<T>::m_lfo_mod_level[2];
 template <uint8_t T> uint16_t        Osc<T>::m_lfo_phase;
 template <uint8_t T> int8_t          Osc<T>::m_lfo_wave_level;
 template <uint8_t T> int16_t         Osc<T>::m_lfo_level;
