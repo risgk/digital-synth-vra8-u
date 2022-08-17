@@ -1,6 +1,6 @@
 # Digital Synth VRA8-U v0.0.0
 
-- 2022-04-30 ISGK Instruments
+- 2022-08-17 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
 
 ## Concept
@@ -9,19 +9,19 @@
     - 4-Voice Paraphonic
     - With built-in Chorus FX
     - Controlled by MIDI (MIDI Sound Module)
+- The 8th in the Digital Synth VRA8 series that pushes the limits of the Arduino Uno
 
 ## Caution about Arduino
 
 - We *strongly recommend* **Arduino AVR Boards core 1.8.5**
-    - If you use other than AVR Boards core 1.8.5 (or modified this sketch), the sketch *may not work well*
-        - CPU Busy LED (LED L) *may almost always lit*, rather than flashing occasionally
+    - If you use other than 1.8.5, the sketch *may not work well*: CPU Busy LED (LED L) *may almost always lit*
 
 ## Features
 
 - Serial MIDI In (38.4 kbps)
     - We recommend [Hairless MIDI<->Serial Bridge](https://projectgus.github.io/hairless-midiserial/) to connect PC
     - **NOTE**: A combination of a **MIDI Shield** (or MIDI Breakout) and a **power supply adapter** is *better* to avoiding USB noise
-        - To use MIDI Shield (or MIDI Breakout), take `#define SERIAL_SPEED (31250)` (31.25 kbps) in `"DigitalSynthVRA8Q.ino"`
+        - To use MIDI Shield (or MIDI Breakout), take `#define SERIAL_SPEED (31250)` (31.25 kbps) in `"DigitalSynthVRA8U.ino"`
         - Even using only the power supply adapter *significantly* reduces USB noise
 - PWM Audio Out (Unipolar, Line Level) **L/Mono**: **Pin D5** (or D6), **R**: **Pin D11**
     - Sampling Rate: 31.25 kHz, PWM Rate: 62.5 kHz, Bit Depth: 8 bit
@@ -30,7 +30,7 @@
     - We recommend adding AC coupling capacitors to reduce DC components
         - A 10 uF electrolytic capacitor works well
 - Files
-    - `"DigitalSynthVRA8Q.ino"` is a sketch for Arduino Uno Rev3 (ATmega328P)
+    - `"DigitalSynthVRA8U.ino"` is a sketch for Arduino Uno Rev3 (ATmega328P)
     - `"make-sample-wav-file.cc"` is for Debugging on PC
         - Requiring GCC (g++) or other
         - `"make-sample-wav-file-cc.bat"` makes a sample WAV file (working on Windows)
@@ -40,42 +40,97 @@
 ## VRA8-U CTRL
 
 - MIDI Controller (Editor) Application for VRA8-U, HTML App (Web App)
-- VRA8-U CTRL converts Program Changes (#0-7 for PRESET) into Control Changes
+- VRA8-U CTRL converts Program Changes (#0-7 for PRESET, #0-15 for user programs) into Control Changes
 - VRA8-U CTRL stores the current control values and the user programs (#8-15) in a Web browser (localStorage)
 - We recommend using Google Chrome, which implements Web MIDI API
 - We recommend [loopMIDI](https://www.tobias-erichsen.de/software/loopmidi.html) (virtual loopback MIDI cable) to connect VRA8-U
 
 ## Details of Control Change
 
-- OSC WAVE (SAW/PLS) = Oscillator Waveform
-    - 0 (0-63): Saw Wave
-    - 127 (64-127): Pulse Wave (Square Wave)
-- CUTOFF = Filter Cutoff Frequency
-- RESONANCE = Filter Resonance
-- AMP EG (OFF/ON)
-    - 0 (0-63): Off (Gate)
-    - 127 (64-127): On (EG)
-- ATTACK = EG Attack Time
-- DECAY = EG Decay Time
+- Notes
+    - $ : Disabled in Paraphonic Mode
+    - $$ : Disabled in Paraphonic Mode or if Osc 1 Wave is Pls
+- Osc 1 Wave [Saw|-|Tri|Pls|Sqr]
+    - 0 (0-47): Saw Wave
+    - 64 (48-79): Triangle Wave
+    - 96 (80-111): Pulse Wave (Shape adjustable)
+    - 127 (112-127): Square Wave
+- Osc 1 Shape $ [-|+]
+    - -64 (0): Pulse Width 0% (min)
+    - -48 (16): Pulse Width 12.5%
+    - -32 (32): Pulse Width 25%
+    - +0 (64): Pulse Width 50%
+    - +63 (127): Pulse Width 99.2% (max)
+- Mixer Sub Osc $$
+- Osc 2 Wave $ [Saw|-|Tri|Nos|Sqr]
+    - 0 (0-47): Saw Wave
+    - 64 (48-79): Triangle Wave
+    - 96 (80-111): White Noise
+    - 127 (112-127): Square Wave
+- Osc 2 Coarse $ [-|+]
+    - -24 (0): -24 semitone (min)
+    - +24 (127): +24 semitone (max)
+- Osc 2 Fine $ [-|+]
+    - -64 (0): -100 cent (min)
+    - +63 (127): +98.4375 cent (max)
+- Filter Cutoff
+    - 4: f = 452.9 Hz (min)
+    - 64: f = 2561.9 Hz
+    - 124: f = 14492.6 Hz (max)
+- Filter Resonance
+    - 16 (0-23): Q = 0.7 (min)
+    - 32 (24-39): Q = 1.0
+    - 48 (40-55): Q = 1.4
+    - 64 (56-71): Q = 2.0
+    - 80 (72-87): Q = 2.8
+    - 96 (88-103): Q = 4.0
+    - 112 (104-127): Q = 5.6 (max)
+- Filter EG Amt [-|+], LFO Filter Amt [-|+]
+    - -60 (4): -120 (min)
+    - +60 (124): +120 (max)
+- Filter Key Track $ [0.0|0.5|1.0]
+    - 0 (0-31): 0.0
+    - 64 (32-95): 0.5
+    - 127 (96-127): 1.0
+- EG Decay, Amp Decay
     - 127: No Decay
-- SUSTAIN: EG Sustain Level
-- LFO WAVE (T/T2/S/RND/P) = LFO Waveform
-    - 0 (0-15): Triangle Wave
-    - 32 (16-47): Triangle Wave 2 (Key Sync)
-    - 64 (48-79): Saw Wave (Key Sync)
-    - 96 (80-111): Random Wave (Key Sync)
-    - 127 (112-127): Pulse Wave (Square Wave, Key Sync)
-- VOICE (PARA/MONO/LGT) = Voice Mode
-    - 0 (0-31): Paraphonic
-    - 64 (32-95): Monophonic (Multi Trigger)
-    - 127 (96-127): Legato (Monophonic, Single Trigger, Auto Portamento)
-- PORTAMENTO = Portament Time
-- MONO OSC2 MIX (-/HF/FL) = Oscillator 2 Mixing Level in Monophonic and Legato Modes
-    - 0 (0-31): Off, 0% (Oscillator 1: 200%)
-    - 64 (32-95): Half, 100% (Oscillator 1: 175%)
-    - 127 (96-127): Full, 150% (Oscillator 1: 150%)
-- MONO OSC2 PITCH = Oscillator 2 Pitch in Monophonic and Legato Modes
-- MONO OSC2 DETUNE = Oscillator 2 Detune amount in Monophonic and Legato Modes
+- EG Osc Amt [-|+], LFO Osc Amt [-|+]
+    - Pitch
+        - -39 (25): -24 semitone (min)
+        - -27 (37): -12 semitone
+        - -16 (48): -1 semitone
+        - -12 (52): -75 cent
+        - -8 (56): -50 cent
+        - -4 (60): -25 cent
+        - +0 (64): +0 cent
+        - +4 (68): +25 cent
+        - +8 (72): +50 cent
+        - +12 (76): +75 cent
+        - +16 (80): +1 semitone
+        - +27 (91): +12 semitone
+        - +39 (103): +24 semitone (max)
+    - Shape
+        - -63 (1): -126 (min)
+        - +63 (127): +126 (max)
+- EG Osc Dst [P|P2|S1], LFO Osc Dst [P|P2|S1]
+    - 0 (0-31): Osc 1 & 2 Pitch
+    - 64 (32-95): Osc 2 Pitch
+    - 127 (96-127): Osc 1 Shape
+- Voice Mode [Par|Mon|Lgt]
+    - 0 (0-31): Paraphonic (LFO Single Trigger)
+    - 64 (32-95): Monophonic (EG & LFO Multi Trigger)
+    - 127 (96-127): Legato (Monophonic, EG & LFO Single Trigger, Auto Portamento)
+- LFO Wave [T1|T2|Saw|SH|Sqr]
+    - 0 (0-15): Triangle Wave (-0.5 to +0.5)
+    - 32 (16-47): Triangle Wave 2 (Key Sync, -0.5 to +0.5)
+    - 64 (48-79): Saw Wave (Key Sync, 0.0 to 1.0)
+    - 96 (80-111): Sample & Hold (Key Sync, 0.0 to 1.0)
+    - 127 (112-127): Square Wave (Key Sync, 0.0 to 1.0)
+- LFO Rate
+    - 0: 0.2 Hz (min)
+    - 64: 2 Hz
+    - 96: 6.3 Hz
+    - 127: 20 Hz (max)
 - Chorus Mode [Off|M|PS|S|S2]
     - 0 (0-15): Chorus Off
     - 32 (16-47): Mono Chorus
@@ -97,6 +152,9 @@
     - 64: 8.2 ms
     - 80: 10.3 ms
     - 127: 16.3 ms (max)
+- Pitch Bend Range
+    - 0: 0 semitone (min)
+    - 24: 24 semitone (max)
 
 ## Sample Chorus Settings
 
@@ -111,7 +169,7 @@
 
 ## MIDI Implementation Chart
 
-      [United Synthesizer]                                            Date: 2022-04-30                  
+      [United Synthesizer]                                            Date: 2022-08-17                  
       Model: Digital Synth VRA8-U     MIDI Implementation Chart       Version: 0.0.0                    
     +-------------------------------+---------------+---------------+----------------------------------+
     | Function...                   | Transmitted   | Recognized    | Remarks                          |
@@ -126,7 +184,7 @@
     | Note                          | x             | 0-127         |                                  |
     | Number       : True Voice     | ************* | 12-108        |                                  |
     +-------------------------------+---------------+---------------+----------------------------------+
-    | Velocity     Note ON          | x             | o (V=1-127)   |                                  |
+    | Velocity     Note ON          | x             | x             |                                  |
     |              Note OFF         | x             | x             |                                  |
     +-------------------------------+---------------+---------------+----------------------------------+
     | After        Key's            | x             | x             |                                  |
@@ -136,7 +194,6 @@
     +-------------------------------+---------------+---------------+----------------------------------+
     | Control                     1 | x             | o             | Modulation                       |
     | Change                     64 | x             | o             | Sustain Pedal [Off|On]           |
-    |                            35 | x             | o             | Pitch Bend by CC [-|+]           |
     |                               |               |               |                                  |
     |                            24 | x             | o             | Osc 1 Wave [Saw|-|Tri|Pls|Sqr]   |
     |                           102 | x             | o             | Osc 1 Shape $ [-|+]              |
@@ -158,8 +215,8 @@
     |                            27 | x             | o             | EG Sustain                       |
     |                            28 | x             | o             | EG Release                       |
     |                               |               |               |                                  |
-    |                           104 | x             | o             | EG Osc Amt [-|+]                 | TODO
-    |                           105 | x             | o             | EG Osc Dst [P|P2|S1]             | TODO
+    |                           104 | x             | o             | EG Osc Amt [-|+]                 |
+    |                           105 | x             | o             | EG Osc Dst [P|P2|S1]             |
     |                            87 | x             | o             | Voice Mode [Par|Mon|Lgt]         |
     |                            22 | x             | o             | Portamento                       |
     |                               |               |               |                                  |
@@ -168,8 +225,8 @@
     |                            81 | x             | o             | LFO Depth                        |
     |                            15 | x             | o             | LFO Fade Time                    |
     |                               |               |               |                                  |
-    |                            82 | x             | o             | LFO Osc Amt [-|+]                | TODO
-    |                             9 | x             | o             | LFO Osc Dst [P|P2|S1]            | TODO
+    |                            82 | x             | o             | LFO Osc Amt [-|+]                |
+    |                             9 | x             | o             | LFO Osc Dst [P|P2|S1]            |
     |                            83 | x             | o             | LFO Filter Amt [-|+]             |
     |                           110 | x             | o             | Amp Level                        |
     |                               |               |               |                                  |
@@ -185,7 +242,9 @@
     |                               |               |               |                                  |
     |                            85 | x             | o             | Pitch Bend Range                 |
     |                               |               |               |                                  |
-    |                   90, 112-119 | x             | x             | [Reserved]                       |
+    |                            35 | x             | o             | Pitch Bend by CC [-|+]           |
+    |                       112-119 |               |               | Program Change #0-7 by CC        |
+    |                            90 | x             | x             | [Reserved]                       |
     +-------------------------------+---------------+---------------+----------------------------------+
     | Program                       | x             | o             |                                  |
     | Change       : True #         | ************* | 0-7           |                                  |
