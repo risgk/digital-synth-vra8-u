@@ -723,8 +723,8 @@ private:
 
     if (m_mono_mode) {
       m_lfo_mod_level[1] = -mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[1]);
-      int16_t shape_eg_mod = ((eg_level * m_shape_eg_amt) << 1);
-      int16_t shape_lfo_mod = mul_sq16_sq8(m_lfo_level << 2, m_shape_lfo_amt);
+      int16_t shape_eg_mod = (eg_level * m_shape_eg_amt) << 1;
+      int16_t shape_lfo_mod = mul_sq16_sq8(m_lfo_level << 2, m_shape_lfo_amt) << 1;
       m_osc1_shape = 0x8000 - (m_osc1_shape_control << 8) +
         + shape_eg_mod + shape_eg_mod + shape_lfo_mod + shape_lfo_mod;
     } else {
