@@ -31,6 +31,7 @@
 - Osc 2 Fine $ [-|+]
     - -64 (0): -100 cent (min)
     - +63 (127): +98.4375 cent (max)
+- Mixer Osc Mix $ [1|2]
 - Filter Cutoff
     - 4: f = 452.9 Hz (min)
     - 64: f = 2561.9 Hz
