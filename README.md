@@ -16,6 +16,10 @@
 - We *strongly recommend* **Arduino AVR Boards core 1.8.5**
     - If you use other than 1.8.5, the sketch *may not work well*: CPU Busy LED (LED L) *may almost always lit*
 
+## Change History
+
+- v1.0.1: Fix Parameter List
+
 ## Features
 
 - Serial MIDI In (38.4 kbps)
