@@ -82,8 +82,8 @@
 - LFO Wave [T1|T2|Saw|SH|Sqr]
     - 0 (0-15): Triangle Wave (-0.5 to +0.5)
     - 32 (16-47): Triangle Wave 2 (Key Sync, -0.5 to +0.5)
-    - 64 (48-79): Saw Wave (Key Sync, 0.0 to 1.0)
-    - 96 (80-111): Sample & Hold (Key Sync, 0.0 to 1.0)
+    - 64 (48-79): Saw Wave (Key Sync, -0.49 to +0.5)
+    - 96 (80-111): Sample & Hold (Key Sync, -0.49 to +0.5)
     - 127 (112-127): Square Wave (Key Sync, 0.0 to 1.0)
 - LFO Rate
     - 0: 0.2 Hz (min)
