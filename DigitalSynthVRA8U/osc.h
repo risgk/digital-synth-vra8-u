@@ -87,6 +87,7 @@ class Osc {
   static __uint24       m_lfsr;
   static uint8_t        m_phase_high;
   static int8_t         m_osc1_shape_control;
+  static int8_t         m_osc1_shape_control_effective;
   static uint16_t       m_osc1_shape;
   static uint8_t        m_mixer_sub_osc_control;
   static uint8_t        m_mix_table[OSC_MIX_TABLE_LENGTH];
@@ -718,10 +719,15 @@ private:
     m_lfo_mod_level[0] = -mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[0]);
 
     if (m_mono_mode) {
+      m_osc1_shape_control_effective += (m_osc1_shape_control_effective < m_osc1_shape_control);
+      m_osc1_shape_control_effective += (m_osc1_shape_control_effective < m_osc1_shape_control);
+      m_osc1_shape_control_effective -= (m_osc1_shape_control_effective > m_osc1_shape_control);
+      m_osc1_shape_control_effective -= (m_osc1_shape_control_effective > m_osc1_shape_control);
+
       m_lfo_mod_level[1] = -mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[1]);
       int16_t shape_eg_mod = (eg_level * m_shape_eg_amt) << 1;
       int16_t shape_lfo_mod = mul_sq16_sq8(m_lfo_level << 2, m_shape_lfo_amt) << 1;
-      m_osc1_shape = 0x8000 - (m_osc1_shape_control << 8) +
+      m_osc1_shape = 0x8000 - (m_osc1_shape_control_effective << 8) +
         + shape_eg_mod + shape_eg_mod + shape_lfo_mod + shape_lfo_mod;
     } else {
       m_lfo_mod_level[1] = m_lfo_mod_level[0];
@@ -855,6 +861,7 @@ template <uint8_t T> uint8_t         Osc<T>::m_rnd;
 template <uint8_t T> __uint24        Osc<T>::m_lfsr;
 template <uint8_t T> uint8_t         Osc<T>::m_phase_high;
 template <uint8_t T> int8_t          Osc<T>::m_osc1_shape_control;
+template <uint8_t T> int8_t          Osc<T>::m_osc1_shape_control_effective;
 template <uint8_t T> uint16_t        Osc<T>::m_osc1_shape;
 template <uint8_t T> uint8_t         Osc<T>::m_mixer_sub_osc_control;
 template <uint8_t T> uint8_t         Osc<T>::m_mix_table[OSC_MIX_TABLE_LENGTH];
