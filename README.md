@@ -1,6 +1,6 @@
-# Digital Synth VRA8-U v1.0.0
+# Digital Synth VRA8-U v1.0.1
 
-- 2022-08-17 ISGK Instruments
+- 2022-08-19 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
 
 ## Concept
@@ -15,6 +15,10 @@
 
 - We *strongly recommend* **Arduino AVR Boards core 1.8.5**
     - If you use other than 1.8.5, the sketch *may not work well*: CPU Busy LED (LED L) *may almost always lit*
+
+## Change History
+
+- v1.0.1: Reduce noise when Osc 1 Shape changes; Fix Parameter List
 
 ## Features
 

@@ -1,6 +1,6 @@
-# Digital Synth VRA8-U Parameter List v1.0.0
+# Digital Synth VRA8-U Parameter List v1.0.1
 
-- 2022-08-17 ISGK Instruments
+- 2022-08-19 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
 
 ## Control Change Parameters
@@ -26,8 +26,8 @@
     - 96 (80-111): White Noise
     - 127 (112-127): Square Wave
 - Osc 2 Coarse $ [-|+]
-    - -24 (0): -24 semitone (min)
-    - +24 (127): +24 semitone (max)
+    - -48 (16): -48 semitone (min)
+    - +48 (112): +48 semitone (max)
 - Osc 2 Fine $ [-|+]
     - -64 (0): -100 cent (min)
     - +63 (127): +98.4375 cent (max)
@@ -82,8 +82,8 @@
 - LFO Wave [T1|T2|Saw|SH|Sqr]
     - 0 (0-15): Triangle Wave (-0.5 to +0.5)
     - 32 (16-47): Triangle Wave 2 (Key Sync, -0.5 to +0.5)
-    - 64 (48-79): Saw Wave (Key Sync, 0.0 to 1.0)
-    - 96 (80-111): Sample & Hold (Key Sync, 0.0 to 1.0)
+    - 64 (48-79): Saw Wave (Key Sync, -0.49 to +0.5)
+    - 96 (80-111): Sample & Hold (Key Sync, -0.49 to +0.5)
     - 127 (112-127): Square Wave (Key Sync, 0.0 to 1.0)
 - LFO Rate
     - 0: 0.2 Hz (min)
