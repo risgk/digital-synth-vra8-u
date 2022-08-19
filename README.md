@@ -18,7 +18,7 @@
 
 ## Change History
 
-- v1.0.1: Fix Parameter List
+- v1.0.1: Reduce noise when Osc 1 Shape changes; Fix Parameter List
 
 ## Features
 
