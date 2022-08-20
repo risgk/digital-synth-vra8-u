@@ -53,6 +53,7 @@ class Osc {
   static uint8_t        m_chorus_depth_control;
   static uint8_t        m_chorus_rate_control;
   static uint8_t        m_chorus_delay_time_control;
+  static uint8_t        m_chorus_delay_time_control_effective;
   static uint8_t        m_chorus_mode;
   static uint8_t        m_chorus_depth_control_actual;
   static uint16_t       m_chorus_lfo_phase;
@@ -748,15 +749,18 @@ private:
   }
 
   INLINE static void update_chorus_lfo_0th() {
-    if (m_chorus_delay_time_control < 64) {
-      if (m_chorus_depth_control > (m_chorus_delay_time_control << 1)) {
-        m_chorus_depth_control_actual = (m_chorus_delay_time_control << 1);
+    m_chorus_delay_time_control_effective += (m_chorus_delay_time_control_effective < m_chorus_delay_time_control);
+    m_chorus_delay_time_control_effective -= (m_chorus_delay_time_control_effective > m_chorus_delay_time_control);
+
+    if (m_chorus_delay_time_control_effective < 64) {
+      if (m_chorus_depth_control > (m_chorus_delay_time_control_effective << 1)) {
+        m_chorus_depth_control_actual = (m_chorus_delay_time_control_effective << 1);
       } else {
         m_chorus_depth_control_actual = m_chorus_depth_control;
       }
     } else {
-      if (m_chorus_depth_control > ((127 - m_chorus_delay_time_control) << 1)) {
-        m_chorus_depth_control_actual = ((127 - m_chorus_delay_time_control) << 1);
+      if (m_chorus_depth_control > ((127 - m_chorus_delay_time_control_effective) << 1)) {
+        m_chorus_depth_control_actual = ((127 - m_chorus_delay_time_control_effective) << 1);
       } else {
         m_chorus_depth_control_actual = m_chorus_depth_control;
       }
@@ -785,14 +789,14 @@ private:
     case CHORUS_MODE_P_STEREO :
     case CHORUS_MODE_MONO     :
       {
-        uint16_t chorus_delay_time_control_mul_4 = m_chorus_delay_time_control * 4;
+        uint16_t chorus_delay_time_control_mul_4 = m_chorus_delay_time_control_effective * 4;
         m_chorus_delay_time[0] = chorus_delay_time_control_mul_4 + m_chorus_lfo_level;
         m_chorus_delay_time[1] = m_chorus_delay_time[0];
       }
       break;
     case CHORUS_MODE_STEREO_2 :
       {
-        uint16_t chorus_delay_time_control_mul_4 = m_chorus_delay_time_control * 4;
+        uint16_t chorus_delay_time_control_mul_4 = m_chorus_delay_time_control_effective * 4;
         m_chorus_delay_time[0] = chorus_delay_time_control_mul_4 + m_chorus_lfo_level;
         m_chorus_delay_time[1] = chorus_delay_time_control_mul_4 - m_chorus_lfo_level;
       }
@@ -839,6 +843,7 @@ template <uint8_t T> uint8_t         Osc<T>::m_lfo_fade_level;
 template <uint8_t T> uint8_t         Osc<T>::m_chorus_depth_control;
 template <uint8_t T> uint8_t         Osc<T>::m_chorus_rate_control;
 template <uint8_t T> uint8_t         Osc<T>::m_chorus_delay_time_control;
+template <uint8_t T> uint8_t         Osc<T>::m_chorus_delay_time_control_effective;
 template <uint8_t T> uint8_t         Osc<T>::m_chorus_mode;
 template <uint8_t T> uint8_t         Osc<T>::m_chorus_depth_control_actual;
 template <uint8_t T> uint16_t        Osc<T>::m_chorus_lfo_phase;
