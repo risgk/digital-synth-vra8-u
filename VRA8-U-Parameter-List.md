@@ -7,18 +7,28 @@
 
 - Notes
     - $ : Disabled in Paraphonic Mode
-    - $$ : Disabled in Paraphonic Mode or if Osc 1 Wave is Pls
-- Osc 1 Wave [Saw|-|Tri|Pls|Sqr]
-    - 0 (0-47): Saw Wave
+    - $$ : Disabled in Paraphonic Mode or if Osc 1 Wave is SS or Pls
+- Osc 1 Wave [Saw|SS|Tri|Pls|Sqr]
+    - 0 (0-15): Saw Wave
+    - 32 (16-47): Shaped Saw Wave (Shape adjustable)
     - 64 (48-79): Triangle Wave
     - 96 (80-111): Pulse Wave (Shape adjustable)
     - 127 (112-127): Square Wave
 - Osc 1 Shape $ [-|+]
-    - -64 (0): Pulse Width 0% (min)
-    - -48 (16): Pulse Width 12.5%
-    - -32 (32): Pulse Width 25%
-    - +0 (64): Pulse Width 50%
-    - +63 (127): Pulse Width 99.2% (max)
+    - Shaped Saw Wave (saw wave + phase shifted saw wave)
+      - -64 (0): +1Oct Saw 100% (min)
+      - -32 (32): Shaped Saw 150%
+      - +0 (64): Saw 200%
+      - +32 (96): Shaped Saw 150%
+      - +63 (127): Shaped Saw 101.6%
+    - Pulse Wave (saw wave + phase shifted reverse saw wave)
+      - -64 (0): Pulse Width 0% (min)
+      - -48 (16): Pulse Width 12.5%
+      - -32 (32): Pulse Width 25%
+      - +0 (64): Pulse Width 50%
+      - +32 (96): Pulse Width 75%
+      - +48 (112): Pulse Width 87.5%
+      - +63 (127): Pulse Width 99.2% (max)
 - Mixer Sub Osc $$
 - Osc 2 Wave $ [Saw|-|Tri|Nos|Sqr]
     - 0 (0-47): Saw Wave

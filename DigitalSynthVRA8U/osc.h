@@ -20,8 +20,9 @@ class Osc {
   static const uint8_t WAVEFORM_SAW           = 0;
   static const uint8_t WAVEFORM_SQUARE        = 1;
   static const uint8_t WAVEFORM_TRIANGLE      = 2;
-  static const uint8_t WAVEFORM_1_PULSE       = 3;
-  static const uint8_t WAVEFORM_2_NOISE       = 4;
+  static const uint8_t WAVEFORM_1_S_SAW       = 3;
+  static const uint8_t WAVEFORM_1_PULSE       = 4;
+  static const uint8_t WAVEFORM_2_NOISE       = 5;
 
   static const uint8_t LFO_WAVEFORM_TRI_ASYNC = 0;
   static const uint8_t LFO_WAVEFORM_TRI_SYNC  = 1;
@@ -165,8 +166,10 @@ public:
   template <uint8_t N>
   INLINE static void set_osc_waveform(uint8_t controller_value) {
     if (N == 0) {
-      if (controller_value < 48) {
+      if (controller_value < 16) {
         m_waveform[0] = WAVEFORM_SAW;
+      } else if (controller_value < 48) {
+        m_waveform[0] = WAVEFORM_1_S_SAW;
       } else if (controller_value < 80) {
         m_waveform[0] = WAVEFORM_TRIANGLE;
       } else if (controller_value < 112) {
@@ -443,11 +446,11 @@ public:
       int8_t wave_3 = get_wave_level(m_wave_table[3], m_phase[3]);
       result += wave_3 * m_osc_gain_effective[3];
     } else {
-      if (m_waveform[0] == WAVEFORM_1_PULSE) {
-        // A half of Pulse Wave (wave_3)
+      if ((m_waveform[0] == WAVEFORM_1_S_SAW) || (m_waveform[0] == WAVEFORM_1_PULSE)) {
+        // For Shaped Saw Wave or Pulse Wave (wave_3)
         m_phase[3] = m_phase[0] + m_osc1_shape;
         int8_t wave_3 = get_wave_level(m_wave_table[0], m_phase[3]);
-        result -= wave_3 * m_osc_gain_effective[0];
+        result += wave_3 * m_osc_gain_effective[3];
       } else {
         // Sub Osc (wave_1)
         if (m_phase[0] < m_freq[0]) {
@@ -496,7 +499,7 @@ private:
   INLINE static const uint8_t* get_wave_table(uint8_t waveform, uint8_t note_number) {
     const uint8_t* result;
 #if defined(MAKE_SAMPLE_WAV_FILE)
-    if ((waveform == WAVEFORM_SAW) ||
+    if ((waveform == WAVEFORM_SAW) || (waveform == WAVEFORM_1_S_SAW) ||
         (m_mono_mode && (waveform == WAVEFORM_1_PULSE))) {
       result = g_osc_saw_wave_tables[note_number - NOTE_NUMBER_MIN];
     } else if (waveform == WAVEFORM_TRIANGLE) {
@@ -505,7 +508,7 @@ private:
       result = g_osc_pulse_wave_tables[note_number - NOTE_NUMBER_MIN];
     }
 #else
-    if ((waveform == WAVEFORM_SAW) ||
+    if ((waveform == WAVEFORM_SAW) || (waveform == WAVEFORM_1_S_SAW) ||
         (m_mono_mode && (waveform == WAVEFORM_1_PULSE))) {
       result = pgm_read_word(g_osc_saw_wave_tables + (note_number - NOTE_NUMBER_MIN));
     } else if (waveform == WAVEFORM_TRIANGLE) {
@@ -678,6 +681,12 @@ private:
         m_osc_gain_effective[2] = high_byte(m_mix_table[                             m_mono_osc2_mix] * base_gain);
         m_osc_gain_effective[1] = (base_gain * m_mixer_sub_osc_control) >> 6;
         m_osc_gain_effective[3] = 0;
+
+        if (m_waveform[0] == WAVEFORM_1_S_SAW) {
+          m_osc_gain_effective[3] = m_osc_gain_effective[0];
+        } else if (m_waveform[0] == WAVEFORM_1_PULSE) {
+          m_osc_gain_effective[3] = -m_osc_gain_effective[0];
+        }
       }
     }
   }
@@ -727,7 +736,11 @@ private:
       m_lfo_mod_level[1] = -mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[1]);
       int16_t shape_eg_mod = (eg_level * m_shape_eg_amt) << 1;
       int16_t shape_lfo_mod = mul_sq16_sq8(m_lfo_level << 2, m_shape_lfo_amt) << 1;
-      m_osc1_shape = 0x8000 - (m_osc1_shape_control_effective << 8) +
+      uint16_t osc1_shape_base = 0x0000;
+      if (m_waveform[0] == WAVEFORM_1_PULSE) {
+        osc1_shape_base = 0x8000;
+      }
+      m_osc1_shape = osc1_shape_base - (m_osc1_shape_control_effective << 8) +
         + shape_eg_mod + shape_eg_mod + shape_lfo_mod + shape_lfo_mod;
     } else {
       m_lfo_mod_level[1] = m_lfo_mod_level[0];

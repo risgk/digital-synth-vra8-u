@@ -18,6 +18,7 @@
 
 ## Change History
 
+- v1.1.0: Add SS (Shaped Saw Wave) to Osc 1 Wave
 - v1.0.1: Reduce noise when Osc 1 Shape changes; Fix Parameter List
 
 ## Features
