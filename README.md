@@ -1,6 +1,6 @@
-# Digital Synth VRA8-U v1.0.1
+# Digital Synth VRA8-U v1.1.0
 
-- 2022-08-19 ISGK Instruments
+- 2022-08-21 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
 
 ## Concept
@@ -18,6 +18,7 @@
 
 ## Change History
 
+- v1.1.0: Add SS (Shaped Saw Wave) to Osc 1 Wave; Add Osc 1 Shape II; Reduce noise when Chorus Delay Time changes; Improve Random Ctrl of VRA-8 CTRL not to change Amp Level; Improve notes for $$ and $$$; Other changes
 - v1.0.1: Reduce noise when Osc 1 Shape changes; Fix Parameter List
 
 ## Features

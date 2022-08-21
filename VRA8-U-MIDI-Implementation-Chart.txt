@@ -1,5 +1,5 @@
-  [United Synthesizer]                                            Date: 2022-08-19                  
-  Model: Digital Synth VRA8-U     MIDI Implementation Chart       Version: 1.0.1                    
+  [United Synthesizer]                                            Date: 2022-08-21                  
+  Model: Digital Synth VRA8-U     MIDI Implementation Chart       Version: 1.1.0                    
 +-------------------------------+---------------+---------------+----------------------------------+
 | Function...                   | Transmitted   | Recognized    | Remarks                          |
 +-------------------------------+---------------+---------------+----------------------------------+
@@ -24,10 +24,10 @@
 | Control                     1 | x             | o             | Modulation                       |
 | Change                     64 | x             | o             | Sustain Pedal [Off|On]           |
 |                               |               |               |                                  |
-|                            24 | x             | o             | Osc 1 Wave [Saw|-|Tri|Pls|Sqr]   |
-|                           102 | x             | o             | Osc 1 Shape $ [-|+]              |
-|                               |               |               |                                  |
-|                            26 | x             | o             | Mixer Sub Osc $$                 |
+|                            24 | x             | o             | Osc 1 Wave [Saw|SS|Tri|Pls|Sqr]  |
+|                           102 | x             | o             | Osc 1 Shape $$ [-|+]             |
+|                           103 | x             | o             | Osc 1 Shape II $$                |
+|                            26 | x             | o             | Mixer Sub Osc $$$                |
 |                               |               |               |                                  |
 |                            55 | x             | o             | Osc 2 Wave $ [Saw|-|Tri|Nos|Sqr] |
 |                            20 | x             | o             | Osc 2 Coarse $ [-|+]             |
@@ -96,7 +96,8 @@
 |              : Reset          | x             | x             |                                  |
 +-------------------------------+---------------+---------------+----------------------------------+
 | Notes                         | $ : Disabled in Paraphonic Mode                                  |
-|                               | $$ : Disabled in Paraphonic Mode or if Osc 1 Wave is Pls         |
+|                               | $$ : Disabled in Paraphonic or if Osc 1 Wave is not SS nor Pls   |
+|                               | $$ : Disabled in Paraphonic or if Osc 1 Wave is SS or Pls        |
 +-------------------------------+------------------------------------------------------------------+
   Mode 1: Omni On,  Poly          Mode 2: Omni On,  Mono          o: Yes                            
   Mode 3: Omni Off, Poly          Mode 4: Omni Off, Mono          x: No                             
