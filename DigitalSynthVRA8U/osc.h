@@ -90,6 +90,7 @@ class Osc {
   static uint8_t        m_phase_high;
   static int8_t         m_osc1_shape_control;
   static int8_t         m_osc1_shape_control_effective;
+  static uint8_t        m_osc1_shape_ii_control;
   static uint16_t       m_osc1_shape;
   static uint8_t        m_mixer_sub_osc_control;
   static uint8_t        m_mix_table[OSC_MIX_TABLE_LENGTH];
@@ -193,6 +194,10 @@ public:
 
   INLINE static void set_osc1_shape_control(uint8_t controller_value) {
     m_osc1_shape_control = (controller_value - 64) << 1;
+  }
+
+  INLINE static void set_osc1_shape_ii_control(uint8_t controller_value) {
+    m_osc1_shape_ii_control = ((128 - controller_value) >> 1) << 1;
   }
 
   INLINE static void set_mixer_sub_osc_control(uint8_t controller_value) {
@@ -683,10 +688,13 @@ private:
         m_osc_gain_effective[1] = (base_gain * m_mixer_sub_osc_control) >> 6;
         m_osc_gain_effective[3] = 0;
 
+        int16_t temp;
         if (m_waveform[0] == WAVEFORM_1_S_SAW) {
-          m_osc_gain_effective[3] = m_osc_gain_effective[0];
+          temp = high_sbyte(+m_osc_gain_effective[0] * m_osc1_shape_ii_control);
+          m_osc_gain_effective[3] = temp + temp;
         } else if (m_waveform[0] == WAVEFORM_1_PULSE) {
-          m_osc_gain_effective[3] = -m_osc_gain_effective[0];
+          temp = high_sbyte(-m_osc_gain_effective[0] * m_osc1_shape_ii_control);
+          m_osc_gain_effective[3] = temp + temp;
         }
       }
     }
@@ -880,6 +888,7 @@ template <uint8_t T> __uint24        Osc<T>::m_lfsr;
 template <uint8_t T> uint8_t         Osc<T>::m_phase_high;
 template <uint8_t T> int8_t          Osc<T>::m_osc1_shape_control;
 template <uint8_t T> int8_t          Osc<T>::m_osc1_shape_control_effective;
+template <uint8_t T> uint8_t         Osc<T>::m_osc1_shape_ii_control;
 template <uint8_t T> uint16_t        Osc<T>::m_osc1_shape;
 template <uint8_t T> uint8_t         Osc<T>::m_mixer_sub_osc_control;
 template <uint8_t T> uint8_t         Osc<T>::m_mix_table[OSC_MIX_TABLE_LENGTH];

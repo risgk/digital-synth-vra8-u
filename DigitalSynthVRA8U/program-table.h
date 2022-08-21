@@ -5,7 +5,7 @@ const uint8_t PROGRAM_NUMBER_DEFAULT = 0;
 // PRESET                                         #0   #1   #2   #3   #4   #5   #6   #7   
 const uint8_t g_preset_table_OSC_1_WAVE     [] = {0  , 0  , 0  , 127, 0  , 96 , 0  , 0  };
 const uint8_t g_preset_table_OSC_1_SHAPE    [] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 };
-
+const uint8_t g_preset_table_OSC_1_SHAPE_II [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
 const uint8_t g_preset_table_MIXER_SUB_OSC  [] = {127, 127, 127, 127, 127, 0  , 0  , 0  };
 
 const uint8_t g_preset_table_OSC_2_WAVE     [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };

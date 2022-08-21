@@ -26,7 +26,7 @@
 |                               |               |               |                                  |
 |                            24 | x             | o             | Osc 1 Wave [Saw|SS|Tri|Pls|Sqr]  |
 |                           102 | x             | o             | Osc 1 Shape $ [-|+]              |
-|                               |               |               |                                  |
+|                           103 | x             | o             | Osc 1 Shape II $                 |
 |                            26 | x             | o             | Mixer Sub Osc $$                 |
 |                               |               |               |                                  |
 |                            55 | x             | o             | Osc 2 Wave $ [Saw|-|Tri|Nos|Sqr] |

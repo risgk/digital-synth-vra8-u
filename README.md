@@ -18,7 +18,7 @@
 
 ## Change History
 
-- v1.1.0: Add SS (Shaped Saw Wave) to Osc 1 Wave; Reduce noise when Chorus Delay Time changes
+- v1.1.0: Add SS (Shaped Saw Wave) to Osc 1 Wave; Add Osc 1 Shape II; Reduce noise when Chorus Delay Time changes
 - v1.0.1: Reduce noise when Osc 1 Shape changes; Fix Parameter List
 
 ## Features

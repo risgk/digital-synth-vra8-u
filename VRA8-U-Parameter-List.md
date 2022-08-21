@@ -15,20 +15,29 @@
     - 96 (80-111): Pulse Wave (Shape adjustable)
     - 127 (112-127): Square Wave
 - Osc 1 Shape $ [-|+]
-    - Shaped Saw Wave (saw wave + phase shifted saw wave)
-      - -64 (0): +1Oct Saw 100% (min)
-      - -32 (32): Shaped Saw 150%
-      - +0 (64): Saw 200%
-      - +32 (96): Shaped Saw 150%
-      - +63 (127): Shaped Saw 101.6%
-    - Pulse Wave (saw wave + phase shifted reverse saw wave)
-      - -64 (0): Pulse Width 0% (min)
-      - -48 (16): Pulse Width 12.5%
-      - -32 (32): Pulse Width 25%
-      - +0 (64): Pulse Width 50%
-      - +32 (96): Pulse Width 75%
-      - +48 (112): Pulse Width 87.5%
-      - +63 (127): Pulse Width 99.2% (max)
+    - Shaped Saw Wave (= Saw + Phase Shifted Saw)
+        - -64 (0): +1Oct Saw 100% (min)
+        - -32 (32): Shaped Saw 150%
+        - +0 (64): Saw 200%
+        - +32 (96): Shaped Saw 150%
+        - +63 (127): Shaped Saw 101.6% (max)
+    - Pulse Wave (= Saw + Phase Shifted Reverse Saw)
+        - -64 (0): Pulse Width 0% (min)
+        - -48 (16): Pulse Width 12.5%
+        - -32 (32): Pulse Width 25%
+        - +0 (64): Pulse Width 50%
+        - +32 (96): Pulse Width 75%
+        - +48 (112): Pulse Width 87.5%
+        - +63 (127): Pulse Width 99.2% (max)
+- Osc 1 Shape II $
+    - Shaped Saw Wave
+        - 0: Saw 100% + Saw 100% (min)
+        - 64: Saw 100% + Saw 50%
+        - 127: Saw 100% + Saw 0% (max)
+    - Pulse Wave
+        - 0: Pulse 100% = Saw 100% + Reverse Saw 100% (min)
+        - 64: Pulse 50% + Saw 50% = Saw 100% + Reverse Saw 50%
+        - 127: Saw 100% = Saw 100% + Reverse Saw 0% (max)
 - Mixer Sub Osc $$
 - Osc 2 Wave $ [Saw|-|Tri|Nos|Sqr]
     - 0 (0-47): Saw Wave
