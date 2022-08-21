@@ -402,6 +402,9 @@ function afterChangeOsc1WaveOrVoiceMode() {
     if ((valueOsc1Wave >= 16) && (valueOsc1Wave < 48) ||
         (valueOsc1Wave >= 80) && (valueOsc1Wave < 112)) {
       document.getElementById("inputCC26").disabled = true;
+    } else {
+      document.getElementById("inputCC102").disabled = true;
+      document.getElementById("inputCC103").disabled = true;
     }
   }
 }
@@ -1018,9 +1021,9 @@ function getStoredCCValueString(index, number) {
 </tr>
 <tr>
 <td colspan="2"><b>Osc 1</b> Wave [Saw|SS|Tri|Pls|Sqr] </td>
-<td colspan="2"><b>Osc 1</b> Shape $ [-|+]             </td>
-<td colspan="2"><b>Osc 1</b> Shape II $ [-|+]          </td>
-<td colspan="2"><b>Mixer</b> Sub Osc $$                </td>
+<td colspan="2"><b>Osc 1</b> Shape $$ [-|+]            </td>
+<td colspan="2"><b>Osc 1</b> Shape II $$ [-|+]         </td>
+<td colspan="2"><b>Mixer</b> Sub Osc $$$               </td>
 </tr>
 <tr>
 <td><input  id="inputCC24"  type="range" min="0" max="127" step="1" oninput="onChangeControlChange(OSC_1_WAVE     , value)"></td>
