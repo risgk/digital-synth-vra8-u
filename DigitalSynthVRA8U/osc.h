@@ -805,8 +805,8 @@ private:
     case CHORUS_MODE_STEREO_2 :
       {
         uint16_t chorus_delay_time_control_mul_4 = m_chorus_delay_time_control_effective * 4;
-        m_chorus_delay_time[0] = chorus_delay_time_control_mul_4 + m_chorus_lfo_level;
-        m_chorus_delay_time[1] = chorus_delay_time_control_mul_4 - m_chorus_lfo_level;
+        m_chorus_delay_time[0] = chorus_delay_time_control_mul_4 - m_chorus_lfo_level;
+        m_chorus_delay_time[1] = chorus_delay_time_control_mul_4 + m_chorus_lfo_level;
       }
       break;
     }
