@@ -1,6 +1,6 @@
-# Digital Synth VRA8-U v1.1.0
+# Digital Synth VRA8-U v1.1.1
 
-- 2022-08-21 ISGK Instruments
+- 2022-08-23 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
 
 ## Concept
