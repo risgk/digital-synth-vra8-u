@@ -450,17 +450,17 @@ public:
             IOsc<0>::set_chorus_mode(CHORUS_MODE_STEREO);
             IEG<1>::set_gain<0>(90);
             break;
-          case CHORUS_MODE_P_STEREO   :
+          case CHORUS_MODE_P_STEREO :
             IOsc<0>::set_chorus_mode(CHORUS_MODE_P_STEREO);
             IEG<1>::set_gain<0>(64);
             break;
           case CHORUS_MODE_MONO     :
             IOsc<0>::set_chorus_mode(CHORUS_MODE_MONO);
-            IEG<1>::set_gain<0>(64);
+            IEG<1>::set_gain<0>(127);
             break;
           case CHORUS_MODE_STEREO_2 :
             IOsc<0>::set_chorus_mode(CHORUS_MODE_STEREO_2);
-            IEG<1>::set_gain<0>(64);
+            IEG<1>::set_gain<0>(127);
             break;
           }
         }
@@ -685,9 +685,11 @@ public:
 
     if (m_chorus_mode >= CHORUS_MODE_MONO) {
       // For Mono Chorus and Stereo 2-phase Chorus
-      right_level = dir_sample + eff_sample_0;
-      return        dir_sample + eff_sample_1;
-    } else if (m_chorus_mode == CHORUS_MODE_P_STEREO) {
+      right_level = (dir_sample + eff_sample_1) >> 1;
+      return        (dir_sample + eff_sample_0) >> 1;
+    }
+
+    if (m_chorus_mode == CHORUS_MODE_P_STEREO) {
       // For Pseudo-Stereo Chorus
       right_level = dir_sample - eff_sample_0;
       return        dir_sample + eff_sample_0;
