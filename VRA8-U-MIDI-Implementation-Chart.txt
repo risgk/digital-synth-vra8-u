@@ -1,5 +1,5 @@
-  [United Synthesizer]                                            Date: 2022-08-23                  
-  Model: Digital Synth VRA8-U     MIDI Implementation Chart       Version: 1.1.1                    
+  [United Synthesizer]                                            Date: 2022-08-25                  
+  Model: Digital Synth VRA8-U     MIDI Implementation Chart       Version: 1.2.0                    
 +-------------------------------+---------------+---------------+----------------------------------+
 | Function...                   | Transmitted   | Recognized    | Remarks                          |
 +-------------------------------+---------------+---------------+----------------------------------+
@@ -25,7 +25,7 @@
 | Change                     64 | x             | o             | Sustain Pedal [Off|On]           |
 |                               |               |               |                                  |
 |                            24 | x             | o             | Osc 1 Wave [Saw|SS|Tri|Pls|Sqr]  |
-|                           102 | x             | o             | Osc 1 Shape $$ [-|+]             |
+|                           102 | x             | o             | Osc 1 Shape $$                   |
 |                           103 | x             | o             | Osc 1 Shape II $$                |
 |                            26 | x             | o             | Mixer Sub Osc $$$                |
 |                               |               |               |                                  |

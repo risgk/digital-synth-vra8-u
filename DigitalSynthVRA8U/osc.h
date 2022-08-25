@@ -193,7 +193,7 @@ public:
   }
 
   INLINE static void set_osc1_shape_control(uint8_t controller_value) {
-    m_osc1_shape_control = (controller_value - 64) << 1;
+    m_osc1_shape_control = -(((controller_value + 1) >> 1) << 1);
   }
 
   INLINE static void set_osc1_shape_ii_control(uint8_t controller_value) {
