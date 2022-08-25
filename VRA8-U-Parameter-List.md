@@ -129,6 +129,10 @@
 - Pitch Bend Range
     - 0: 0 semitone (min)
     - 24: 24 semitone (max)
+- LFO Key Track $ [0.0|Aut|1.0]
+    - 0 (0-31): 0.0
+    - 64 (32-95): Auto (1.0 if LFO Osc Dst is S1)
+    - 127 (96-127): 1.0
 
 ## Sample Chorus Settings
 

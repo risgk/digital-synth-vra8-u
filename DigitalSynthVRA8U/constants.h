@@ -97,7 +97,7 @@ const uint8_t   CHORUS_DEPTH    = 60;
 const uint8_t   CHORUS_DLY_TIME = 62;
 
 const uint8_t   P_BEND_RANGE    = 85;
-
+const uint8_t   LFO_KEY_TRK     = 54;
 
 
 

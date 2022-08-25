@@ -18,6 +18,7 @@
 
 ## Change History
 
+- v1.3.0: Add LFO Key Track
 - v1.2.0: Change the range of Osc 1 Shape from -64 -- +63 to 0 -- 127; Fix the comment on Osc 1 Shape II in VRA8-U CTRL
 - v1.1.1: Reduce noise in Chorus Mode M and S2
 - v1.1.0: Add SS (Shaped Saw Wave) to Osc 1 Wave; Add Osc 1 Shape II; Reduce noise when Chorus Delay Time changes; Improve Random Ctrl of VRA-8 CTRL not to change Amp Level; Improve notes for $$ and $$$; Other changes

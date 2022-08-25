@@ -100,7 +100,7 @@ const CHORUS_DEPTH    = 60;
 const CHORUS_DLY_TIME = 62;
 
 const P_BEND_RANGE    = 85;
-
+const LFO_KEY_TRK     = 54;
 
 
 
@@ -170,7 +170,7 @@ var controlNumberToStringMap = new Map([
   [ CHORUS_DLY_TIME, "CHORUS_DLY_TIME" ],
 
   [ P_BEND_RANGE   , "P_BEND_RANGE   " ],
-
+  [ LFO_KEY_TRK    , "LFO_KEY_TRK    " ],
 
 
 ]);
@@ -222,7 +222,7 @@ var controllersInLocalStorage = [
   CHORUS_DLY_TIME,
 
   P_BEND_RANGE   ,
-
+  LFO_KEY_TRK    ,
 
 
 ];
@@ -276,7 +276,7 @@ presetControllers[CHORUS_DEPTH   ] = [32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 ];
 presetControllers[CHORUS_DLY_TIME] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
 
 presetControllers[P_BEND_RANGE   ] = [2  , 2  , 2  , 2  , 2  , 2  , 2  , 2  ];
-
+presetControllers[LFO_KEY_TRK    ] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
 
 
 
@@ -828,7 +828,7 @@ function fileExport() {
   str += fileExportOneLine(CHORUS_DLY_TIME);
   str += "\n";
   str += fileExportOneLine(P_BEND_RANGE   );
-  str += "\n";
+  str += fileExportOneLine(LFO_KEY_TRK    );
   str += "\n";
   str += "\n";
   str += "  \"_end         \" : \"\"\n";
@@ -1170,15 +1170,15 @@ function getStoredCCValueString(index, number) {
 </tr>
 <tr>
 <td colspan="2">Pitch Bend Range                </td>
-<td colspan="2"></td>
+<td colspan="2"><b>LFO</b> Key Track <i>$</i> [0.0|Aut|1.0]   </td>
 <td colspan="2"></td>
 <td colspan="2"></td>
 </tr>
 <tr>
 <td><input  id="inputCC85"  type="range" min="0" max="127" step="1" oninput="onChangeControlChange(P_BEND_RANGE   , value)"></td>
 <td><span    id="spanCC85" >-</span></td>
-<td></td>
-<td></td>
+<td><input  id="inputCC54"  type="range" min="0" max="127" step="1" oninput="onChangeControlChange(LFO_KEY_TRK    , value)"></td>
+<td><span    id="spanCC54" >-</span></td>
 <td></td>
 <td></td>
 <td></td>
