@@ -1,6 +1,6 @@
-# Digital Synth VRA8-U Parameter List v1.2.0
+# Digital Synth VRA8-U Parameter List v1.2.1
 
-- 2022-08-25 ISGK Instruments
+- 2022-08-26 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
 
 ## Control Change Parameters
@@ -27,9 +27,9 @@
         - 127: Pulse Width 0% (min)
 - Osc 1 Shape II $$
     - Shaped Saw Wave
-        - 0: Saw 100% + Saw 100% (min)
+        - 0: Saw 100% + Saw 0% (max)
         - 64: Saw 100% + Saw 50%
-        - 127: Saw 100% + Saw 0% (max)
+        - 127: Saw 100% + Saw 100% (min)
     - Pulse Wave
         - 0: Pulse 100% = Saw 100% + Reverse Saw 100% (min)
         - 64: Pulse 50% + Saw 50% = Saw 100% + Reverse Saw 50%

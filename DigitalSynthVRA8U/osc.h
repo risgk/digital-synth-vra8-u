@@ -690,7 +690,7 @@ private:
 
         int16_t temp;
         if (m_waveform[0] == WAVEFORM_1_S_SAW) {
-          temp = high_sbyte(+m_osc_gain_effective[0] * m_osc1_shape_ii_control);
+          temp = high_sbyte(+m_osc_gain_effective[0] * (128 - m_osc1_shape_ii_control));
           m_osc_gain_effective[3] = temp + temp;
         } else if (m_waveform[0] == WAVEFORM_1_PULSE) {
           temp = high_sbyte(-m_osc_gain_effective[0] * m_osc1_shape_ii_control);
