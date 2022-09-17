@@ -13,12 +13,12 @@
 
 ## Caution about Arduino
 
-- We *strongly recommend* **Arduino AVR Boards core 1.8.3 (or 1.8.5)**
-    - If you use other than 1.8.3 (or 1.8.5), the sketch *may not work well*: CPU Busy LED (LED L) *may almost always lit*
+- We *strongly recommend* **Arduino AVR Boards core 1.8.5 (or 1.8.3)**
+    - If you use another version, the sketch *may not work well*: CPU Busy LED (LED L) *may almost always lit*
 
 ## Change History
 
-- v1.x.x: Change to recommend Arduino AVR Boards core 1.8.3 (or 1.8.5); Fix documentation
+- v1.x.x: Change to recommend Arduino AVR Boards core 1.8.5 (or 1.8.3); Fix documentation
 - v1.2.1: Reverses the effect of the Osc 1 Shape II value for SS (Shaped Saw Wave)
 - v1.2.0: Change the range of Osc 1 Shape from -64 -- +63 to 0 -- 127; Fix the comment on Osc 1 Shape II in VRA8-U CTRL
 - v1.1.1: Reduce noise in Chorus Mode M and S2
