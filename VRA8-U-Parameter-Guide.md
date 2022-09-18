@@ -122,9 +122,9 @@
 - Pitch Bend Range
     - 0: 0 semitone (min)
     - 24: 24 semitone (max)
-- LFO Key Track $ [0.0|1.0]
-    - 0 (0-63): 0.0
-    - 127 (64-127): 1.0
+- LFO Key Track $ [Off|On]
+    - 0 (0-63): Off (0.0)
+    - 127 (64-127): On (1.0)
 
 ## Sample Chorus Settings
 
