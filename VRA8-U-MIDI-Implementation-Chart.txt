@@ -70,7 +70,7 @@
 |                            62 | x             | o             | Chorus Delay Time                |
 |                               |               |               |                                  |
 |                            85 | x             | o             | Pitch Bend Range                 |
-|                            54 | x             | o             | LFO Key Track $ [0.0|1.0]        |
+|                            54 | x             | o             | LFO Key Track $ [Off|On]         |
 |                               |               |               |                                  |
 |                            35 | x             | o             | Pitch Bend by CC [-|+]           |
 |                       112-119 |               |               | Program Change #0-7 by CC        |
