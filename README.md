@@ -6,19 +6,28 @@
 ## Concept
 
 - Monophonic/Paraphonic United Synthesizer for Arduino Uno
-    - 4-Voice Paraphonic
-    - With built-in Chorus FX
-    - Controlled by MIDI (MIDI Sound Module)
+    - Monophonic Mode: 1-Voice, 2-Oscillator (with Sub Oscillator)
+    - Paraphonic Mode: 4-Voice, 1-Oscillator
+    - Built-in Chorus FX
+    - Controlled by MIDI: VRA8-U is MIDI Sound Module
 - The 8th in the Digital Synth VRA8 series that pushes the limits of the Arduino Uno
 
-## Caution about Arduino
+## Caution about Arduino AVR Boards version
 
-- We *strongly recommend* **Arduino AVR Boards core 1.8.5**
-    - If you use other than 1.8.5, the sketch *may not work well*: CPU Busy LED (LED L) *may almost always lit*
+- We *strongly recommend* **Arduino AVR Boards version 1.8.5 (or 1.8.3)**
+    - If you use another version, the sketch *may not work well*: CPU Busy LED (LED L) *may almost always lit*
 
 ## Change History
 
-- v1.3.0: Add LFO Key Track
+- v1.3.0:
+    - Add LFO Key Track
+    - Rename the texts "EG Osc Dst [P|P2|S1]" and "LFO Osc Dst [P|P2|S1]" to "EG Osc Dst [P|2P|1S]" and "LFO Osc Dst [P|2P|1S]";
+    - Rename the parameter "Osc 1 Shape II" to "Osc 1 Morph";
+    - Remove SS (Shaped Saw Wave) from Osc 1 Wave, and change the behaviour of Osc 1 Morph for Pls (Pulse Wave);
+    - Reflect the Filter Cutoff parameter smoothly;
+    - Change to recommend Arduino AVR Boards version 1.8.5 (or 1.8.3);
+    - Support Arduino Nano (ATmega328) with restrictions;
+    - Fix documentation; Rename "Parameter List" to "Parameter Guide"
 - v1.2.1: Reverses the effect of the Osc 1 Shape II value for SS (Shaped Saw Wave)
 - v1.2.0: Change the range of Osc 1 Shape from -64 -- +63 to 0 -- 127; Fix the comment on Osc 1 Shape II in VRA8-U CTRL
 - v1.1.1: Reduce noise in Chorus Mode M and S2
@@ -46,14 +55,20 @@
     - `"generate-*.rb"` generates source files
         - Requiring a Ruby execution environment
 
+## Restricted support for Arduino Nano
+
+- If you want to run this sketch in Arduino Nano (ATmega328), you must reduce the sketch size as follows (and sound quality in the high frequency range will be degraded):
+    - Modify `FOR_ARDUINO_NANO = false` to `FOR_ARDUINO_NANO = true` in `"generate-osc-table.rb"`, and execute this Ruby script
+    - Alternatively, delete `"osc-table.h"`, and rename `"osc-table.h.FOR_ARDUINO_NANO.txt"` to `"osc-table.h"`
+
 ## VRA8-U CTRL
 
 - MIDI Controller (Editor) Application for VRA8-U, HTML App (Web App)
-- VRA8-U CTRL converts Program Changes (#0-7 for PRESET, #0-15 for user programs) into Control Changes
+- VRA8-U CTRL converts Program Changes (#0-7 for PRESET, #8-15 for user programs) into Control Changes
 - VRA8-U CTRL stores the current control values and the user programs (#8-15) in a Web browser (localStorage)
 - We recommend using Google Chrome, which implements Web MIDI API
 - We recommend [loopMIDI](https://www.tobias-erichsen.de/software/loopmidi.html) (virtual loopback MIDI cable) to connect VRA8-U
 
-## [Parameter List](/VRA8-U-Parameter-List.md)
+## [Parameter Guide](/VRA8-U-Parameter-Guide.md)
 
 ## [MIDI Implementation Chart](/VRA8-U-MIDI-Implementation-Chart.txt)

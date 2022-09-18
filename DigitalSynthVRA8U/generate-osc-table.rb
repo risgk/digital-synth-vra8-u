@@ -1,3 +1,5 @@
+FOR_ARDUINO_NANO = false
+
 require_relative 'constants'
 
 $file = File.open("osc-table.h", "w")
@@ -104,6 +106,11 @@ def last_harmonic(freq, organ = false, organ_last)
   last = 5 if last == 6
   last = 3 if last == 4
   last = [last, 127].min
+  if FOR_ARDUINO_NANO == true
+    last = 11 if last == 13
+    last = 7 if last == 9
+    last = 3 if last == 5
+  end
   last
 end
 
