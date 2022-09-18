@@ -538,6 +538,10 @@ public:
       IFilter<0>::set_cutoff_pitch_amt(controller_value);
       break;
 
+    case LFO_KEY_TRK    :
+      IOsc<0>::set_lfo_key_track(controller_value);
+      break;
+
     case VOICE_MODE     :
       {
         uint8_t new_voice_mode = VOICE_PARAPHONIC;
