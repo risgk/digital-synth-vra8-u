@@ -720,9 +720,6 @@ function fileReaderImportAllLoad(event) {
   for (var number = 8; number < 16; number++) {
     controllersInLocalStorage.forEach(function(i) {
       var line = obj[controlNumberToStringMap.get(i)];
-      if ((line == null) && (i == OSC_1_MORPH)) {
-        line = obj["OSC_1_SHAPE_II "];
-      }
       if (line != null) {
         var value = line[1][number - 8];
         if (value != null) {
@@ -734,9 +731,6 @@ function fileReaderImportAllLoad(event) {
 
   controllersInLocalStorage.forEach(function(i) {
     var line = obj[controlNumberToStringMap.get(i)];
-      if ((line == null) && (i == OSC_1_MORPH)) {
-        line = obj["OSC_1_SHAPE_II "];
-      }
       if (line != null) {
       var value = line[0];
       if (value != null) {
@@ -765,9 +759,6 @@ function fileReaderImportCurrentLoad(event) {
 
   controllersInLocalStorage.forEach(function(i) {
     var line = obj[controlNumberToStringMap.get(i)];
-    if ((line == null) && (i == OSC_1_MORPH)) {
-      line = obj["OSC_1_SHAPE_II "];
-    }
     if (line != null) {
       var value = line[0];
       if (value != null) {
