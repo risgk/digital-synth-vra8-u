@@ -49,6 +49,6 @@ const uint8_t g_preset_table_CHORUS_DEPTH   [] = {32 , 32 , 32 , 32 , 32 , 32 , 
 const uint8_t g_preset_table_CHORUS_DLY_TIME[] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 };
 
 const uint8_t g_preset_table_P_BEND_RANGE   [] = {2  , 2  , 2  , 2  , 2  , 2  , 2  , 2  };
-const uint8_t g_preset_table_LFO_KEY_TRK    [] = {64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 };
+
 
 
