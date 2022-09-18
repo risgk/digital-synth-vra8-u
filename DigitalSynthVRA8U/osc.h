@@ -247,7 +247,7 @@ public:
   }
 
   INLINE static void set_lfo_rate(uint8_t controller_value) {
-    m_lfo_rate = g_lfo_rate_table[controller_value];
+    m_lfo_rate = g_lfo_rate_table[(controller_value + 1) >> 1];
   }
 
   template <uint8_t N>
