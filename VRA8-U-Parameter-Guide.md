@@ -94,18 +94,10 @@
     - 96 (80-111): Sample & Hold (Key Sync, -0.49 to +0.5)
     - 127 (112-127): Square Wave (Key Sync, 0.0 to 1.0)
 - LFO Rate
-    - 0: 0.022 Hz (min)
-    - 12: 0.045 Hz
-    - 24: 0.089 Hz
-    - 36: 0.19 Hz
-    - 48: 0.38 Hz
-    - 60: 0.76 Hz
-    - 64: 0.96 Hz
-    - 72: 1.5 Hz
-    - 84: 3.1 Hz
-    - 96: 6.1 Hz
-    - 108: 12.2 Hz
-    - 120: 24.5 Hz (max)
+    - 0: 0.2 Hz (min)
+    - 64: 2 Hz
+    - 96: 6.3 Hz
+    - 127: 20 Hz (max)
 - Chorus Mode [Off|M|PS|S|S2]
     - 0 (0-15): Chorus Off
     - 32 (16-47): Mono Chorus
