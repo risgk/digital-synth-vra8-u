@@ -55,7 +55,7 @@
 
 ## Restricted support for Arduino Nano
 
-- If you want to run this sketch in Arduino Nano (ATmega328), you must reduce the sketch size as follows (and sound quality will be degraded):
+- If you want to run this sketch in Arduino Nano (ATmega328), you must reduce the sketch size as follows (and sound quality in the high frequency range will be degraded):
     - Modify `FOR_ARDUINO_NANO = false` to `FOR_ARDUINO_NANO = true` in `"generate-osc-table.rb"`, and execute this Ruby script
     - Alternatively, delete `"osc-table.h"`, and rename `"osc-table.h.FOR_ARDUINO_NANO.txt"` to `"osc-table.h"`
 
