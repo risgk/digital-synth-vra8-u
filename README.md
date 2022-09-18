@@ -21,6 +21,7 @@
 - v1.x.x:
     - Rename the parameter "Osc 1 Shape II" to "Osc 1 Morph";
     - Remove SS (Shaped Saw Wave) from Osc 1 Wave, and change the behaviour of Osc 1 Morph for Pls (Pulse Wave);
+    - Reflect the Filter Cutoff parameter smoothly
     - Change to recommend Arduino AVR Boards version 1.8.5 (or 1.8.3);
     - Fix documentation; Rename "Parameter List" to "Parameter Guide"
 - v1.2.1: Reverses the effect of the Osc 1 Shape II value for SS (Shaped Saw Wave)
