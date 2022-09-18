@@ -97,7 +97,7 @@ CHORUS_DEPTH    = 60
 CHORUS_DLY_TIME = 62
 
 P_BEND_RANGE    = 85
-LFO_KEY_TRK     = 54
+
 
 
 
