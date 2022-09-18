@@ -18,7 +18,7 @@ def freq_from_note_number(note_number, pr = false)
     freq = freq + 1 if freq.even?
   end
   if pr
-    printf("%3d, %+f, %d\n", note_number, 1.0 - freq.to_f * SAMPLING_RATE / (hz * (1 << OSC_PHASE_RESOLUTION_BITS)), freq)
+    printf("%3d, %+f, %d\n",note_number, 1.0 - freq.to_f * SAMPLING_RATE / (hz * (1 << OSC_PHASE_RESOLUTION_BITS)), freq)
   end
   return freq
 end
@@ -182,17 +182,10 @@ end
 $file.printf("};\n\n")
 
 $file.printf("const uint16_t g_lfo_rate_table[] = {\n  ")
-(0..127).each do |i|
-  index = i
-  index = 8 if index < 8
-  index = 116 if index > 116
+(0..64).each do |i|
+  lfo_rate = (10.0 ** ((i - 32) / 32.0)) * (2.0 * (1 << 16) * 64 / SAMPLING_RATE)
 
-  lfo_rate_ideal = (2.0 ** ((index - 116) / 12.0)) * 20.0
-  lfo_rate = (lfo_rate_ideal * ((1 << 16) * 64.0 / SAMPLING_RATE)).floor
-  lfo_rate_real = lfo_rate / ((1 << 16) * 64.0 / SAMPLING_RATE)
-  printf("%3d, %9f, %4d, %9f\n", i, lfo_rate_ideal, lfo_rate, lfo_rate_real)
-
-  $file.printf("%4d,", lfo_rate)
+  $file.printf("%4d,", lfo_rate.floor)
   if i == DATA_BYTE_MAX
     $file.printf("\n")
   elsif i % 16 == (16 - 1)
