@@ -18,8 +18,7 @@ class Filter {
   static int16_t         m_y_2;
   static uint8_t         m_cutoff_current;
   static int16_t         m_cutoff_candidate;
-  static uint8_t         m_cutoff_control;
-  static uint8_t         m_cutoff_control_effective;
+  static uint8_t         m_cutoff;
   static int8_t          m_cutoff_eg_amt;
   static int8_t          m_cutoff_lfo_amt;
   static int8_t          m_cutoff_pitch_amt;
@@ -53,7 +52,7 @@ public:
       value = 124;
     }
 
-    m_cutoff_control = value;
+    m_cutoff = value;
   }
 
   INLINE static void set_resonance(uint8_t controller_value) {
@@ -143,7 +142,7 @@ public:
 
 private:
   INLINE static void update_coefs_0th(uint8_t eg_input) {
-    m_cutoff_candidate = m_cutoff_control_effective;
+    m_cutoff_candidate = m_cutoff;
     m_cutoff_candidate += high_sbyte((m_cutoff_eg_amt * eg_input) << 1);
     m_cutoff_candidate += m_cutoff_offset;
   }
@@ -168,9 +167,6 @@ private:
     } else {
       m_cutoff_current = m_cutoff_candidate;
     }
-
-    m_cutoff_control_effective += (m_cutoff_control_effective < m_cutoff_control);
-    m_cutoff_control_effective -= (m_cutoff_control_effective > m_cutoff_control);
   }
 
   INLINE static void update_coefs_3rd() {
@@ -193,8 +189,7 @@ template <uint8_t T> int16_t         Filter<T>::m_y_1;
 template <uint8_t T> int16_t         Filter<T>::m_y_2;
 template <uint8_t T> uint8_t         Filter<T>::m_cutoff_current;
 template <uint8_t T> int16_t         Filter<T>::m_cutoff_candidate;
-template <uint8_t T> uint8_t         Filter<T>::m_cutoff_control;
-template <uint8_t T> uint8_t         Filter<T>::m_cutoff_control_effective;
+template <uint8_t T> uint8_t         Filter<T>::m_cutoff;
 template <uint8_t T> int8_t          Filter<T>::m_cutoff_eg_amt;
 template <uint8_t T> int8_t          Filter<T>::m_cutoff_lfo_amt;
 template <uint8_t T> int8_t          Filter<T>::m_cutoff_pitch_amt;
