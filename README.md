@@ -18,7 +18,7 @@
 
 ## Change History
 
-- v1.x.x: Change to recommend Arduino AVR Boards version 1.8.5 (or 1.8.3); Fix documentation
+- v1.x.x: Rename the parameter "Osc 1 Shape II" to "Osc 1 Morph"; Change to recommend Arduino AVR Boards version 1.8.5 (or 1.8.3); Fix documentation
 - v1.2.1: Reverses the effect of the Osc 1 Shape II value for SS (Shaped Saw Wave)
 - v1.2.0: Change the range of Osc 1 Shape from -64 -- +63 to 0 -- 127; Fix the comment on Osc 1 Shape II in VRA8-U CTRL
 - v1.1.1: Reduce noise in Chorus Mode M and S2

@@ -25,7 +25,7 @@
         - 64: Pulse Width 25%
         - 96: Pulse Width 12.5%
         - 127: Pulse Width 0% (min)
-- Osc 1 Shape II $$
+- Osc 1 Morph $$
     - Shaped Saw Wave
         - 0: Saw 100% + Saw 0% (max)
         - 64: Saw 100% + Saw 50%

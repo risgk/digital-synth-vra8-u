@@ -53,7 +53,7 @@ const uint8_t   P_BEND_BY_CC    = 35;
 
 const uint8_t   OSC_1_WAVE      = 24;
 const uint8_t   OSC_1_SHAPE     = 102;
-const uint8_t   OSC_1_SHAPE_II  = 103;
+const uint8_t   OSC_1_MORPH     = 103;
 const uint8_t   MIXER_SUB_OSC   = 26;
 
 const uint8_t   OSC_2_WAVE      = 55;

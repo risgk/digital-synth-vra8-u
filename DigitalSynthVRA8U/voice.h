@@ -363,8 +363,8 @@ public:
     case OSC_1_SHAPE    :
       IOsc<0>::set_osc1_shape_control(controller_value);
       break;
-    case OSC_1_SHAPE_II :
-      IOsc<0>::set_osc1_shape_ii_control(controller_value);
+    case OSC_1_MORPH    :
+      IOsc<0>::set_osc1_morph_control(controller_value);
       break;
     case MIXER_SUB_OSC  :
       IOsc<0>::set_mixer_sub_osc_control(controller_value);
@@ -615,7 +615,7 @@ public:
 
     control_change(OSC_1_WAVE     , g_preset_table_OSC_1_WAVE     [program_number]);
     control_change(OSC_1_SHAPE    , g_preset_table_OSC_1_SHAPE    [program_number]);
-    control_change(OSC_1_SHAPE_II , g_preset_table_OSC_1_SHAPE_II [program_number]);
+    control_change(OSC_1_MORPH    , g_preset_table_OSC_1_MORPH    [program_number]);
     control_change(MIXER_SUB_OSC  , g_preset_table_MIXER_SUB_OSC  [program_number]);
 
     control_change(OSC_2_WAVE     , g_preset_table_OSC_2_WAVE     [program_number]);
