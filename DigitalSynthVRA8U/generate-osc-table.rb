@@ -186,8 +186,7 @@ FILTER_A4_FREQ = 440.0
 $file.printf("const uint16_t g_lfo_rate_table[] = {\n  ")
 (0..127).each do |i|
   index = i
-  index = 29 if index < 29
-  index = 116 if index > 116
+  index = 120 if index > 120
 
   lfo_rate_ideal = (2.0 ** ((index - 141 - 29) / 12.0)) * FILTER_A4_FREQ
   lfo_rate = (lfo_rate_ideal * ((1 << 16) * 64.0 / SAMPLING_RATE)).floor
