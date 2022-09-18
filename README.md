@@ -11,7 +11,7 @@
     - Controlled by MIDI (MIDI Sound Module)
 - The 8th in the Digital Synth VRA8 series that pushes the limits of the Arduino Uno
 
-## Caution about Arduino
+## Caution about Arduino AVR Boards version
 
 - We *strongly recommend* **Arduino AVR Boards version 1.8.5 (or 1.8.3)**
     - If you use another version, the sketch *may not work well*: CPU Busy LED (LED L) *may almost always lit*
@@ -22,8 +22,9 @@
     - Rename the texts "EG Osc Dst [P|P2|S1]" and "LFO Osc Dst [P|P2|S1]" to "EG Osc Dst [P|2P|1S]" and "LFO Osc Dst [P|2P|1S]";
     - Rename the parameter "Osc 1 Shape II" to "Osc 1 Morph";
     - Remove SS (Shaped Saw Wave) from Osc 1 Wave, and change the behaviour of Osc 1 Morph for Pls (Pulse Wave);
-    - Reflect the Filter Cutoff parameter smoothly
+    - Reflect the Filter Cutoff parameter smoothly;
     - Change to recommend Arduino AVR Boards version 1.8.5 (or 1.8.3);
+    - Support Arduino Nano (ATmega328) with restrictions;
     - Fix documentation; Rename "Parameter List" to "Parameter Guide"
 - v1.2.1: Reverses the effect of the Osc 1 Shape II value for SS (Shaped Saw Wave)
 - v1.2.0: Change the range of Osc 1 Shape from -64 -- +63 to 0 -- 127; Fix the comment on Osc 1 Shape II in VRA8-U CTRL
@@ -51,6 +52,12 @@
         - `"make-sample-wav-file-cc.bat"` makes a sample WAV file (working on Windows)
     - `"generate-*.rb"` generates source files
         - Requiring a Ruby execution environment
+
+## Restricted support for Arduino Nano
+
+- If you want to run this sketch in Arduino Nano (ATmega328), you must reduce the sketch size as follows (and sound quality will be degraded):
+    - Modify `FOR_ARDUINO_NANO = false` to `FOR_ARDUINO_NANO = true` in `"generate-osc-table.rb"`, and execute this Ruby script
+    - Alternatively, delete `"osc-table.h"`, and rename `"osc-table.h.FOR_ARDUINO_NANO.txt"` to `"osc-table.h"`
 
 ## VRA8-U CTRL
 
