@@ -79,7 +79,7 @@
     - Shape
         - -63 (1): -126 (min)
         - +63 (127): +126 (max)
-- EG Osc Dst [P|P2|S1], LFO Osc Dst [P|P2|S1]
+- EG Osc Dst [P|2P|1S], LFO Osc Dst [P|2P|1S]
     - 0 (0-31): Osc 1 & 2 Pitch
     - 64 (32-95): Osc 2 Pitch
     - 127 (96-127): Osc 1 Shape
