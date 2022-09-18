@@ -731,7 +731,7 @@ function fileReaderImportAllLoad(event) {
 
   controllersInLocalStorage.forEach(function(i) {
     var line = obj[controlNumberToStringMap.get(i)];
-      if (line != null) {
+    if (line != null) {
       var value = line[0];
       if (value != null) {
         localStorage.setItem("keyCC" + String(i), value);
