@@ -6,9 +6,10 @@
 ## Concept
 
 - Monophonic/Paraphonic United Synthesizer for Arduino Uno
-    - 4-Voice Paraphonic
-    - With built-in Chorus FX
-    - Controlled by MIDI (MIDI Sound Module)
+    - Monophonic Mode: 1-Voice, 2-Oscillator (with Sub Oscillator)
+    - Paraphonic Mode: 4-Voice, 1-Oscillator
+    - Built-in Chorus FX
+    - Controlled by MIDI: VRA8-U is MIDI Sound Module
 - The 8th in the Digital Synth VRA8 series that pushes the limits of the Arduino Uno
 
 ## Caution about Arduino AVR Boards version
@@ -18,7 +19,7 @@
 
 ## Change History
 
-- v1.x.x:
+- v1.3.0:
     - Rename the texts "EG Osc Dst [P|P2|S1]" and "LFO Osc Dst [P|P2|S1]" to "EG Osc Dst [P|2P|1S]" and "LFO Osc Dst [P|2P|1S]";
     - Rename the parameter "Osc 1 Shape II" to "Osc 1 Morph";
     - Remove SS (Shaped Saw Wave) from Osc 1 Wave, and change the behaviour of Osc 1 Morph for Pls (Pulse Wave);
