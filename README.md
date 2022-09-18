@@ -22,7 +22,7 @@
     - Rename the parameter "Osc 1 Shape II" to "Osc 1 Morph";
     - Remove SS (Shaped Saw Wave) from Osc 1 Wave, and change the behaviour of Osc 1 Morph for Pls (Pulse Wave);
     - Change to recommend Arduino AVR Boards version 1.8.5 (or 1.8.3);
-    - Fix documentation
+    - Fix documentation; Rename "Parameter List" to "Parameter Guide"
 - v1.2.1: Reverses the effect of the Osc 1 Shape II value for SS (Shaped Saw Wave)
 - v1.2.0: Change the range of Osc 1 Shape from -64 -- +63 to 0 -- 127; Fix the comment on Osc 1 Shape II in VRA8-U CTRL
 - v1.1.1: Reduce noise in Chorus Mode M and S2
@@ -58,6 +58,6 @@
 - We recommend using Google Chrome, which implements Web MIDI API
 - We recommend [loopMIDI](https://www.tobias-erichsen.de/software/loopmidi.html) (virtual loopback MIDI cable) to connect VRA8-U
 
-## [Parameter List](/VRA8-U-Parameter-List.md)
+## [Parameter Guide](/VRA8-U-Parameter-Guide.md)
 
 ## [MIDI Implementation Chart](/VRA8-U-MIDI-Implementation-Chart.txt)
