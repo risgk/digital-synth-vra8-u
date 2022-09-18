@@ -229,7 +229,7 @@ public:
   }
 
   INLINE static void set_shape_eg_amt(uint8_t controller_value) {
-    m_shape_eg_amt = ((controller_value - 64) << 1);
+    m_shape_eg_amt = (((controller_value - 63) >> 1) << 1);
   }
 
   INLINE static void set_lfo_waveform(uint8_t controller_value) {
@@ -271,7 +271,7 @@ public:
   }
 
   INLINE static void set_shape_lfo_amt(uint8_t controller_value) {
-    m_shape_lfo_amt = ((controller_value - 64) << 1);
+    m_shape_lfo_amt = (((controller_value - 63) >> 1) << 1);
   }
 
   INLINE static void set_lfo_fade_time(uint8_t controller_value) {
@@ -753,8 +753,8 @@ private:
       m_osc1_shape_control_effective -= (m_osc1_shape_control_effective > m_osc1_shape_control);
 
       m_lfo_mod_level[1] = -mul_sq16_sq8(m_lfo_level, m_pitch_lfo_amt[1]);
-      int16_t shape_eg_mod = (eg_level * m_shape_eg_amt) << 1;
-      int16_t shape_lfo_mod = mul_sq16_sq8(m_lfo_level << 2, m_shape_lfo_amt) << 1;
+      int16_t shape_eg_mod = (eg_level * m_shape_eg_amt) << 2;
+      int16_t shape_lfo_mod = mul_sq16_sq8(m_lfo_level << 2, m_shape_lfo_amt) << 2;
       uint16_t osc1_shape_base = 0x0000;
       if (m_waveform[0] == WAVEFORM_1_PULSE) {
         osc1_shape_base = 0x8000;
