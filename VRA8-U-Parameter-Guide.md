@@ -77,8 +77,8 @@
         - +27 (91): +12 semitone
         - +39 (103): +24 semitone (max)
     - Shape
-        - -64 (0): -128 (min)
-        - +63 (127): +128 (max)
+        - -63 (1): -126 (min)
+        - +63 (127): +126 (max)
 - EG Osc Dst [P|2P|1S], LFO Osc Dst [P|2P|1S]
     - 0 (0-31): Osc 1 & 2 Pitch
     - 64 (32-95): Osc 2 Pitch
