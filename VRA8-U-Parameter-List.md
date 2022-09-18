@@ -7,33 +7,26 @@
 
 - Notes
     - $ : Disabled in Paraphonic Mode
-    - $$ : Disabled in Paraphonic or if Osc 1 Wave is not SS nor Pls
-    - $$$ : Disabled in Paraphonic or if Osc 1 Wave is SS or Pls
-- Osc 1 Wave [Saw|SS|Tri|Pls|Sqr]
-    - 0 (0-15): Saw Wave
-    - 32 (16-47): Shaped Saw Wave (Shape adjustable)
+    - $$ : Disabled in Paraphonic or if Osc 1 Wave is not Pls
+    - $$$ : Disabled in Paraphonic or if Osc 1 Wave is Pls
+- Osc 1 Wave [Saw|-|Tri|Pls|Sqr]
+    - 0 (0-47): Saw Wave
     - 64 (48-79): Triangle Wave
     - 96 (80-111): Pulse Wave (Shape adjustable)
     - 127 (112-127): Square Wave
 - Osc 1 Shape $$
-    - Shaped Saw Wave (= Saw + Phase Shifted Saw)
-        - 0: Saw 200%
-        - 64: Shaped Saw 150%
-        - 127: +1Oct Saw 100% (min)
-    - Pulse Wave (= Saw + Phase Shifted Reverse Saw)
-        - 0: Pulse Width 50%
-        - 64: Pulse Width 25%
-        - 96: Pulse Width 12.5%
-        - 127: Pulse Width 0% (min)
+    - Pulse Wave (= 1st Saw + Phase Shifted 2nd Saw)
+        - 0: Pulse Width 50%, or 2nd Saw Phase 50% (min)
+        - 64: Pulse Width 25%, or 2nd Saw Phase 25%
+        - 96: Pulse Width 12.5%, or 2nd Saw Phase 12.5%
+        - 127: Pulse Width 0%, or 2nd Saw Phase 0% (max)
 - Osc 1 Morph $$
-    - Shaped Saw Wave
-        - 0: Saw 100% + Saw 0% (max)
-        - 64: Saw 100% + Saw 50%
-        - 127: Saw 100% + Saw 100% (min)
     - Pulse Wave
         - 0: Pulse 100% = Saw 100% + Reverse Saw 100% (min)
-        - 64: Pulse 50% + Saw 50% = Saw 100% + Reverse Saw 50%
-        - 127: Saw 100% = Saw 100% + Reverse Saw 0% (max)
+        - 32: Pulse 50% + Saw 50% = Saw 100% + Reverse Saw 50%
+        - 64: Saw 100%
+        - 96: Saw 100% + Saw 50%
+        - 127: Saw 100% + Saw 100% (max)
 - Mixer Sub Osc $$$
 - Osc 2 Wave $ [Saw|-|Tri|Nos|Sqr]
     - 0 (0-47): Saw Wave
