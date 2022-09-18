@@ -96,6 +96,9 @@ class Osc {
   static int8_t         m_shape_eg_amt;
   static int8_t         m_shape_lfo_amt;
 
+  static uint8_t        m_lfo_rate_control;
+  static boolean        m_lfo_key_track_control;
+
 public:
   INLINE static void initialize() {
     m_portamento_coef[0] = PORTAMENTO_COEF_OFF;
@@ -247,7 +250,7 @@ public:
   }
 
   INLINE static void set_lfo_rate(uint8_t controller_value) {
-    m_lfo_rate = g_lfo_rate_table[controller_value];
+    m_lfo_rate_control = controller_value;
   }
 
   template <uint8_t N>
@@ -279,6 +282,14 @@ public:
 
   INLINE static void set_lfo_fade_time(uint8_t controller_value) {
     m_lfo_fade_coef = high_byte(controller_value * controller_value) + LFO_FADE_COEF_OFF;
+  }
+
+  INLINE static void set_lfo_key_track(uint8_t controller_value) {
+    if (controller_value < 64) {
+      m_lfo_key_track_control= false;
+    } else {
+      m_lfo_key_track_control= true;
+    }
   }
 
   INLINE static void set_chorus_depth(uint8_t controller_value) {
@@ -700,7 +711,19 @@ private:
   }
 
   INLINE static void update_lfo_1st() {
-    ;
+    int8_t key_track = 0;
+    if (m_lfo_key_track_control) {
+      key_track = high_byte(IOsc<0>::get_osc_pitch() + 0x80) - 60;
+    }
+
+    int16_t lfo_rate = m_lfo_rate_control + key_track;
+    if (lfo_rate > 127) {
+      lfo_rate = 127;
+    } else if (lfo_rate < 0) {
+      lfo_rate = 0;
+    }
+
+    m_lfo_rate = g_lfo_rate_table[low_byte(lfo_rate)];
   }
 
   INLINE static void update_lfo_2nd() {
@@ -887,3 +910,6 @@ template <uint8_t T> uint8_t         Osc<T>::m_mixer_sub_osc_control;
 template <uint8_t T> uint8_t         Osc<T>::m_mix_table[OSC_MIX_TABLE_LENGTH];
 template <uint8_t T> int8_t          Osc<T>::m_shape_eg_amt;
 template <uint8_t T> int8_t          Osc<T>::m_shape_lfo_amt;
+
+template <uint8_t T> uint8_t         Osc<T>::m_lfo_rate_control;
+template <uint8_t T> boolean         Osc<T>::m_lfo_key_track_control;
