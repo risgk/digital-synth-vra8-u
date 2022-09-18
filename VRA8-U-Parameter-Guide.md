@@ -56,9 +56,9 @@
     - -60 (4): -120 (min)
     - +60 (124): +120 (max)
 - Filter Key Track $ [0.0|0.5|1.0]
-    - 0 (0-31): Filter Cutoff + 0
-    - 64 (32-95): Filter Cutoff + (Note Number - 60)
-    - 127 (96-127): Filter Cutoff + (Note Number - 60) * 2
+    - 0 (0-31): 0.0
+    - 64 (32-95): 0.5
+    - 127 (96-127): 1.0
 - EG Decay, Amp Decay
     - 127: No Decay
 - EG Osc Amt [-|+], LFO Osc Amt [-|+]
@@ -123,8 +123,8 @@
     - 0: 0 semitone (min)
     - 24: 24 semitone (max)
 - LFO Key Track $ [Off|On]
-    - 0 (0-63): LFO Rate + 0
-    - 127 (64-127): LFO Rate + (Note Number - 60)
+    - 0 (0-63): Off (0.0)
+    - 127 (64-127): On (1.0)
 
 ## Sample Chorus Settings
 
