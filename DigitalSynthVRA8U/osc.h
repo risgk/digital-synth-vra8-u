@@ -226,9 +226,6 @@ public:
   }
 
   INLINE static void set_shape_eg_amt(uint8_t controller_value) {
-    if (controller_value == 0) {
-      controller_value = 1;
-    }
     m_shape_eg_amt = ((controller_value - 64) << 1);
   }
 
@@ -271,9 +268,6 @@ public:
   }
 
   INLINE static void set_shape_lfo_amt(uint8_t controller_value) {
-    if (controller_value == 0) {
-      controller_value = 1;
-    }
     m_shape_lfo_amt = ((controller_value - 64) << 1);
   }
 
