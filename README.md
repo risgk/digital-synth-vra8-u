@@ -27,7 +27,7 @@
     - Reflect the Filter Cutoff parameter smoothly;
     - Change to recommend Arduino AVR Boards version 1.8.5 (or 1.8.3);
     - Support Arduino Nano (ATmega328) with restrictions;
-    - Fix documentation; Rename "Parameter List" to "Parameter Guide"
+    - Fix documentation; Rename "Parameter List" to "Parameter Guide"; Add Recommended Circuit Diagram and Actual Wiring Diagram
 - v1.2.1: Reverses the effect of the Osc 1 Shape II value for SS (Shaped Saw Wave)
 - v1.2.0: Change the range of Osc 1 Shape from -64 -- +63 to 0 -- 127; Fix the comment on Osc 1 Shape II in VRA8-U CTRL
 - v1.1.1: Reduce noise in Chorus Mode M and S2
@@ -72,3 +72,15 @@
 ## [Parameter Guide](/VRA8-U-Parameter-Guide.md)
 
 ## [MIDI Implementation Chart](/VRA8-U-MIDI-Implementation-Chart.txt)
+
+## Recommended Circuit Diagram
+
+![Recommended Circuit Diagram](./vra8-u-circuit-diagram.png)
+
+This image was created with Fritzing.
+
+## Actual Wiring Diagram
+
+![Actual Wiring Diagram](./vra8-u-bread-board.png)
+
+This image was created with Fritzing.
