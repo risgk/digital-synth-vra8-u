@@ -23,6 +23,7 @@
     - Rename the parameter "Osc 1 Shape II" to "Osc 1 Morph";
     - Remove SS (Shaped Saw Wave) from Osc 1 Wave, and change the behaviour of Osc 1 Morph for Pls (Pulse Wave);
     - Rename the texts "EG Osc Dst [P|P2|S1]" and "LFO Osc Dst [P|P2|S1]" to "EG Osc Dst [P|2P|1S]" and "LFO Osc Dst [P|2P|1S]";
+    - Bug-fix: Invert the effect of LFO Osc Amt;
     - Reflect the Filter Cutoff parameter smoothly;
     - Change to recommend Arduino AVR Boards version 1.8.5 (or 1.8.3);
     - Support Arduino Nano (ATmega328) with restrictions;

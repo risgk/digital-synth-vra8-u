@@ -274,7 +274,7 @@ public:
     if (controller_value == 0) {
       controller_value = 1;
     }
-    m_shape_lfo_amt = ((controller_value - 64) << 1);
+    m_shape_lfo_amt = -((controller_value - 64) << 1);
   }
 
   INLINE static void set_lfo_fade_time(uint8_t controller_value) {
