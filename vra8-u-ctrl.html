@@ -541,6 +541,14 @@ function onMIDIFailure(msg) {
 }
 
 function onChangeInputPort1(){
+  for (var i = 0; i < midiInputs.length; i++) {
+    if (i == document.getElementById("selectInputPort1").selectedIndex) { continue; }
+    if (i == document.getElementById("selectInputPort2").selectedIndex) { continue; }
+    if (i == document.getElementById("selectInputPort3").selectedIndex) { continue; }
+    if (i == document.getElementById("selectInputPort4").selectedIndex) { continue; }
+    midiInputs[i].onmidimessage = null;
+  }
+
   var selectInputPort = document.getElementById("selectInputPort1");
   midiInput1 = midiInputs[selectInputPort.selectedIndex];
   if (midiInput1) {
@@ -549,6 +557,14 @@ function onChangeInputPort1(){
 }
 
 function onChangeInputPort2(){
+  for (var i = 0; i < midiInputs.length; i++) {
+    if (i == document.getElementById("selectInputPort1").selectedIndex) { continue; }
+    if (i == document.getElementById("selectInputPort2").selectedIndex) { continue; }
+    if (i == document.getElementById("selectInputPort3").selectedIndex) { continue; }
+    if (i == document.getElementById("selectInputPort4").selectedIndex) { continue; }
+    midiInputs[i].onmidimessage = null;
+  }
+
   var selectInputPort = document.getElementById("selectInputPort2");
   midiInput2 = midiInputs[selectInputPort.selectedIndex];
   if (midiInput2) {
@@ -557,6 +573,14 @@ function onChangeInputPort2(){
 }
 
 function onChangeInputPort3(){
+  for (var i = 0; i < midiInputs.length; i++) {
+    if (i == document.getElementById("selectInputPort1").selectedIndex) { continue; }
+    if (i == document.getElementById("selectInputPort2").selectedIndex) { continue; }
+    if (i == document.getElementById("selectInputPort3").selectedIndex) { continue; }
+    if (i == document.getElementById("selectInputPort4").selectedIndex) { continue; }
+    midiInputs[i].onmidimessage = null;
+  }
+
   var selectInputPort = document.getElementById("selectInputPort3");
   midiInput3 = midiInputs[selectInputPort.selectedIndex];
   if (midiInput3) {
@@ -565,6 +589,14 @@ function onChangeInputPort3(){
 }
 
 function onChangeInputPort4(){
+  for (var i = 0; i < midiInputs.length; i++) {
+    if (i == document.getElementById("selectInputPort1").selectedIndex) { continue; }
+    if (i == document.getElementById("selectInputPort2").selectedIndex) { continue; }
+    if (i == document.getElementById("selectInputPort3").selectedIndex) { continue; }
+    if (i == document.getElementById("selectInputPort4").selectedIndex) { continue; }
+    midiInputs[i].onmidimessage = null;
+  }
+
   var selectInputPort = document.getElementById("selectInputPort4");
   midiInput4 = midiInputs[selectInputPort.selectedIndex];
   if (midiInput4) {
