@@ -12,7 +12,7 @@
     - Controlled by MIDI: VRA8-U is MIDI Sound Module
 - The 8th in the Digital Synth VRA8 series that pushes the limits of the Arduino Uno
 
-## Caution about Arduino AVR Boards version
+## Caution about Arduino AVR Boards Version
 
 - We *strongly recommend* **Arduino AVR Boards version 1.8.5 (or 1.8.3)**
     - If you use another version, the sketch *may not work well*: CPU Busy LED (LED L) *may almost always lit*
@@ -55,7 +55,7 @@
     - `"generate-*.rb"` generates source files
         - Requiring a Ruby execution environment
 
-## Restricted support for Arduino Nano
+## Restricted Support for Arduino Nano
 
 - If you want to run this sketch in Arduino Nano (ATmega328), you must reduce the sketch size as follows (and sound quality in the high frequency range will be degraded):
     - Modify `FOR_ARDUINO_NANO = false` to `FOR_ARDUINO_NANO = true` in `"generate-osc-table.rb"`, and execute this Ruby script
