@@ -23,12 +23,14 @@
     - Rename the parameter "Osc 1 Shape II" to "Osc 1 Morph";
     - Remove SS (Shaped Saw Wave) from Osc 1 Wave, and change the behaviour of Osc 1 Morph for Pls (Pulse Wave);
     - Rename the texts "EG Osc Dst [P|P2|S1]" and "LFO Osc Dst [P|P2|S1]" to "EG Osc Dst [P|2P|1S]" and "LFO Osc Dst [P|2P|1S]";
-    - Bug-fix: Invert the effect of LFO Osc Amt;
-    - Bug-fix: If MIDI In * is changed in VRA8-U CTRL, the setting before the change becomes invalid;
-    - Reflect the Filter Cutoff parameter smoothly;
+    - Change to reflect the Filter Cutoff parameter smoothly;
+    - Fix a bug where the effect of LFO Osc Amt was inverted;
+    - Fix a bug in which changing MIDI In * with VRA8-U CTRL did not invalidate the setting before the change;
     - Change to recommend Arduino AVR Boards version 1.8.5 (or 1.8.3);
     - Support Arduino Nano (ATmega328) with restrictions;
-    - Fix documentation; Rename "Parameter List" to "Parameter Guide"; Add Recommended Circuit Diagram and Actual Wiring Diagram
+    - Add Recommended Circuit Diagram and Actual Wiring Diagram;
+    - Rename "Parameter List" to "Parameter Guide";
+    - Fix documentation
 - v1.2.1: Reverses the effect of the Osc 1 Shape II value for SS (Shaped Saw Wave)
 - v1.2.0: Change the range of Osc 1 Shape from -64 -- +63 to 0 -- 127; Fix the comment on Osc 1 Shape II in VRA8-U CTRL
 - v1.1.1: Reduce noise in Chorus Mode M and S2
