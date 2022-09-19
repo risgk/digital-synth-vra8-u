@@ -77,10 +77,10 @@
 
 ![Recommended Circuit Diagram](./vra8-u-circuit-diagram.png)
 
-This image was created with Fritzing.
+- This image was created with Fritzing.
 
 ## Actual Wiring Diagram
 
 ![Actual Wiring Diagram](./vra8-u-bread-board.png)
 
-This image was created with Fritzing.
+- This image was created with Fritzing.
