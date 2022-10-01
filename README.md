@@ -83,10 +83,23 @@
 
 ![Recommended Circuit Diagram](./vra8-u-circuit-diagram.png)
 
-- This image was created with Fritzing.
+This image was created with Fritzing.
 
 ## Actual Wiring Diagram
 
 ![Actual Wiring Diagram](./vra8-u-bread-board.png)
 
-- This image was created with Fritzing.
+This image was created with Fritzing.
+
+## License
+
+![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)
+
+Digital Synth VRA8-U v1.2.1 by ISGK Instruments (Ryo Ishigaki)
+
+To the extent possible under law, ISGK Instruments (Ryo Ishigaki)
+has waived all copyright and related or neighboring rights
+to Digital Synth VRA8-U v1.2.1.
+
+You should have received a copy of the CC0 legalcode along with this
+work.  If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
