@@ -78,7 +78,7 @@ PORTAMENTO      = 22
 
 LFO_WAVE        = 14
 LFO_RATE        = 80
-LFO_DEPTH       = 81
+LFO_LEVEL       = 81
 LFO_FADE_TIME   = 15
 
 LFO_OSC_AMT     = 82

@@ -78,7 +78,7 @@ const uint8_t   PORTAMENTO      = 22;
 
 const uint8_t   LFO_WAVE        = 14;
 const uint8_t   LFO_RATE        = 80;
-const uint8_t   LFO_DEPTH       = 81;
+const uint8_t   LFO_LEVEL       = 81;
 const uint8_t   LFO_FADE_TIME   = 15;
 
 const uint8_t   LFO_OSC_AMT     = 82;

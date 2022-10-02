@@ -30,7 +30,7 @@ const uint8_t g_preset_table_PORTAMENTO     [] = {0  , 0  , 0  , 0  , 0  , 0  , 
 
 const uint8_t g_preset_table_LFO_WAVE       [] = {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
 const uint8_t g_preset_table_LFO_RATE       [] = {96 , 96 , 96 , 96 , 96 , 96 , 96 , 96 };
-const uint8_t g_preset_table_LFO_DEPTH      [] = {8  , 64 , 64 , 64 , 8  , 64 , 64 , 0  };
+const uint8_t g_preset_table_LFO_LEVEL      [] = {8  , 64 , 64 , 64 , 8  , 64 , 64 , 0  };
 const uint8_t g_preset_table_LFO_FADE_TIME  [] = {0  , 64 , 64 , 64 , 0  , 0  , 64 , 0  };
 
 const uint8_t g_preset_table_LFO_OSC_AMT    [] = {80 , 80 , 80 , 80 , 80 , 127, 80 , 64 };

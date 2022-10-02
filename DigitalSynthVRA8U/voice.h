@@ -341,7 +341,7 @@ public:
       break;
 #endif
     case MODULATION     :
-      IOsc<0>::set_lfo_depth<1>(controller_value);
+      IOsc<0>::set_lfo_level_control<1>(controller_value);
       break;
 
     case FILTER_CUTOFF  :
@@ -373,8 +373,8 @@ public:
     case LFO_RATE       :
       IOsc<0>::set_lfo_rate(controller_value);
       break;
-    case LFO_DEPTH      :
-      IOsc<0>::set_lfo_depth<0>(controller_value);
+    case LFO_LEVEL      :
+      IOsc<0>::set_lfo_level_control<0>(controller_value);
       break;
     case LFO_OSC_AMT    :
       m_lfo_osc_amt = controller_value;
@@ -640,7 +640,7 @@ public:
 
     control_change(LFO_WAVE       , g_preset_table_LFO_WAVE       [program_number]);
     control_change(LFO_RATE       , g_preset_table_LFO_RATE       [program_number]);
-    control_change(LFO_DEPTH      , g_preset_table_LFO_DEPTH      [program_number]);
+    control_change(LFO_LEVEL      , g_preset_table_LFO_LEVEL      [program_number]);
     control_change(LFO_FADE_TIME  , g_preset_table_LFO_FADE_TIME  [program_number]);
 
     control_change(LFO_OSC_AMT    , g_preset_table_LFO_OSC_AMT    [program_number]);
@@ -744,7 +744,7 @@ private:
   }
 
   INLINE static void set_modulation(uint8_t controller_value) {
-    IOsc<0>::set_lfo_depth<1>(controller_value);
+    IOsc<0>::set_lfo_level_control<1>(controller_value);
   }
 
 #if 0
