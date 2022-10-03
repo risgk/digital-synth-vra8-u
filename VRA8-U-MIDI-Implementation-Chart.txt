@@ -51,7 +51,7 @@
 |                               |               |               |                                  |
 |                            14 | x             | o             | LFO Wave [T1|T2|Saw|SH|Sqr]      |
 |                            80 | x             | o             | LFO Rate                         |
-|                            81 | x             | o             | LFO Level                        |
+|                            81 | x             | o             | LFO Depth                        |
 |                            15 | x             | o             | LFO Fade Time                    |
 |                               |               |               |                                  |
 |                            82 | x             | o             | LFO Osc Amt [-|+]                |

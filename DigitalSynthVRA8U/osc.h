@@ -41,7 +41,7 @@ class Osc {
   static int8_t         m_lfo_wave_level;
   static int16_t        m_lfo_level;
   static uint16_t       m_lfo_rate;
-  static uint8_t        m_lfo_level_control[2];
+  static uint8_t        m_lfo_depth[2];
   static int8_t         m_pitch_lfo_amt[2];
   static uint8_t        m_lfo_waveform;
   static uint8_t        m_lfo_sampled;
@@ -251,8 +251,8 @@ public:
   }
 
   template <uint8_t N>
-  INLINE static void set_lfo_level_control(uint8_t controller_value) {
-    m_lfo_level_control[N] = (controller_value + 1) >> 1;
+  INLINE static void set_lfo_depth(uint8_t controller_value) {
+    m_lfo_depth[N] = (controller_value + 1) >> 1;
   }
 
   template <uint8_t N>
@@ -717,13 +717,13 @@ private:
   }
 
   INLINE static void update_lfo_3rd() {
-    uint8_t lfo_level_control = high_byte((m_lfo_level_control[0] << 1) * m_lfo_fade_level) + m_lfo_level_control[1];
-    if (lfo_level_control > 64) {
-      lfo_level_control = 64;
+    uint8_t lfo_depth = high_byte((m_lfo_depth[0] << 1) * m_lfo_fade_level) + m_lfo_depth[1];
+    if (lfo_depth > 64) {
+      lfo_depth = 64;
     }
-    lfo_level_control <<= 1;
+    lfo_depth <<= 1;
 
-    m_lfo_level = (lfo_level_control * m_lfo_wave_level) >> 1;
+    m_lfo_level = (lfo_depth * m_lfo_wave_level) >> 1;
   }
 
   INLINE static void update_lfo_4th(uint8_t eg_level) {
@@ -833,7 +833,7 @@ template <uint8_t T> uint16_t        Osc<T>::m_lfo_phase;
 template <uint8_t T> int8_t          Osc<T>::m_lfo_wave_level;
 template <uint8_t T> int16_t         Osc<T>::m_lfo_level;
 template <uint8_t T> uint16_t        Osc<T>::m_lfo_rate;
-template <uint8_t T> uint8_t         Osc<T>::m_lfo_level_control[2];
+template <uint8_t T> uint8_t         Osc<T>::m_lfo_depth[2];
 template <uint8_t T> int8_t          Osc<T>::m_pitch_lfo_amt[2];
 template <uint8_t T> uint8_t         Osc<T>::m_lfo_waveform;
 template <uint8_t T> uint8_t         Osc<T>::m_lfo_sampled;

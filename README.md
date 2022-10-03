@@ -20,9 +20,9 @@
 ## Change History
 
 - v1.3.0:
-    - Rename the parameter "Osc 1 Shape II" to "Osc 1 Morph", and "LFO Depth" to "LFO Level";
+    - Rename the parameter "Osc 1 Shape II" to "Osc 1 Morph";
     - Remove SS (Shaped Saw Wave) from Osc 1 Wave, and change the behaviour of Osc 1 Morph for Pls (Pulse Wave);
-    - Rename the texts "EG Osc Dst [P|P2|S1]" to "EG Osc Dst [P|2P|1S]", and "LFO Osc Dst [P|P2|S1]" to "LFO Osc Dst [P|2P|1S]";
+    - Rename the texts "EG Osc Dst [P|P2|S1]" and "LFO Osc Dst [P|P2|S1]" to "EG Osc Dst [P|2P|1S]" and "LFO Osc Dst [P|2P|1S]";
     - Change to reflect the Filter Cutoff parameter smoothly;
     - Fix a bug where the effect of LFO Osc Amt was inverted;
     - Fix a bug in which changing MIDI In * with VRA8-U CTRL did not invalidate the setting before the change;

@@ -98,8 +98,6 @@
     - 64: 2 Hz
     - 96: 6.3 Hz
     - 127: 20 Hz (max)
-- LFO Level
-    - The actual LFO level is the "LFO Level" value plus the "Modulation" value
 - Chorus Mode [Off|M|PS|S|S2]
     - 0 (0-15): Chorus Off
     - 32 (16-47): Mono Chorus
