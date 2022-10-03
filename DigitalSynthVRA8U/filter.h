@@ -118,7 +118,11 @@ public:
 #endif
 
 #if 1
+#if defined(ENABLE_STABLE_MODE)
+    int16_t x_0  = audio_input;
+#else
     int16_t x_0  = audio_input >> (16 - AUDIO_FRACTION_BITS);
+#endif
     int16_t tmp  = mul_sq16_sq16(x_0 + (m_x_1 << 1) + m_x_2, m_b_2_over_a_0);
     tmp         -= mul_sq16_sq8( m_y_1,                      m_a_1_over_a_0_high);
     tmp         -= mul_sq16_sq16(m_y_2,                      m_a_2_over_a_0);
