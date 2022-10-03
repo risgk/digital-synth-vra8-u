@@ -155,7 +155,7 @@ private:
   INLINE static void update_coefs_1st(int16_t lfo_input) {
     m_cutoff_candidate -= high_sbyte(mul_sq16_sq8(lfo_input, m_cutoff_lfo_amt) << 1);
 
-    // OSC Pitch is processed here (not in Voice) for performance reasons
+    // OSC Pitch is handled here (not in Voice) for performance reasons
     uint16_t osc_pitch = IOsc<0>::get_osc_pitch();
     if (m_cutoff_pitch_amt == 1) {
       m_cutoff_candidate += static_cast<int8_t>(high_byte(osc_pitch + 128) - 60);
