@@ -68,7 +68,8 @@
 
 - MIDI Controller (Editor) Application for VRA8-U, HTML App (Web App)
 - We recommend using Google Chrome, which implements Web MIDI API
-- We recommend [loopMIDI](https://www.tobias-erichsen.de/software/loopmidi.html) (virtual loopback MIDI cable) to connect VRA8-U
+- On Windows, We recommend using [loopMIDI](https://www.tobias-erichsen.de/software/loopmidi.html) (virtual loopback MIDI cable) to connect VRA8-U
+    - On Mac, a virtual MIDI bus (port) can be created by using the IAC bus
 - Functions
     - VRA8-U CTRL converts Program Changes (#0-7 for PRESET, #8-15 for user programs) into Control Changes
     - When Program Change #127 is entered or Control Change #90 is changed from Off (63 or lower) to On (64 or higher), "Rand Ctrl" is processed
