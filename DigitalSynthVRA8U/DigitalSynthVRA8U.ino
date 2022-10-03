@@ -13,7 +13,6 @@
 
 #define ENABLE_SPECIAL_PROGRAM_CHANGE   // Program Change by Control Change (112-119)
                                         // Interpret Program Change 8-15 as 0-7
-#define ENABLE_STABLE_MODE
 
 
 
