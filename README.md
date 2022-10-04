@@ -61,7 +61,8 @@
 
 ## Limitations
 
-- Waveforms may distort when receiving MIDI bytes: CPU Busy LED (LED L) blinks
+- Waveforms may slightly distort when receiving MIDI bytes
+    - At that time, CPU Busy LED (LED L) probably blink
     - Particularly noticeable with Note ON/OFF in paraphonic mode
 
 ## Restricted Support for Arduino Nano
