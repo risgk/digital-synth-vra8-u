@@ -15,7 +15,7 @@
 ## Caution about Arduino AVR Boards Version
 
 - We *strongly recommend* **Arduino AVR Boards version 1.8.5 (or 1.8.3)**
-    - If you use another version, the sketch *may not work well*: CPU Busy LED (LED L) *may almost always lit*
+    - If you use another version, the sketch *may not work well*: CPU Busy LED (LED L) *may continue to be lit*
 
 ## Change History
 
@@ -58,6 +58,11 @@
         - `"make-sample-wav-file-cc.bat"` makes a sample WAV file (working on Windows)
     - `"generate-*.rb"` generates source files
         - Requiring a Ruby execution environment
+
+## Limitations
+
+- Waveforms may distort when receiving MIDI bytes: CPU Busy LED (LED L) blinks
+    - Particularly noticeable with Note ON/OFF in paraphonic mode
 
 ## Restricted Support for Arduino Nano
 
