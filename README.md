@@ -15,7 +15,7 @@
 ## Caution about Arduino AVR Boards Version
 
 - We *strongly recommend* **Arduino AVR Boards version 1.8.5 (or 1.8.3)**
-    - If you use another version, the sketch *may not work well*: CPU Busy LED (LED L) *may continue to be lit*
+    - If you use another version, the sketch *may not work well*: the CPU Busy LED (LED L) *may continue to be lit*
 
 ## Change History
 
@@ -25,13 +25,13 @@
     - Rename the texts "EG Osc Dst [P|P2|S1]" and "LFO Osc Dst [P|P2|S1]" to "EG Osc Dst [P|2P|1S]" and "LFO Osc Dst [P|2P|1S]";
     - Change to reflect the Filter Cutoff parameter smoothly;
     - Improve stability: reduce CPU busy time at Note ON/OFF;
+    - Change the lighting condition of the CPU Busy LED (LED L);
     - Fix a bug where the effect of LFO Osc Amt was inverted;
     - Fix a bug in which changing MIDI In * with VRA8-U CTRL did not invalidate the setting before the change;
     - Change to recommend Arduino AVR Boards version 1.8.5 (or 1.8.3);
     - Support Arduino Nano (ATmega328) with restrictions;
     - Add Recommended Circuit Diagram and Actual Wiring Diagram;
-    - Rename "Parameter List" to "Parameter Guide";
-    - Fix documentation
+    - Rename "Parameter List" to "Parameter Guide"; Fix documentation; Other changes
 - v1.2.1: Reverses the effect of the Osc 1 Shape II value for SS (Shaped Saw Wave)
 - v1.2.0: Change the range of Osc 1 Shape from -64 -- +63 to 0 -- 127; Fix the comment on Osc 1 Shape II in VRA8-U CTRL
 - v1.1.1: Reduce noise in Chorus Mode M and S2
@@ -62,7 +62,7 @@
 ## Limitations
 
 - Waveforms may slightly distort when receiving MIDI bytes
-    - At that time, CPU Busy LED (LED L) probably blink
+    - At that time, the CPU Busy LED (LED L) probably blink
     - Particularly noticeable with Note ON/OFF in paraphonic mode
 
 ## Restricted Support for Arduino Nano
