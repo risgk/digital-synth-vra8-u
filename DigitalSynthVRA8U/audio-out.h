@@ -79,7 +79,7 @@ public:
     OCR2A = r;
 #endif
 
-    if (m_busyContinuousCount >= 8) {
+    if (m_busyContinuousCount >= 18) {
       PORTB = _BV(5);    // Turn on CPU Busy LED
     } else {
       PORTB = 0x00;      // Turn off CPU Busy LED
