@@ -67,8 +67,8 @@ public:
       return;
     }
 
-    int8_t cutoff_offset = 0;
 #if 0
+    int8_t cutoff_offset = 0;
     if (m_velocity_to_cutoff == 128) {
       cutoff_offset = velocity - 100;
     } else {
