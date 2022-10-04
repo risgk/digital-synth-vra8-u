@@ -93,7 +93,9 @@ public:
           IOsc<0>::trigger_lfo();
           IEG<0>::note_on();
           IEG<1>::note_on();
+#if 0
           IFilter<0>::set_cutoff_offset(cutoff_offset);
+#endif
         } else {
           m_note_on_number[3] = m_note_on_number[2];
           m_note_on_number[2] = m_note_on_number[1];
@@ -121,7 +123,9 @@ public:
         IOsc<0>::trigger_lfo();
         IEG<0>::note_on();
         IEG<1>::note_on();
+#if 0
         IFilter<0>::set_cutoff_offset(cutoff_offset);
+#endif
       }
 
     } else if (m_note_on_number[0] == note_number) {
@@ -132,7 +136,9 @@ public:
       IOsc<0>::note_on<0>(note_number);
       IEG<0>::note_on();
       IEG<1>::note_on();
+#if 0
       IFilter<0>::set_cutoff_offset(cutoff_offset);
+#endif
     } else if (m_note_on_number[1] == note_number) {
       ++m_note_on_total_count;
       ++m_note_on_count[note_number];
@@ -141,7 +147,9 @@ public:
       IOsc<0>::note_on<1>(note_number);
       IEG<0>::note_on();
       IEG<1>::note_on();
+#if 0
       IFilter<0>::set_cutoff_offset(cutoff_offset);
+#endif
     } else if (m_note_on_number[2] == note_number) {
       ++m_note_on_total_count;
       ++m_note_on_count[note_number];
@@ -150,7 +158,9 @@ public:
       IOsc<0>::note_on<2>(note_number);
       IEG<0>::note_on();
       IEG<1>::note_on();
+#if 0
       IFilter<0>::set_cutoff_offset(cutoff_offset);
+#endif
     } else if (m_note_on_number[3] == note_number) {
       ++m_note_on_total_count;
       ++m_note_on_count[note_number];
@@ -159,7 +169,9 @@ public:
       IOsc<0>::note_on<3>(note_number);
       IEG<0>::note_on();
       IEG<1>::note_on();
+#if 0
       IFilter<0>::set_cutoff_offset(cutoff_offset);
+#endif
     } else {
       uint8_t note_on_osc_index;
       if        (m_note_on_number[0] == NOTE_NUMBER_INVALID) {
@@ -206,7 +218,9 @@ public:
       }
       IEG<0>::note_on();
       IEG<1>::note_on();
+#if 0
       IFilter<0>::set_cutoff_offset(cutoff_offset);
+#endif
     }
   }
 
