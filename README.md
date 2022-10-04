@@ -24,7 +24,7 @@
     - Remove SS (Shaped Saw Wave) from Osc 1 Wave, and change the behaviour of Osc 1 Morph for Pls (Pulse Wave);
     - Rename the texts "EG Osc Dst [P|P2|S1]" and "LFO Osc Dst [P|P2|S1]" to "EG Osc Dst [P|2P|1S]" and "LFO Osc Dst [P|2P|1S]";
     - Change to reflect the Filter Cutoff parameter smoothly;
-    - Improve stability: reduce CPU busy time at Note ON/OFF;
+    - Improve stability (Reduce CPU busy time when receiving Note ON in paraphonic mode);
     - Fix a bug where the effect of LFO Osc Amt was inverted;
     - Fix a bug in which changing MIDI In * with VRA8-U CTRL did not invalidate the setting before the change;
     - Change to recommend Arduino AVR Boards version 1.8.5 (or 1.8.3);
@@ -60,9 +60,9 @@
 
 ## Limitations
 
-- Waveforms may slightly distort when receiving MIDI bytes
+- Waveforms may slightly distort when receiving MIDI bytes continuously
     - At that time, CPU Busy LED (LED L) probably blink
-    - Particularly noticeable with Note ON/OFF in paraphonic mode
+    - Particularly noticeable with Note ON in paraphonic mode
 
 ## Restricted Support for Arduino Nano
 
