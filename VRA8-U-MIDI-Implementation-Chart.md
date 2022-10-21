@@ -1,3 +1,4 @@
+```
   [United Synthesizer]                                            Date: 2022-08-26                  
   Model: Digital Synth VRA8-U     MIDI Implementation Chart       Version: 1.2.1                    
 +-------------------------------+---------------+---------------+----------------------------------+
@@ -101,3 +102,4 @@
 +-------------------------------+------------------------------------------------------------------+
   Mode 1: Omni On,  Poly          Mode 2: Omni On,  Mono          o: Yes                            
   Mode 3: Omni Off, Poly          Mode 4: Omni Off, Mono          x: No                             
+```

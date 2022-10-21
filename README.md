@@ -30,7 +30,7 @@
     - Change to recommend Arduino AVR Boards version 1.8.5 (or 1.8.3);
     - Support Arduino Nano (ATmega328) with restrictions;
     - Add Recommended Circuit Diagram and Actual Wiring Diagram;
-    - Rename "Parameter List" to "Parameter Guide"; Fix documentation; Other changes
+    - Rename "Parameter List" to "Parameter Guide"; Improve documentation; Other changes
 - v1.2.1: Reverses the effect of the Osc 1 Shape II value for SS (Shaped Saw Wave)
 - v1.2.0: Change the range of Osc 1 Shape from -64 -- +63 to 0 -- 127; Fix the comment on Osc 1 Shape II in VRA8-U CTRL
 - v1.1.1: Reduce noise in Chorus Mode M and S2
@@ -84,7 +84,7 @@
 
 ## [Parameter Guide](/VRA8-U-Parameter-Guide.md)
 
-## [MIDI Implementation Chart](/VRA8-U-MIDI-Implementation-Chart.txt)
+## [MIDI Implementation Chart](/VRA8-U-MIDI-Implementation-Chart.md)
 
 ## Synthesizer Block Diagram
 
