@@ -86,6 +86,45 @@
 
 ## [MIDI Implementation Chart](/VRA8-U-MIDI-Implementation-Chart.txt)
 
+## Synthesizer Block Diagram
+
+### Monophonic/Legato Mode
+
+```mermaid
+graph LR
+    O1[Osc 1]   --> M[Mixer] --> F[Filter] --> A[Amp] --> C[Chorus FX] --> AO[Audio Out]
+    SO[Sub Osc] --> M
+    O2[Osc 2]   --> M
+    E[EG]  -.-> O1
+    E      -.-> O2
+    E      -.-> F
+    L[LFO] -.-> O1
+    L      -.-> O2
+    L      -.-> F
+    AE[Amp EG] -.-> A
+```
+
+### Paraphonic Mode
+
+```mermaid
+graph LR
+    O1A[Osc 1/A] --> G1[Gate/A] --> M[Mixer] --> F[Filter] --> A[Amp] --> C[Chorus FX] --> AO[Audio Out]
+    O1B[Osc 1/B] --> G2[Gate/B] --> M
+    O1C[Osc 1/C] --> G3[Gate/C] --> M
+    O1D[Osc 1/D] --> G4[Gate/D] --> M
+    E[EG]  -.-> O1A
+    E      -.-> O1B
+    E      -.-> O1C
+    E      -.-> O1D
+    E      -.-> F
+    L[LFO] -.-> O1A
+    L      -.-> O1B
+    L      -.-> O1C
+    L      -.-> O1D
+    L      -.-> F
+    AE[Amp EG] -.-> A
+```
+
 ## Recommended Circuit Diagram
 
 ![Recommended Circuit Diagram](./vra8-u-circuit-diagram.png)
