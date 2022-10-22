@@ -95,12 +95,12 @@ graph LR
     O1[Osc 1]   --> M[Mixer] --> F[Filter] --> A[Amp] --> C[Chorus FX] --> AO[Audio Out]
     SO[Sub Osc] --> M
     O2[Osc 2]   --> M
-    E[EG]  -.-> O1
-    E      -.-> O2
-    E      -.-> F
-    L[LFO] -.-> O1
-    L      -.-> O2
-    L      -.-> F
+    E[EG]      -.-> O1
+    E          -.-> O2
+    E          -.-> F
+    L[LFO]     -.-> O1
+    L          -.-> O2
+    L          -.-> F
     AE[Amp EG] -.-> A
 ```
 
@@ -108,20 +108,20 @@ graph LR
 
 ```mermaid
 graph LR
-    O1A[Osc 1/A] --> G1[Gate/A] --> M[Mixer] --> F[Filter] --> A[Amp] --> C[Chorus FX] --> AO[Audio Out]
-    O1B[Osc 1/B] --> G2[Gate/B] --> M
-    O1C[Osc 1/C] --> G3[Gate/C] --> M
-    O1D[Osc 1/D] --> G4[Gate/D] --> M
-    E[EG]  -.-> O1A
-    E      -.-> O1B
-    E      -.-> O1C
-    E      -.-> O1D
-    E      -.-> F
-    L[LFO] -.-> O1A
-    L      -.-> O1B
-    L      -.-> O1C
-    L      -.-> O1D
-    L      -.-> F
+    V1O1[Voice 1<br/>Osc 1] --> V1G[Voice 1<br/>Gate] --> M[Mixer] --> F[Filter] --> A[Amp] --> C[Chorus FX] --> AO[Audio Out]
+    V2O1[Voice 2<br/>Osc 1] --> V2G[Voice 2<br/>Gate] --> M
+    V3O1[Voice 3<br/>Osc 1] --> V3G[Voice 3<br/>Gate] --> M
+    V4O1[Voice 4<br/>Osc 1] --> V4G[Voice 4<br/>Gate] --> M
+    E[EG]      -.-> V1O1
+    E          -.-> V2O1
+    E          -.-> V3O1
+    E          -.-> V4O1
+    E          -.-> F
+    L[LFO]     -.-> V1O1
+    L          -.-> V2O1
+    L          -.-> V3O1
+    L          -.-> V4O1
+    L          -.-> F
     AE[Amp EG] -.-> A
 ```
 
