@@ -46,7 +46,7 @@
 |                            28 | x             | o             | EG Release                       |
 |                               |               |               |                                  |
 |                           104 | x             | o             | EG Osc Amt [-|+]                 |
-|                           105 | x             | o             | EG Osc Dst [P|2P|1S]             |
+|                           105 | x             | o             | EG Osc Dst [P|P2|S1]             |
 |                            87 | x             | o             | Voice Mode [Par|Mon|Lgt]         |
 |                            22 | x             | o             | Portamento                       |
 |                               |               |               |                                  |
@@ -56,7 +56,7 @@
 |                            15 | x             | o             | LFO Fade Time                    |
 |                               |               |               |                                  |
 |                            82 | x             | o             | LFO Osc Amt [-|+]                |
-|                             9 | x             | o             | LFO Osc Dst [P|2P|1S]            |
+|                             9 | x             | o             | LFO Osc Dst [P|P2|S1]            |
 |                            83 | x             | o             | LFO Filter Amt [-|+]             |
 |                           110 | x             | o             | Amp Level                        |
 |                               |               |               |                                  |
