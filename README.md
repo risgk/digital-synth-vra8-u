@@ -22,6 +22,7 @@
 - v1.3.0:
     - Rename the parameter "Osc 1 Shape II" to "Osc 1 Morph";
     - Remove SS (Shaped Saw Wave) from Osc 1 Wave, and change the behaviour of Osc 1 Morph for Pls (Pulse Wave);
+    - Change the texts "EG Osc Dst [P|P2|S1]" and "LFO Osc Dst [P|P2|S1]" to "EG Osc Dst [P|2P|1S]" and "LFO Osc Dst [P|2P|1S]";
     - Change to reflect the Filter Cutoff parameter smoothly;
     - Improve stability (Reduce CPU busy time when receiving Note ON in paraphonic mode);
     - Fix a bug where the effect of LFO Osc Amt was inverted when LFO Osc Dst is 1S (Osc 1 Shape);
