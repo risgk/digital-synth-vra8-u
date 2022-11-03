@@ -67,8 +67,8 @@ public:
       return;
     }
 
-    int8_t cutoff_offset = 0;
 #if 0
+    int8_t cutoff_offset = 0;
     if (m_velocity_to_cutoff == 128) {
       cutoff_offset = velocity - 100;
     } else {
@@ -93,7 +93,9 @@ public:
           IOsc<0>::trigger_lfo();
           IEG<0>::note_on();
           IEG<1>::note_on();
+#if 0
           IFilter<0>::set_cutoff_offset(cutoff_offset);
+#endif
         } else {
           m_note_on_number[3] = m_note_on_number[2];
           m_note_on_number[2] = m_note_on_number[1];
@@ -121,7 +123,9 @@ public:
         IOsc<0>::trigger_lfo();
         IEG<0>::note_on();
         IEG<1>::note_on();
+#if 0
         IFilter<0>::set_cutoff_offset(cutoff_offset);
+#endif
       }
 
     } else if (m_note_on_number[0] == note_number) {
@@ -132,7 +136,9 @@ public:
       IOsc<0>::note_on<0>(note_number);
       IEG<0>::note_on();
       IEG<1>::note_on();
+#if 0
       IFilter<0>::set_cutoff_offset(cutoff_offset);
+#endif
     } else if (m_note_on_number[1] == note_number) {
       ++m_note_on_total_count;
       ++m_note_on_count[note_number];
@@ -141,7 +147,9 @@ public:
       IOsc<0>::note_on<1>(note_number);
       IEG<0>::note_on();
       IEG<1>::note_on();
+#if 0
       IFilter<0>::set_cutoff_offset(cutoff_offset);
+#endif
     } else if (m_note_on_number[2] == note_number) {
       ++m_note_on_total_count;
       ++m_note_on_count[note_number];
@@ -150,7 +158,9 @@ public:
       IOsc<0>::note_on<2>(note_number);
       IEG<0>::note_on();
       IEG<1>::note_on();
+#if 0
       IFilter<0>::set_cutoff_offset(cutoff_offset);
+#endif
     } else if (m_note_on_number[3] == note_number) {
       ++m_note_on_total_count;
       ++m_note_on_count[note_number];
@@ -159,7 +169,9 @@ public:
       IOsc<0>::note_on<3>(note_number);
       IEG<0>::note_on();
       IEG<1>::note_on();
+#if 0
       IFilter<0>::set_cutoff_offset(cutoff_offset);
+#endif
     } else {
       uint8_t note_on_osc_index;
       if        (m_note_on_number[0] == NOTE_NUMBER_INVALID) {
@@ -206,7 +218,9 @@ public:
       }
       IEG<0>::note_on();
       IEG<1>::note_on();
+#if 0
       IFilter<0>::set_cutoff_offset(cutoff_offset);
+#endif
     }
   }
 
@@ -363,8 +377,8 @@ public:
     case OSC_1_SHAPE    :
       IOsc<0>::set_osc1_shape_control(controller_value);
       break;
-    case OSC_1_SHAPE_II :
-      IOsc<0>::set_osc1_shape_ii_control(controller_value);
+    case OSC_1_MORPH    :
+      IOsc<0>::set_osc1_morph_control(controller_value);
       break;
     case MIXER_SUB_OSC  :
       IOsc<0>::set_mixer_sub_osc_control(controller_value);
@@ -615,7 +629,7 @@ public:
 
     control_change(OSC_1_WAVE     , g_preset_table_OSC_1_WAVE     [program_number]);
     control_change(OSC_1_SHAPE    , g_preset_table_OSC_1_SHAPE    [program_number]);
-    control_change(OSC_1_SHAPE_II , g_preset_table_OSC_1_SHAPE_II [program_number]);
+    control_change(OSC_1_MORPH    , g_preset_table_OSC_1_MORPH    [program_number]);
     control_change(MIXER_SUB_OSC  , g_preset_table_MIXER_SUB_OSC  [program_number]);
 
     control_change(OSC_2_WAVE     , g_preset_table_OSC_2_WAVE     [program_number]);

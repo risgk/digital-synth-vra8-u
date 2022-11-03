@@ -1,39 +1,32 @@
-# Digital Synth VRA8-U Parameter List v1.2.1
+# Digital Synth VRA8-U Parameter Guide v1.3.0
 
-- 2022-08-26 ISGK Instruments
+- 2022-11-03 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
 
 ## Control Change Parameters
 
 - Notes
     - $ : Disabled in Paraphonic Mode
-    - $$ : Disabled in Paraphonic or if Osc 1 Wave is not SS nor Pls
-    - $$$ : Disabled in Paraphonic or if Osc 1 Wave is SS or Pls
-- Osc 1 Wave [Saw|SS|Tri|Pls|Sqr]
-    - 0 (0-15): Saw Wave
-    - 32 (16-47): Shaped Saw Wave (Shape adjustable)
+    - $$ : Disabled in Paraphonic or if Osc 1 Wave is not Pls
+    - $$$ : Disabled in Paraphonic or if Osc 1 Wave is Pls
+- Osc 1 Wave [Saw|-|Tri|Pls|Sqr]
+    - 0 (0-47): Saw Wave
     - 64 (48-79): Triangle Wave
     - 96 (80-111): Pulse Wave (Shape adjustable)
     - 127 (112-127): Square Wave
 - Osc 1 Shape $$
-    - Shaped Saw Wave (= Saw + Phase Shifted Saw)
-        - 0: Saw 200%
-        - 64: Shaped Saw 150%
-        - 127: +1Oct Saw 100% (min)
-    - Pulse Wave (= Saw + Phase Shifted Reverse Saw)
-        - 0: Pulse Width 50%
-        - 64: Pulse Width 25%
-        - 96: Pulse Width 12.5%
-        - 127: Pulse Width 0% (min)
-- Osc 1 Shape II $$
-    - Shaped Saw Wave
-        - 0: Saw 100% + Saw 0% (max)
-        - 64: Saw 100% + Saw 50%
-        - 127: Saw 100% + Saw 100% (min)
+    - Pulse Wave (= 1st Saw + Phase Shifted 2nd Saw)
+        - 0: Pulse Width 50%, or 2nd Saw Phase 50% (min)
+        - 64: Pulse Width 25%, or 2nd Saw Phase 25%
+        - 96: Pulse Width 12.5%, or 2nd Saw Phase 12.5%
+        - 127: Pulse Width 0%, or 2nd Saw Phase 0% (max)
+- Osc 1 Morph $$
     - Pulse Wave
         - 0: Pulse 100% = Saw 100% + Reverse Saw 100% (min)
-        - 64: Pulse 50% + Saw 50% = Saw 100% + Reverse Saw 50%
-        - 127: Saw 100% = Saw 100% + Reverse Saw 0% (max)
+        - 32: Pulse 50% + Saw 50% = Saw 100% + Reverse Saw 50%
+        - 64: Saw 100%
+        - 96: Saw 100% + Saw 50%
+        - 127: Saw 100% + Saw 100% (max)
 - Mixer Sub Osc $$$
 - Osc 2 Wave $ [Saw|-|Tri|Nos|Sqr]
     - 0 (0-47): Saw Wave
@@ -84,9 +77,9 @@
         - +27 (91): +12 semitone
         - +39 (103): +24 semitone (max)
     - Shape
-        - -63 (1): -126 (min)
-        - +63 (127): +126 (max)
-- EG Osc Dst [P|P2|S1], LFO Osc Dst [P|P2|S1]
+        - -63 (1): Shape -252 (min)
+        - +63 (127): Shape +252 (max)
+- EG Osc Dst [P|2P|1S], LFO Osc Dst [P|2P|1S]
     - 0 (0-31): Osc 1 & 2 Pitch
     - 64 (32-95): Osc 2 Pitch
     - 127 (96-127): Osc 1 Shape
@@ -105,6 +98,8 @@
     - 64: 2 Hz
     - 96: 6.3 Hz
     - 127: 20 Hz (max)
+- LFO Depth
+    - The actual LFO depth is the "LFO Depth" value plus the "Modulation" value
 - Chorus Mode [Off|M|PS|S|S2]
     - 0 (0-15): Chorus Off
     - 32 (16-47): Mono Chorus

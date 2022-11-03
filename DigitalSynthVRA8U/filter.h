@@ -18,7 +18,8 @@ class Filter {
   static int16_t         m_y_2;
   static uint8_t         m_cutoff_current;
   static int16_t         m_cutoff_candidate;
-  static uint8_t         m_cutoff;
+  static uint8_t         m_cutoff_control;
+  static uint8_t         m_cutoff_control_effective;
   static int8_t          m_cutoff_eg_amt;
   static int8_t          m_cutoff_lfo_amt;
   static int8_t          m_cutoff_pitch_amt;
@@ -52,7 +53,7 @@ public:
       value = 124;
     }
 
-    m_cutoff = value;
+    m_cutoff_control = value;
   }
 
   INLINE static void set_resonance(uint8_t controller_value) {
@@ -117,7 +118,11 @@ public:
 #endif
 
 #if 1
+#if defined(ENABLE_STABLE_MODE)
+    int16_t x_0  = audio_input;
+#else
     int16_t x_0  = audio_input >> (16 - AUDIO_FRACTION_BITS);
+#endif
     int16_t tmp  = mul_sq16_sq16(x_0 + (m_x_1 << 1) + m_x_2, m_b_2_over_a_0);
     tmp         -= mul_sq16_sq8( m_y_1,                      m_a_1_over_a_0_high);
     tmp         -= mul_sq16_sq16(m_y_2,                      m_a_2_over_a_0);
@@ -142,7 +147,7 @@ public:
 
 private:
   INLINE static void update_coefs_0th(uint8_t eg_input) {
-    m_cutoff_candidate = m_cutoff;
+    m_cutoff_candidate = m_cutoff_control_effective;
     m_cutoff_candidate += high_sbyte((m_cutoff_eg_amt * eg_input) << 1);
     m_cutoff_candidate += m_cutoff_offset;
   }
@@ -150,7 +155,7 @@ private:
   INLINE static void update_coefs_1st(int16_t lfo_input) {
     m_cutoff_candidate -= high_sbyte(mul_sq16_sq8(lfo_input, m_cutoff_lfo_amt) << 1);
 
-    // OSC Pitch is processed here (not in Voice) for performance reasons
+    // OSC Pitch is handled here (not in Voice) for performance reasons
     uint16_t osc_pitch = IOsc<0>::get_osc_pitch();
     if (m_cutoff_pitch_amt == 1) {
       m_cutoff_candidate += static_cast<int8_t>(high_byte(osc_pitch + 128) - 60);
@@ -167,6 +172,9 @@ private:
     } else {
       m_cutoff_current = m_cutoff_candidate;
     }
+
+    m_cutoff_control_effective += (m_cutoff_control_effective < m_cutoff_control);
+    m_cutoff_control_effective -= (m_cutoff_control_effective > m_cutoff_control);
   }
 
   INLINE static void update_coefs_3rd() {
@@ -189,7 +197,8 @@ template <uint8_t T> int16_t         Filter<T>::m_y_1;
 template <uint8_t T> int16_t         Filter<T>::m_y_2;
 template <uint8_t T> uint8_t         Filter<T>::m_cutoff_current;
 template <uint8_t T> int16_t         Filter<T>::m_cutoff_candidate;
-template <uint8_t T> uint8_t         Filter<T>::m_cutoff;
+template <uint8_t T> uint8_t         Filter<T>::m_cutoff_control;
+template <uint8_t T> uint8_t         Filter<T>::m_cutoff_control_effective;
 template <uint8_t T> int8_t          Filter<T>::m_cutoff_eg_amt;
 template <uint8_t T> int8_t          Filter<T>::m_cutoff_lfo_amt;
 template <uint8_t T> int8_t          Filter<T>::m_cutoff_pitch_amt;

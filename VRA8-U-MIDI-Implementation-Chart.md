@@ -1,5 +1,6 @@
-  [United Synthesizer]                                            Date: 2022-08-26                  
-  Model: Digital Synth VRA8-U     MIDI Implementation Chart       Version: 1.2.1                    
+```
+  [United Synthesizer]                                            Date: 2022-11-03                  
+  Model: Digital Synth VRA8-U     MIDI Implementation Chart       Version: 1.3.0                    
 +-------------------------------+---------------+---------------+----------------------------------+
 | Function...                   | Transmitted   | Recognized    | Remarks                          |
 +-------------------------------+---------------+---------------+----------------------------------+
@@ -24,9 +25,9 @@
 | Control                     1 | x             | o             | Modulation                       |
 | Change                     64 | x             | o             | Sustain Pedal [Off|On]           |
 |                               |               |               |                                  |
-|                            24 | x             | o             | Osc 1 Wave [Saw|SS|Tri|Pls|Sqr]  |
+|                            24 | x             | o             | Osc 1 Wave [Saw|-|Tri|Pls|Sqr]   |
 |                           102 | x             | o             | Osc 1 Shape $$                   |
-|                           103 | x             | o             | Osc 1 Shape II $$                |
+|                           103 | x             | o             | Osc 1 Morph $$                   |
 |                            26 | x             | o             | Mixer Sub Osc $$$                |
 |                               |               |               |                                  |
 |                            55 | x             | o             | Osc 2 Wave $ [Saw|-|Tri|Nos|Sqr] |
@@ -45,7 +46,7 @@
 |                            28 | x             | o             | EG Release                       |
 |                               |               |               |                                  |
 |                           104 | x             | o             | EG Osc Amt [-|+]                 |
-|                           105 | x             | o             | EG Osc Dst [P|P2|S1]             |
+|                           105 | x             | o             | EG Osc Dst [P|2P|1S]             |
 |                            87 | x             | o             | Voice Mode [Par|Mon|Lgt]         |
 |                            22 | x             | o             | Portamento                       |
 |                               |               |               |                                  |
@@ -55,7 +56,7 @@
 |                            15 | x             | o             | LFO Fade Time                    |
 |                               |               |               |                                  |
 |                            82 | x             | o             | LFO Osc Amt [-|+]                |
-|                             9 | x             | o             | LFO Osc Dst [P|P2|S1]            |
+|                             9 | x             | o             | LFO Osc Dst [P|2P|1S]            |
 |                            83 | x             | o             | LFO Filter Amt [-|+]             |
 |                           110 | x             | o             | Amp Level                        |
 |                               |               |               |                                  |
@@ -96,8 +97,9 @@
 |              : Reset          | x             | x             |                                  |
 +-------------------------------+---------------+---------------+----------------------------------+
 | Notes                         | $ : Disabled in Paraphonic Mode                                  |
-|                               | $$ : Disabled in Paraphonic or if Osc 1 Wave is not SS nor Pls   |
-|                               | $$ : Disabled in Paraphonic or if Osc 1 Wave is SS or Pls        |
+|                               | $$ : Disabled in Paraphonic or if Osc 1 Wave is not Pls          |
+|                               | $$$ : Disabled in Paraphonic or if Osc 1 Wave is Pls             |
 +-------------------------------+------------------------------------------------------------------+
   Mode 1: Omni On,  Poly          Mode 2: Omni On,  Mono          o: Yes                            
   Mode 3: Omni Off, Poly          Mode 4: Omni Off, Mono          x: No                             
+```
