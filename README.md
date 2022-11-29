@@ -19,6 +19,8 @@
 
 ## Change History
 
+- v1.4.0:
+    - Add the parameter "Chorus Bypass [Off|On]";
 - v1.3.0:
     - Rename the parameter "Osc 1 Shape II" to "Osc 1 Morph";
     - Remove SS (Shaped Saw Wave) from Osc 1 Wave, and change the behaviour of Osc 1 Morph for Pls (Pulse Wave);

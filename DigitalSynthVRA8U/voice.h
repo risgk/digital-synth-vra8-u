@@ -542,6 +542,10 @@ public:
       IOsc<0>::set_pitch_bend_range(controller_value);
       break;
 
+    case CHORUS_BYPASS  :
+      // TODO
+      break;
+
 #if 0
     case V_TO_CUTOFF    :
       m_velocity_to_cutoff = ((controller_value + 1) >> 1) << 1;
@@ -673,7 +677,7 @@ public:
     control_change(CHORUS_DLY_TIME, g_preset_table_CHORUS_DLY_TIME[program_number]);
 
     control_change(P_BEND_RANGE   , g_preset_table_P_BEND_RANGE   [program_number]);
-
+    control_change(CHORUS_BYPASS  , g_preset_table_CHORUS_BYPASS  [program_number]);
 
 
   }

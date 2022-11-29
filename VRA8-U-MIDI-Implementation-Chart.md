@@ -71,6 +71,7 @@
 |                            62 | x             | o             | Chorus Delay Time                |
 |                               |               |               |                                  |
 |                            85 | x             | o             | Pitch Bend Range                 |
+|                           111 | x             | o             | Chorus Bypass [Off|On]           |
 |                               |               |               |                                  |
 |                            35 | x             | o             | Pitch Bend by CC [-|+]           |
 |                       112-119 |               |               | Program Change #0-7 by CC        |
