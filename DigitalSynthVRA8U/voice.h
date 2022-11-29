@@ -28,6 +28,9 @@ class Voice {
   static uint16_t m_rnd;
   static uint8_t  m_sp_prog_chg_cc_values[8];
 
+  static uint8_t  m_param_chorus_mode;
+  static boolean  m_param_chorus_bypass;
+
 public:
   INLINE static void initialize() {
     m_count = 0;
@@ -53,8 +56,6 @@ public:
     IEG<1>::set_gain<1>(127);
 
     IDelayFx<0>::initialize();
-
-    m_chorus_mode = CHORUS_MODE_OFF;
 
     m_eg_osc_amt = 64;
     m_lfo_osc_amt = 64;
@@ -439,45 +440,19 @@ public:
       break;
     case CHORUS_MODE    :
       {
-        uint8_t new_chorus_mode = CHORUS_MODE_STEREO_2;
+        uint8_t new_param_chorus_mode = CHORUS_MODE_STEREO_2;
+
         if        (controller_value < 16) {
-          new_chorus_mode = CHORUS_MODE_OFF;
+          new_param_chorus_mode = CHORUS_MODE_OFF;
         } else if (controller_value < 48) {
-          new_chorus_mode = CHORUS_MODE_MONO;
+          new_param_chorus_mode = CHORUS_MODE_MONO;
         } else if (controller_value < 80) {
-          new_chorus_mode = CHORUS_MODE_P_STEREO;
+          new_param_chorus_mode = CHORUS_MODE_P_STEREO;
         } else if (controller_value < 112) {
-          new_chorus_mode = CHORUS_MODE_STEREO;
+          new_param_chorus_mode = CHORUS_MODE_STEREO;
         }
 
-        if (m_chorus_mode != new_chorus_mode) {
-          m_chorus_mode = new_chorus_mode;
-
-          IDelayFx<0>::attenuate();
-
-          switch (m_chorus_mode) {
-          case CHORUS_MODE_OFF      :
-            IOsc<0>::set_chorus_mode(CHORUS_MODE_OFF);
-            IEG<1>::set_gain<0>(90);
-            break;
-          case CHORUS_MODE_STEREO   :
-            IOsc<0>::set_chorus_mode(CHORUS_MODE_STEREO);
-            IEG<1>::set_gain<0>(90);
-            break;
-          case CHORUS_MODE_P_STEREO :
-            IOsc<0>::set_chorus_mode(CHORUS_MODE_P_STEREO);
-            IEG<1>::set_gain<0>(64);
-            break;
-          case CHORUS_MODE_MONO     :
-            IOsc<0>::set_chorus_mode(CHORUS_MODE_MONO);
-            IEG<1>::set_gain<0>(127);
-            break;
-          case CHORUS_MODE_STEREO_2 :
-            IOsc<0>::set_chorus_mode(CHORUS_MODE_STEREO_2);
-            IEG<1>::set_gain<0>(127);
-            break;
-          }
-        }
+        update_chorus_mode(new_param_chorus_mode, m_param_chorus_bypass);
       }
       break;
 
@@ -543,7 +518,7 @@ public:
       break;
 
     case CHORUS_BYPASS  :
-      // TODO
+      update_chorus_mode(m_param_chorus_mode, controller_value >= 64);
       break;
 
 #if 0
@@ -847,6 +822,45 @@ private:
       IOsc<0>::set_shape_lfo_amt(m_lfo_osc_amt);
     }
   }
+
+  INLINE static void update_chorus_mode(uint8_t new_param_chorus_mode, boolean new_param_chorus_bypass) {
+    if ((m_param_chorus_mode   != new_param_chorus_mode) ||
+        (m_param_chorus_bypass != new_param_chorus_bypass)) {
+      m_param_chorus_mode   = new_param_chorus_mode;
+      m_param_chorus_bypass = new_param_chorus_bypass;
+      IDelayFx<0>::attenuate();
+
+      if (m_param_chorus_bypass) {
+        m_chorus_mode = CHORUS_MODE_OFF;
+        IOsc<0>::set_chorus_mode(CHORUS_MODE_OFF);
+        IEG<1>::set_gain<0>(127);
+      } else {
+        m_chorus_mode = m_param_chorus_mode;
+        switch (m_chorus_mode) {
+        case CHORUS_MODE_OFF      :
+          IOsc<0>::set_chorus_mode(CHORUS_MODE_OFF);
+          IEG<1>::set_gain<0>(90);
+          break;
+        case CHORUS_MODE_STEREO   :
+          IOsc<0>::set_chorus_mode(CHORUS_MODE_STEREO);
+          IEG<1>::set_gain<0>(90);
+          break;
+        case CHORUS_MODE_P_STEREO :
+          IOsc<0>::set_chorus_mode(CHORUS_MODE_P_STEREO);
+          IEG<1>::set_gain<0>(64);
+          break;
+        case CHORUS_MODE_MONO     :
+          IOsc<0>::set_chorus_mode(CHORUS_MODE_MONO);
+          IEG<1>::set_gain<0>(127);
+          break;
+        case CHORUS_MODE_STEREO_2 :
+          IOsc<0>::set_chorus_mode(CHORUS_MODE_STEREO_2);
+          IEG<1>::set_gain<0>(127);
+          break;
+        }
+      }
+    }
+  }
 };
 
 template <uint8_t T> uint8_t  Voice<T>::m_count;
@@ -871,3 +885,6 @@ template <uint8_t T> uint8_t  Voice<T>::m_lfo_osc_dst;
 
 template <uint8_t T> uint16_t Voice<T>::m_rnd;
 template <uint8_t T> uint8_t  Voice<T>::m_sp_prog_chg_cc_values[8];
+
+template <uint8_t T> uint8_t  Voice<T>::m_param_chorus_mode;
+template <uint8_t T> boolean  Voice<T>::m_param_chorus_bypass;
