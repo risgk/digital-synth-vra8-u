@@ -41,7 +41,7 @@ td.keyh {
 }
 </style>
 <script>
-const APP_NAME_VERSION = "VRA8-U CTRL v1.3.0";
+const APP_NAME_VERSION = "VRA8-U CTRL v1.4.0";
 
 const MIDI_CH        = 0;       // Basic Channel 1
 const NOTE_OFF       = 0x80;
@@ -100,7 +100,7 @@ const CHORUS_DEPTH    = 60;
 const CHORUS_DLY_TIME = 62;
 
 const P_BEND_RANGE    = 85;
-
+const CHORUS_BYPASS   = 111;
 
 
 
@@ -170,7 +170,7 @@ var controlNumberToStringMap = new Map([
   [ CHORUS_DLY_TIME, "CHORUS_DLY_TIME" ],
 
   [ P_BEND_RANGE   , "P_BEND_RANGE   " ],
-
+  [ CHORUS_BYPASS  , "CHORUS_BYPASS  " ],
 
 
 ]);
@@ -222,7 +222,7 @@ var controllersInLocalStorage = [
   CHORUS_DLY_TIME,
 
   P_BEND_RANGE   ,
-
+  CHORUS_BYPASS  ,
 
 
 ];
@@ -276,7 +276,7 @@ presetControllers[CHORUS_DEPTH   ] = [32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 ];
 presetControllers[CHORUS_DLY_TIME] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
 
 presetControllers[P_BEND_RANGE   ] = [2  , 2  , 2  , 2  , 2  , 2  , 2  , 2  ];
-
+presetControllers[CHORUS_BYPASS  ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
 
 
 
@@ -664,6 +664,7 @@ function setRandom() {
        (i != CHORUS_RATE    ) &&
        (i != CHORUS_DLY_TIME) &&
        (i != CHORUS_MODE    ) &&
+       (i != CHORUS_BYPASS  ) &&
        (i != AMP_LEVEL      ) &&
        (i != VOICE_MODE     )) {
       onChangeControlChange(i, rand(128));
@@ -859,7 +860,7 @@ function fileExport() {
   str += fileExportOneLine(CHORUS_DLY_TIME);
   str += "\n";
   str += fileExportOneLine(P_BEND_RANGE   );
-  str += "\n";
+  str += fileExportOneLine(CHORUS_BYPASS  );
   str += "\n";
   str += "\n";
   str += "  \"_end         \" : \"\"\n";
@@ -1201,15 +1202,15 @@ function getStoredCCValueString(index, number) {
 </tr>
 <tr>
 <td colspan="2">Pitch Bend Range                </td>
-<td colspan="2"></td>
+<td colspan="2"><b>Chorus</b> Bypass [Off|On]          </td>
 <td colspan="2"></td>
 <td colspan="2"></td>
 </tr>
 <tr>
 <td><input  id="inputCC85"  type="range" min="0" max="127" step="1" oninput="onChangeControlChange(P_BEND_RANGE   , value)"></td>
 <td><span    id="spanCC85" >-</span></td>
-<td></td>
-<td></td>
+<td><input  id="inputCC111" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(CHORUS_BYPASS  , value)"></td>
+<td><span    id="spanCC111">-</span></td>
 <td></td>
 <td></td>
 <td></td>
