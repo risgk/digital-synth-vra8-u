@@ -657,7 +657,11 @@ public:
 
   }
 
+#if defined(ENABLE_16_BIT_OUTPUT)
+  INLINE static int16_t clock(int16_t& right_level) {
+#else
   INLINE static int8_t clock(int8_t& right_level) {
+#endif
     ++m_count;
 
     uint8_t eg_output_0 = IEG<0>::clock(m_count);
@@ -667,6 +671,10 @@ public:
     uint8_t eg_output_1 = IEG<1>::clock(m_count);
     int16_t amp_output = IAmp<0>::clock(filter_output, eg_output_1);
 
+#if defined(ENABLE_16_BIT_OUTPUT)
+    right_level = amp_output;
+    return        amp_output;
+#else
     // error diffusion
     int16_t output = amp_output + m_output_error;
     m_output_error = low_byte(output);
@@ -691,6 +699,7 @@ public:
     // For Off and Stereo Chorus
     right_level = dir_sample;
     return        eff_sample_0;
+#endif
   }
 
 private:
