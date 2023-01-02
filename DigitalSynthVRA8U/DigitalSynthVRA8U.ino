@@ -11,6 +11,10 @@
 #define R_AUDIO_OUT_PIN      (11)       // Pin D11 (Fixed)
 #define CPU_BUSY_LED_OUT_PIN (13)       // Pin D13 (Fixed)
 
+#define ENABLE_16_BIT_OUTPUT            // Operate as **VRA8-U type-16**, 16-bit Audio Output
+#define L_MONO_LOW_AUDIO_OUT_PIN (6)    // Pin D6 (or D5): L/Mono Channel, Low 8-bit Output
+#define R_LOW_AUDIO_OUT_PIN      (3)    // Pin D3 (Fixed): R      Channel, Low 8-bit Output
+
 #define ENABLE_SPECIAL_PROGRAM_CHANGE   // Program Change by Control Change (112-119)
                                         // Interpret Program Change 8-15 as 0-7
 #define ENABLE_STABLE_MODE
@@ -35,8 +39,13 @@ void loop() {
       uint8_t b = SerialIn<0>::read();
       Synth<0>::receive_midi_byte(b);
     }
+#if defined(ENABLE_16_BIT_OUTPUT)
+    int16_t right_level;
+    int16_t left_level = Synth<0>::clock(right_level);
+#else
     int8_t right_level;
     int8_t left_level = Synth<0>::clock(right_level);
+#endif
     AudioOut<0>::write(left_level, right_level);
   }
 }
