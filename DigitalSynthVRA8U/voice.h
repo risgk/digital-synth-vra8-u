@@ -1,7 +1,11 @@
 #pragma once
 
 #include "common.h"
+#if defined(ENABLE_16_BIT_OUTPUT)
+#include "program-table-type-16.h"
+#else
 #include "program-table.h"
+#endif
 
 template <uint8_t T>
 class Voice {
@@ -443,10 +447,12 @@ public:
         uint8_t new_param_chorus_mode = CHORUS_MODE_STEREO_2;
 
 #if defined(ENABLE_16_BIT_OUTPUT)
-        if        (controller_value < 16) {
+        if        (controller_value < 32) {
           new_param_chorus_mode = CHORUS_MODE_OFF;
-        } else {
+        } else if (controller_value < 96) {
           new_param_chorus_mode = CHORUS_MODE_STEREO;
+        } else {
+          new_param_chorus_mode = CHORUS_MODE_P_STEREO;
         }
 #else
         if        (controller_value < 16) {
@@ -685,6 +691,13 @@ public:
     int16_t eff_sample_0 = IDelayFx<0>::get(IOsc<0>::get_chorus_delay_time<0>());
     IDelayFx<0>::push(dir_sample);
 
+    if (m_chorus_mode == CHORUS_MODE_P_STEREO) {
+      // For Pseudo-Stereo Chorus
+      right_level = dir_sample - eff_sample_0;
+      return        dir_sample + eff_sample_0;
+    }
+
+    // For Off and Stereo Chorus
     right_level = dir_sample;
     return        eff_sample_0;
 #else
@@ -871,6 +884,16 @@ private:
           IOsc<0>::set_chorus_mode(CHORUS_MODE_P_STEREO);
           IEG<1>::set_gain<0>(64);
           break;
+#if defined(ENABLE_16_BIT_OUTPUT)
+        case CHORUS_MODE_MONO     :
+          IOsc<0>::set_chorus_mode(CHORUS_MODE_MONO);
+          IEG<1>::set_gain<0>(64);
+          break;
+        case CHORUS_MODE_STEREO_2 :
+          IOsc<0>::set_chorus_mode(CHORUS_MODE_STEREO_2);
+          IEG<1>::set_gain<0>(64);
+          break;
+#else
         case CHORUS_MODE_MONO     :
           IOsc<0>::set_chorus_mode(CHORUS_MODE_MONO);
           IEG<1>::set_gain<0>(127);
@@ -879,6 +902,7 @@ private:
           IOsc<0>::set_chorus_mode(CHORUS_MODE_STEREO_2);
           IEG<1>::set_gain<0>(127);
           break;
+#endif
         }
       }
     }
