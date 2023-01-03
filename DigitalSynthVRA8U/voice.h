@@ -1,7 +1,11 @@
 #pragma once
 
 #include "common.h"
+#if defined(ENABLE_16_BIT_OUTPUT)
+#include "program-table-type-16.h"
+#else
 #include "program-table.h"
+#endif
 
 template <uint8_t T>
 class Voice {
@@ -442,6 +446,15 @@ public:
       {
         uint8_t new_param_chorus_mode = CHORUS_MODE_STEREO_2;
 
+#if defined(ENABLE_16_BIT_OUTPUT)
+        if        (controller_value < 32) {
+          new_param_chorus_mode = CHORUS_MODE_OFF;
+        } else if (controller_value < 96) {
+          new_param_chorus_mode = CHORUS_MODE_STEREO;
+        } else {
+          new_param_chorus_mode = CHORUS_MODE_P_STEREO;
+        }
+#else
         if        (controller_value < 16) {
           new_param_chorus_mode = CHORUS_MODE_OFF;
         } else if (controller_value < 48) {
@@ -451,6 +464,7 @@ public:
         } else if (controller_value < 112) {
           new_param_chorus_mode = CHORUS_MODE_STEREO;
         }
+#endif
 
         update_chorus_mode(new_param_chorus_mode, m_param_chorus_bypass);
       }
@@ -657,7 +671,11 @@ public:
 
   }
 
+#if defined(ENABLE_16_BIT_OUTPUT)
+  INLINE static int16_t clock(int16_t& right_level) {
+#else
   INLINE static int8_t clock(int8_t& right_level) {
+#endif
     ++m_count;
 
     uint8_t eg_output_0 = IEG<0>::clock(m_count);
@@ -667,6 +685,22 @@ public:
     uint8_t eg_output_1 = IEG<1>::clock(m_count);
     int16_t amp_output = IAmp<0>::clock(filter_output, eg_output_1);
 
+#if defined(ENABLE_16_BIT_OUTPUT)
+    int16_t dir_sample = amp_output;
+
+    int16_t eff_sample_0 = IDelayFx<0>::get(IOsc<0>::get_chorus_delay_time<0>());
+    IDelayFx<0>::push(dir_sample);
+
+    if (m_chorus_mode == CHORUS_MODE_P_STEREO) {
+      // For Pseudo-Stereo Chorus
+      right_level = dir_sample - eff_sample_0;
+      return        dir_sample + eff_sample_0;
+    }
+
+    // For Off and Stereo Chorus
+    right_level = dir_sample;
+    return        eff_sample_0;
+#else
     // error diffusion
     int16_t output = amp_output + m_output_error;
     m_output_error = low_byte(output);
@@ -691,6 +725,7 @@ public:
     // For Off and Stereo Chorus
     right_level = dir_sample;
     return        eff_sample_0;
+#endif
   }
 
 private:
@@ -849,6 +884,16 @@ private:
           IOsc<0>::set_chorus_mode(CHORUS_MODE_P_STEREO);
           IEG<1>::set_gain<0>(64);
           break;
+#if defined(ENABLE_16_BIT_OUTPUT)
+        case CHORUS_MODE_MONO     :
+          IOsc<0>::set_chorus_mode(CHORUS_MODE_MONO);
+          IEG<1>::set_gain<0>(64);
+          break;
+        case CHORUS_MODE_STEREO_2 :
+          IOsc<0>::set_chorus_mode(CHORUS_MODE_STEREO_2);
+          IEG<1>::set_gain<0>(64);
+          break;
+#else
         case CHORUS_MODE_MONO     :
           IOsc<0>::set_chorus_mode(CHORUS_MODE_MONO);
           IEG<1>::set_gain<0>(127);
@@ -857,6 +902,7 @@ private:
           IOsc<0>::set_chorus_mode(CHORUS_MODE_STEREO_2);
           IEG<1>::set_gain<0>(127);
           break;
+#endif
         }
       }
     }

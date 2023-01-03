@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 <meta charset="utf-8">
-<title>VRA8-U CTRL</title>
+<title>VRA8-U type-16 CTRL</title>
 <style>
 * {
   font-size: 12px;
@@ -41,7 +41,7 @@ td.keyh {
 }
 </style>
 <script>
-const APP_NAME_VERSION = "VRA8-U CTRL v2.0.0";
+const APP_NAME_VERSION = "VRA8-U type-16 CTRL v2.0.0";
 
 const MIDI_CH        = 0;       // Basic Channel 1
 const NOTE_OFF       = 0x80;
@@ -272,7 +272,7 @@ presetControllers[AMP_RELEASE    ] = [0  , 0  , 0  , 0  , 96 , 0  , 0  , 0  ];
 
 presetControllers[CHORUS_MODE    ] = [127, 127, 127, 127, 127, 127, 127, 0  ];
 presetControllers[CHORUS_RATE    ] = [32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 ];
-presetControllers[CHORUS_DEPTH   ] = [32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 ];
+presetControllers[CHORUS_DEPTH   ] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
 presetControllers[CHORUS_DLY_TIME] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
 
 presetControllers[P_BEND_RANGE   ] = [2  , 2  , 2  , 2  , 2  , 2  , 2  , 2  ];
@@ -295,7 +295,7 @@ document.addEventListener("touchstart", function(event) {
 });
 
 window.onload = function() {
-  document.getElementById("spanAppNameVersion").innerHTML = "<strong>" + APP_NAME_VERSION + "</strong>";
+  document.getElementById("spanAppNameVersion").innerHTML = "<strong style=\"color:blue\">" + APP_NAME_VERSION + "</strong>";
 
   if (navigator.requestMIDIAccess) {
     navigator.requestMIDIAccess({sysex: false}).then(onMIDISuccess, onMIDIFailure);
@@ -868,7 +868,7 @@ function fileExport() {
 
   var blob = new Blob([str]);
   const a = document.createElement('a');
-  a.download = 'vra8-u-prog.json';
+  a.download = 'vra8-u-type-16-prog.json';
   document.body.appendChild(a);
   a.href = URL.createObjectURL(blob);
   a.click();
@@ -1185,10 +1185,10 @@ function getStoredCCValueString(index, number) {
 <td colspan="8"><hr></td>
 </tr>
 <tr>
-<td colspan="2"><b>Chorus</b> Mode [Off|M|PS|S|S2]     </td>
-<td colspan="2"><b>Chorus</b> Rate                     </td>
-<td colspan="2"><b>Chorus</b> Depth                    </td>
-<td colspan="2"><b>Chorus</b> Delay Time               </td>
+<td colspan="2" style="color:blue"><b>Chorus</b> Mode [Off|S|PS]          </td>
+<td colspan="2"                   ><b>Chorus</b> Rate                     </td>
+<td colspan="2" style="color:blue"><b>Chorus</b> Depth                    </td>
+<td colspan="2" style="color:blue"><b>Chorus</b> Delay Time               </td>
 </tr>
 <tr>
 <td><input  id="inputCC63"  type="range" min="0" max="127" step="1" oninput="onChangeControlChange(CHORUS_MODE    , value)"></td>
