@@ -19,6 +19,9 @@
 
 ## Change History
 
+- v2.0.0:
+    - Add support for **VRA8-U type-16** (Special Edition with 16-bit Audio Output)
+    - Change Presets
 - v1.4.0:
     - Add the parameter "Chorus Bypass [Off|On]"
 - v1.3.0:
@@ -48,6 +51,7 @@
         - Even using only the power supply adapter *significantly* reduces USB noise
 - PWM Audio Out (Unipolar, Line Level) **L/Mono**: **Pin D5** (or D6), **R**: **Pin D11**
     - Sampling Rate: 31.25 kHz, PWM Rate: 62.5 kHz, Bit Depth: 8 bit
+    - **NOTE**: When using the SparkFun MIDI Shield (DEV-12898), it should be modified to `#define L_MONO_AUDIO_OUT_PIN (6)` in `"DigitalSynthVRA8U.ino"`
     - We recommend adding RC filter (post LPF) circuits to reduce PWM ripples
         - A 1st-order LPF with a cutoff frequency 7.2 kHz (R = 220 ohm, C = 100 nF) works well
     - We recommend adding AC coupling capacitors to reduce DC components
@@ -59,6 +63,8 @@
         - `"make-sample-wav-file-cc.bat"` makes a sample WAV file (working on Windows)
     - `"generate-*.rb"` generates source files
         - Requiring a Ruby execution environment
+- **VRA8-U type-16**
+    - To operate **VRA8-U type-16** (Special Edition with 16-bit Audio Output), refer to [VRA8-U type-16 Operation Guide](/VRA8-U-type-16-Operation-Guide.md)
 
 ## Limitations
 
@@ -74,7 +80,7 @@
 
 ## VRA8-U CTRL
 
-- MIDI Controller (Editor) Application for VRA8-U, HTML App (Web App)
+- `"vra8-u-ctrl.html"`: MIDI Controller (Editor) Application for VRA8-U, HTML App (Web App)
 - We recommend using Google Chrome, which implements Web MIDI API
 - On Windows, We recommend using [loopMIDI](https://www.tobias-erichsen.de/software/loopmidi.html) (virtual loopback MIDI cable) to connect VRA8-U
     - On Mac, a virtual MIDI bus (port) can be created by using the IAC bus

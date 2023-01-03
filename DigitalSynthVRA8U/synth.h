@@ -33,7 +33,11 @@ public:
     ISynthCore<0>::receive_midi_byte(b);
   }
 
+#if defined(ENABLE_16_BIT_OUTPUT)
+  INLINE static int16_t clock(int16_t& right_level) {
+#else
   INLINE static int8_t clock(int8_t& right_level) {
+#endif
     return ISynthCore<0>::clock(right_level);
   }
 };
