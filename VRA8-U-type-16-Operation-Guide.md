@@ -5,7 +5,8 @@
 
 ## Concept
 
-- Digital Synth VRA8-U Special Edition with 16-bit Audio Output
+- **Digital Synth VRA8-U type-16**
+    - Digital Synth VRA8-U Special Edition with 16-bit Audio Output
 
 ## Features
 
