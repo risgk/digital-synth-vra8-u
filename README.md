@@ -21,7 +21,7 @@
 
 - v2.0.0:
     - Add support for **VRA8-U type-16** (Special Edition with 16-bit Audio Output)
-    - Change Presets
+    - Modify Preset #3 and #5
 - v1.4.0:
     - Add the parameter "Chorus Bypass [Off|On]"
 - v1.3.0:
