@@ -442,6 +442,13 @@ public:
       {
         uint8_t new_param_chorus_mode = CHORUS_MODE_STEREO_2;
 
+#if defined(ENABLE_16_BIT_OUTPUT)
+        if        (controller_value < 16) {
+          new_param_chorus_mode = CHORUS_MODE_OFF;
+        } else {
+          new_param_chorus_mode = CHORUS_MODE_STEREO;
+        }
+#else
         if        (controller_value < 16) {
           new_param_chorus_mode = CHORUS_MODE_OFF;
         } else if (controller_value < 48) {
@@ -451,6 +458,7 @@ public:
         } else if (controller_value < 112) {
           new_param_chorus_mode = CHORUS_MODE_STEREO;
         }
+#endif
 
         update_chorus_mode(new_param_chorus_mode, m_param_chorus_bypass);
       }
@@ -672,8 +680,13 @@ public:
     int16_t amp_output = IAmp<0>::clock(filter_output, eg_output_1);
 
 #if defined(ENABLE_16_BIT_OUTPUT)
-    right_level = amp_output;
-    return        amp_output;
+    int16_t dir_sample = amp_output;
+
+    int16_t eff_sample_0 = IDelayFx<0>::get(IOsc<0>::get_chorus_delay_time<0>());
+    IDelayFx<0>::push(dir_sample);
+
+    right_level = dir_sample;
+    return        eff_sample_0;
 #else
     // error diffusion
     int16_t output = amp_output + m_output_error;

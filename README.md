@@ -20,7 +20,7 @@
 ## Change History
 
 - v2.0.0:
-    - Support **VRA8-U type-16**, a variant with 16-bit audio output
+    - Add support for **Digital Synth VRA8-U type-16**, an edition with 16-bit audio output
 - v1.4.0:
     - Add the parameter "Chorus Bypass [Off|On]"
 - v1.3.0:

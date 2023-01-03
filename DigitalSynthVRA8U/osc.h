@@ -286,11 +286,19 @@ public:
   }
 
   INLINE static void set_chorus_depth(uint8_t controller_value) {
+#if defined(ENABLE_16_BIT_OUTPUT)
+    if (controller_value < 126) {
+      m_chorus_depth_control = (controller_value + 1) >> 1;
+    } else {
+      m_chorus_depth_control = 63;
+    }
+#else
     if (controller_value < 126) {
       m_chorus_depth_control = controller_value;
     } else {
       m_chorus_depth_control = 126;
     }
+#endif
   }
 
   INLINE static void set_chorus_rate(uint8_t controller_value) {
@@ -302,7 +310,15 @@ public:
   }
 
   INLINE static void set_chorus_delay_time(uint8_t controller_value) {
+#if defined(ENABLE_16_BIT_OUTPUT)
+    if (controller_value < 126) {
+      m_chorus_delay_time_control = (controller_value + 1) >> 1;
+    } else {
+      m_chorus_delay_time_control = 63;
+    }
+#else
     m_chorus_delay_time_control = controller_value;
+#endif
   }
 
   INLINE static void set_chorus_mode(uint8_t chorus_mode) {
@@ -757,6 +773,21 @@ private:
     m_chorus_delay_time_control_effective += (m_chorus_delay_time_control_effective < m_chorus_delay_time_control);
     m_chorus_delay_time_control_effective -= (m_chorus_delay_time_control_effective > m_chorus_delay_time_control);
 
+#if defined(ENABLE_16_BIT_OUTPUT)
+    if (m_chorus_delay_time_control_effective < 32) {
+      if (m_chorus_depth_control > (m_chorus_delay_time_control_effective << 1)) {
+        m_chorus_depth_control_actual = (m_chorus_delay_time_control_effective << 1);
+      } else {
+        m_chorus_depth_control_actual = m_chorus_depth_control;
+      }
+    } else {
+      if (m_chorus_depth_control > ((63 - m_chorus_delay_time_control_effective) << 1)) {
+        m_chorus_depth_control_actual = ((63 - m_chorus_delay_time_control_effective) << 1);
+      } else {
+        m_chorus_depth_control_actual = m_chorus_depth_control;
+      }
+    }
+#else
     if (m_chorus_delay_time_control_effective < 64) {
       if (m_chorus_depth_control > (m_chorus_delay_time_control_effective << 1)) {
         m_chorus_depth_control_actual = (m_chorus_delay_time_control_effective << 1);
@@ -770,6 +801,7 @@ private:
         m_chorus_depth_control_actual = m_chorus_depth_control;
       }
     }
+#endif
 
     m_chorus_lfo_phase += m_chorus_rate_control;
   }
