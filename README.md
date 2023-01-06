@@ -71,6 +71,7 @@
 - Waveforms may slightly distort when receiving MIDI bytes continuously
     - At that time, CPU Busy LED (LED L) probably blink
     - Particularly noticeable with Note ON in paraphonic mode
+- Especially when the waveform is square wave, the noise of chorus delay component is noticeable at high frequency
 
 ## Restricted Support for Arduino Nano
 
