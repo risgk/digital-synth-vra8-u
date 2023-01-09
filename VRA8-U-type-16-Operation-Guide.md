@@ -19,7 +19,7 @@
     - **NOTE**: When using the SparkFun MIDI Shield (DEV-12898), do not mount S4 (D3) and LED2 GREEN (D6)
 - Limitations
     - Chorus Mode "Mono Chorus" and "Stereo 2-phase Chorus" are not available
-    - The effect of Chorus Depth and Chorus Delay Time are halved
+    - The effects of Chorus Depth and Chorus Delay Time are halved
     - Refer to [Parameter Guide](/VRA8-U-Parameter-Guide.md) for details
 - Please use **VRA8-U type-16 CTRL** (`"vra8-u-type-16-ctrl.html"`)
 

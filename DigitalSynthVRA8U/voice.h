@@ -34,6 +34,9 @@ class Voice {
 
   static uint8_t  m_param_chorus_mode;
   static boolean  m_param_chorus_bypass;
+#if defined(ENABLE_16_BIT_OUTPUT)
+  static boolean  m_filter_mode_hpf;
+#endif
 
 public:
   INLINE static void initialize() {
@@ -563,6 +566,16 @@ public:
       }
       break;
 
+#if defined(ENABLE_16_BIT_OUTPUT)
+    case FILTER_MODE    :
+      if (controller_value < 64) {
+        m_filter_mode_hpf = false;
+      } else {
+        m_filter_mode_hpf = true;
+      }
+      break;
+#endif
+
     case ALL_NOTES_OFF  :
     case OMNI_MODE_OFF  :
     case OMNI_MODE_ON   :
@@ -659,7 +672,11 @@ public:
 
     control_change(P_BEND_RANGE   , g_preset_table_P_BEND_RANGE   [program_number]);
     control_change(CHORUS_BYPASS  , g_preset_table_CHORUS_BYPASS  [program_number]);
+#if defined(ENABLE_16_BIT_OUTPUT)
+    control_change(FILTER_MODE    , g_preset_table_FILTER_MODE    [program_number]);
+#else
 
+#endif
 
   }
 
@@ -674,6 +691,18 @@ public:
     int16_t osc_output = IOsc<0>::clock(m_count, eg_output_0);
     int16_t lfo_output = IOsc<0>::get_lfo_level();
     int16_t filter_output = IFilter<0>::clock(m_count, osc_output, eg_output_0, lfo_output);
+#if defined(ENABLE_16_BIT_OUTPUT)
+  #if defined(ENABLE_STABLE_MODE)
+    if (m_filter_mode_hpf) {
+      filter_output = (osc_output << 2) - filter_output;
+    }
+  #else
+    if (m_filter_mode_hpf) {
+      filter_output = osc_output - filter_output;
+    }
+  #endif
+#endif
+
     uint8_t eg_output_1 = IEG<1>::clock(m_count);
     int16_t amp_output = IAmp<0>::clock(filter_output, eg_output_1);
 
@@ -926,3 +955,6 @@ template <uint8_t T> uint8_t  Voice<T>::m_sp_prog_chg_cc_values[8];
 
 template <uint8_t T> uint8_t  Voice<T>::m_param_chorus_mode;
 template <uint8_t T> boolean  Voice<T>::m_param_chorus_bypass;
+#if defined(ENABLE_16_BIT_OUTPUT)
+template <uint8_t T> boolean  Voice<T>::m_filter_mode_hpf;
+#endif

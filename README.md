@@ -20,7 +20,7 @@
 ## Change History
 
 - v2.2.0
-    - Improve stability (Reduce CPU busy time when receiving Note ON in paraphonic mode)
+    - Add the parameter "Filter Mode [LP|HP]" (valid only in VRA8-U type-16)
 - v2.1.0
     - Make the VRA8-U main unit recognize Program Change #8-15 (It is valid when VRA8-U CTRL is not used)
 - v2.0.0:

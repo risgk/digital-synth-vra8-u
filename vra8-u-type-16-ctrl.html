@@ -101,8 +101,7 @@ const CHORUS_DLY_TIME = 62;
 
 const P_BEND_RANGE    = 85;
 const CHORUS_BYPASS   = 111;
-
-
+const FILTER_MODE     = 109;
 
 
 const ALL_SOUND_OFF   = 120;
@@ -171,7 +170,7 @@ var controlNumberToStringMap = new Map([
 
   [ P_BEND_RANGE   , "P_BEND_RANGE   " ],
   [ CHORUS_BYPASS  , "CHORUS_BYPASS  " ],
-
+  [ FILTER_MODE    , "FILTER_MODE    " ],
 
 ]);
 
@@ -223,7 +222,7 @@ var controllersInLocalStorage = [
 
   P_BEND_RANGE   ,
   CHORUS_BYPASS  ,
-
+  FILTER_MODE    ,
 
 ];
 
@@ -277,7 +276,7 @@ presetControllers[CHORUS_DLY_TIME] = [64 , 64 , 64 , 64 , 64 , 64 , 64 , 64 ];
 
 presetControllers[P_BEND_RANGE   ] = [2  , 2  , 2  , 2  , 2  , 2  , 2  , 2  ];
 presetControllers[CHORUS_BYPASS  ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
-
+presetControllers[FILTER_MODE    ] = [0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  ];
 
 
 const PRESET_NUMBER_INITIAL = 7;
@@ -665,6 +664,7 @@ function setRandom() {
        (i != CHORUS_DLY_TIME) &&
        (i != CHORUS_MODE    ) &&
        (i != CHORUS_BYPASS  ) &&
+       (i != FILTER_MODE    ) &&
        (i != AMP_LEVEL      ) &&
        (i != VOICE_MODE     )) {
       onChangeControlChange(i, rand(128));
@@ -861,7 +861,7 @@ function fileExport() {
   str += "\n";
   str += fileExportOneLine(P_BEND_RANGE   );
   str += fileExportOneLine(CHORUS_BYPASS  );
-  str += "\n";
+  str += fileExportOneLine(FILTER_MODE    );
   str += "\n";
   str += "  \"_end         \" : \"\"\n";
   str += "}\n";
@@ -1201,18 +1201,18 @@ function getStoredCCValueString(index, number) {
 <td><span    id="spanCC62" >-</span></td>
 </tr>
 <tr>
-<td colspan="2">Pitch Bend Range                </td>
-<td colspan="2"><b>Chorus</b> Bypass [Off|On]          </td>
-<td colspan="2"></td>
-<td colspan="2"></td>
+<td colspan="2                   ">Pitch Bend Range                </td>
+<td colspan="2                   "><b>Chorus</b> Bypass [Off|On]          </td>
+<td colspan="2" style="color:blue"><b>Filter</b> Mode [LP|HP]             </td>
+<td colspan="2"                  ></td>
 </tr>
 <tr>
 <td><input  id="inputCC85"  type="range" min="0" max="127" step="1" oninput="onChangeControlChange(P_BEND_RANGE   , value)"></td>
 <td><span    id="spanCC85" >-</span></td>
 <td><input  id="inputCC111" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(CHORUS_BYPASS  , value)"></td>
 <td><span    id="spanCC111">-</span></td>
-<td></td>
-<td></td>
+<td><input  id="inputCC109" type="range" min="0" max="127" step="1" oninput="onChangeControlChange(FILTER_MODE    , value)"></td>
+<td><span    id="spanCC109">-</span></td>
 <td></td>
 <td></td>
 </tr>
