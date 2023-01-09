@@ -118,7 +118,7 @@ public:
 #endif
 
 #if 1
-#if defined(ENABLE_STABLE_MODE)
+#if defined(ENABLE_STABLE_MODE) && !defined(ENABLE_16_BIT_OUTPUT)
     int16_t x_0  = audio_input;
 #else
     int16_t x_0  = audio_input >> (16 - AUDIO_FRACTION_BITS);

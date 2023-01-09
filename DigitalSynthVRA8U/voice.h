@@ -692,15 +692,9 @@ public:
     int16_t lfo_output = IOsc<0>::get_lfo_level();
     int16_t filter_output = IFilter<0>::clock(m_count, osc_output, eg_output_0, lfo_output);
 #if defined(ENABLE_16_BIT_OUTPUT)
-  #if defined(ENABLE_STABLE_MODE)
-    if (m_filter_mode_hpf) {
-      filter_output = (osc_output << 2) - filter_output;
-    }
-  #else
     if (m_filter_mode_hpf) {
       filter_output = osc_output - filter_output;
     }
-  #endif
 #endif
 
     uint8_t eg_output_1 = IEG<1>::clock(m_count);
