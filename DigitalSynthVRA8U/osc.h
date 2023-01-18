@@ -150,11 +150,7 @@ public:
     m_freq_temp[1] = g_osc_freq_table[0];
     m_freq_temp[2] = g_osc_freq_table[0];
     m_freq_temp[3] = g_osc_freq_table[0];
-#if defined(ENABLE_STABLE_MODE) && !defined(ENABLE_16_BIT_OUTPUT)
-    m_osc_level = 12;
-#else
     m_osc_level = 48;
-#endif
 
     m_rnd = 1;
 
