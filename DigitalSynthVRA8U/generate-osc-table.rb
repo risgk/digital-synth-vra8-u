@@ -181,22 +181,6 @@ $file.printf("const uint8_t g_osc_triangle_wave_table[] PROGMEM = {\n  ")
 end
 $file.printf("};\n\n")
 
-$file.printf("const uint8_t g_osc_sine_wave_table[] PROGMEM = {\n  ")
-(0..(1 << OSC_WAVE_TABLE_SAMPLES_BITS)).each do |n|
-  level = Math.sin((2.0 * Math::PI) * (n.to_f / (1 << OSC_WAVE_TABLE_SAMPLES_BITS)))
-  level = (level * OSC_WAVE_TABLE_AMPLITUDE).round.to_i
-  level += 0x100 if level < 0
-  $file.printf("0x%02X,", level)
-  if n == (1 << OSC_WAVE_TABLE_SAMPLES_BITS)
-    $file.printf("\n")
-  elsif n % 16 == 15
-    $file.printf("\n  ")
-  else
-    $file.printf(" ")
-  end
-end
-$file.printf("};\n\n")
-
 $file.printf("const uint16_t g_lfo_rate_table[] = {\n  ")
 (0..64).each do |i|
   lfo_rate = (10.0 ** ((i - 32) / 32.0)) * (2.0 * (1 << 16) * 64 / SAMPLING_RATE)

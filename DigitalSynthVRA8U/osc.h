@@ -20,7 +20,6 @@ class Osc {
   static const uint8_t WAVEFORM_SAW           = 0;
   static const uint8_t WAVEFORM_SQUARE        = 1;
   static const uint8_t WAVEFORM_TRIANGLE      = 2;
-  static const uint8_t WAVEFORM_SINE          = 3;
   static const uint8_t WAVEFORM_1_PULSE       = 4;
   static const uint8_t WAVEFORM_2_NOISE       = 5;
 
@@ -168,10 +167,8 @@ public:
   template <uint8_t N>
   INLINE static void set_osc_waveform(uint8_t controller_value) {
     if (N == 0) {
-      if (controller_value < 16) {
+      if (controller_value < 48) {
         m_waveform[0] = WAVEFORM_SAW;
-      } else if (controller_value < 48) {
-        m_waveform[0] = WAVEFORM_SINE;
       } else if (controller_value < 80) {
         m_waveform[0] = WAVEFORM_TRIANGLE;
       } else if (controller_value < 112) {
@@ -180,10 +177,8 @@ public:
         m_waveform[0] = WAVEFORM_SQUARE;
       }
     } else {
-      if (controller_value < 16) {
-        m_waveform[0] = WAVEFORM_SAW;
-      } else if (controller_value < 48) {
-        m_waveform[0] = WAVEFORM_SINE;
+      if (controller_value < 48) {
+        m_waveform[1] = WAVEFORM_SAW;
       } else if (controller_value < 80) {
         m_waveform[1] = WAVEFORM_TRIANGLE;
       } else if (controller_value < 112) {
@@ -528,8 +523,6 @@ private:
       result = g_osc_saw_wave_tables[note_number - NOTE_NUMBER_MIN];
     } else if (waveform == WAVEFORM_TRIANGLE) {
       result = g_osc_triangle_wave_table;
-    } else if (waveform == WAVEFORM_SINE) {
-      result = g_osc_sine_wave_table;
     } else {     // WAVEFORM_SQUARE
       result = g_osc_pulse_wave_tables[note_number - NOTE_NUMBER_MIN];
     }
@@ -539,8 +532,6 @@ private:
       result = pgm_read_word(g_osc_saw_wave_tables + (note_number - NOTE_NUMBER_MIN));
     } else if (waveform == WAVEFORM_TRIANGLE) {
       result = g_osc_triangle_wave_table;
-    } else if (waveform == WAVEFORM_SINE) {
-      result = g_osc_sine_wave_table;
     } else {     // WAVEFORM_SQUARE
       result = pgm_read_word(g_osc_pulse_wave_tables + (note_number - NOTE_NUMBER_MIN));
     }

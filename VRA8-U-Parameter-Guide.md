@@ -10,8 +10,7 @@
     - $$ : Disabled in Paraphonic or if Osc 1 Wave is not Pls
     - $$$ : Disabled in Paraphonic or if Osc 1 Wave is Pls
 - Osc 1 Wave [Saw|-|Tri|Pls|Sqr]
-    - 0 (0-15): Saw Wave
-    - 32 (16-47): Sine Wave
+    - 0 (0-47): Saw Wave
     - 64 (48-79): Triangle Wave
     - 96 (80-111): Pulse Wave (Shape adjustable)
     - 127 (112-127): Square Wave
@@ -30,8 +29,7 @@
         - 127: Saw 100% + Saw 100% (max)
 - Mixer Sub Osc $$$
 - Osc 2 Wave $ [Saw|-|Tri|Nos|Sqr]
-    - 0 (0-15): Saw Wave
-    - 32 (16-47): Sine Wave
+    - 0 (0-47): Saw Wave
     - 64 (48-79): Triangle Wave
     - 96 (80-111): White Noise
     - 127 (112-127): Square Wave
