@@ -181,9 +181,9 @@ public:
       }
     } else {
       if (controller_value < 16) {
-        m_waveform[0] = WAVEFORM_SAW;
+        m_waveform[1] = WAVEFORM_SAW;
       } else if (controller_value < 48) {
-        m_waveform[0] = WAVEFORM_SINE;
+        m_waveform[1] = WAVEFORM_SINE;
       } else if (controller_value < 80) {
         m_waveform[1] = WAVEFORM_TRIANGLE;
       } else if (controller_value < 112) {
