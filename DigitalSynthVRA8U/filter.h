@@ -24,9 +24,6 @@ class Filter {
   static int8_t          m_cutoff_lfo_amt;
   static int8_t          m_cutoff_pitch_amt;
   static int8_t          m_cutoff_offset;
-#if defined(ENABLE_16_BIT_OUTPUT)
-  static boolean         m_filter_mode_hpf;
-#endif
 
   static const uint8_t AUDIO_FRACTION_BITS = 14;
   static const int16_t MAX_ABS_OUTPUT = ((124 << (AUDIO_FRACTION_BITS - 8)) >> 8) << 8;
@@ -96,10 +93,6 @@ public:
     }
   }
 
-  INLINE static void set_filter_mode_hpf(boolean hpf) {
-    m_filter_mode_hpf = hpf;
-  }
-
   INLINE static void set_cutoff_offset(int8_t cutoff_offset) {
     m_cutoff_offset = cutoff_offset;
   }
@@ -135,11 +128,6 @@ public:
     m_y_2 = m_y_1;
     m_x_1 = x_0;
     m_y_1 = y_0;
-#if defined(ENABLE_16_BIT_OUTPUT)
-    if (m_filter_mode_hpf) {
-      y_0 = x_0 - y_0;
-    }
-#endif
 
     if        (high_sbyte(y_0) >= high_sbyte(+MAX_ABS_OUTPUT)) {
       y_0 = +MAX_ABS_OUTPUT;
@@ -211,6 +199,3 @@ template <uint8_t T> int8_t          Filter<T>::m_cutoff_eg_amt;
 template <uint8_t T> int8_t          Filter<T>::m_cutoff_lfo_amt;
 template <uint8_t T> int8_t          Filter<T>::m_cutoff_pitch_amt;
 template <uint8_t T> int8_t          Filter<T>::m_cutoff_offset;
-#if defined(ENABLE_16_BIT_OUTPUT)
-template <uint8_t T> boolean         Filter<T>::m_filter_mode_hpf;
-#endif
