@@ -150,6 +150,3 @@
     - 0: 0.03 ms (min)
     - 64: 4.1 ms
     - 125: 8.1 ms (max)
-- Filter Mode [LP|HP]
-    - 0 (0-63): Low Pass
-    - 127 (64-127): High Pass

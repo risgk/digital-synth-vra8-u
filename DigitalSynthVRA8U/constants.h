@@ -98,7 +98,7 @@ const uint8_t   CHORUS_DLY_TIME = 62;
 
 const uint8_t   P_BEND_RANGE    = 85;
 const uint8_t   CHORUS_BYPASS   = 111;
-const uint8_t   FILTER_MODE     = 109;
+
 
 
 const uint8_t   SP_PROG_CHG_0   = 112;
@@ -143,6 +143,3 @@ const uint8_t   CHORUS_STEREO_2    = 127;
 const uint8_t   VOICE_PARAPHONIC   = 0;
 const uint8_t   VOICE_MONOPHONIC   = 64;
 const uint8_t   VOICE_LEGATO       = 127;
-
-const uint8_t   FILTER_MODE_LP     = 0;
-const uint8_t   FILTER_MODE_HP     = 127;

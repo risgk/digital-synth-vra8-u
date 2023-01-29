@@ -65,14 +65,13 @@
 |                            58 | x             | o             | Amp Sustain                      |
 |                            59 | x             | o             | Amp Release                      |
 |                               |               |               |                                  |
-|                            63 | x             | o             | Chorus Mode [Off|M|PS|S|S2] *    |
+|                            63 | x             | o             | Chorus Mode [Off|M|PS|S|S2]      |
 |                            61 | x             | o             | Chorus Rate                      |
-|                            60 | x             | o             | Chorus Depth **                  |
-|                            62 | x             | o             | Chorus Delay Time **             |
+|                            60 | x             | o             | Chorus Depth                     |
+|                            62 | x             | o             | Chorus Delay Time                |
 |                               |               |               |                                  |
 |                            85 | x             | o             | Pitch Bend Range                 |
 |                           111 | x             | o             | Chorus Bypass [Off|On]           |
-|                           109 | x             | o             | Filter Mode [LP|HP] ***          |
 |                               |               |               |                                  |
 |                            35 | x             | o             | Pitch Bend by CC [-|+]           |
 |                       112-119 |               |               | Program Change #0-7 by CC        |
@@ -101,9 +100,6 @@
 | Notes                         | $ : Disabled in Paraphonic Mode                                  |
 |                               | $$ : Disabled in Paraphonic or if Osc 1 Wave is not Pls          |
 |                               | $$$ : Disabled in Paraphonic or if Osc 1 Wave is Pls             |
-|                               | * : Chorus Mode [Off|S|PS] in VRA8-U type-16                     |
-|                               | ** : The effects are halved in VRA8-U type-16                    |
-|                               | *** : Valid only in VRA8-U type-16                               |
 +-------------------------------+------------------------------------------------------------------+
   Mode 1: Omni On,  Poly          Mode 2: Omni On,  Mono          o: Yes                            
   Mode 3: Omni Off, Poly          Mode 4: Omni Off, Mono          x: No                             
