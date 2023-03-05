@@ -1,6 +1,6 @@
-# Digital Synth VRA8-U v2.0.0
+# Digital Synth VRA8-U v2.1.0
 
-- 2023-01-03 ISGK Instruments
+- 2023-03-05 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
 
 ## Concept
@@ -19,6 +19,9 @@
 
 ## Change History
 
+- v2.1.0:
+    - Make the VRA8-U main unit recognize Program Change #8-15 (It is valid when VRA8-U CTRL is not used)
+    - Improve stability
 - v2.0.0:
     - Add support for **VRA8-U type-16** (Special Edition with 16-bit Audio Output)
     - Modify Preset #3 and #5
@@ -71,6 +74,7 @@
 - Waveforms may slightly distort when receiving MIDI bytes continuously
     - At that time, CPU Busy LED (LED L) probably blink
     - Particularly noticeable with Note ON in paraphonic mode
+- Especially when the waveform is square wave, the noise of chorus delay component is noticeable at high frequency
 
 ## Restricted Support for Arduino Nano
 
@@ -149,11 +153,11 @@ This image was created with Fritzing.
 
 ![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)
 
-Digital Synth VRA8-U v2.0.0 by ISGK Instruments (Ryo Ishigaki)
+Digital Synth VRA8-U v2.1.0 by ISGK Instruments (Ryo Ishigaki)
 
 To the extent possible under law, ISGK Instruments (Ryo Ishigaki)
 has waived all copyright and related or neighboring rights
-to Digital Synth VRA8-U v2.0.0.
+to Digital Synth VRA8-U v2.1.0.
 
 You should have received a copy of the CC0 legalcode along with this
 work.  If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
