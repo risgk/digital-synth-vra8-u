@@ -51,11 +51,11 @@ int main(int argc, char *argv[]) {
     for (uint16_t i = 0; i < r; i++) {
 #if defined(ENABLE_16_BIT_OUTPUT)
       int16_t right_level;
-      int16_t left_level = Synth<0>::clock(right_level);
+      int16_t left_level = Synth<0>::process(right_level);
       WAVFileOut<0>::write(left_level, right_level);
 #else
       int8_t right_level;
-      int8_t left_level = Synth<0>::clock(right_level);
+      int8_t left_level = Synth<0>::process(right_level);
       WAVFileOut<0>::write(left_level, right_level);
 #endif
     }

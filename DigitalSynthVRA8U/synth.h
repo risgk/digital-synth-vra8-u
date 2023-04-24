@@ -34,10 +34,10 @@ public:
   }
 
 #if defined(ENABLE_16_BIT_OUTPUT)
-  INLINE static int16_t clock(int16_t& right_level) {
+  INLINE static int16_t process(int16_t& right_level) {
 #else
-  INLINE static int8_t clock(int8_t& right_level) {
+  INLINE static int8_t process(int8_t& right_level) {
 #endif
-    return ISynthCore<0>::clock(right_level);
+    return ISynthCore<0>::process(right_level);
   }
 };
