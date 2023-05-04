@@ -1,6 +1,6 @@
-# Digital Synth VRA8-U v2.1.0
+# Digital Synth VRA8-U v2.2.0
 
-- 2023-03-05 ISGK Instruments
+- 2023-05-04 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
 
 ## Concept
@@ -156,11 +156,11 @@ This image was created with Fritzing.
 
 ![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)
 
-Digital Synth VRA8-U v2.1.0 by ISGK Instruments (Ryo Ishigaki)
+Digital Synth VRA8-U v2.2.0 by ISGK Instruments (Ryo Ishigaki)
 
 To the extent possible under law, ISGK Instruments (Ryo Ishigaki)
 has waived all copyright and related or neighboring rights
-to Digital Synth VRA8-U v2.1.0.
+to Digital Synth VRA8-U v2.2.0.
 
 You should have received a copy of the CC0 legalcode along with this
 work.  If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
