@@ -84,15 +84,20 @@ public:
 #endif
 
     if (m_voice_mode != VOICE_PARAPHONIC) {
-      if (m_voice_mode == VOICE_LEGATO) {
+      if ((m_voice_mode == VOICE_LEGATO) || (m_voice_mode == VOICE_LEGATO_PORTA)) {
         ++m_note_on_total_count;
         ++m_note_on_count[note_number];
 
         if (m_note_on_number[0] == NOTE_NUMBER_INVALID) {
           m_note_on_number[0] = note_number;
 
-          IOsc<0>::set_portamento<0>(0);
-          IOsc<0>::set_portamento<2>(0);
+          if (m_voice_mode == VOICE_LEGATO_PORTA) {
+            IOsc<0>::set_portamento<0>(0);
+            IOsc<0>::set_portamento<2>(0);
+          } else {
+            IOsc<0>::set_portamento<0>(m_portamento);
+            IOsc<0>::set_portamento<2>(m_portamento);
+          }
           IOsc<0>::note_on<0>(note_number);
           IOsc<0>::note_on<2>(note_number);
           IOsc<0>::trigger_lfo();
@@ -548,9 +553,11 @@ public:
     case VOICE_MODE     :
       {
         uint8_t new_voice_mode = VOICE_PARAPHONIC;
-        if (controller_value > 96) {
+        if (controller_value >= 112) {
+          new_voice_mode = VOICE_LEGATO_PORTA;
+        } else if (controller_value >= 80) {
           new_voice_mode = VOICE_LEGATO;
-        } else if (controller_value > 32) {
+        } else if (controller_value >= 32) {
           new_voice_mode = VOICE_MONOPHONIC;
         }
 
