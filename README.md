@@ -14,7 +14,7 @@
 
 ## Caution about Arduino AVR Boards Version
 
-- We *strongly recommend* **Arduino AVR Boards version 1.8.5 (or 1.8.3)**
+- We *strongly recommend* **Arduino AVR Boards version version 1.8.5 (or from 1.8.3 to 1.8.6)**
     - If you use another version, the sketch *may not work well*: CPU Busy LED (LED L) *may continue to be lit*
 
 ## Change History
