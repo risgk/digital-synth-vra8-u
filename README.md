@@ -19,7 +19,7 @@
 
 ## Change History
 
-- v2.2.0:
+- v2.2.1:
     - Separate Voice Mode Lgt (Legato) into Lgt (Legato) and LP (Legato Portamento)
     - Fix Voice Mode value 32 to be Mon (Monophonic) mode
 - v2.1.0:
