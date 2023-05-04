@@ -21,7 +21,7 @@
 
 - v2.2.0:
     - Separate Voice Mode Lgt (Legato) into Lgt (Legato) and LP (Legato Portamento)
-    - Fix Voice Mode value 32 to be Monophonic mode
+    - Fix Voice Mode value 32 to be Mon (Monophonic) mode
 - v2.1.0:
     - Make the VRA8-U main unit recognize Program Change #8-15 (It is valid when VRA8-U CTRL is not used)
     - Improve stability
