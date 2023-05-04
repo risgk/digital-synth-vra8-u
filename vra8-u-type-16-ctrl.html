@@ -41,7 +41,7 @@ td.keyh {
 }
 </style>
 <script>
-const APP_NAME_VERSION = "VRA8-U type-16 CTRL v2.1.0";
+const APP_NAME_VERSION = "VRA8-U type-16 CTRL v2.2.0";
 
 const MIDI_CH        = 0;       // Basic Channel 1
 const NOTE_OFF       = 0x80;
@@ -109,10 +109,10 @@ const ALL_SOUND_OFF   = 120;
 const RESET_ALL_CTRLS = 121;
 const ALL_NOTES_OFF   = 123;
 
-// Special Random Control (for VRA8-U CTRL)
+// Special Random Control (for VRA8-U type-16 CTRL)
 const SP_RAND_CTRL    = 90;
 
-// Special Program Change (for VRA8-U CTRL)
+// Special Program Change (for VRA8-U type-16 CTRL)
 const SP_PROG_CHG_0   = 112;
 const SP_PROG_CHG_1   = 113;
 const SP_PROG_CHG_2   = 114;
@@ -441,7 +441,7 @@ function onMIDIMessage(event) {
         document.getElementById("spanPB").innerHTML = pb;
       }
     } else if (number >= SP_PROG_CHG_0 && number <= SP_PROG_CHG_7) {
-      // Special Program Change (only for VRA8-U CTRL)
+      // Special Program Change (only for VRA8-U type-16 CTRL)
       var programIndex = number - SP_PROG_CHG_0;
       var oldValue = specialProgramChangeCCValues[programIndex];
       specialProgramChangeCCValues[programIndex] = value;
@@ -450,7 +450,7 @@ function onMIDIMessage(event) {
         return;
       }
     } else if (number == SP_RAND_CTRL   ) {
-      // Special Random Control (only for VRA8-U CTRL)
+      // Special Random Control (only for VRA8-U type-16 CTRL)
       var oldValue = specialRandomControlCCValue;
       specialRandomControlCCValue = value;
       if (oldValue <= 63 && value >= 64) {
@@ -907,7 +907,7 @@ function getStoredCCValueString(index, number) {
 <body>
 
 <table>
-<tr><td><span id="spanAppNameVersion"></span></td><td>&nbsp;&nbsp;Digital Synth VRA8-U Controller Application (<a href="https://github.com/risgk/digital-synth-vra8-u">View on GitHub</a>)</td></tr>
+<tr><td><span id="spanAppNameVersion"></span></td><td>&nbsp;&nbsp;Digital Synth VRA8-U type-16 Controller Application (<a href="https://github.com/risgk/digital-synth-vra8-u">View on GitHub</a>)</td></tr>
 <tr><td>&nbsp;</td></tr>
 </table>
 
@@ -1120,7 +1120,7 @@ function getStoredCCValueString(index, number) {
 <tr>
 <td colspan="2"><b>EG</b> Osc Amt [-|+]                  </td>
 <td colspan="2"><b>EG</b> Osc Dst [P|2P|1S]              </td>
-<td colspan="2">Voice Mode [Par|Mon|Lgt]          </td>
+<td colspan="2">Voice Mode [Par|-|Mon|Lgt|LP]     </td>
 <td colspan="2">Portamento                        </td>
 </tr>
 <tr>

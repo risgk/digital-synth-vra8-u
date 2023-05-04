@@ -1,6 +1,6 @@
 ```
-  [United Synthesizer]                                            Date: 2023-03-05                  
-  Model: Digital Synth VRA8-U     MIDI Implementation Chart       Version: 2.1.0                    
+  [United Synthesizer]                                            Date: 2023-05-04                  
+  Model: Digital Synth VRA8-U     MIDI Implementation Chart       Version: 2.2.0                    
 +-------------------------------+---------------+---------------+----------------------------------+
 | Function...                   | Transmitted   | Recognized    | Remarks                          |
 +-------------------------------+---------------+---------------+----------------------------------+
@@ -47,7 +47,7 @@
 |                               |               |               |                                  |
 |                           104 | x             | o             | EG Osc Amt [-|+]                 |
 |                           105 | x             | o             | EG Osc Dst [P|2P|1S]             |
-|                            87 | x             | o             | Voice Mode [Par|Mon|Lgt]         |
+|                            87 | x             | o             | Voice Mode [Par|-|Mon|Lgt|LP]    |
 |                            22 | x             | o             | Portamento                       |
 |                               |               |               |                                  |
 |                            14 | x             | o             | LFO Wave [T1|T2|Saw|SH|Sqr]      |

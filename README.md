@@ -1,6 +1,6 @@
-# Digital Synth VRA8-U v2.1.0
+# Digital Synth VRA8-U v2.2.0
 
-- 2023-03-05 ISGK Instruments
+- 2023-05-04 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
 
 ## Concept
@@ -14,11 +14,14 @@
 
 ## Caution about Arduino AVR Boards Version
 
-- We *strongly recommend* **Arduino AVR Boards version 1.8.5 (or 1.8.3)**
+- We *strongly recommend* **Arduino AVR Boards version version 1.8.5 (or from 1.8.3 to 1.8.6)**
     - If you use another version, the sketch *may not work well*: CPU Busy LED (LED L) *may continue to be lit*
 
 ## Change History
 
+- v2.2.0:
+    - Separate Voice Mode Lgt (Legato) into Lgt (Legato) and LP (Legato Portamento)
+    - Fix Voice Mode value 32 to be Monophonic mode
 - v2.1.0:
     - Make the VRA8-U main unit recognize Program Change #8-15 (It is valid when VRA8-U CTRL is not used)
     - Improve stability
@@ -153,11 +156,11 @@ This image was created with Fritzing.
 
 ![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)
 
-Digital Synth VRA8-U v2.1.0 by ISGK Instruments (Ryo Ishigaki)
+Digital Synth VRA8-U v2.2.0 by ISGK Instruments (Ryo Ishigaki)
 
 To the extent possible under law, ISGK Instruments (Ryo Ishigaki)
 has waived all copyright and related or neighboring rights
-to Digital Synth VRA8-U v2.1.0.
+to Digital Synth VRA8-U v2.2.0.
 
 You should have received a copy of the CC0 legalcode along with this
 work.  If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.

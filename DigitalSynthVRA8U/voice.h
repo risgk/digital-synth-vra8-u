@@ -84,15 +84,20 @@ public:
 #endif
 
     if (m_voice_mode != VOICE_PARAPHONIC) {
-      if (m_voice_mode == VOICE_LEGATO) {
+      if ((m_voice_mode == VOICE_LEGATO) || (m_voice_mode == VOICE_LEGATO_PORTA)) {
         ++m_note_on_total_count;
         ++m_note_on_count[note_number];
 
         if (m_note_on_number[0] == NOTE_NUMBER_INVALID) {
           m_note_on_number[0] = note_number;
 
-          IOsc<0>::set_portamento<0>(0);
-          IOsc<0>::set_portamento<2>(0);
+          if (m_voice_mode == VOICE_LEGATO_PORTA) {
+            IOsc<0>::set_portamento<0>(0);
+            IOsc<0>::set_portamento<2>(0);
+          } else {
+            IOsc<0>::set_portamento<0>(m_portamento);
+            IOsc<0>::set_portamento<2>(m_portamento);
+          }
           IOsc<0>::note_on<0>(note_number);
           IOsc<0>::note_on<2>(note_number);
           IOsc<0>::trigger_lfo();
@@ -548,9 +553,11 @@ public:
     case VOICE_MODE     :
       {
         uint8_t new_voice_mode = VOICE_PARAPHONIC;
-        if (controller_value > 96) {
+        if (controller_value >= 112) {
+          new_voice_mode = VOICE_LEGATO_PORTA;
+        } else if (controller_value >= 80) {
           new_voice_mode = VOICE_LEGATO;
-        } else if (controller_value > 32) {
+        } else if (controller_value >= 32) {
           new_voice_mode = VOICE_MONOPHONIC;
         }
 
@@ -664,18 +671,18 @@ public:
   }
 
 #if defined(ENABLE_16_BIT_OUTPUT)
-  INLINE static int16_t clock(int16_t& right_level) {
+  INLINE static int16_t process(int16_t& right_level) {
 #else
-  INLINE static int8_t clock(int8_t& right_level) {
+  INLINE static int8_t process(int8_t& right_level) {
 #endif
     ++m_count;
 
-    uint8_t eg_output_0 = IEG<0>::clock(m_count);
-    int16_t osc_output = IOsc<0>::clock(m_count, eg_output_0);
+    uint8_t eg_output_0 = IEG<0>::process(m_count);
+    int16_t osc_output = IOsc<0>::process(m_count, eg_output_0);
     int16_t lfo_output = IOsc<0>::get_lfo_level();
-    int16_t filter_output = IFilter<0>::clock(m_count, osc_output, eg_output_0, lfo_output);
-    uint8_t eg_output_1 = IEG<1>::clock(m_count);
-    int16_t amp_output = IAmp<0>::clock(filter_output, eg_output_1);
+    int16_t filter_output = IFilter<0>::process(m_count, osc_output, eg_output_0, lfo_output);
+    uint8_t eg_output_1 = IEG<1>::process(m_count);
+    int16_t amp_output = IAmp<0>::process(filter_output, eg_output_1);
 
 #if defined(ENABLE_16_BIT_OUTPUT)
     int16_t dir_sample = amp_output;

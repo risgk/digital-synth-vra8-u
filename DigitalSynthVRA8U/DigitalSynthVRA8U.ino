@@ -1,6 +1,6 @@
-///////////////////////////////////////////////////////////////////////////////////////////////
-// Digital Synth VRA8-U -- We strongly recommend Arduino AVR Boards version 1.8.5 (or 1.8.3) //
-///////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Digital Synth VRA8-U -- We strongly recommend Arduino AVR Boards version 1.8.5 (or from 1.8.3 to 1.8.6) //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //#define DEBUG
 
@@ -40,10 +40,10 @@ void loop() {
     }
 #if defined(ENABLE_16_BIT_OUTPUT)
     int16_t right_level;
-    int16_t left_level = Synth<0>::clock(right_level);
+    int16_t left_level = Synth<0>::process(right_level);
 #else
     int8_t right_level;
-    int8_t left_level = Synth<0>::clock(right_level);
+    int8_t left_level = Synth<0>::process(right_level);
 #endif
     AudioOut<0>::write(left_level, right_level);
   }
