@@ -1,4 +1,4 @@
-# Digital Synth VRA8-U v2.2.1
+# Digital Synth VRA8-U v2.2.2
 
 - 2023-05-04 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
@@ -19,7 +19,7 @@
 
 ## Change History
 
-- v2.2.1:
+- v2.2.2:
     - Separate Voice Mode Lgt (Legato) into Lgt (Legato) and LP (Legato Portamento)
     - Fix Voice Mode value 32 to be Mon (Monophonic) mode
 - v2.1.0:
@@ -156,11 +156,11 @@ This image was created with Fritzing.
 
 ![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)
 
-Digital Synth VRA8-U v2.2.1 by ISGK Instruments (Ryo Ishigaki)
+Digital Synth VRA8-U v2.2.2 by ISGK Instruments (Ryo Ishigaki)
 
 To the extent possible under law, ISGK Instruments (Ryo Ishigaki)
 has waived all copyright and related or neighboring rights
-to Digital Synth VRA8-U v2.2.1.
+to Digital Synth VRA8-U v2.2.2.
 
 You should have received a copy of the CC0 legalcode along with this
 work.  If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
