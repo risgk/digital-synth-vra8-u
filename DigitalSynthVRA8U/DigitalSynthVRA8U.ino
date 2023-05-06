@@ -16,7 +16,6 @@
 #define R_LOW_AUDIO_OUT_PIN      (3)    // Pin D3 (Fixed): R      channel, low 8-bit audio output
 
 #define ENABLE_SPECIAL_PROGRAM_CHANGE   // Program Change by Control Change (112-119)
-                                        // Interpret Program Change 8-15 as 0-7
 
 
 
