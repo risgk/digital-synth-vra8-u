@@ -670,8 +670,8 @@ private:
         }
       }
     }
-
     m_freq[N] = m_freq_temp[N] + bit + mono_offset;
+
     m_wave_table[N] = m_wave_table_temp[N];
   }
 
