@@ -5,12 +5,12 @@
 
 ## Concept
 
-- Monophonic/Paraphonic United Synthesizer for Arduino Uno
+- Monophonic/Paraphonic United Synthesizer for Arduino UNO R3
     - Monophonic Mode: 1-Voice, 2-Oscillator (with Sub Oscillator)
     - Paraphonic Mode: 4-Voice, 1-Oscillator
     - Built-in Chorus FX
     - Controlled by MIDI: VRA8-U is MIDI Sound Module
-- The 8th in the Digital Synth VRA8 series that pushes the limits of the Arduino Uno
+- The 8th in the Digital Synth VRA8 series that pushes the limits of the Arduino UNO R3
 
 ## Caution about Arduino AVR Boards Version
 
@@ -63,7 +63,7 @@
     - We recommend adding AC coupling capacitors to reduce DC components
         - A 10 uF electrolytic capacitor works well
 - Files
-    - `"DigitalSynthVRA8U.ino"` is a sketch for Arduino Uno Rev3 (ATmega328P)
+    - `"DigitalSynthVRA8U.ino"` is a sketch for Arduino UNO R3 (ATmega328P)
     - `"make-sample-wav-file.cc"` is for Debugging on PC
         - Requiring GCC (g++) or other
         - `"make-sample-wav-file-cc.bat"` makes a sample WAV file (working on Windows)
