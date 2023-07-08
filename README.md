@@ -19,6 +19,8 @@
 
 ## Change History
 
+- v2.2.3:
+    - Fix Osc 2 frequency in Monophonic Mode
 - v2.2.2:
     - Separate Voice Mode Lgt (Legato) into Lgt (Legato) and LP (Legato Portamento)
     - Fix Voice Mode value 32 to be Mon (Monophonic) mode
