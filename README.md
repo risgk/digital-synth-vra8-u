@@ -1,16 +1,16 @@
-# Digital Synth VRA8-U v2.2.2
+# Digital Synth VRA8-U v2.2.3
 
-- 2023-05-04 ISGK Instruments
+- 2023-07-08 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
 
 ## Concept
 
-- Monophonic/Paraphonic United Synthesizer for Arduino Uno
+- Monophonic/Paraphonic United Synthesizer for Arduino UNO R3
     - Monophonic Mode: 1-Voice, 2-Oscillator (with Sub Oscillator)
     - Paraphonic Mode: 4-Voice, 1-Oscillator
     - Built-in Chorus FX
     - Controlled by MIDI: VRA8-U is MIDI Sound Module
-- The 8th in the Digital Synth VRA8 series that pushes the limits of the Arduino Uno
+- The 8th in the Digital Synth VRA8 series that pushes the limits of the Arduino UNO R3
 
 ## Caution about Arduino AVR Boards Version
 
@@ -19,6 +19,8 @@
 
 ## Change History
 
+- v2.2.3:
+    - Fix Osc 2 frequency in Monophonic Mode
 - v2.2.2:
     - Separate Voice Mode Lgt (Legato) into Lgt (Legato) and LP (Legato Portamento)
     - Fix Voice Mode value 32 to be Mon (Monophonic) mode
@@ -63,7 +65,7 @@
     - We recommend adding AC coupling capacitors to reduce DC components
         - A 10 uF electrolytic capacitor works well
 - Files
-    - `"DigitalSynthVRA8U.ino"` is a sketch for Arduino Uno Rev3 (ATmega328P)
+    - `"DigitalSynthVRA8U.ino"` is a sketch for Arduino UNO R3 (ATmega328P)
     - `"make-sample-wav-file.cc"` is for Debugging on PC
         - Requiring GCC (g++) or other
         - `"make-sample-wav-file-cc.bat"` makes a sample WAV file (working on Windows)
@@ -156,11 +158,11 @@ This image was created with Fritzing.
 
 ![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)
 
-Digital Synth VRA8-U v2.2.2 by ISGK Instruments (Ryo Ishigaki)
+Digital Synth VRA8-U v2.2.3 by ISGK Instruments (Ryo Ishigaki)
 
 To the extent possible under law, ISGK Instruments (Ryo Ishigaki)
 has waived all copyright and related or neighboring rights
-to Digital Synth VRA8-U v2.2.2.
+to Digital Synth VRA8-U v2.2.3.
 
 You should have received a copy of the CC0 legalcode along with this
 work.  If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.

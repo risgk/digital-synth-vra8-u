@@ -14,7 +14,7 @@ public:
     return UCSR0A & _BV(RXC0);
   }
 
-  INLINE static int8_t read() {
+  INLINE static uint8_t read() {
     return UDR0;
   }
 };
