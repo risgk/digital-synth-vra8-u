@@ -20,7 +20,7 @@
 ## Change History
 
 - v2.2.4:
-    - Fix Filter Key Track
+    - Fix Filter Key Track (Fix problem with strange sound when pitch is outside of note number range)
     - Change Program Change #0-7 by CC to Program Change #8-15 by CC
 - v2.2.3:
     - Fix Osc 2 frequency in Monophonic Mode
