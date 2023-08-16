@@ -19,6 +19,8 @@
 
 ## Change History
 
+- v2.2.4:
+    - Fix Filter Key Track
 - v2.2.3:
     - Fix Osc 2 frequency in Monophonic Mode
 - v2.2.2:
