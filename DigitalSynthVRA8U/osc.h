@@ -396,7 +396,16 @@ public:
 
   INLINE static uint16_t get_osc_pitch() {
     if (m_mono_mode) {
-      return m_pitch_current[0] + m_pitch_bend_normalized;
+      uint16_t shifted_pitch = (64 << 8) + m_pitch_current[0] + m_pitch_bend_normalized;
+      uint16_t osc_pitch;
+      if (shifted_pitch > (64 << 8) + (NOTE_NUMBER_MAX << 8)) {
+        osc_pitch = (NOTE_NUMBER_MAX << 8);
+      } else if (shifted_pitch < (64 << 8) + (NOTE_NUMBER_MIN << 8)) {
+        osc_pitch = (NOTE_NUMBER_MIN << 8);
+      } else {
+        osc_pitch = m_pitch_current[0] + m_pitch_bend_normalized;
+      }
+      return osc_pitch;
     }
     return (60 << 8);
   }
