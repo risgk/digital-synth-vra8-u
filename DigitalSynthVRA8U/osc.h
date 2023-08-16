@@ -396,7 +396,16 @@ public:
 
   INLINE static uint16_t get_osc_pitch() {
     if (m_mono_mode) {
-      return m_pitch_current[0] + m_pitch_bend_normalized;
+      uint16_t shifted_pitch = (64 << 8) + m_pitch_current[0] + m_pitch_bend_normalized;
+      uint16_t osc_pitch;
+      if (shifted_pitch > (64 << 8) + (static_cast<uint16_t>(NOTE_NUMBER_MAX) << 8)) {
+        osc_pitch = (static_cast<uint16_t>(NOTE_NUMBER_MAX) << 8);
+      } else if (shifted_pitch < (64 << 8) + (static_cast<uint16_t>(NOTE_NUMBER_MIN) << 8)) {
+        osc_pitch = (static_cast<uint16_t>(NOTE_NUMBER_MIN) << 8);
+      } else {
+        osc_pitch = m_pitch_current[0] + m_pitch_bend_normalized;
+      }
+      return osc_pitch;
     }
     return (60 << 8);
   }
@@ -705,8 +714,7 @@ private:
         m_osc_gain_effective[3] = 0;
 
         if (m_waveform[0] == WAVEFORM_1_PULSE) {
-          int8_t temp = high_sbyte(-m_osc_gain_effective[0] * m_osc1_morph_control);
-          m_osc_gain_effective[3] = temp << 2;
+          m_osc_gain_effective[3] = (-m_osc_gain_effective[0] * m_osc1_morph_control) >> 6;
         }
       }
     }

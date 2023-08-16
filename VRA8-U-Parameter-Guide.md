@@ -1,6 +1,6 @@
-# Digital Synth VRA8-U Parameter Guide v2.2.3
+# Digital Synth VRA8-U Parameter Guide v2.2.5
 
-- 2023-07-08 ISGK Instruments
+- 2023-08-16 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
 
 ## Control Change Parameters

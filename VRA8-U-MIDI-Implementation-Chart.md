@@ -1,6 +1,6 @@
 ```
-  [United Synthesizer]                                            Date: 2023-07-08                  
-  Model: Digital Synth VRA8-U     MIDI Implementation Chart       Version: 2.2.3                    
+  [United Synthesizer]                                            Date: 2023-08-16                  
+  Model: Digital Synth VRA8-U     MIDI Implementation Chart       Version: 2.2.5                    
 +-------------------------------+---------------+---------------+----------------------------------+
 | Function...                   | Transmitted   | Recognized    | Remarks                          |
 +-------------------------------+---------------+---------------+----------------------------------+
@@ -74,7 +74,7 @@
 |                           111 | x             | o             | Chorus Bypass [Off|On]           |
 |                               |               |               |                                  |
 |                            35 | x             | o             | Pitch Bend by CC [-|+]           |
-|                       112-119 |               |               | Program Change #0-7 by CC        |
+|                       112-119 |               |               | Program Change #8-15 by CC       |
 |                            90 | x             | x             | [Reserved]                       |
 +-------------------------------+---------------+---------------+----------------------------------+
 | Program                       | x             | o             |                                  |

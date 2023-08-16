@@ -101,14 +101,14 @@ const uint8_t   CHORUS_BYPASS   = 111;
 
 
 
-const uint8_t   SP_PROG_CHG_0   = 112;
-const uint8_t   SP_PROG_CHG_1   = 113;
-const uint8_t   SP_PROG_CHG_2   = 114;
-const uint8_t   SP_PROG_CHG_3   = 115;
-const uint8_t   SP_PROG_CHG_4   = 116;
-const uint8_t   SP_PROG_CHG_5   = 117;
-const uint8_t   SP_PROG_CHG_6   = 118;
-const uint8_t   SP_PROG_CHG_7   = 119;
+const uint8_t   SP_PROG_CHG_8   = 112;
+const uint8_t   SP_PROG_CHG_9   = 113;
+const uint8_t   SP_PROG_CHG_10  = 114;
+const uint8_t   SP_PROG_CHG_11  = 115;
+const uint8_t   SP_PROG_CHG_12  = 116;
+const uint8_t   SP_PROG_CHG_13  = 117;
+const uint8_t   SP_PROG_CHG_14  = 118;
+const uint8_t   SP_PROG_CHG_15  = 119;
 
 const uint8_t   ALL_SOUND_OFF   = 120;
 const uint8_t   RESET_ALL_CTRLS = 121;

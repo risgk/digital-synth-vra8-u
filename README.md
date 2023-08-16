@@ -1,6 +1,6 @@
-# Digital Synth VRA8-U v2.2.3
+# Digital Synth VRA8-U v2.2.5
 
-- 2023-07-08 ISGK Instruments
+- 2023-08-16 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
 
 ## Concept
@@ -19,6 +19,11 @@
 
 ## Change History
 
+- v2.2.5:
+    - Fix Pulse Wave (Fix problem with small Saw Wave sound heard)
+- v2.2.4:
+    - Fix Filter Key Track (Fix problem with strange sound when pitch is outside of note number range)
+    - Change Program Change #0-7 by CC to Program Change #8-15 by CC
 - v2.2.3:
     - Fix Osc 2 frequency in Monophonic Mode
 - v2.2.2:
@@ -158,11 +163,11 @@ This image was created with Fritzing.
 
 ![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)
 
-Digital Synth VRA8-U v2.2.3 by ISGK Instruments (Ryo Ishigaki)
+Digital Synth VRA8-U v2.2.5 by ISGK Instruments (Ryo Ishigaki)
 
 To the extent possible under law, ISGK Instruments (Ryo Ishigaki)
 has waived all copyright and related or neighboring rights
-to Digital Synth VRA8-U v2.2.3.
+to Digital Synth VRA8-U v2.2.5.
 
 You should have received a copy of the CC0 legalcode along with this
 work.  If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
