@@ -21,6 +21,7 @@
 
 - v2.2.4:
     - Fix Filter Key Track
+    - Change Program Change #0-7 by CC to Program Change #8-15 by CC
 - v2.2.3:
     - Fix Osc 2 frequency in Monophonic Mode
 - v2.2.2:
