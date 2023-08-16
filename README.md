@@ -19,6 +19,8 @@
 
 ## Change History
 
+- v2.2.5:
+    - Fix Pulse Wave (Fix problem with small Saw Wave sound heard)
 - v2.2.4:
     - Fix Filter Key Track (Fix problem with strange sound when pitch is outside of note number range)
     - Change Program Change #0-7 by CC to Program Change #8-15 by CC

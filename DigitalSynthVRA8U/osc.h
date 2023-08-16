@@ -714,8 +714,7 @@ private:
         m_osc_gain_effective[3] = 0;
 
         if (m_waveform[0] == WAVEFORM_1_PULSE) {
-          int8_t temp = high_sbyte(-m_osc_gain_effective[0] * m_osc1_morph_control);
-          m_osc_gain_effective[3] = temp << 2;
+          m_osc_gain_effective[3] = (-m_osc_gain_effective[0] * m_osc1_morph_control) >> 6;
         }
       }
     }
