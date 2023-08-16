@@ -1,6 +1,6 @@
 ```
-  [United Synthesizer]                                            Date: 2023-07-08                  
-  Model: Digital Synth VRA8-U     MIDI Implementation Chart       Version: 2.2.3                    
+  [United Synthesizer]                                            Date: 2023-08-16                  
+  Model: Digital Synth VRA8-U     MIDI Implementation Chart       Version: 2.2.4                    
 +-------------------------------+---------------+---------------+----------------------------------+
 | Function...                   | Transmitted   | Recognized    | Remarks                          |
 +-------------------------------+---------------+---------------+----------------------------------+
