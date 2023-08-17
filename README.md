@@ -19,6 +19,8 @@
 
 ## Change History
 
+- v2.2.6:
+    - Fix behavior when Portamento is 0 (Off)
 - v2.2.5:
     - Fix Pulse Wave (Fix problem with small Saw Wave sound heard)
 - v2.2.4:
