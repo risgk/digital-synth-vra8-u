@@ -13,7 +13,7 @@ static const uint8_t CHORUS_MODE_P_STEREO   = 2;
 static const uint8_t CHORUS_MODE_MONO       = 3;
 static const uint8_t CHORUS_MODE_STEREO_2   = 4;
 
-static const uint8_t PORTAMENTO_COEF_OFF    = 190;
+static const uint8_t PORTAMENTO_COEF_BASE   = 190;
 
 template <uint8_t T>
 class Osc {
@@ -98,10 +98,10 @@ class Osc {
 
 public:
   INLINE static void initialize() {
-    m_portamento_coef[0] = PORTAMENTO_COEF_OFF;
-    m_portamento_coef[1] = PORTAMENTO_COEF_OFF;
-    m_portamento_coef[2] = PORTAMENTO_COEF_OFF;
-    m_portamento_coef[3] = PORTAMENTO_COEF_OFF;
+    m_portamento_coef[0] = 0;
+    m_portamento_coef[1] = 0;
+    m_portamento_coef[2] = 0;
+    m_portamento_coef[3] = 0;
 
     m_lfo_waveform = LFO_WAVEFORM_TRI_ASYNC;
     m_lfo_sampled = 64;
@@ -352,7 +352,11 @@ public:
 
   template <uint8_t N>
   INLINE static void set_portamento(uint8_t controller_value) {
-    m_portamento_coef[N] = ((controller_value + 1) >> 1) + PORTAMENTO_COEF_OFF;
+    if (controller_value == 0) {
+      m_portamento_coef[N] = 0;
+    } else {
+      m_portamento_coef[N] = ((controller_value + 1) >> 1) + PORTAMENTO_COEF_BASE;
+    }
   }
 
   template <uint8_t N>
@@ -608,7 +612,7 @@ private:
     m_osc_on_temp[N] = m_osc_on[N];
 
     if (m_osc_on_temp[N]) {
-      if ((m_portamento_coef[N] == PORTAMENTO_COEF_OFF) || (m_pitch_current[N] <= m_pitch_target[N])) {
+      if ((m_portamento_coef[N] == 0) || (m_pitch_current[N] <= m_pitch_target[N])) {
         m_pitch_current[N] = m_pitch_target[N] - mul_sq16_uq8(m_pitch_target[N]  - m_pitch_current[N], m_portamento_coef[N]);
       } else {
         m_pitch_current[N] = m_pitch_current[N] + mul_sq16_uq8(m_pitch_target[N] - m_pitch_current[N], 256 - m_portamento_coef[N]);

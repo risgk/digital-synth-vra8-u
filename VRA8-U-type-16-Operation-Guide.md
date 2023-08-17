@@ -1,6 +1,6 @@
-# Digital Synth VRA8-U type-16 Operation Guide v2.2.5
+# Digital Synth VRA8-U type-16 Operation Guide v2.2.6
 
-- 2023-08-16 ISGK Instruments
+- 2023-08-17 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
 
 ## Concept
