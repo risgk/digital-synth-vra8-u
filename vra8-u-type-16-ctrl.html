@@ -294,7 +294,7 @@ document.addEventListener("touchstart", function(event) {
 });
 
 window.onload = function() {
-  document.getElementById("spanAppNameVersion").innerHTML = "<strong style=\"color:blue\>" + APP_NAME_VERSION + "</strong>";
+  document.getElementById("spanAppNameVersion").innerHTML = "<strong style=\"color:blue\">" + APP_NAME_VERSION + "</strong>";
 
   if (navigator.requestMIDIAccess) {
     navigator.requestMIDIAccess({sysex: false}).then(onMIDISuccess, onMIDIFailure);

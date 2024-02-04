@@ -19,6 +19,8 @@
 
 ## Change History
 
+- v2.2.8 (2024-02-04):
+    - Fix display of VRA8-U type-16 CTRL
 - v2.2.7 (2024-02-04):
     - Easier to customize control numbers
 - v2.2.6 (2023-08-17):
