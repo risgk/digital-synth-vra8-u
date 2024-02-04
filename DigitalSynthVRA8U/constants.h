@@ -68,7 +68,7 @@ const uint8_t   FILTER_KEY_TRK  = 26;
 
 const uint8_t   EG_ATTACK       = 73;
 const uint8_t   EG_DECAY        = 75;
-const uint8_t   EG_SUSTAIN      = 12;
+const uint8_t   EG_SUSTAIN      = 53;
 const uint8_t   EG_RELEASE      = 72;
 
 const uint8_t   EG_OSC_AMT      = 91;

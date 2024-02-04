@@ -68,7 +68,7 @@ FILTER_KEY_TRK  = 26
 
 EG_ATTACK       = 73
 EG_DECAY        = 75
-EG_SUSTAIN      = 12
+EG_SUSTAIN      = 53
 EG_RELEASE      = 72
 
 EG_OSC_AMT      = 91
