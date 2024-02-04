@@ -19,6 +19,8 @@
 
 ## Change History
 
+- v2.2.7:
+    - Easier to customize control numbers
 - v2.2.6:
     - Fix behavior when Portamento is 0 (Off)
 - v2.2.5:
