@@ -41,7 +41,7 @@ td.keyh {
 }
 </style>
 <script>
-const APP_NAME_VERSION = "VRA8-U type-16 CTRL v2.2.7";
+const APP_NAME_VERSION = "VRA8-U type-16 CTRL v2.2.8";
 
 const MIDI_CH        = 0;       // Basic Channel 1
 const NOTE_OFF       = 0x80;
@@ -294,7 +294,7 @@ document.addEventListener("touchstart", function(event) {
 });
 
 window.onload = function() {
-  document.getElementById("spanAppNameVersion").innerHTML = "<strong style=\"color:blue\>" + APP_NAME_VERSION + "</strong>";
+  document.getElementById("spanAppNameVersion").innerHTML = "<strong style=\"color:blue\">" + APP_NAME_VERSION + "</strong>";
 
   if (navigator.requestMIDIAccess) {
     navigator.requestMIDIAccess({sysex: false}).then(onMIDISuccess, onMIDIFailure);

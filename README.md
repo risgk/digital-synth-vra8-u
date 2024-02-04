@@ -1,4 +1,4 @@
-# Digital Synth VRA8-U v2.2.7
+# Digital Synth VRA8-U v2.2.8
 
 - 2024-02-04 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
@@ -19,6 +19,8 @@
 
 ## Change History
 
+- v2.2.8 (2024-02-04):
+    - Fix display of VRA8-U type-16 CTRL
 - v2.2.7 (2024-02-04):
     - Easier to customize control numbers
 - v2.2.6 (2023-08-17):
@@ -167,11 +169,11 @@ This image was created with Fritzing.
 
 ![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)
 
-Digital Synth VRA8-U v2.2.7 by ISGK Instruments (Ryo Ishigaki)
+Digital Synth VRA8-U v2.2.8 by ISGK Instruments (Ryo Ishigaki)
 
 To the extent possible under law, ISGK Instruments (Ryo Ishigaki)
 has waived all copyright and related or neighboring rights
-to Digital Synth VRA8-U v2.2.7.
+to Digital Synth VRA8-U v2.2.8.
 
 You should have received a copy of the CC0 legalcode along with this
 work.  If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
