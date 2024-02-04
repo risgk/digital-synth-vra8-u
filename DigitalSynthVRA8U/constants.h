@@ -51,53 +51,53 @@ const uint8_t   MODULATION      = 1;
 const uint8_t   SUSTAIN_PEDAL   = 64;
 const uint8_t   P_BEND_BY_CC    = 35;
 
-const uint8_t   OSC_1_WAVE      = 24;
-const uint8_t   OSC_1_SHAPE     = 102;
-const uint8_t   OSC_1_MORPH     = 103;
-const uint8_t   MIXER_SUB_OSC   = 26;
+const uint8_t   OSC_1_WAVE      = 102;
+const uint8_t   OSC_1_SHAPE     = 19;
+const uint8_t   OSC_1_MORPH     = 20;
+const uint8_t   MIXER_SUB_OSC   = 23;
 
-const uint8_t   OSC_2_WAVE      = 55;
-const uint8_t   OSC_2_COARSE    = 20;
-const uint8_t   OSC_2_FINE      = 21;
-const uint8_t   MIXER_OSC_MIX   = 25;
+const uint8_t   OSC_2_WAVE      = 104;
+const uint8_t   OSC_2_COARSE    = 85;
+const uint8_t   OSC_2_FINE      = 76;
+const uint8_t   MIXER_OSC_MIX   = 21;
 
-const uint8_t   FILTER_CUTOFF   = 16;
-const uint8_t   FILTER_RESO     = 17;
-const uint8_t   FILTER_EG_AMT   = 18;
-const uint8_t   FILTER_KEY_TRK  = 86;
+const uint8_t   FILTER_CUTOFF   = 74;
+const uint8_t   FILTER_RESO     = 71;
+const uint8_t   FILTER_EG_AMT   = 24;
+const uint8_t   FILTER_KEY_TRK  = 26;
 
-const uint8_t   EG_ATTACK       = 23;
-const uint8_t   EG_DECAY        = 19;
-const uint8_t   EG_SUSTAIN      = 27;
-const uint8_t   EG_RELEASE      = 28;
+const uint8_t   EG_ATTACK       = 73;
+const uint8_t   EG_DECAY        = 75;
+const uint8_t   EG_SUSTAIN      = 12;
+const uint8_t   EG_RELEASE      = 72;
 
-const uint8_t   EG_OSC_AMT      = 104;
-const uint8_t   EG_OSC_DST      = 105;
-const uint8_t   VOICE_MODE      = 87;
-const uint8_t   PORTAMENTO      = 22;
+const uint8_t   EG_OSC_AMT      = 91;
+const uint8_t   EG_OSC_DST      = 89;
+const uint8_t   VOICE_MODE      = 18;
+const uint8_t   PORTAMENTO      = 5;
 
-const uint8_t   LFO_WAVE        = 14;
-const uint8_t   LFO_RATE        = 80;
-const uint8_t   LFO_DEPTH       = 81;
-const uint8_t   LFO_FADE_TIME   = 15;
+const uint8_t   LFO_WAVE        = 30;
+const uint8_t   LFO_RATE        = 3;
+const uint8_t   LFO_DEPTH       = 17;
+const uint8_t   LFO_FADE_TIME   = 56;
 
-const uint8_t   LFO_OSC_AMT     = 82;
-const uint8_t   LFO_OSC_DST     = 9;
-const uint8_t   LFO_FILTER_AMT  = 83;
-const uint8_t   AMP_LEVEL       = 110;
+const uint8_t   LFO_OSC_AMT     = 13;
+const uint8_t   LFO_OSC_DST     = 103;
+const uint8_t   LFO_FILTER_AMT  = 25;
+const uint8_t   AMP_LEVEL       = 15;
 
-const uint8_t   AMP_ATTACK      = 56;
-const uint8_t   AMP_DECAY       = 57;
-const uint8_t   AMP_SUSTAIN     = 58;
-const uint8_t   AMP_RELEASE     = 59;
+const uint8_t   AMP_ATTACK      = 52;
+const uint8_t   AMP_DECAY       = 92;
+const uint8_t   AMP_SUSTAIN     = 54;
+const uint8_t   AMP_RELEASE     = 90;
 
-const uint8_t   CHORUS_MODE     = 63;
+const uint8_t   CHORUS_MODE     = 27;
 const uint8_t   CHORUS_RATE     = 61;
 const uint8_t   CHORUS_DEPTH    = 60;
 const uint8_t   CHORUS_DLY_TIME = 62;
 
-const uint8_t   P_BEND_RANGE    = 85;
-const uint8_t   CHORUS_BYPASS   = 111;
+const uint8_t   P_BEND_RANGE    = 57;
+const uint8_t   CHORUS_BYPASS   = 63;
 
 
 
