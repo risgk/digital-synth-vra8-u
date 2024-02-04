@@ -333,10 +333,10 @@ function panic() {
   }
 
   document.getElementById("spanPB").innerHTML = "+0";
-  document.getElementById("spanMODULATION").innerHTML = "0";
-  document.getElementById("spanEXPRESSION").innerHTML = "127";
+  document.getElementById("spanMODULATION     ").innerHTML = "0";
+  document.getElementById("spanEXPRESSION     ").innerHTML = "127";
   document.getElementById("spanVelocity").innerHTML = "0";
-  document.getElementById("spanSUSTAIN_PEDAL").innerHTML = "0";
+  document.getElementById("spanSUSTAIN_PEDAL  ").innerHTML = "0";
 }
 
 function restoreControllers() {
@@ -387,7 +387,7 @@ var specialRandomControlCCValue = 0;
 function afterChangeOsc1WaveOrVoiceMode() {
   var targetCCNumbers = [OSC_1_SHAPE, OSC_1_MORPH, MIXER_SUB_OSC, OSC_2_WAVE, OSC_2_COARSE, OSC_2_FINE, MIXER_OSC_MIX, FILTER_KEY_TRK];
 
-  var valueVoiceMode = localStorage.getItem("keyVOICE_MODE");
+  var valueVoiceMode = localStorage.getItem("keyVOICE_MODE     ");
   if (valueVoiceMode < 32) {
     targetCCNumbers.forEach(function(i) {
       document.getElementById("input" + controlNumberToStringMap.get(i)).disabled = true;
@@ -397,12 +397,12 @@ function afterChangeOsc1WaveOrVoiceMode() {
       document.getElementById("input" + controlNumberToStringMap.get(i)).disabled = false;
     });
 
-    var valueOsc1Wave = localStorage.getItem("keyOSC_1_WAVE");
+    var valueOsc1Wave = localStorage.getItem("keyOSC_1_WAVE     ");
     if ((valueOsc1Wave >= 80) && (valueOsc1Wave < 112)) {
-      document.getElementById("inputMIXER_SUB_OSC").disabled = true;
+      document.getElementById("inputMIXER_SUB_OSC  ").disabled = true;
     } else {
-      document.getElementById("inputOSC_1_SHAPE").disabled = true;
-      document.getElementById("inputOSC_1_MORPH").disabled = true;
+      document.getElementById("inputOSC_1_SHAPE    ").disabled = true;
+      document.getElementById("inputOSC_1_MORPH    ").disabled = true;
     }
   }
 }
@@ -420,14 +420,14 @@ function onMIDIMessage(event) {
         afterChangeOsc1WaveOrVoiceMode();
       }
     } else if (number == MODULATION     ) {
-      document.getElementById("spanMODULATION").innerHTML = value;
+      document.getElementById("spanMODULATION     ").innerHTML = value;
     } else if (number == SUSTAIN_PEDAL   ) {
-      document.getElementById("spanSUSTAIN_PEDAL").innerHTML = value;
+      document.getElementById("spanSUSTAIN_PEDAL  ").innerHTML = value;
     } else if (number == RESET_ALL_CTRLS) {
       document.getElementById("spanPB").innerHTML = "+0";
-      document.getElementById("spanMODULATION").innerHTML = "0";
-      document.getElementById("spanEXPRESSION").innerHTML = "127";
-      document.getElementById("spanSUSTAIN_PEDAL").innerHTML = "0";
+      document.getElementById("spanMODULATION     ").innerHTML = "0";
+      document.getElementById("spanEXPRESSION     ").innerHTML = "127";
+      document.getElementById("spanSUSTAIN_PEDAL  ").innerHTML = "0";
     } else if (number == P_BEND_BY_CC) {
       var pb = (value - 64) * 128;
       if (pb == 8064) {
@@ -925,7 +925,7 @@ function getStoredCCValueString(index, number) {
     <td></td>
     <td>Modulation</td>
     <td></td>
-    <td><span id="spanMODULATION">-</span></td>
+    <td><span id="spanMODULATION     ">-</span></td>
     </tr>
 <tr><td>MIDI In 3</td>
     <td></td>
@@ -933,7 +933,7 @@ function getStoredCCValueString(index, number) {
     <td></td>
     <td>Sustain Pedal</td>
     <td></td>
-    <td><span id="spanSUSTAIN_PEDAL">-</span></td>
+    <td><span id="spanSUSTAIN_PEDAL  ">-</span></td>
     </tr>
 <tr><td>MIDI In 4</td>
     <td></td>
