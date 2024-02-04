@@ -1,6 +1,6 @@
-# Digital Synth VRA8-U v2.2.6
+# Digital Synth VRA8-U v2.2.7
 
-- 2023-08-17 ISGK Instruments
+- 2024-02-04 ISGK Instruments
 - <https://github.com/risgk/digital-synth-vra8-u>
 
 ## Concept
@@ -19,9 +19,9 @@
 
 ## Change History
 
-- v2.2.7:
+- v2.2.7 (2024-02-04):
     - Easier to customize control numbers
-- v2.2.6:
+- v2.2.6 (2023-08-17):
     - Fix behavior when Portamento is 0 (Off)
 - v2.2.5:
     - Fix Pulse Wave (Fix problem with small Saw Wave sound heard)
@@ -167,11 +167,11 @@ This image was created with Fritzing.
 
 ![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)
 
-Digital Synth VRA8-U v2.2.6 by ISGK Instruments (Ryo Ishigaki)
+Digital Synth VRA8-U v2.2.7 by ISGK Instruments (Ryo Ishigaki)
 
 To the extent possible under law, ISGK Instruments (Ryo Ishigaki)
 has waived all copyright and related or neighboring rights
-to Digital Synth VRA8-U v2.2.6.
+to Digital Synth VRA8-U v2.2.7.
 
 You should have received a copy of the CC0 legalcode along with this
 work.  If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
