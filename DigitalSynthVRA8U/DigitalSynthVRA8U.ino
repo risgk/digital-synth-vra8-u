@@ -4,14 +4,14 @@
 
 //#define DEBUG
 
-#define SERIAL_SPEED (38400)            // For Serial MIDI
-//#define SERIAL_SPEED (31250)            // For MIDI Shield (MIDI Breakout)
+//#define SERIAL_SPEED (38400)            // For Serial MIDI
+#define SERIAL_SPEED (31250)            // For MIDI Shield (MIDI Breakout)
 
 #define L_MONO_AUDIO_OUT_PIN (5)        // Pin D5 (or D6)
 #define R_AUDIO_OUT_PIN      (11)       // Pin D11 (Fixed)
 #define CPU_BUSY_LED_OUT_PIN (13)       // Pin D13 (Fixed)
 
-//#define ENABLE_16_BIT_OUTPUT            // Operate VRA8-U type-16 (Special Edition with 16-bit Audio Output)
+#define ENABLE_16_BIT_OUTPUT            // Operate VRA8-U type-16 (Special Edition with 16-bit Audio Output)
 #define L_MONO_LOW_AUDIO_OUT_PIN (6)    // Pin D6 (or D5): L/Mono channel, low 8-bit audio output
 #define R_LOW_AUDIO_OUT_PIN      (3)    // Pin D3 (Fixed): R      channel, low 8-bit audio output
 
